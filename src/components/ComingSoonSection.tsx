@@ -13,9 +13,7 @@ interface ComingSoonSectionProps {
   onNavigate?: (page: string) => void
 }
 
-export default function ComingSoonSection(_props: ComingSoonSectionProps) {
-  const [email, setEmail] = useState('')
-  const [subscribed, setSubscribed] = useState(false)
+export default function ComingSoonSection({ onNavigate }: ComingSoonSectionProps) {
   // Target launch date: 7th of October 2026
   const LAUNCH_DATE = new Date('2026-10-07T00:00:00+05:30').getTime()
 
@@ -46,15 +44,6 @@ export default function ComingSoonSection(_props: ComingSoonSectionProps) {
     return () => clearInterval(interval)
   }, [])
 
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (email.trim()) {
-      setSubscribed(true)
-      setEmail('')
-      setTimeout(() => setSubscribed(false), 5000)
-    }
-  }
-
   const formatNum = (num: number) => String(num).padStart(2, '0')
 
   return (
@@ -66,7 +55,7 @@ export default function ComingSoonSection(_props: ComingSoonSectionProps) {
           <div className="lg:col-span-6 xl:col-span-5 flex flex-col justify-center">
             {/* Main Headline */}
             <h2
-              className="text-4xl sm:text-5xl lg:text-[54px] xl:text-[60px] font-normal leading-[1.08] text-gray-900 tracking-tight mb-5 select-none"
+              className="text-4xl sm:text-5xl lg:text-[54px] xl:text-[60px] font-bold leading-[1.12] text-[#141c2e] tracking-tight mb-5 select-none"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             >
               Something<br />
@@ -151,38 +140,30 @@ export default function ComingSoonSection(_props: ComingSoonSectionProps) {
               We Care Your Life!
             </p>
 
-            {/* Notify Me Pill Input */}
-            <form onSubmit={handleSubscribe} className="relative max-w-md w-full mb-3">
+            {/* Download CTA Bar */}
+            <div className="relative max-w-lg w-full mb-3">
               <div
-                className="flex items-center rounded-full p-1.5 border border-gray-200 bg-white shadow-lg transition-all duration-300 focus-within:border-teal-500 focus-within:ring-2 focus-within:ring-teal-100"
+                className="flex items-center justify-between rounded-full p-1.5 sm:p-2 border border-gray-200/90 bg-white shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_6px_24px_rgba(0,0,0,0.09)] transition-all duration-300"
               >
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Be the first to know when we launch!"
-                  required
-                  className="flex-1 min-w-0 bg-transparent border-0 outline-none text-gray-900 text-xs sm:text-sm px-4 placeholder:text-gray-400"
+                <span
+                  className="flex-1 min-w-0 text-slate-500 text-xs sm:text-sm pl-4 sm:pl-5 pr-2 font-normal select-none truncate"
                   style={{ fontFamily: "'Inter', sans-serif" }}
-                />
+                >
+                  Be the first to download after launching!
+                </span>
                 <button
-                  type="submit"
-                  className="shrink-0 px-5 sm:px-6 py-2.5 rounded-full text-white font-semibold text-xs sm:text-sm transition-all duration-300 hover:scale-[1.03] active:scale-95 shadow-md cursor-pointer border-0"
+                  type="button"
+                  onClick={() => onNavigate?.('Coming Soon')}
+                  className="shrink-0 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full text-white font-bold text-xs sm:text-sm transition-all duration-300 hover:scale-[1.03] active:scale-95 shadow-md hover:shadow-lg cursor-pointer border-0 select-none"
                   style={{
-                    background: 'linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)',
+                    background: 'linear-gradient(90deg, #4eafe9 0%, #76cb68 100%)',
                     fontFamily: "'Inter', sans-serif",
                   }}
                 >
-                  Notify Me
+                  Download Now
                 </button>
               </div>
-
-              {subscribed && (
-                <div className="absolute left-4 -bottom-6 text-xs text-emerald-600 font-semibold animate-fadeIn">
-                  ✦ Thank you! We will notify you on launch day.
-                </div>
-              )}
-            </form>
+            </div>
           </div>
 
           {/* Right Column: App Showcase Mockups + App Store Badges */}

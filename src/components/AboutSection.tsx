@@ -7,21 +7,25 @@ interface AboutSectionProps {
 
 const services = [
   {
+    id: "01",
     title: "Personalized Horoscope",
     desc: "Get insights written just for you",
     bg: "https://res.cloudinary.com/pp0lpskp/image/upload/v1786017276/card-2_uf00jk.jpg",
   },
   {
+    id: "02",
     title: "Live Sessions with Experts",
     desc: "Talk to top astrologers and therapists in real time",
     bg: "https://res.cloudinary.com/pp0lpskp/image/upload/v1786017357/card-11_osbl2y.jpg",
   },
   {
+    id: "03",
     title: "AI-Powered Astro Insights",
     desc: "Smart technology meets astrology to reveal what matters most.",
     bg: "https://res.cloudinary.com/pp0lpskp/image/upload/v1786017278/card-4_pseunb.jpg",
   },
   {
+    id: "04",
     title: "Therapy That Helps",
     desc: "Compassionate therapists for mental clarity and healing",
     bg: "https://res.cloudinary.com/pp0lpskp/image/upload/v1786017276/card-3_x8jb85.jpg",

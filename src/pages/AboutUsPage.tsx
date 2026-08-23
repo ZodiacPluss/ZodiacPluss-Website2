@@ -151,7 +151,7 @@ export default function AboutUsPage({ onNavigate, dark = false }: AboutUsPagePro
                     {member.role}
                   </p>
                   <p className="text-[10px] text-[#2dd4bf] font-medium mt-1">
-                    {member.specialty}
+                    {member.exp}
                   </p>
                 </div>
               </div>

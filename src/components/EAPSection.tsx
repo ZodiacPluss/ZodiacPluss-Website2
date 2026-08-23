@@ -2,7 +2,7 @@
    EAPSection
    Employee Assistance Program (EAP) Solutions — corporate wellness
    pitch condensed into one home-page section: intro & credibility,
-   why EAP matters, solution pillars, pricing, CAP/SAP add-ons, CTA.
+   why EAP matfters, solution pillars, pricing, CAP/SAP add-ons, CTA.
    ───────────────────────────────────────────────────────────────── */
 
 const GRADIENT = 'linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)'
@@ -189,7 +189,7 @@ export default function EAPSection({ onNavigate, dark = false }: EAPSectionProps
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4 items-stretch relative">
             {whyMatters.map((w, i) => (
-              <div key={w.step} className="relative flex flex-col items-center text-center px-4">
+              <div key={w.title} className="relative flex flex-col items-center text-center px-4">
                 {i < whyMatters.length - 1 && (
                   <div
                     className="hidden sm:block absolute top-8 left-1/2 w-full h-[1.5px]"
