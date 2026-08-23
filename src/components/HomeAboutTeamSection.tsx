@@ -103,16 +103,6 @@ const teamMembers = [
     role: 'ADVOCATE & LEGAL CONSULTANT',
     img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1786011233/Sunil_ji_ltxjqb.png',
   },
-  {
-    name: 'Mr. Shubham',
-    role: 'FINANCIAL ADVISER',
-    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/c_crop,g_north_west,h_867,w_952,x_37,y_16/watermark-removed-ri1_u6mghh.jpg',
-  },
-  {
-    name: 'Ms. Akriti',
-    role: 'SOCIAL MEDIA MANAGER',
-    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1787485194/copy_of_watermark-removed-re2_lshvqv.jpg',
-  },
 ]
 
 const stats = [

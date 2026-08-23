@@ -67,7 +67,7 @@ export default function Footer({ onNavigate, dark = false }: FooterProps) {
   const [email, setEmail] = useState('')
   const subBarBg = dark ? '#141416' : '#ffffff'
   const subBarHeading = dark ? '#5eead4' : TEAL_TEXT
-  const subBarMuted = dark ? '#a1a1aa' : '#8a9a96'
+  const subBarMuted = dark ? '#ffffffff' : '#ffffffff'
   const subBarFaint = dark ? '#87878c' : '#6b7f7a'
   const subBarIconBorder = dark ? 'rgba(255,255,255,0.15)' : '#c8d8d4'
 
