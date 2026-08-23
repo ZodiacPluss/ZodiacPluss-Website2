@@ -144,11 +144,11 @@ export default function AboutSection({ onNavigate, dark = false }: AboutSectionP
               <button
                 onClick={() => onNavigate("About Us")}
                 className="flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-full transition-all duration-200"
-                style={{ border: dark ? '1px solid rgba(255,255,255,0.3)' : '1px solid #1e0d40', color: dark ? '#f5f5f5' : '#1e0d40' }}
+                style={{ border: dark ? '1px solid rgba(255,255,255,0.3)' : '1px solid #1d6499ff', color: dark ? '#f5f5f5' : '#1d6499ff' }}
               >
                 Learn More
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/>
+                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </button>
             </div>
@@ -201,10 +201,7 @@ export default function AboutSection({ onNavigate, dark = false }: AboutSectionP
                           {svc.id}
                         </span>
                         {i === activeIndex && (
-                          <div className="w-8 h-8 rounded-full bg-teal-500/90 text-white flex items-center justify-center shadow-md">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                              <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
+                          <div> 
                           </div>
                         )}
                       </div>
@@ -245,13 +242,10 @@ export default function AboutSection({ onNavigate, dark = false }: AboutSectionP
                     width: i === activeIndex ? 24 : 8,
                     height: 8,
                     borderRadius: 4,
-                    background: i === activeIndex ? "#14b8a6" : (dark ? "rgba(255,255,255,0.25)" : "#d1c4e9"),
+                    background: i === activeIndex ? "#1b5b8cff" : (dark ? "rgba(255,255,255,0.25)" : "#35acaeff"),
                   }}
                 />
               ))}
-              <span className="ml-3 text-xs font-mono" style={{ color: dark ? '#a1a1aa' : '#6b5b8f' }}>
-                {String(activeIndex + 1).padStart(2, "0")}/{String(total).padStart(2, "0")}
-              </span>
             </div>
           </div>
         </div>

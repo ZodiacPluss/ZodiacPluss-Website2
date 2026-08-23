@@ -90,7 +90,7 @@ export default function Navbar({ currentPage, onNavigate, dark = false, onToggle
             <img
               src="https://res.cloudinary.com/pp0lpskp/image/upload/v1786032742/Zodiac_Colored_Logo_croped-removebg-preview_appzet.png"
               alt="ZodiacPluss Logo"
-              className="w-9 h-9 sm:w-10 sm:h-10 object-contain flex-shrink-0"
+              className="w-15 h- sm:w-10 sm:h-10 object-contain flex-shrink-0"
             />
             <div className="leading-tight text-left">
               <div className="flex items-center gap-0.5">

@@ -547,7 +547,7 @@ export default function AppShowcaseSection() {
               designed for{' '}
               <em style={{
                 fontStyle: 'italic',
-                color: TEAL,
+                color: '#24c5d6',
               }}>clarity</em>
             </h2>
 

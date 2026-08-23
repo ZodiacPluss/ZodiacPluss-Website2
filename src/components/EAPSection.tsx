@@ -11,15 +11,14 @@ const LOGO_URL =
   'https://res.cloudinary.com/pp0lpskp/image/upload/v1786032742/Zodiac_Colored_Logo_croped-removebg-preview_appzet.png'
 
 const credibilityStats = [
-  { value: '8+', label: 'Years in Corporate Wellness' },
-  { value: '50+', label: 'Licensed Professionals' },
+  { value: '10+', label: 'Special Features & insights ' },
+  { value: '20+', label: 'Licensed Professionals' },
   { value: '24×7', label: 'Crisis Support' },
-  { value: '100+', label: 'Organizations Served' },
+  { value: '10+', label: 'Zodiac official Members' },
 ]
 
 const whyMatters = [
   {
-    step: '01',
     title: 'Employee Wellbeing',
     desc: 'Proactive mental health support reduces stress, anxiety, and burnout before they escalate.',
     icon: (
@@ -29,7 +28,6 @@ const whyMatters = [
     ),
   },
   {
-    step: '02',
     title: 'Higher Productivity',
     desc: 'Teams with accessible wellness support report meaningfully greater focus and output.',
     icon: (
@@ -39,7 +37,6 @@ const whyMatters = [
     ),
   },
   {
-    step: '03',
     title: 'Stronger Retention',
     desc: 'Organizations that invest in employee wellbeing keep their best people significantly longer.',
     icon: (
@@ -88,7 +85,7 @@ const solutionPillars = [
 const otherOfferings = [
   {
     abbr: 'CAP',
-    title: 'Client Assistance Program',
+    title: 'Child Assistance Program',
     desc: 'A complementary, short-term solution-focused support track for personal and workplace challenges — ideal as a lighter-touch wellness benefit or a bridge into full EAP care.',
     color: '#5eb8e8',
     icon: (
@@ -99,12 +96,12 @@ const otherOfferings = [
   },
   {
     abbr: 'SAP',
-    title: 'Substance Abuse Professional Program',
-    desc: 'A structured, compliance-aligned evaluation, education, and referral track for employees navigating substance-related concerns, delivered by certified SAP-qualified clinicians.',
+    title: 'Student Assistance Program',
+    desc: 'A structured, compliance-aligned evaluation, education, and referral track for students navigating  concerns, delivered by certified SAP-qualified clinicians.',
     color: '#8fd06a',
     icon: (
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <path d="M12 2L15 8L22 9L17 14L18.5 21L12 17.5L5.5 21L7 14L2 9L9 8L12 2Z" />
+        <path d="M18 8A6 6 0 1 0 6 8c0 7 6 13 6 13s6-6 6-13z" /><circle cx="12" cy="8" r="2" />
       </svg>
     ),
   },
@@ -128,25 +125,19 @@ export default function EAPSection({ onNavigate, dark = false }: EAPSectionProps
       {/* ── Title + credibility ─────────────────────────────────── */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-14">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <div className="flex items-center justify-center gap-2 mb-5">
-            <img src={LOGO_URL} alt="ZodiacPluss" className="w-8 h-8 object-contain" />
-            <span
-              className="text-[11px] font-bold tracking-[0.18em] uppercase px-3.5 py-1.5 rounded-full"
-              style={{
-                color: '#14b8a6',
-                background: dark ? 'rgba(20,184,166,0.1)' : 'rgba(20,184,166,0.08)',
-                border: '1px solid rgba(20,184,166,0.25)',
-              }}
-            >
-              Corporate Wellness · EAP
-            </span>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-6">
+            <img
+              src={LOGO_URL}
+              alt="ZodiacPluss"
+              className="w-20 h-14 sm:w-20 sm:h-20 object-contain filter drop-shadow-md transition-transform duration-300 hover:scale-105"
+            />
           </div>
 
           <h2
             className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold leading-[1.15] mb-4"
             style={{ color: headingColor, fontFamily: "'Playfair Display', serif" }}
           >
-            Employee Assistance Program{' '}
+            Corporate Wellness & Employee Assistance Program{' '}
             <span
               style={{
                 background: GRADIENT,
@@ -188,8 +179,8 @@ export default function EAPSection({ onNavigate, dark = false }: EAPSectionProps
       <div style={{ background: altBg, transition: 'background 0.4s ease' }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
           <div className="text-center max-w-xl mx-auto mb-12">
-            <p className="text-[11px] font-bold tracking-[0.18em] uppercase mb-3" style={{ color: '#14b8a6' }}>
-              Why EAP Matters
+            <p className="text-[11px] font-bold tracking-[0.18em] uppercase mb-3" style={{ color: '#16abd8ff' }}>
+              Why ZodiacPluss EAP Matters ?
             </p>
             <h3 className="text-2xl sm:text-3xl font-bold" style={{ color: headingColor, fontFamily: "'Playfair Display', serif" }}>
               Wellbeing Is the Foundation of Performance
@@ -211,9 +202,6 @@ export default function EAPSection({ onNavigate, dark = false }: EAPSectionProps
                 >
                   {w.icon}
                 </div>
-                <span className="text-[11px] font-bold tracking-[0.15em] mb-2" style={{ color: '#14b8a6' }}>
-                  STEP {w.step}
-                </span>
                 <h4 className="text-base font-bold mb-2" style={{ color: headingColor }}>
                   {w.title}
                 </h4>

@@ -65,7 +65,7 @@ function DarkHero({ onNavigate, dark = false }: { onNavigate?: (p: string) => vo
       {/* Radial glow from center */}
       <div style={{
         position: 'absolute', inset: 0, pointerEvents: 'none',
-        background: 'radial-gradient(ellipse 55% 80% at 50% 60%, rgba(61, 166, 214, 0.08) 0%, transparent 70%)',
+        background: 'radial-gradient(ellipse 55% 80% at 50% 60%, rgba(70, 75, 78, 0.08) 0%, transparent 70%)',
       }} />
 
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: 'clamp(48px,7vw,80px) 24px', position: 'relative', zIndex: 1 }}>
@@ -128,20 +128,20 @@ function DarkHero({ onNavigate, dark = false }: { onNavigate?: (p: string) => vo
               width: 'clamp(220px,32vw,320px)',
               height: 'clamp(220px,32vw,320px)',
               position: 'relative',
-              filter: 'drop-shadow(0 0 40px rgba(61,214,172,0.25))',
+              filter: 'drop-shadow(0 0 40px rgba(54, 58, 57, 0.25))',
             }}>
               {/* Subtle glow behind */}
               <div style={{
                 position: 'absolute', inset: 0, borderRadius: '50%',
-                background: 'radial-gradient(circle, rgba(61,214,172,0.3) 0%, transparent 70%)',
-                boxShadow: '0 0 50px 15px rgba(61,214,172,0.18)',
+                background: 'radial-gradient(circle, rgba(56, 62, 60, 0.3) 0%, transparent 70%)',
+                boxShadow: '0 0 50px 15px rgba(44, 48, 47, 0.18)',
               }} />
               {/* Photo */}
               <div style={{
                 position: 'absolute',
                 inset: 0,
                 borderRadius: '50%', overflow: 'hidden',
-                border: '2px solid rgba(61,214,172,0.4)',
+                border: '2px solid rgba(212, 226, 223, 0.4)',
               }}>
                 <img
                   src={MEDITATION}
