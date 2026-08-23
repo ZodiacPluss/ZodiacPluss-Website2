@@ -81,7 +81,7 @@ export default function AboutUsPage({ onNavigate, dark = false }: AboutUsPagePro
               Why ZodiacPluss?
             </h2>
             <p className="about-muted text-[#4a4a6a] leading-relaxed mb-4">
-              Founded in 2018, ZodiacPluss was built on a single conviction: that ancient astrological wisdom and modern psychology are not opposites — they are two sides of the same coin.
+              Founded in 2025, ZodiacPluss was built on a single conviction: that ancient astrological wisdom and modern psychology are not opposites — they are two sides of the same coin.
             </p>
             <p className="about-muted text-[#4a4a6a] leading-relaxed mb-6">
               Our platform gives every person access to certified astrologers, licensed therapists, and AI-powered insights — all in one seamless, private space.

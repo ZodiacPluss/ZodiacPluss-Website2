@@ -10,7 +10,7 @@ const faqs = [
   },
   {
     q: 'How accurate are the astrological readings?',
-    a: 'Our astrologers combine decades of traditional study with modern analytical tools. While astrology provides guidance rather than certainties, our verified experts maintain a 4.9 average rating and 98% satisfaction score across thousands of live sessions.',
+    a: 'Our astrologers combine decades of traditional study with modern analytical tools. While astrology provides guidance rather than certainties, our verified experts maintain the genuine conversation and provide needfull guidance to our Zodiac Pluss Family',
   },
   {
     q: 'Are the astrologers and therapists certified and verified?',
@@ -26,7 +26,7 @@ const faqs = [
   },
   {
     q: 'What payment methods are accepted?',
-    a: 'We accept all major credit and debit cards, UPI (Google Pay, PhonePe, Paytm), net banking, and ZodiacPluss Wallet credits. All transactions are secured via PCI-DSS compliant payment gateways.',
+    a: 'We accept all major credit and debit cards, UPI (Google Pay, PhonePe, Paytm), net banking, and ZodiacPluss Wallet credits. All transactions are secured via PCI-DSS compliant payment gateways in a very secure path.',
   },
   {
     q: 'Do you offer corporate wellness programs?',
