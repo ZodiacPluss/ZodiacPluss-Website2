@@ -8,6 +8,7 @@ import TestimonialsSection from '@/components/TestimonialsSection'
 import HomeAboutTeamSection from '@/components/HomeAboutTeamSection'
 import BrandsMarquee from '@/components/BrandsMarquee'
 import ScrollVideoParallax from '@/components/ScrollVideoParallax'
+import ComingSoonSection from '@/components/ComingSoonSection'
 
 const PARALLAX_VIDEO = 'https://res.cloudinary.com/pp0lpskp/video/upload/v1787222681/Background_video1_btmhwb.mp4'
 
@@ -35,6 +36,9 @@ export default function HomePage({ onNavigate, dark }: HomePageProps) {
         </div>
         <HomeAboutTeamSection onNavigate={onNavigate} dark={dark} />
       </ScrollVideoParallax>
+
+      {/* Coming Soon — always dark, closes out the home page */}
+      <ComingSoonSection onNavigate={onNavigate} />
     </div>
   )
 }

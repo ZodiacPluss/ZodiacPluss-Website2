@@ -9,6 +9,7 @@ import ExpertsPage from '@/pages/ExpertsPage'
 import BookSessionPage from '@/pages/BookSessionPage'
 import CareerPage from '@/pages/CareerPage'
 import PortfolioPage from '@/pages/PortfolioPage'
+import ComingSoonPage from '@/pages/ComingSoonPage'
 import CustomCursor from '@/components/CustomCursor'
 import SplashScreen from '@/components/SplashScreen'
 
@@ -17,6 +18,9 @@ const pageMap: Record<string, string> = {
   'Contact': 'Book',
   'For corporates': 'Services',
   'Corporates': 'Services',
+  'comming soon': 'Coming Soon',
+  'ComingSoon': 'Coming Soon',
+  'coming soon': 'Coming Soon',
 }
 
 export default function App() {
@@ -39,6 +43,7 @@ export default function App() {
       case 'Book':           return <BookSessionPage onNavigate={handleNavigate} dark={dark} />
       case 'Career':         return <CareerPage onNavigate={handleNavigate} dark={dark} />
       case 'Portfolio':      return <PortfolioPage onNavigate={handleNavigate} dark={dark} />
+      case 'Coming Soon':    return <ComingSoonPage onNavigate={handleNavigate} dark={dark} />
       default:               return <HomePage onNavigate={handleNavigate} dark={dark} />
     }
   }

@@ -8,7 +8,7 @@ const services = [
     title: 'Personalized Horoscope',
     desc: 'Receive a deeply detailed horoscope crafted uniquely for your birth chart. Understand your personality, strengths, challenges, and cosmic timing.',
     bg: 'https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=500&h=300&fit=crop&auto=format&q=80',
-    tag: 'Most Popular',
+    tag: 'Most Accurate',
     color: '#d81b86',
   },
   {
@@ -48,8 +48,8 @@ const services = [
     color: '#1e40af',
   },
   {
-    title: 'Community Support',
-    desc: 'Join a vibrant community of spiritual seekers, participate in group sessions, live Q&As, and connect with others on similar journeys.',
+    title: 'EAP, SAP & CAPP',
+    desc: 'Employee Assistant Programs (EAP), Student Assistant Programs (SAP) and College Assistant Programs (CAP).',
     bg: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=500&h=300&fit=crop&auto=format&q=80',
     tag: 'Community',
     color: '#0891b2',
@@ -58,14 +58,14 @@ const services = [
 
 const corporatePackages = [
   {
-    name: 'Starter',
+    name: 'Growth Starter',
     desc: 'Perfect for small teams',
     seats: 'Up to 25 employees',
     features: ['Monthly group astrology session', 'Employee wellness reports', 'AI horoscope access', 'Email support'],
     color: '#0d5f4f',
   },
   {
-    name: 'Growth',
+    name: 'Premium Growth',
     desc: 'For growing organizations',
     seats: 'Up to 100 employees',
     features: ['Weekly live expert sessions', 'Individual therapy sessions', 'Custom workshop programs', 'Dedicated account manager', 'Analytics dashboard'],
@@ -73,7 +73,7 @@ const corporatePackages = [
     featured: true,
   },
   {
-    name: 'Enterprise',
+    name: 'Enterprise Edition',
     price: 'Custom',
     desc: 'Full-scale wellness programs',
     seats: 'Unlimited employees',
@@ -173,11 +173,11 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-sm" style={{ color: titleColor }}>{}</span>
                   <button
-                    onClick={() => onNavigate('Book')}
-                    className="text-xs font-semibold px-4 py-1.5 rounded-full text-white transition-all hover:opacity-90 shadow-sm"
+                    onClick={() => onNavigate('Coming Soon')}
+                    className="text-xs font-semibold px-4 py-1.5 rounded-full text-white transition-all hover:opacity-90 shadow-sm cursor-pointer"
                     style={{ background: svc.color }}
                   >
-                    Book Now
+                    comming soon
                   </button>
                 </div>
               </div>
