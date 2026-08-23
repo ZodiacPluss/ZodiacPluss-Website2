@@ -10,7 +10,7 @@ const certificates = [
     issuedBy: 'Ministry of Commerce and Industry, Govt. of India',
     color: '#1aa0b8ff',
     bgLight: '#f0fdfa',
-    bgDark: '#1aa0b8ff',
+    bgDark: '#161717',
     borderLight: 'rgba(47, 197, 208, 0.3)',
     borderDark: 'rgba(20, 175, 195, 0.35)',
   },
@@ -22,7 +22,7 @@ const certificates = [
     certNo: '07AAACZ9841B1Z3',
     color: '#1aa0b8ff',
     bgLight: '#f0fdfa',
-    bgDark: '#1aa0b8ff',
+    bgDark: '#161717',
     borderLight: 'rgba(47, 197, 208, 0.3)',
     borderDark: 'rgba(20, 175, 195, 0.35)',
   },
@@ -33,9 +33,9 @@ const certificates = [
     badge: 'UDYAM CERTIFIED',
     certNo: 'UDYAM-DL-08-0049281',
     issuedBy: 'Govt. of India MSME Enterprise Portal',
-     color: '#1aa0b8ff',
+    color: '#1aa0b8ff',
     bgLight: '#f0fdfa',
-    bgDark: '#1aa0b8ff',
+    bgDark: '#161717',
     borderLight: 'rgba(47, 197, 208, 0.3)',
     borderDark: 'rgba(20, 175, 195, 0.35)',
   },
@@ -46,9 +46,9 @@ const certificates = [
     badge: 'ISO 27001',
     certNo: 'ISMS-IND-2024-8841',
     issuedBy: 'Global Accreditation Forum (GAF)',
-     color: '#1aa0b8ff',
+    color: '#1aa0b8ff',
     bgLight: '#f0fdfa',
-    bgDark: '#1aa0b8ff',
+    bgDark: '#161717',
     borderLight: 'rgba(47, 197, 208, 0.3)',
     borderDark: 'rgba(20, 175, 195, 0.35)',
   },
@@ -59,9 +59,9 @@ const certificates = [
     badge: 'ISO 9001',
     certNo: 'QMS-IND-2024-9042',
     issuedBy: 'International Accreditation Service (IAS)',
-     color: '#1aa0b8ff',
+    color: '#1aa0b8ff',
     bgLight: '#161717ff',
-    bgDark: '#1aa0b8ff',
+    bgDark: '#161717',
     borderLight: 'rgba(47, 197, 208, 0.3)',
     borderDark: 'rgba(20, 175, 195, 0.35)',
   },
@@ -83,7 +83,7 @@ export default function CredentialsSection({ dark = false }: CredentialsSectionP
 
   return (
     <section
-      className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300 relative overflow-hidden w-full"
+      className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 transition-colors duration-300 relative overflow-hidden w-full"
     >
       {/* Background video stretched 100% across entire section height for mobile, tablet, and desktop */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -97,13 +97,14 @@ export default function CredentialsSection({ dark = false }: CredentialsSectionP
           className="w-full h-full object-cover"
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
-        {/* Dark readability overlay */}
+        {/* Dark readability overlay covering 100% of background video */}
         <div
           className="absolute inset-0"
           style={{
             background: dark
-              ? 'rgba(0, 0, 0, 0.78)'
-              : 'rgba(6, 4, 18, 0.68)',
+              ? 'linear-gradient(180deg, rgba(6,4,18,0.85) 0%, rgba(10,8,30,0.78) 50%, rgba(6,4,18,0.85) 100%)'
+              : 'linear-gradient(180deg, rgba(6,4,18,0.78) 0%, rgba(10,8,30,0.72) 50%, rgba(6,4,18,0.78) 100%)',
+            zIndex: 1,
           }}
         />
       </div>
@@ -156,7 +157,7 @@ export default function CredentialsSection({ dark = false }: CredentialsSectionP
                     className="w-12 h-12 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
                     style={{ background: `${cert.color}18`, color: cert.color }}
                   >
-                   
+
                   </div>
                   <span
                     className="text-[9px] font-extrabold tracking-wider px-2.5 py-1 rounded-md"
@@ -228,7 +229,7 @@ export default function CredentialsSection({ dark = false }: CredentialsSectionP
               return (
                 <div>
                   <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4" style={{ background: `${c.color}20`, color: c.color }}>
-                    
+
                   </div>
                   <span className="text-[10px] font-bold tracking-widest px-2.5 py-1 rounded-md uppercase" style={{ color: c.color, background: `${c.color}15` }}>
                     {c.badge}

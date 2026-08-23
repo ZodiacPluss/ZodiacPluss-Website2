@@ -25,9 +25,7 @@ export default function HomePage({ onNavigate, dark }: HomePageProps) {
 
       {/* Parallax video sections */}
       <ScrollVideoParallax videoUrl={PARALLAX_VIDEO} overlayOpacity={0.6}>
-        <div className="pt-6" style={{ background: dark ? 'rgba(0,0,0,0.0)' : 'transparent' }}>
-          <CredentialsSection dark={dark} />
-        </div>
+        <CredentialsSection dark={dark} />
         <AboutSection onNavigate={onNavigate} dark={dark} />
         <AppShowcaseSection />
         <EAPSection onNavigate={onNavigate} dark={dark} />
