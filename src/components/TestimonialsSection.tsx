@@ -118,7 +118,7 @@ export default function TestimonialsSection({ dark = false }: { dark?: boolean }
               dark ? 'bg-teal-500/10 text-teal-300 border-teal-500/30' : 'bg-teal-50 text-teal-700 border-teal-200'
             }`}
           >
-            <span className="text-teal-500">✦</span> Verified Seeker Stories
+            <span className="text-teal-500"></span> Verified Seeker Stories
           </div>
 
           <h2
@@ -193,7 +193,7 @@ export default function TestimonialsSection({ dark = false }: { dark?: boolean }
               <div
                 key={idx}
                 className={`w-[280px] sm:w-[340px] md:w-[380px] rounded-2xl p-5 sm:p-6 border shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between shrink-0 ${
-                  dark ? 'bg-white/4 hover:bg-white/7 border-white/10' : 'bg-slate-50 hover:bg-white border-slate-200/80'
+                  dark ? 'bg-white/[0.04] hover:bg-white/[0.07] border-white/10' : 'bg-slate-50 hover:bg-white border-slate-200/80'
                 }`}
               >
                 {/* Header: User Avatar + Name + Stars */}

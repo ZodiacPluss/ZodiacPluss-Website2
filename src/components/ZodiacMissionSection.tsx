@@ -96,7 +96,7 @@ function DarkHero({ onNavigate, dark = false }: { onNavigate?: (p: string) => vo
               Support for Your Soul.
             </h2>
             <p style={{
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "'Inter', serif",
               fontSize: 'clamp(13px, 1.3vw, 15px)',
               color: mutedText,
               lineHeight: 1.75, margin: '0 0 36px', maxWidth: 340,
@@ -247,17 +247,17 @@ function AboutBand({ onNavigate, dark = false }: { onNavigate?: (p: string) => v
                 borderRadius: 12, padding: '10px 16px',
                 boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
                 display: 'flex', alignItems: 'center', gap: 10,
-                border: '1px solid rgba(20,184,166,0.2)',
+                border: '1px solid rgba(184, 146, 20, 0.2)',
               }}>
                 <div style={{
-                  width: 36, height: 36, borderRadius: 50, flexShrink: 0,
+                  width: 36, height: 36, borderRadius: 100, flexShrink: 0,
                   background: `linear-gradient(135deg, ${TEAL}, ${TEAL_D})`,
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   fontSize: 16,
                 }}></div>
                 <div>
-                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 16, fontWeight: 900, color: headingColor, lineHeight: 1 }}>50+</div>
-                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, color: dark ? '#a1a1aa' : '#888', marginTop: 1 }}>Experienced Mentors</div>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 16, fontWeight: 900, color: headingColor, lineHeight: 1 }}>20+</div>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, color: dark ? '#a1a1aa' : '#888', marginTop: 1 }}>Mentors Onboarding</div>
                 </div>
               </div>
             </div>
