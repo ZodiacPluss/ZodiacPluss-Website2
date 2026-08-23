@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react'
 const LOGO_URL =
   'https://res.cloudinary.com/pp0lpskp/image/upload/v1786032742/Zodiac_Colored_Logo_croped-removebg-preview_appzet.png'
 
-const LOAD_DURATION = 500 // ms — progress goes 0 -> 100%
-const EXIT_DELAY = 150 // ms pause at 100% before fading out
-const EXIT_DURATION = 450 // ms fade-out transition
+const LOAD_DURATION = 1100 // ms — progress goes 0 -> 100%
+const EXIT_DELAY = 160 // ms pause at 100% before fading out
+const EXIT_DURATION = 400 // ms fade-out transition
 
 interface SplashScreenProps {
   onFinish: () => void
@@ -46,9 +46,15 @@ export default function SplashScreen({ onFinish }: SplashScreenProps) {
     }
   }, [onFinish])
 
+  const radius = 34
+  const stroke = 3.5
+  const normalizedRadius = radius - stroke * 0.5
+  const circumference = normalizedRadius * 2 * Math.PI
+  const strokeDashoffset = circumference - (progress / 100) * circumference
+
   return (
     <div
-      className="fixed inset-0 z-[200] flex items-center justify-center overflow-hidden"
+      className="fixed inset-0 z-[200] flex items-center justify-center overflow-hidden select-none"
       style={{
         background: '#ffffff',
         opacity: exiting ? 0 : 1,
@@ -56,57 +62,65 @@ export default function SplashScreen({ onFinish }: SplashScreenProps) {
         pointerEvents: exiting ? 'none' : 'auto',
       }}
     >
-      <div className="relative flex flex-col items-center px-6">
-        {/* Glow behind logo */}
-        <div
-          className="absolute left-1/2 top-0 -translate-x-1/2 rounded-full"
-          style={{
-            width: 210,
-            height: 210,
-            background: 'radial-gradient(circle, rgba(20,184,166,0.16) 0%, transparent 72%)',
-            animation: 'splash-pulse 1.6s ease-in-out infinite',
-          }}
-        />
+      {/* Side-by-side Layout: Large Circular Animated Logo + Brand & Percentage */}
+      <div className="flex items-center gap-2 sm:gap-3">
+        {/* Circular Logo with Animated Progress Ring */}
+        <div className="relative w-[68px] h-[68px] sm:w-[76px] sm:h-[76px] flex items-center justify-center shrink-0">
+          <svg
+            className="w-full h-full transform -rotate-90"
+            viewBox={`0 0 ${radius * 2} ${radius * 2}`}
+          >
+            {/* Background Track */}
+            <circle
+              stroke="#e5e7eb"
+              fill="transparent"
+              strokeWidth={stroke}
+              r={normalizedRadius}
+              cx={radius}
+              cy={radius}
+            />
+            {/* Animated Progress Circle */}
+            <circle
+              stroke="#3bb2ca"
+              fill="transparent"
+              strokeWidth={stroke}
+              strokeDasharray={`${circumference} ${circumference}`}
+              style={{
+                strokeDashoffset,
+                transition: 'stroke-dashoffset 40ms linear',
+              }}
+              strokeLinecap="round"
+              r={normalizedRadius}
+              cx={radius}
+              cy={radius}
+            />
+          </svg>
 
-        <img
-          src={LOGO_URL}
-          alt="ZodiacPluss Logo"
-          className="relative w-24 h-24 sm:w-28 sm:h-28 object-contain mb-5"
-        />
-
-        <h1
-          className="relative text-[26px] sm:text-3xl font-extrabold tracking-tight mb-1.5"
-          style={{ fontFamily: "'Inter', sans-serif", color: '#1e1035' }}
-        >
-          Zodiac Pluss
-        </h1>
-
-        <p
-          className="relative text-[10px] sm:text-[11px] tracking-[0.3em] uppercase font-semibold mb-9"
-          style={{ color: '#8b95a8' }}
-        >
-          Guided by Stars
-        </p>
-
-        {/* Progress bar */}
-        <div
-          className="relative w-[200px] sm:w-[240px] h-1.5 rounded-full overflow-hidden"
-          style={{ background: 'rgba(20,184,166,0.14)' }}
-        >
-          <div
-            className="h-full rounded-full"
-            style={{
-              width: `${progress}%`,
-              background: '#14b8a6',
-            }}
-          />
+          {/* Centered Logo Inside Ring */}
+          <div className="absolute inset-[4px] rounded-full overflow-hidden flex items-center justify-center bg-white">
+            <img
+              src={LOGO_URL}
+              alt="ZodiacPluss"
+              className="w-24 h-24 sm:w-18 sm:h-18 object-contain"
+            />
+          </div>
         </div>
-        <span
-          className="relative mt-3 text-xs font-bold tabular-nums"
-          style={{ color: '#0d5f4f' }}
-        >
-          {Math.round(progress)}%
-        </span>
+
+        {/* Text Details: Brand Title & Percentage */}
+        <div className="flex flex-col justify-center leading-tight">
+          <h1
+            className="text-[19px] sm:text-[21px] font-bold text-gray-900 tracking-tight"
+            style={{ fontFamily: "'Inter', sans-serif" }}
+          >
+            ZodiacPluss
+          </h1>
+          <span
+            className="text-[14px] sm:text-[15px] font-normal text-gray-400 tabular-nums mt-0.5"
+            style={{ fontFamily: "'Inter', sans-serif" }}
+          >
+            {Math.round(progress)}%
+          </span>
+        </div>
       </div>
     </div>
   )

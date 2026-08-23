@@ -53,7 +53,7 @@ const values = [
 
 export default function AboutUsPage({ onNavigate, dark = false }: AboutUsPageProps) {
   return (
-    <div className="about-page-shell pt-0 transition-colors duration-300" style={{ background: dark ? '#000000' : '#f8f6ff' }}>
+    <div className="about-page-shell pt-0 transition-colors duration-300" style={{ background: dark ? '#000000' : '#ffffff' }}>
       {/* Hero banner */}
       <div
         className="relative overflow-hidden py-32 md:py-44 px-6 text-center transition-all duration-300 bg-cover bg-top"

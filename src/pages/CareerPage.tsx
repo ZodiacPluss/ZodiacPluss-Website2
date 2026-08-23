@@ -503,7 +503,7 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
     }, 80)
   }
 
-  const pageBg = dark ? '#000000' : '#f8f6ff'
+  const pageBg = dark ? '#000000' : '#ffffff'
   const cardBg = dark ? '#141416' : 'white'
   const cardBorder = dark ? 'rgba(255,255,255,0.1)' : '#e8e3f8'
   const textPrimary = dark ? '#f5f5f5' : NAVY

@@ -18,7 +18,7 @@ interface HomePageProps {
 
 export default function HomePage({ onNavigate, dark }: HomePageProps) {
   return (
-    <div className="w-full overflow-hidden pb-16 md:pb-0 transition-colors duration-300">
+    <div className="w-full overflow-hidden transition-colors duration-300">
       {/* Hero — excluded from parallax wrapper */}
       <HeroSection onNavigate={onNavigate} />
       <BrandsMarquee dark={dark} />

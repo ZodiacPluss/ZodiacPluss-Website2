@@ -54,7 +54,7 @@ export default function FAQSection({ onNavigate, dark = false }: FAQSectionProps
   return (
     <section
       style={{
-        background: dark ? '#000000' : 'linear-gradient(180deg, #fdf8f5 0%, #f8f6ff 100%)',
+        background: dark ? '#000000' : 'linear-gradient(180deg, #fdf8f5 0%, #ffffff 100%)',
         padding: 'clamp(64px, 8vw, 96px) 24px clamp(64px, 8vw, 96px)',
         transition: 'background 0.4s ease',
       }}

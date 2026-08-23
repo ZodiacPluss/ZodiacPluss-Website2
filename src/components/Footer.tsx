@@ -78,9 +78,10 @@ export default function Footer({ onNavigate, dark = false }: FooterProps) {
 
   return (
     <footer
-      className="relative w-full footer-shell"
+      className="relative w-full footer-shell transition-colors duration-300"
       style={{
-        padding: '0 clamp(12px, 3vw, 24px) clamp(12px, 3vw, 24px)',
+        background: dark ? '#000000' : '#ffffff',
+        padding: 'clamp(28px, 4vw, 48px) clamp(12px, 3vw, 24px) clamp(16px, 3vw, 28px)',
         fontFamily: "'Inter', sans-serif",
       }}
     >

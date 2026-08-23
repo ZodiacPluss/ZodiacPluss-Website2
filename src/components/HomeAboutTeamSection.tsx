@@ -601,8 +601,6 @@ export default function HomeAboutTeamSection({ onNavigate, dark }: HomeAboutTeam
         </div>
       </div>
 
-      {/* Bottom spacing */}
-      <div className="h-10 sm:h-14" />
     </section>
   )
 }

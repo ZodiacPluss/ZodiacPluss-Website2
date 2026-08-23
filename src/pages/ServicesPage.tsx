@@ -96,7 +96,7 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
   const textColor = dark ? '#a1a1aa' : '#6b5b8f'
 
   return (
-    <div className="pt-0 transition-colors duration-300" style={{ background: dark ? '#000000' : '#f8f6ff' }}>
+    <div className="pt-0 transition-colors duration-300" style={{ background: dark ? '#000000' : '#ffffff' }}>
       {/* ─── Individual Services Hero Banner ─── */}
       <div
         className="relative overflow-hidden pt-32 pb-24 px-6 text-center bg-cover bg-center transition-all duration-300"

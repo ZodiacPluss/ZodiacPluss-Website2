@@ -62,9 +62,9 @@ export default function App() {
 
       {/* Page content */}
       <main
-        className="zodiac-main-bg pb-16 md:pb-0"
+        className="zodiac-main-bg"
         style={{
-          background: dark ? '#000000' : '#f8f6ff',
+          background: dark ? '#000000' : '#ffffff',
           transition: 'background 0.4s ease',
         }}
       >
@@ -72,9 +72,7 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <div className="pb-16 md:pb-0">
-        <Footer onNavigate={handleNavigate} dark={dark} />
-      </div>
+      <Footer onNavigate={handleNavigate} dark={dark} />
 
       {/* Mobile bottom glassmorphism navigation */}
       <MobileBottomNav
