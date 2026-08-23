@@ -106,17 +106,12 @@ const teamMembers = [
   {
     name: 'Mr. Shubham',
     role: 'FINANCIAL ADVISER',
-    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1787229071/blank_avatar_1_ncgygy.jpg',
+    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/c_crop,g_north_west,h_867,w_952,x_37,y_16/watermark-removed-ri1_u6mghh.jpg',
   },
   {
     name: 'Ms. Akriti',
     role: 'SOCIAL MEDIA MANAGER',
-    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1787229066/female_unknown_aavqnv.png',
-  },
-  {
-    name: 'SOON ADDING MORE FACES',
-    role: 'IN OUR ZODIAC PLUSS FAMILY',
-    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1787234490/ADD_NEW_ay2pb6.png',
+    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1787485194/copy_of_watermark-removed-re2_lshvqv.jpg',
   },
 ]
 
