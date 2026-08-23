@@ -290,14 +290,12 @@ export default function HomeAboutTeamSection({ onNavigate, dark }: HomeAboutTeam
               <div
                 className="inline-flex items-center gap-2 mb-5 self-start px-3 py-1 rounded-full"
                 style={{
-                  background: dark ? 'rgba(20,184,166,0.12)' : 'rgba(20,184,166,0.08)',
-                  border: '1px solid rgba(20,184,166,0.25)',
+                  background: dark ? 'rgba(90, 242, 39, 0.12)' : 'rgba(52, 216, 37, 0.08)',
+                  border: '1px solid rgba(0, 0, 0, 0.25)',
                 }}
               >
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="#14b8a6">
-                  <path d="M12 2L13.5 8.5L20 7L15.5 12L20 17L13.5 15.5L12 22L10.5 15.5L4 17L8.5 12L4 7L10.5 8.5L12 2Z" />
-                </svg>
-                <span className="text-[10px] font-bold tracking-[0.15em] uppercase" style={{ color: '#14b8a6' }}>
+                
+                <span className="text-[10px] font-bold tracking-[0.15em] uppercase" style={{ color: '#b86614ff' }}>
                   Founder &amp; Visionary
                 </span>
               </div>
@@ -445,7 +443,7 @@ export default function HomeAboutTeamSection({ onNavigate, dark }: HomeAboutTeam
                 className="inline-flex items-center gap-2.5 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all duration-300 cursor-pointer shadow-sm group hover:scale-[1.03] hover:shadow-md"
                 style={{
                   color: headingColor,
-                  border: dark ? '1.5px solid rgba(255,255,255,0.25)' : '1.5px solid #1a1a2e',
+                  border: dark ? '1.5px solid rgba(255,255,255,0.25)' : '1.5px solid #95c767ff',
                   background: 'transparent',
                 }}
               >
@@ -469,7 +467,7 @@ export default function HomeAboutTeamSection({ onNavigate, dark }: HomeAboutTeam
                 key={member.name}
                 className="group rounded-2xl sm:rounded-3xl overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer"
                 style={{
-                  background: dark ? 'rgba(30,20,55,0.85)' : '#ffffff',
+                  background: dark ? 'rgba(56, 52, 52, 0.85)' : '#ffffff',
                   border: dark ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(200,190,240,0.35)',
                 }}
               >
@@ -499,7 +497,7 @@ export default function HomeAboutTeamSection({ onNavigate, dark }: HomeAboutTeam
                       fontWeight: 700,
                       letterSpacing: '0.1em',
                       textTransform: 'uppercase',
-                      color: dark ? 'rgba(180,160,255,0.6)' : 'rgba(80,70,120,0.55)',
+                      color: dark ? 'rgba(180, 173, 173, 0.6)' : 'rgba(101, 83, 83, 0.5)',
                       fontFamily: "'Inter', sans-serif",
                     }}
                   >
@@ -518,7 +516,7 @@ export default function HomeAboutTeamSection({ onNavigate, dark }: HomeAboutTeam
               key={member.name}
               className="group rounded-2xl overflow-hidden shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer"
               style={{
-                background: dark ? 'rgba(30,20,55,0.85)' : '#ffffff',
+                background: dark ? 'rgba(56, 52, 52, 0.85)' : '#ffffff',
                 border: dark ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(200,190,240,0.3)',
               }}
             >
@@ -548,7 +546,7 @@ export default function HomeAboutTeamSection({ onNavigate, dark }: HomeAboutTeam
                     fontWeight: 700,
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',
-                    color: dark ? 'rgba(180,160,255,0.55)' : 'rgba(80,70,120,0.5)',
+                    color: dark ? 'rgba(180, 173, 173, 0.6),255,0.55)' : 'rgba(101, 83, 83, 0.5)',
                     fontFamily: "'Inter', sans-serif",
                   }}
                 >
