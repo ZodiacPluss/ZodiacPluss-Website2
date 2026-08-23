@@ -242,7 +242,7 @@ export default function AboutSection({ onNavigate, dark = false }: AboutSectionP
                     width: i === activeIndex ? 24 : 8,
                     height: 8,
                     borderRadius: 4,
-                    background: i === activeIndex ? "#1b5b8cff" : (dark ? "rgba(255,255,255,0.25)" : "#35acaeff"),
+                    background: i === activeIndex ? "#35acaeff" : (dark ? "rgba(250, 250, 250, 0.25)" : "#afbfc0ff"),
                   }}
                 />
               ))}
