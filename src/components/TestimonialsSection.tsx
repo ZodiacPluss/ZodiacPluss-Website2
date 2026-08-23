@@ -1,3 +1,9 @@
+/*
+─────────────────────────────────────────────────────────────────
+TestimonialsSection (Temporarily disabled / commented out)
+This section is not currently required and can be resumed later.
+─────────────────────────────────────────────────────────────────
+
 import React, { useRef, useState, useEffect } from 'react'
 
 interface Testimonial {
@@ -60,14 +66,12 @@ const testimonials: Testimonial[] = [
   },
 ]
 
-export default function TestimonialsSection({ dark = false }: { dark?: boolean }) {
+export function OriginalTestimonialsSection({ dark = false }: { dark?: boolean }) {
   const scrollRef = useRef<HTMLDivElement>(null)
   const [isPaused, setIsPaused] = useState(false)
 
-  // Duplicated list for extended scroll depth
   const extendedList = [...testimonials, ...testimonials, ...testimonials]
 
-  // Continuous smooth auto-scroll when not hovering
   useEffect(() => {
     const el = scrollRef.current
     if (!el) return
@@ -76,7 +80,6 @@ export default function TestimonialsSection({ dark = false }: { dark?: boolean }
     const step = () => {
       if (!isPaused && el) {
         el.scrollLeft += 0.85
-        // Seamless loop reset
         if (el.scrollLeft >= el.scrollWidth / 2) {
           el.scrollLeft = 0
         }
@@ -88,7 +91,6 @@ export default function TestimonialsSection({ dark = false }: { dark?: boolean }
     return () => cancelAnimationFrame(animationFrameId)
   }, [isPaused])
 
-  // Manual scroll triggers
   const handleScroll = (direction: 'left' | 'right') => {
     if (!scrollRef.current) return
     const scrollAmount = 360
@@ -100,7 +102,6 @@ export default function TestimonialsSection({ dark = false }: { dark?: boolean }
 
   return (
     <section className="w-full max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-      {/* 16:9 Aspect Ratio Container with Plain White Background */}
       <div
         className={`w-full relative overflow-hidden rounded-3xl shadow-xl border flex flex-col justify-between ${
           dark ? 'bg-[#141416] border-white/10' : 'bg-white border-gray-100'
@@ -111,7 +112,6 @@ export default function TestimonialsSection({ dark = false }: { dark?: boolean }
           transition: 'background 0.4s ease',
         }}
       >
-        {/* Top Header Content */}
         <div className="pt-8 sm:pt-12 md:pt-14 px-6 text-center max-w-3xl mx-auto z-10">
           <div
             className={`inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold tracking-wider uppercase border mb-3 ${
@@ -142,7 +142,6 @@ export default function TestimonialsSection({ dark = false }: { dark?: boolean }
           </p>
         </div>
 
-        {/* Scrollable Cards Container with Side Floating Arrows */}
         <div
           className="relative w-full pb-8 sm:pb-12 pt-3"
           onMouseEnter={() => setIsPaused(true)}
@@ -150,11 +149,9 @@ export default function TestimonialsSection({ dark = false }: { dark?: boolean }
           onTouchStart={() => setIsPaused(true)}
           onTouchEnd={() => setIsPaused(false)}
         >
-          {/* Gradient Fade Edges */}
           <div className={`absolute left-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-r to-transparent z-10 pointer-events-none ${dark ? 'from-[#141416]' : 'from-white'}`} />
           <div className={`absolute right-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-l to-transparent z-10 pointer-events-none ${dark ? 'from-[#141416]' : 'from-white'}`} />
 
-          {/* Floating Left Arrow Button */}
           <button
             onClick={() => handleScroll('left')}
             aria-label="Scroll Left"
@@ -167,7 +164,6 @@ export default function TestimonialsSection({ dark = false }: { dark?: boolean }
             </svg>
           </button>
 
-          {/* Floating Right Arrow Button */}
           <button
             onClick={() => handleScroll('right')}
             aria-label="Scroll Right"
@@ -180,7 +176,6 @@ export default function TestimonialsSection({ dark = false }: { dark?: boolean }
             </svg>
           </button>
 
-          {/* Scrollable Track */}
           <div
             ref={scrollRef}
             className="flex gap-4 sm:gap-6 overflow-x-auto px-6 sm:px-12 scroll-smooth select-none cursor-grab active:cursor-grabbing"
@@ -196,7 +191,6 @@ export default function TestimonialsSection({ dark = false }: { dark?: boolean }
                   dark ? 'bg-white/[0.04] hover:bg-white/[0.07] border-white/10' : 'bg-slate-50 hover:bg-white border-slate-200/80'
                 }`}
               >
-                {/* Header: User Avatar + Name + Stars */}
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-3">
@@ -217,7 +211,6 @@ export default function TestimonialsSection({ dark = false }: { dark?: boolean }
                     </span>
                   </div>
 
-                  {/* Stars Rating */}
                   <div className="flex items-center gap-1 mb-2.5">
                     {Array.from({ length: item.stars }).map((_, i) => (
                       <span key={i} className="text-amber-400 text-sm">★</span>
@@ -225,13 +218,11 @@ export default function TestimonialsSection({ dark = false }: { dark?: boolean }
                     <span className={`text-xs font-bold ml-1 ${dark ? 'text-[#e4e4e7]' : 'text-gray-700'}`}>5.0</span>
                   </div>
 
-                  {/* Quote */}
                   <p className={`text-xs sm:text-[13px] leading-relaxed italic ${dark ? 'text-[#c9c9ce]' : 'text-gray-700'}`}>
                     "{item.quote}"
                   </p>
                 </div>
 
-                {/* Verified badge */}
                 <div className={`mt-4 pt-3 border-t flex items-center gap-1.5 text-[11px] font-medium text-emerald-600 ${dark ? 'border-white/10' : 'border-slate-200/60'}`}>
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
@@ -245,4 +236,13 @@ export default function TestimonialsSection({ dark = false }: { dark?: boolean }
       </div>
     </section>
   )
+}
+*/
+
+interface TestimonialsSectionProps {
+  dark?: boolean
+}
+
+export default function TestimonialsSection(_props: TestimonialsSectionProps) {
+  return null
 }
