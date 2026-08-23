@@ -60,16 +60,20 @@ export default function Navbar({ currentPage, onNavigate, dark = false, onToggle
     }
   `
 
-  // High-performance custom glassmorphism styling
+  // High-performance custom enhanced glassmorphism styling
   const navStyle: React.CSSProperties = scrolled
     ? {
-        background: dark ? "rgba(15, 15, 17, 0.7)" : "rgba(255, 255, 255, 0.72)",
-        backdropFilter: "blur(20px) saturate(190%)",
-        WebkitBackdropFilter: "blur(20px) saturate(190%)",
-        border: dark ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid rgba(226, 217, 243, 0.6)",
+        background: dark
+          ? "linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(18, 16, 28, 0.62) 100%)"
+          : "linear-gradient(135deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.38) 100%)",
+        backdropFilter: "blur(28px) saturate(210%) contrast(105%)",
+        WebkitBackdropFilter: "blur(28px) saturate(210%) contrast(105%)",
+        border: dark
+          ? "1px solid rgba(255, 255, 255, 0.18)"
+          : "1px solid rgba(255, 255, 255, 0.55)",
         boxShadow: dark
-          ? "0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 1px 0 0 rgba(255, 255, 255, 0.1) inset"
-          : "0 10px 30px -10px rgba(90, 45, 142, 0.1), 0 1px 0 0 rgba(255, 255, 255, 0.8) inset",
+          ? "0 16px 40px -10px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.08) inset, 0 1px 2px 0 rgba(255, 255, 255, 0.25) inset"
+          : "0 16px 40px -10px rgba(20, 10, 45, 0.14), 0 0 0 1px rgba(255, 255, 255, 0.4) inset, 0 1px 2px 0 rgba(255, 255, 255, 0.8) inset",
       }
     : {
         background: "transparent",
@@ -90,7 +94,7 @@ export default function Navbar({ currentPage, onNavigate, dark = false, onToggle
             <img
               src="https://res.cloudinary.com/pp0lpskp/image/upload/v1786032742/Zodiac_Colored_Logo_croped-removebg-preview_appzet.png"
               alt="ZodiacPluss Logo"
-              className="w-15 h- sm:w-10 sm:h-10 object-contain flex-shrink-0"
+              className="w-9 h-9 sm:w-10 sm:h-10 object-contain flex-shrink-0"
             />
             <div className="leading-tight text-left">
               <div className="flex items-center gap-0.5">
@@ -206,9 +210,15 @@ export default function Navbar({ currentPage, onNavigate, dark = false, onToggle
           <div
             className="lg:hidden mt-3 rounded-2xl p-4 transition-all duration-300"
             style={{
-              background: dark ? "#141416" : "#ffffff",
-              border: dark ? "1px solid rgba(255,255,255,0.1)" : "1px solid #e5e7eb",
-              boxShadow: dark ? "0 8px 24px rgba(0,0,0,0.5)" : "0 8px 24px rgba(0,0,0,0.06)",
+              background: dark
+                ? "linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(20, 20, 24, 0.85) 100%)"
+                : "linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.65) 100%)",
+              backdropFilter: "blur(24px) saturate(200%)",
+              WebkitBackdropFilter: "blur(24px) saturate(200%)",
+              border: dark ? "1px solid rgba(255,255,255,0.16)" : "1px solid rgba(255,255,255,0.6)",
+              boxShadow: dark
+                ? "0 16px 36px rgba(0,0,0,0.6), inset 0 1px 1px rgba(255,255,255,0.2)"
+                : "0 16px 36px rgba(40,20,70,0.12), inset 0 1px 1px rgba(255,255,255,0.8)",
             }}
           >
             {navLinks.map((link) => (

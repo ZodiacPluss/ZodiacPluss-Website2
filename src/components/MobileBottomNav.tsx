@@ -72,21 +72,21 @@ export default function MobileBottomNav({ currentPage, onNavigate, dark = false 
 
   return (
     <div
-      className="md:hidden fixed bottom-4 left-4 right-4 z-50 max-w-sm mx-auto"
+      className="md:hidden fixed bottom-4 left-4 right-4 z-50 max-w-sm mx-auto transition-all duration-300"
       style={{
         background: dark
-          ? 'rgba(14, 14, 16, 0.82)'
-          : 'rgba(255, 255, 255, 0.88)',
-        backdropFilter: 'blur(32px) saturate(200%)',
-        WebkitBackdropFilter: 'blur(32px) saturate(200%)',
-        borderRadius: '20px',
+          ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.10) 0%, rgba(18, 16, 28, 0.65) 100%)'
+          : 'linear-gradient(135deg, rgba(255, 255, 255, 0.68) 0%, rgba(255, 255, 255, 0.40) 100%)',
+        backdropFilter: 'blur(28px) saturate(210%) contrast(105%)',
+        WebkitBackdropFilter: 'blur(28px) saturate(210%) contrast(105%)',
+        borderRadius: '24px',
         border: dark
-          ? '1px solid rgba(255, 255, 255, 0.12)'
-          : '1px solid rgba(220, 210, 255, 0.6)',
+          ? '1px solid rgba(255, 255, 255, 0.18)'
+          : '1px solid rgba(255, 255, 255, 0.55)',
         boxShadow: dark
-          ? '0 8px 32px rgba(0, 0, 0, 0.55), 0 1px 0 rgba(255,255,255,0.06) inset'
-          : '0 4px 24px rgba(80, 50, 160, 0.10), 0 1px 0 rgba(255,255,255,1) inset',
-        padding: '6px 4px 6px 4px',
+          ? '0 16px 40px -10px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.08) inset, 0 1px 2px 0 rgba(255, 255, 255, 0.25) inset'
+          : '0 16px 40px -10px rgba(20, 10, 45, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.4) inset, 0 1px 2px 0 rgba(255, 255, 255, 0.8) inset',
+        padding: '7px 6px',
       }}
     >
       <div className="flex items-center justify-around">

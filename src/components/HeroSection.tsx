@@ -115,7 +115,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
             <span
               className="text-sm sm:text-base font-bold tracking-wide"
               style={{ color: "#2a7d6e", fontFamily: "'Inter', sans-serif" }}
-            >
+            >c
               We Care Your Life!
             </span>
           </div>
