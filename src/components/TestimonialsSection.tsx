@@ -11,11 +11,11 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    name: 'Aryan Sharma',
-    role: 'Product Designer · Bengaluru',
+    name: 'Rajangi ',
+    role: ' · Bengaluru',
     avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=120&h=120&fit=crop&crop=face',
     stars: 5,
-    tag: 'Therapy & Healing',
+    tag: '',
     quote: 'The therapy sessions helped me navigate my most challenging career transition. Compassionate, insightful, and genuinely transformative.',
   },
   {
@@ -43,7 +43,7 @@ const testimonials: Testimonial[] = [
     quote: 'ZodiacPluss blends ancient astrological wisdom with modern mental wellness seamlessly. Highly recommend for overall emotional balance!',
   },
   {
-    name: 'Vikramjit Singh',
+    name: 'Aditya Raj',
     role: 'Creative Director · Chandigarh',
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop&crop=face',
     stars: 5,

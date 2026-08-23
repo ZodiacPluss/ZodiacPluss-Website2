@@ -286,7 +286,7 @@ export default function Footer({ onNavigate, dark = false }: FooterProps) {
                 },
                 {
                   name: 'LinkedIn',
-                  href: 'https://linkedin.com/company/zodiacpluss',
+                  href: 'https://www.linkedin.com/company/zodiacpluss.com/',
                   color: '#0A66C2',
                   icon: (
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
@@ -296,7 +296,7 @@ export default function Footer({ onNavigate, dark = false }: FooterProps) {
                 },
                 {
                   name: 'Instagram',
-                  href: 'https://instagram.com/zodiacpluss',
+                  href: 'https://www.instagram.com/zodiacpluss.official?igsh=djlrczlpaWllNGNr',
                   color: '#E4405F',
                   icon: (
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -308,7 +308,7 @@ export default function Footer({ onNavigate, dark = false }: FooterProps) {
                 },
                 {
                   name: 'Facebook',
-                  href: 'https://facebook.com/zodiacpluss',
+                  href: 'https://www.facebook.com/share/1S3GCqRQcB/',
                   color: '#1877F2',
                   icon: (
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">

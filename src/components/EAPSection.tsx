@@ -151,7 +151,7 @@ export default function EAPSection({ onNavigate, dark = false }: EAPSectionProps
 
           <p className="text-[15px] sm:text-base leading-relaxed" style={{ color: bodyColor }}>
             ZodiacPluss brings certified mental-health professionals, always-on crisis support, and structured
-            wellness programs to your workplace — built on {credibilityStats[0].value} years of experience
+            wellness programs to your workplace — built for
             supporting organizations across India.
           </p>
         </div>
