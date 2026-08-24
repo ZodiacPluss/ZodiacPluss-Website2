@@ -18,7 +18,7 @@ const pageMap: Record<string, string> = {
   'Contact': 'Book',
   'For corporates': 'Services',
   'Corporates': 'Services',
-  'comming soon': 'Coming Soon',
+  'coming soon': 'Coming Soon',
   'ComingSoon': 'Coming Soon',
   'coming soon': 'Coming Soon',
 }

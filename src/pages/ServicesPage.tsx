@@ -177,7 +177,7 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
                     className="text-xs font-semibold px-4 py-1.5 rounded-full text-white transition-all hover:opacity-90 shadow-sm cursor-pointer"
                     style={{ background: svc.color }}
                   >
-                    comming soon
+                    coming soon
                   </button>
                 </div>
               </div>
