@@ -160,7 +160,7 @@ export default function ComingSoonSection({ onNavigate }: ComingSoonSectionProps
                     fontFamily: "'Inter', sans-serif",
                   }}
                 >
-                  Download Now
+                  Download after 7th Oct
                 </button>
               </div>
             </div>
