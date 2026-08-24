@@ -10,7 +10,7 @@ const team = [
   {
     name: 'Mrs. Rashmi',
     role: 'Founder & CEO',
-    exp: '18+ years experience',
+    exp: '25+ years experience',
     img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1786016136/Rasmi-1_prowmf.jpg',
   },
   {
@@ -22,7 +22,7 @@ const team = [
   {
     name: 'Ms. Shweta',
     role: 'SENIOR TECHNICAL CONSULTANT',
-    exp: '8+ years experience',
+    exp: '12+ years experience',
     img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1786011226/Shweta_x67krv.jpg',
   },
   {
@@ -40,6 +40,7 @@ const team = [
   {
     name: 'Mr. Aditya',
     role: 'SDE & PROJECT MANAGER',
+    exp: '2+ years experience',
     img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1786342210/my_profile_new_and_updated_unxfyt.png',
   },
 ]
