@@ -160,12 +160,8 @@ export default function AboutUsPage({ onNavigate, dark = false }: AboutUsPagePro
         </div>
       </div>
 
-      {/* Credentials & Licences – below Meet the Team (dark banner backdrop, CredentialsSection uses light-on-dark text) */}
-      <section style={{ background: 'linear-gradient(135deg, #0d2535 0%, #0b4a3f 50%, #1e0d40 100%)', padding: 'clamp(48px,6vw,72px) 24px' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <CredentialsSection dark={dark} />
-        </div>
-      </section>
+      {/* Credentials & Licences – below Meet the Team */}
+      <CredentialsSection dark={dark} />
 
       {/* FAQ section */}
       <FAQSection onNavigate={onNavigate} dark={dark} />

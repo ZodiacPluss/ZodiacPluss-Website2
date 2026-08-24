@@ -116,7 +116,7 @@ const whyUs = [
 
 /* ── Hiring process ────────────────────────────────────────────── */
 const steps = [
-  { n: '01', title: 'Apply', desc: 'Submit your CV and brief profile to careers@zodiacpluss.com or use the form below.' },
+  { n: '01', title: 'Apply', desc: 'Submit your CV and brief profile to hr@zodiacpluss.com or use the form below.' },
   { n: '02', title: 'Screening', desc: 'Our HR team reviews your credentials and shortlists qualified candidates within 5 working days.' },
   { n: '03', title: 'Interview', desc: 'A structured video / in-person interview with our clinical lead or platform head.' },
   { n: '04', title: 'Onboarding', desc: 'Sign your agreement, complete orientation, and start serving clients on the ZodiacPluss platform.' },
@@ -212,7 +212,7 @@ function ApplicationForm({ preRole, dark = false }: { preRole?: string; dark?: b
           </label>
           <input
             required value={form.phone} onChange={handle('phone')}
-            placeholder="+91 90000 00000"
+            placeholder="+91 xxxxx xxxxx"
             style={inputStyle('phone')}
             onFocus={() => setFocused('phone')} onBlur={() => setFocused('')}
           />
@@ -270,8 +270,8 @@ function ApplicationForm({ preRole, dark = false }: { preRole?: string; dark?: b
         </svg>
         <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 12.5, color: textMuted, margin: 0 }}>
           Please also email your CV / Resume to{' '}
-          <a href="mailto:careers@zodiacpluss.com" style={{ color: TEAL, fontWeight: 700 }}>
-            careers@zodiacpluss.com
+          <a href="mailto:hr@zodiacpluss.com" style={{ color: TEAL, fontWeight: 700 }}>
+            hr@zodiacpluss.com
           </a>
           {' '}with subject line: <strong>Application – [Role Name]</strong>
         </p>
@@ -280,21 +280,21 @@ function ApplicationForm({ preRole, dark = false }: { preRole?: string; dark?: b
       <button
         type="submit"
         style={{
-          background: `linear-gradient(135deg, ${TEAL}, ${TEAL_D})`,
+          background: 'linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)',
           border: 'none', borderRadius: 12, padding: '14px 0',
           color: 'white', fontFamily: "'Inter', sans-serif",
           fontSize: 15, fontWeight: 700, cursor: 'pointer', width: '100%',
-          boxShadow: '0 6px 20px rgba(20,184,166,0.30)',
+          boxShadow: '0 6px 20px rgba(94,184,232,0.35)',
           display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
           transition: 'transform 0.15s, box-shadow 0.15s',
         }}
         onMouseEnter={e => {
           (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-2px)'
-          ;(e.currentTarget as HTMLButtonElement).style.boxShadow = '0 10px 28px rgba(20,184,166,0.40)'
+          ;(e.currentTarget as HTMLButtonElement).style.boxShadow = '0 10px 28px rgba(94,184,232,0.45)'
         }}
         onMouseLeave={e => {
           (e.currentTarget as HTMLButtonElement).style.transform = 'none'
-          ;(e.currentTarget as HTMLButtonElement).style.boxShadow = '0 6px 20px rgba(20,184,166,0.30)'
+          ;(e.currentTarget as HTMLButtonElement).style.boxShadow = '0 6px 20px rgba(94,184,232,0.35)'
         }}
       >
         Submit Application
@@ -392,7 +392,7 @@ function JobCard({ job, onApply, dark = false }: { job: typeof jobs[0]; onApply:
           <button
             onClick={() => onApply(job.id)}
             style={{
-              background: `linear-gradient(135deg, ${TEAL}, ${TEAL_D})`,
+              background: "linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)",
               border: 'none', borderRadius: 999, padding: '8px 20px',
               fontFamily: "'Inter', sans-serif",
               fontSize: 13, fontWeight: 700, color: 'white',
@@ -466,14 +466,14 @@ function JobCard({ job, onApply, dark = false }: { job: typeof jobs[0]; onApply:
               {/* Apply shortcut */}
               <button
                 onClick={() => onApply(job.id)}
-                style={{
-                  marginTop: 20,
-                  background: `linear-gradient(135deg, ${TEAL}, ${TEAL_D})`,
-                  border: 'none', borderRadius: 10, padding: '11px 22px',
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: 13.5, fontWeight: 700, color: 'white', cursor: 'pointer',
-                  boxShadow: '0 4px 14px rgba(20,184,166,0.28)',
-                }}
+                 style={{
+                    background: "linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)",
+                    border: 'none', borderRadius: 999, padding: '13px 28px',
+                    color: 'white', fontFamily: "'Inter', sans-serif",
+                    fontSize: 14, fontWeight: 700, cursor: 'pointer',
+                    boxShadow: '0 6px 20px rgba(20,184,166,0.35)',
+                    display: 'flex', alignItems: 'center', gap: 7,
+                  }}
               >
                 Apply for This Role →
               </button>
@@ -555,17 +555,6 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
         ))}
 
         <div style={{ maxWidth: 1100, margin: '0 auto', position: 'relative', zIndex: 1 }}>
-          {/* Company label */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 32 }}>
-            <div style={{
-              width: 44, height: 44, borderRadius: '50%', flexShrink: 0,
-              background: `linear-gradient(135deg, ${TEAL}30, ${TEAL_D}50)`,
-              border: `1.5px solid ${TEAL}50`,
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: 18, color: ACCENT,
-            }}></div>
-          </div>
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <p style={{
@@ -598,7 +587,7 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
                 <button
                   onClick={() => document.getElementById('open-roles')?.scrollIntoView({ behavior: 'smooth' })}
                   style={{
-                    background: `linear-gradient(135deg, ${TEAL}, ${TEAL_D})`,
+                    background: "linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)",
                     border: 'none', borderRadius: 999, padding: '13px 28px',
                     color: 'white', fontFamily: "'Inter', sans-serif",
                     fontSize: 14, fontWeight: 700, cursor: 'pointer',
@@ -629,7 +618,7 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
             {/* Right stats */}
             <div className="grid grid-cols-2 gap-4">
               {[
-                { val: '2,500+', label: 'Lives Impacted', },
+                { val: '10+', label: 'New Features(Therapy & Astrology)', },
                 { val: '3+', label: 'Open Positions',},
                 { val: 'ISO', label: '27001 & 9001 Certified',},
                 { val: '100%', label: 'Remote Friendly', },
@@ -762,11 +751,7 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
       </section>
 
       {/* ─── CREDENTIALS ──────────────────────────────────────── */}
-      <section style={{ padding: 'clamp(48px,6vw,72px) 24px', background: dark ? '#000000' : 'white' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <CredentialsSection dark={dark} />
-        </div>
-      </section>
+      <CredentialsSection dark={dark} />
 
       {/* ─── TAGLINE BAND ─────────────────────────────────────── */}
       <section style={{
@@ -804,8 +789,8 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
             flexWrap: 'wrap', marginBottom: 36,
           }}>
             {[
-              { icon: '📧', label: 'careers@zodiacpluss.com', href: 'mailto:careers@zodiacpluss.com' },
-              { icon: '💼', label: 'linkedin.com/company/zodiac-pluss', href: 'https://linkedin.com/company/zodiac-pluss' },
+              { icon: '📧', label: 'hr@zodiacpluss.com', href: 'mailto:hr@zodiacpluss.com' },
+              { icon: '💼', label: 'linkedin.com/company/zodiac-pluss', href: 'https://www.linkedin.com/company/zodiacpluss.com/' },
             ].map((c, i) => (
               <a
                 key={i}
