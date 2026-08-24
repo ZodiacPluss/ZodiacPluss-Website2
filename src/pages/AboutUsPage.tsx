@@ -87,9 +87,10 @@ export default function AboutUsPage({ onNavigate, dark = false }: AboutUsPagePro
             <p className="about-muted text-[#4a4a6a] leading-relaxed mb-6">
               Our platform gives every person access to certified astrologers, licensed therapists, and AI-powered insights — all in one seamless, private space.
             </p>
-            <button
-              onClick={() => onNavigate('Services')}
-              className="about-button inline-flex items-center gap-2 text-white text-sm font-semibold px-6 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer border-0"
+            <a
+              href="/services"
+              onClick={(e) => { e.preventDefault(); onNavigate('Services') }}
+              className="about-button inline-flex items-center gap-2 text-white text-sm font-semibold px-6 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer border-0 no-underline"
               style={{
                 background: 'linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)',
                 boxShadow: '0 8px 24px rgba(94, 184, 232, 0.35)',
@@ -99,7 +100,7 @@ export default function AboutUsPage({ onNavigate, dark = false }: AboutUsPagePro
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
-            </button>
+            </a>
           </div>
           <div className="relative rounded-3xl overflow-hidden h-72 shadow-2xl transition-all duration-300">
             <img

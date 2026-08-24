@@ -1,3 +1,5 @@
+import { PAGE_TO_PATH } from '@/utils/routes'
+
 interface MobileBottomNavProps {
   currentPage: string
   onNavigate: (page: string) => void
@@ -17,7 +19,7 @@ const navItems = [
   },
   {
     id: 'About Us',
-    label: 'Portfolio',
+    label: 'About',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -92,13 +94,15 @@ export default function MobileBottomNav({ currentPage, onNavigate, dark = false 
       <div className="flex items-center justify-around">
         {navItems.map((item) => {
           const active = isActive(item.id)
+          const targetPath = PAGE_TO_PATH[item.id] ?? '/'
 
           if (item.isPrimary) {
             return (
-              <button
+              <a
                 key={item.id}
-                onClick={() => onNavigate(item.id)}
-                className="flex flex-col items-center justify-center gap-0.5 cursor-pointer border-0 bg-transparent p-0 group"
+                href={targetPath}
+                onClick={(e) => { e.preventDefault(); onNavigate(item.id) }}
+                className="flex flex-col items-center justify-center gap-0.5 cursor-pointer border-0 bg-transparent p-0 group no-underline"
                 style={{ minWidth: '52px' }}
               >
                 <div
@@ -121,15 +125,16 @@ export default function MobileBottomNav({ currentPage, onNavigate, dark = false 
                 >
                   {item.label}
                 </span>
-              </button>
+              </a>
             )
           }
 
           return (
-            <button
+            <a
               key={item.id}
-              onClick={() => onNavigate(item.id)}
-              className="flex flex-col items-center justify-center gap-0.5 cursor-pointer border-0 bg-transparent p-0 relative group"
+              href={targetPath}
+              onClick={(e) => { e.preventDefault(); onNavigate(item.id) }}
+              className="flex flex-col items-center justify-center gap-0.5 cursor-pointer border-0 bg-transparent p-0 relative group no-underline"
               style={{ minWidth: '52px' }}
             >
               {/* Active indicator dot */}
@@ -163,7 +168,7 @@ export default function MobileBottomNav({ currentPage, onNavigate, dark = false 
               >
                 {item.label}
               </span>
-            </button>
+            </a>
           )
         })}
       </div>

@@ -129,30 +129,32 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap items-center gap-4">
-            <button
-              onClick={() => onNavigate("Services")}
-              className="flex items-center gap-2 px-6 sm:px-7 py-3.5 rounded-full text-white font-semibold text-xs sm:text-sm transition-all duration-300 shadow-md hover:shadow-lg hover:scale-[1.03] cursor-pointer border-0"
+            <a
+              href="/services"
+              onClick={(e) => { e.preventDefault(); onNavigate("Services") }}
+              className="flex items-center gap-2 px-6 sm:px-7 py-3.5 rounded-full text-white font-semibold text-xs sm:text-sm transition-all duration-300 shadow-md hover:shadow-lg hover:scale-[1.03] cursor-pointer border-0 no-underline"
               style={{ background: "linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)" }}
             >
               Explore Services
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
-            </button>
-            <button
-              onClick={() => onNavigate("About Us")}
-              className="flex items-center gap-2 px-6 sm:px-7 py-3.5 rounded-full font-semibold text-xs sm:text-sm transition-all duration-300 hover:scale-[1.03] cursor-pointer bg-transparent"
+            </a>
+            <a
+              href="/about-us"
+              onClick={(e) => { e.preventDefault(); onNavigate("About Us") }}
+              className="flex items-center gap-2 px-6 sm:px-7 py-3.5 rounded-full font-semibold text-xs sm:text-sm transition-all duration-300 hover:scale-[1.03] cursor-pointer bg-transparent no-underline"
               style={{
                 border: "2px solid #428cab",
                 color: "#428cabff",
                 fontFamily: "'Inter', sans-serif",
               }}
             >
-              Visit Our Portfolio
+              About Us
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
-            </button>
+            </a>
           </div>
         </div>
 

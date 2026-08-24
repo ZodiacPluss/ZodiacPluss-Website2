@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { PAGE_TO_PATH } from "@/utils/routes"
 
 const navLinks = ["Home", "About Us", "Services", "Career"]
 
@@ -87,9 +88,10 @@ export default function Navbar({ currentPage, onNavigate, dark = false, onToggle
       <nav className={navContainerClasses} style={navStyle}>
         <div className="w-full flex items-center justify-between">
           {/* Logo */}
-          <button
-            onClick={() => { onNavigate("Home"); setMobileOpen(false) }}
-            className="flex items-center gap-1.5 cursor-pointer border-0 bg-transparent p-0"
+          <a
+            href="/"
+            onClick={(e) => { e.preventDefault(); onNavigate("Home"); setMobileOpen(false) }}
+            className="flex items-center gap-1.5 cursor-pointer border-0 bg-transparent p-0 no-underline"
           >
             <img
               src="https://res.cloudinary.com/pp0lpskp/image/upload/v1786032742/Zodiac_Colored_Logo_croped-removebg-preview_appzet.png"
@@ -112,15 +114,16 @@ export default function Navbar({ currentPage, onNavigate, dark = false, onToggle
                 Your Personal Wellness Companion
               </div>
             </div>
-          </button>
+          </a>
 
           {/* Desktop Nav Links - centered */}
           <div className="hidden lg:flex items-center gap-7">
             {navLinks.map((link) => (
-              <button
+              <a
                 key={link}
-                onClick={() => onNavigate(link)}
-                className="relative text-[13.5px] transition-colors duration-200 pb-1 cursor-pointer border-0 bg-transparent"
+                href={PAGE_TO_PATH[link] ?? "/"}
+                onClick={(e) => { e.preventDefault(); onNavigate(link) }}
+                className="relative text-[13.5px] transition-colors duration-200 pb-1 cursor-pointer border-0 bg-transparent no-underline"
                 style={{
                   color: linkColor(link),
                   fontWeight: currentPage === link ? 700 : 500,
@@ -134,7 +137,7 @@ export default function Navbar({ currentPage, onNavigate, dark = false, onToggle
                     style={{ background: textColor }}
                   />
                 )}
-              </button>
+              </a>
             ))}
           </div>
 
@@ -158,16 +161,17 @@ export default function Navbar({ currentPage, onNavigate, dark = false, onToggle
               )}
             </button>
             {/* Connect Us button */}
-            <button
-              onClick={() => onNavigate("Book")}
-              className="flex items-center gap-2 text-white text-[13px] font-semibold px-5 py-2 rounded-full transition-all duration-200 hover:opacity-90 shadow-sm cursor-pointer border-0"
+            <a
+              href={PAGE_TO_PATH["Book"]}
+              onClick={(e) => { e.preventDefault(); onNavigate("Book") }}
+              className="flex items-center gap-2 text-white text-[13px] font-semibold px-5 py-2 rounded-full transition-all duration-200 hover:opacity-90 shadow-sm cursor-pointer border-0 no-underline"
               style={{ background: "linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)" }}
             >
               Connect Us
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
-            </button>
+            </a>
           </div>
 
           {/* Mobile controls: Theme toggle + Sidebar button */}
@@ -222,26 +226,28 @@ export default function Navbar({ currentPage, onNavigate, dark = false, onToggle
             }}
           >
             {navLinks.map((link) => (
-              <button
+              <a
                 key={link}
-                onClick={() => { onNavigate(link); setMobileOpen(false) }}
-                className="block w-full text-left py-2 text-xs font-semibold border-b border-gray-100 dark:border-purple-950/40 last:border-0"
+                href={PAGE_TO_PATH[link] ?? "/"}
+                onClick={(e) => { e.preventDefault(); onNavigate(link); setMobileOpen(false) }}
+                className="block w-full text-left py-2 text-xs font-semibold border-b border-gray-100 dark:border-purple-950/40 last:border-0 no-underline"
                 style={{
                   color: currentPage === link ? "#0d9488" : (dark ? "#e4e4e7" : "#1a1a2e"),
                 }}
               >
                 {link}
-              </button>
+              </a>
             ))}
             {/* Connect button */}
             <div className="mt-3">
-              <button
-                onClick={() => { onNavigate("Book"); setMobileOpen(false) }}
-                className="w-full text-white text-xs font-semibold py-2 rounded-full text-center cursor-pointer border-0"
+              <a
+                href={PAGE_TO_PATH["Book"]}
+                onClick={(e) => { e.preventDefault(); onNavigate("Book"); setMobileOpen(false) }}
+                className="block w-full text-white text-xs font-semibold py-2 rounded-full text-center cursor-pointer border-0 no-underline"
                 style={{ background: "linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)" }}
               >
                 Connect Us
-              </button>
+              </a>
             </div>
           </div>
         )}

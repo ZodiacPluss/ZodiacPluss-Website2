@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import logoImg from '@/imports/Zodiac_Colored_Logo_croped-removebg-preview.png'
+import { PAGE_TO_PATH } from '@/utils/routes'
 
 interface FooterProps {
   onNavigate: (page: string) => void
@@ -16,8 +17,8 @@ const DIVIDER = 'rgba(255, 255, 255, 0.28)'
 const navLinks: { label: string; page: string; arrow?: boolean }[] = [
   { label: 'Home', page: 'Home' },
   { label: 'Services', page: 'Services' },
-  { label: 'About', page: 'About' },
-  { label: 'Contact', page: 'Contact' },
+  { label: 'About', page: 'About Us' },
+  { label: 'Contact', page: 'Book' },
   { label: 'Career', page: 'Career' },
 ]
 
@@ -110,10 +111,10 @@ export default function Footer({ onNavigate, dark = false }: FooterProps) {
             >
               <AssistanceText className="mb-5 max-w-[250px]" />
 
-              <button
-                type="button"
-                onClick={() => onNavigate('Home')}
-                className="w-full max-w-[252px] overflow-hidden text-left cursor-pointer border-0 p-0 transition-transform duration-200 hover:scale-[1.02]"
+              <a
+                href="/"
+                onClick={(e) => { e.preventDefault(); onNavigate('Home') }}
+                className="w-full max-w-[252px] overflow-hidden text-left cursor-pointer border-0 p-0 transition-transform duration-200 hover:scale-[1.02] no-underline block"
                 style={{
                   borderRadius: '18px',
                   background: 'rgba(255, 255, 255, 0.24)',
@@ -159,7 +160,7 @@ export default function Footer({ onNavigate, dark = false }: FooterProps) {
                     Your Personal Wellness Companion
                   </span>
                 </div>
-              </button>
+              </a>
             </div>
 
             {/* Col 2 — Email signup */}
@@ -210,11 +211,11 @@ export default function Footer({ onNavigate, dark = false }: FooterProps) {
               style={{ borderColor: DIVIDER }}
             >
               {navLinks.map(({ label, page, arrow }) => (
-                <button
+                <a
                   key={label}
-                  type="button"
-                  onClick={() => onNavigate(page)}
-                  className="text-left bg-transparent border-0 p-0 cursor-pointer transition-all duration-200 hover:translate-x-1 hover:text-white"
+                  href={PAGE_TO_PATH[page] ?? '/'}
+                  onClick={(e) => { e.preventDefault(); onNavigate(page) }}
+                  className="text-left bg-transparent border-0 p-0 cursor-pointer transition-all duration-200 hover:translate-x-1 hover:text-white no-underline"
                   style={{
                     color: 'rgba(255, 255, 255, 0.94)',
                     fontSize: '14px',
@@ -230,7 +231,7 @@ export default function Footer({ onNavigate, dark = false }: FooterProps) {
                   ) : (
                     label
                   )}
-                </button>
+                </a>
               ))}
             </div>
 

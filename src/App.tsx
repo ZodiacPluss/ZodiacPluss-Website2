@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import MobileBottomNav from '@/components/MobileBottomNav'
@@ -12,25 +12,69 @@ import PortfolioPage from '@/pages/PortfolioPage'
 import ComingSoonPage from '@/pages/ComingSoonPage'
 import CustomCursor from '@/components/CustomCursor'
 import SplashScreen from '@/components/SplashScreen'
+import {
+  getPageFromLocation,
+  getCanonicalPath,
+  PAGE_TITLES,
+  type PageKey,
+} from '@/utils/routes'
 
-const pageMap: Record<string, string> = {
+const pageMap: Record<string, PageKey> = {
   'About': 'About Us',
   'Contact': 'Book',
   'For corporates': 'Services',
   'Corporates': 'Services',
   'coming soon': 'Coming Soon',
   'ComingSoon': 'Coming Soon',
-  'coming soon': 'Coming Soon',
 }
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState('Home')
+  const [currentPage, setCurrentPage] = useState<PageKey>(() => getPageFromLocation())
   const [dark, setDark] = useState(false)
   const [showSplash, setShowSplash] = useState(true)
 
-  const handleNavigate = (page: string) => {
-    const resolved = pageMap[page] ?? page
+  // Listen to browser Back / Forward buttons and sync URL on initial mount
+  useEffect(() => {
+    const handlePopState = (event: PopStateEvent) => {
+      const page = (event.state?.page as PageKey) || getPageFromLocation()
+      setCurrentPage(page)
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+
+    // Set initial canonical path if landing directly on alias or dirty path
+    const initialPage = getPageFromLocation()
+    const canonicalPath = getCanonicalPath(initialPage)
+    if (window.location.pathname !== canonicalPath && !window.location.hash) {
+      window.history.replaceState({ page: initialPage }, '', canonicalPath)
+    }
+
+    window.addEventListener('popstate', handlePopState)
+    return () => window.removeEventListener('popstate', handlePopState)
+  }, [])
+
+  // Update document title whenever page changes
+  useEffect(() => {
+    document.title = PAGE_TITLES[currentPage] || PAGE_TITLES['Home']
+  }, [currentPage])
+
+  const handleNavigate = (page: string, replace = false) => {
+    const resolved: PageKey = pageMap[page] ?? (page as PageKey)
+    const targetPath = getCanonicalPath(resolved)
+
     setCurrentPage(resolved)
+
+    // Update browser URL in address bar without reloading
+    if (typeof window !== 'undefined') {
+      const currentPath = window.location.pathname
+      if (currentPath !== targetPath || window.location.hash) {
+        if (replace) {
+          window.history.replaceState({ page: resolved }, '', targetPath)
+        } else {
+          window.history.pushState({ page: resolved }, '', targetPath)
+        }
+      }
+    }
+
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 

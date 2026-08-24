@@ -172,13 +172,14 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
                 <p className="text-xs leading-relaxed mb-4" style={{ color: textColor }}>{svc.desc}</p>
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-sm" style={{ color: titleColor }}>{}</span>
-                  <button
-                    onClick={() => onNavigate('Coming Soon')}
-                    className="text-xs font-semibold px-4 py-1.5 rounded-full text-white transition-all hover:opacity-90 shadow-sm cursor-pointer"
+                  <a
+                    href="/coming-soon"
+                    onClick={(e) => { e.preventDefault(); onNavigate('Coming Soon') }}
+                    className="text-xs font-semibold px-4 py-1.5 rounded-full text-white transition-all hover:opacity-90 shadow-sm cursor-pointer no-underline"
                     style={{ background: svc.color }}
                   >
                     coming soon
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -196,16 +197,17 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
           <p className="text-white/75 mb-6 max-w-md mx-auto text-sm">
             Book a free 15-minute discovery call with one of our advisors and find the perfect service for your journey.
           </p>
-          <button
-            onClick={() => onNavigate('Book')}
-            className="inline-flex items-center gap-2 text-white font-semibold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer border-0"
+          <a
+            href="/book"
+            onClick={(e) => { e.preventDefault(); onNavigate('Book') }}
+            className="inline-flex items-center gap-2 text-white font-semibold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer border-0 no-underline"
             style={{
               background: 'linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)',
               boxShadow: '0 8px 24px rgba(94, 184, 232, 0.35)',
             }}
           >
             Book a Free Call →
-          </button>
+          </a>
         </div>
       </div>
 
@@ -229,16 +231,17 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
           <p className="text-white/75 text-base max-w-xl mx-auto mb-6">
             ZodiacPluss brings holistic wellness to the workplace. Empower your people with astrology-guided insights, employee assistance programs (EAP), therapy, and team-building workshops.
           </p>
-          <button
-            onClick={() => onNavigate('Book')}
-            className="inline-flex items-center gap-2 text-white font-semibold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer border-0"
+          <a
+            href="/book"
+            onClick={(e) => { e.preventDefault(); onNavigate('Book') }}
+            className="inline-flex items-center gap-2 text-white font-semibold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer border-0 no-underline"
             style={{
               background: 'linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)',
               boxShadow: '0 8px 24px rgba(94, 184, 232, 0.35)',
             }}
           >
             Request a Corporate Demo →
-          </button>
+          </a>
         </div>
       </div>
 
@@ -304,9 +307,10 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
                     </li>
                   ))}
                 </ul>
-                <button
-                  onClick={() => onNavigate('Book')}
-                  className={`w-full py-2.5 rounded-full font-semibold text-sm transition-all shadow-sm ${
+                <a
+                  href="/book"
+                  onClick={(e) => { e.preventDefault(); onNavigate('Book') }}
+                  className={`w-full py-2.5 rounded-full font-semibold text-sm transition-all shadow-sm block text-center no-underline ${
                     pkg.featured
                       ? 'bg-white text-[#d81b86] hover:bg-gray-100'
                       : 'text-white hover:opacity-90'
@@ -314,7 +318,7 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
                   style={!pkg.featured ? { background: pkg.color } : {}}
                 >
                   Get Started
-                </button>
+                </a>
               </div>
             ))}
           </div>
