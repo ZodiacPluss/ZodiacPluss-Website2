@@ -149,7 +149,7 @@ export default function ComingSoonSection({ onNavigate }: ComingSoonSectionProps
                   className="flex-1 min-w-0 text-slate-500 text-xs sm:text-sm pl-4 sm:pl-5 pr-2 font-normal select-none truncate"
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 >
-                  Be the first to download after launching!
+                  Be the first to download after 7th October!
                 </span>
                 <button
                   type="button"
@@ -160,7 +160,7 @@ export default function ComingSoonSection({ onNavigate }: ComingSoonSectionProps
                     fontFamily: "'Inter', sans-serif",
                   }}
                 >
-                  Download after 7th Oct
+                  Will active soon
                 </button>
               </div>
             </div>
