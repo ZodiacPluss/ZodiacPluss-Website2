@@ -84,7 +84,7 @@ const teamMembers = [
     img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1786011226/Shweta_x67krv.jpg',
   },
   {
-    name: 'Shri. Parambanath Maharaj  ',
+    name: 'Shri Parambanandnath Maharaj  ',
     role: 'SENIOR ASTROLOGER & RAMAL SPECIALIST',
     img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1788088854/copy_of_shastri_ji_oxtyts.jpg',
   },
