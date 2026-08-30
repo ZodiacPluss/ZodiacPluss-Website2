@@ -84,6 +84,11 @@ const teamMembers = [
     img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1786011226/Shweta_x67krv.jpg',
   },
   {
+    name: 'Shri. Parambanath Maharaj  ',
+    role: 'SENIOR ASTROLOGER & RAMAL SPECIALIST',
+    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1788088854/copy_of_shastri_ji_oxtyts.jpg',
+  },
+  {
     name: 'Mrs. Shivani',
     role: 'MENTAL WELLNESS EXPERT',
     img: 'https://res.cloudinary.com/pp0lpskp/image/upload/t_hello/Shivani_lcte5s.jpg',
