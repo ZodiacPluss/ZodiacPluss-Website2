@@ -284,7 +284,7 @@ export default function HomeAboutTeamSection({ onNavigate, dark }: HomeAboutTeam
                   border: '1px solid rgba(0, 0, 0, 0.25)',
                 }}
               >
-                
+              
                 <span className="text-[10px] font-bold tracking-[0.15em] uppercase" style={{ color: '#b86614ff' }}>
                   Founder &amp; Visionary
                 </span>

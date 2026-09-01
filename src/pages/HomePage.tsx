@@ -27,6 +27,7 @@ export default function HomePage({ onNavigate, dark }: HomePageProps) {
       {/* Parallax video sections */}
       <ScrollVideoParallax videoUrl={PARALLAX_VIDEO} overlayOpacity={0.6}>
         <CredentialsSection dark={dark} />
+        <ComingSoonSection onNavigate={onNavigate} />
         <AboutSection onNavigate={onNavigate} dark={dark} />
         <AppShowcaseSection />
         <EAPSection onNavigate={onNavigate} dark={dark} />
@@ -36,9 +37,6 @@ export default function HomePage({ onNavigate, dark }: HomePageProps) {
         </div>
         <HomeAboutTeamSection onNavigate={onNavigate} dark={dark} />
       </ScrollVideoParallax>
-
-      {/* Coming Soon — always dark, closes out the home page */}
-      <ComingSoonSection onNavigate={onNavigate} />
     </div>
   )
 }
