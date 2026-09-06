@@ -102,13 +102,25 @@ export default function AboutUsPage({ onNavigate, dark = false }: AboutUsPagePro
               </svg>
             </a>
           </div>
-          <div className="relative rounded-3xl overflow-hidden h-72 shadow-2xl transition-all duration-300">
-            <img
-              src="https://images.unsplash.com/photo-1532968961962-8a0cb3a2d4f5?w=600&h=400&fit=crop&auto=format&q=80"
-              alt="Astrology globe"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#2d1b4e]/60 to-transparent" />
+          <div className="flex justify-center items-center">
+            <div className="relative group w-72 sm:w-96 md:w-[420px] aspect-square flex items-center justify-center">
+              {/* Soft ambient cosmic radial glow */}
+              <div
+                className="absolute inset-2 rounded-full opacity-60 blur-2xl transition-all duration-500 group-hover:opacity-85 group-hover:scale-105 pointer-events-none"
+                style={{
+                  background: 'radial-gradient(circle, rgba(216, 27, 134, 0.35) 0%, rgba(94, 184, 232, 0.3) 50%, rgba(143, 208, 106, 0.25) 75%, transparent 100%)',
+                }}
+              />
+              {/* Zodiac Symbol Wheel */}
+              <img
+                src="https://res.cloudinary.com/pp0lpskp/image/upload/v1786032742/Zodiac_Colored_Logo_croped-removebg-preview_appzet.png"
+                alt="ZodiacPluss Symbol Wheel"
+                className="relative z-10 w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                style={{
+                  filter: 'drop-shadow(0 15px 35px rgba(30, 13, 64, 0.18)) drop-shadow(0 4px 14px rgba(216, 27, 134, 0.2))',
+                }}
+              />
+            </div>
           </div>
         </div>
 
