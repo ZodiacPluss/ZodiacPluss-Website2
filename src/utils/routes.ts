@@ -50,15 +50,35 @@ export const PATH_TO_PAGE: Record<string, PageKey> = {
 }
 
 export const PAGE_TITLES: Record<string, string> = {
-  'Home': 'ZodiacPluss - Your Personal Wellness Companion',
-  'About Us': 'About Us - ZodiacPluss | Mind, Body & Spiritual Guidance',
-  'Services': 'Services - ZodiacPluss | Astrology, Wellness & EAP Programs',
-  'Career': 'Careers - ZodiacPluss | Join Our Team of Experts',
-  'Book': 'Contact & Book a Session - ZodiacPluss',
-  'Experts': 'Our Experts - ZodiacPluss',
-  'Portfolio': 'Portfolio - ZodiacPluss',
-  'Coming Soon': 'Coming Soon - ZodiacPluss App',
+  'Home':        'ZodiacPluss - Your Personal Wellness & Astrology Companion',
+  'About Us':    'About ZodiacPluss | Our Story, Mission & Wellness Team',
+  'Services':    'Astrology, Mental Wellness & EAP Services | ZodiacPluss',
+  'Career':      'Careers at ZodiacPluss | Join Our Wellness Experts Team',
+  'Book':        'Book a Session | Connect with Our Astrologers & Therapists',
+  'Experts':     'Meet Our Experts | Astrologers, Therapists & Counselors',
+  'Portfolio':   'Portfolio | ZodiacPluss Wellness Impact & Case Studies',
+  'Coming Soon': 'ZodiacPluss App - Coming Soon | Stay Tuned',
 }
+
+export const PAGE_DESCRIPTIONS: Record<string, string> = {
+  'Home':
+    'ZodiacPluss blends ancient astrological wisdom with modern psychology. Get personalised astrology readings, mental wellness sessions, and AI-powered spiritual guidance - all in one private space.',
+  'About Us':
+    'Learn about ZodiacPluss - founded in 2026 to bridge astrology and modern psychology. Meet our certified astrologers, licensed therapists, and wellness experts dedicated to your personal growth.',
+  'Services':
+    'Explore ZodiacPluss services: Vedic astrology consultations, mental wellness therapy, corporate EAP programs, tarot readings, and personalised wellness plans. Your holistic journey starts here.',
+  'Career':
+    'Join the ZodiacPluss team. We are hiring certified astrologers, wellness counsellors, therapists, and tech professionals passionate about transforming mental and spiritual health.',
+  'Book':
+    'Book a personalised session with ZodiacPluss experts. Connect with certified astrologers and licensed therapists for astrology readings, mental wellness counselling, and spiritual guidance.',
+  'Experts':
+    'Meet our team of certified astrologers, licensed therapists, and wellness counsellors at ZodiacPluss. Experts with 2 to 25+ years of experience in astrology and mental wellness.',
+  'Portfolio':
+    'Discover the impact of ZodiacPluss wellness programs. View client success stories, corporate wellness outcomes, and testimonials from our astrology and mental health sessions.',
+  'Coming Soon':
+    'The ZodiacPluss mobile app is launching soon. Get personalised daily horoscopes, mental wellness tools, and expert consultations on the go. Sign up for early access.',
+}
+
 
 export function getCanonicalPath(page: string): string {
   return PAGE_TO_PATH[page] ?? '/'

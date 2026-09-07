@@ -15,9 +15,9 @@ import SplashScreen from '@/components/SplashScreen'
 import {
   getPageFromLocation,
   getCanonicalPath,
-  PAGE_TITLES,
   type PageKey,
 } from '@/utils/routes'
+import { useSEO } from '@/hooks/useSEO'
 
 const pageMap: Record<string, PageKey> = {
   'About': 'About Us',
@@ -52,10 +52,8 @@ export default function App() {
     return () => window.removeEventListener('popstate', handlePopState)
   }, [])
 
-  // Update document title whenever page changes
-  useEffect(() => {
-    document.title = PAGE_TITLES[currentPage] || PAGE_TITLES['Home']
-  }, [currentPage])
+  // Dynamically update <title> + <meta description> + robots on every page change
+  useSEO(currentPage)
 
   const handleNavigate = (page: string, replace = false) => {
     const resolved: PageKey = pageMap[page] ?? (page as PageKey)

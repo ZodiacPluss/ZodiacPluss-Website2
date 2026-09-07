@@ -1,8 +1,8 @@
 {
   "title": "ZodiacPluss - Your Personal Wellness Companion",
-  "description": "Professional company website showcasing ZodiacPluss services with precise design, intuitive navigation, and a polished user experience.",
+  "description": "ZodiacPluss blends ancient astrological wisdom with modern psychology. Get personalised astrology readings, mental wellness sessions, and AI-powered spiritual guidance - all in one private space.",
   "robots": {
-    "index": false
+    "index": true
   },
   "accessibility": {
     "addBypassLinks": false,
