@@ -10,7 +10,7 @@ import BrandsMarquee from '@/components/BrandsMarquee'
 import ScrollVideoParallax from '@/components/ScrollVideoParallax'
 import ComingSoonSection from '@/components/ComingSoonSection'
 
-const PARALLAX_VIDEO = 'https://res.cloudinary.com/pp0lpskp/video/upload/v1787222681/Background_video1_btmhwb.mp4'
+const PARALLAX_VIDEO = 'https://res.cloudinary.com/pp0lpskp/video/upload/v1788899542/169025-840244222_medium_us3ejw_1_umkxw5.mp4'
 
 interface HomePageProps {
   onNavigate: (page: string) => void

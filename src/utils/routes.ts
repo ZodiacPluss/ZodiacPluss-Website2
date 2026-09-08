@@ -50,21 +50,21 @@ export const PATH_TO_PAGE: Record<string, PageKey> = {
 }
 
 export const PAGE_TITLES: Record<string, string> = {
-  'Home':        'ZodiacPluss - Your Personal Wellness & Astrology Companion',
-  'About Us':    'About ZodiacPluss | Our Story, Mission & Wellness Team',
-  'Services':    'Astrology, Mental Wellness & EAP Services | ZodiacPluss',
-  'Career':      'Careers at ZodiacPluss | Join Our Wellness Experts Team',
-  'Book':        'Book a Session | Connect with Our Astrologers & Therapists',
-  'Experts':     'Meet Our Experts | Astrologers, Therapists & Counselors',
+  'Home':        'ZodiacPluss India - Your Personal Wellness & Astrology Companion',
+  'About Us':    'About ZodiacPluss India | Our Story, Mission & Wellness Team',
+  'Services':    'Astrology, Mental Wellness & EAP Services in India | ZodiacPluss',
+  'Career':      'Careers at ZodiacPluss India | Join Our Wellness Experts Team',
+  'Book':        'Book a Session | Connect with ZodiacPluss Astrologers & Therapists',
+  'Experts':     'Meet Our Experts | Astrologers, Therapists & Counselors | ZodiacPluss',
   'Portfolio':   'Portfolio | ZodiacPluss Wellness Impact & Case Studies',
   'Coming Soon': 'ZodiacPluss App - Coming Soon | Stay Tuned',
 }
 
 export const PAGE_DESCRIPTIONS: Record<string, string> = {
   'Home':
-    'ZodiacPluss blends ancient astrological wisdom with modern psychology. Get personalised astrology readings, mental wellness sessions, and AI-powered spiritual guidance - all in one private space.',
+    'ZodiacPluss India blends ancient astrological wisdom with modern psychology. Get personalised astrology readings, mental wellness sessions, and AI-powered spiritual guidance across India.',
   'About Us':
-    'Learn about ZodiacPluss - founded in 2026 to bridge astrology and modern psychology. Meet our certified astrologers, licensed therapists, and wellness experts dedicated to your personal growth.',
+    'Learn about ZodiacPluss India - founded in 2026 to bridge astrology and modern psychology. Meet our certified astrologers, licensed therapists, and wellness experts in India.',
   'Services':
     'Explore ZodiacPluss services: Vedic astrology consultations, mental wellness therapy, corporate EAP programs, tarot readings, and personalised wellness plans. Your holistic journey starts here.',
   'Career':

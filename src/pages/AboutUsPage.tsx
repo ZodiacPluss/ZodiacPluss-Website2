@@ -11,37 +11,37 @@ const team = [
     name: 'Mrs. Rashmi',
     role: 'Founder & CEO',
     exp: '25+ years experience',
-    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1786016136/Rasmi-1_prowmf.jpg',
+    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1788897780/Rasmi-1_prowmf_lvnvoz.jpg',
   },
   {
     name: 'Mrs. Sheela',
     role: 'Director',
     exp: '18+ years experience',
-    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1786011250/sheela_ji_j2mckm.png',
-    },
+    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1788897781/sheela_ji_j2mckm_nbhpnz.png',
+  },
   {
     name: 'Ms. Shweta',
     role: 'SENIOR TECHNICAL CONSULTANT',
     exp: '12+ years experience',
-    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1786011226/Shweta_x67krv.jpg',
+    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1788897781/Shweta_x67krv_j15fp4.jpg',
   },
   {
     name: 'Mrs. Shivani',
     role: 'MENTAL WELLNESS EXPERT',
     exp: '5+ years experience',
-    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/t_hello/Shivani_lcte5s.jpg',
+    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1788897781/Shivani_lcte5s_bxye0t.jpg',
   },
   {
     name: 'Mr. Hari',
     role: 'SOCIAL MEDIA HEAD CONSULTANT',
     exp: '2+ years experience',
-    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/c_crop,g_north_west,h_970,w_823,x_254,y_280/Hari_lmdiby.jpg',
+    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1788897781/Hari_lmdiby_yt3zgz.jpg',
   },
   {
     name: 'Mr. Aditya',
     role: 'SDE & PROJECT MANAGER',
     exp: '2+ years experience',
-    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1786342210/my_profile_new_and_updated_unxfyt.png',
+    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1788897781/my_profile_new_and_updated_unxfyt_rzakex.png',
   },
 ]
 
@@ -50,7 +50,7 @@ const values = [
   { icon: '✦', title: 'Compassion', desc: 'Every individual receives a judgment-free, empathetic, and personalized experience.' },
   { icon: '✦', title: 'Innovation', desc: 'We leverage AI and technology to deliver astrology for the modern seeker.' },
   { icon: '✦', title: 'Integrity', desc: 'Your privacy is sacred. All sessions and data are 100% confidential.' },
-] 
+]
 
 export default function AboutUsPage({ onNavigate, dark = false }: AboutUsPageProps) {
   return (
@@ -98,7 +98,7 @@ export default function AboutUsPage({ onNavigate, dark = false }: AboutUsPagePro
             >
               Explore Services
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
+                <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </a>
           </div>

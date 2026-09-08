@@ -1,5 +1,3 @@
-import appShowcaseImg from '@/imports/image-8.png'
-
 /* ─────────────────────────────────────────────────────────────────
    AppShowcaseSection  –  "A seamless experience, designed for clarity"
    Left: marketing copy + feature pills
@@ -612,11 +610,11 @@ export default function AppShowcaseSection() {
               }}
               onMouseEnter={e => {
                 (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-2px)'
-                ;(e.currentTarget as HTMLButtonElement).style.boxShadow = '0 12px 30px rgba(94, 184, 232, 0.45)'
+                  ; (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 12px 30px rgba(94, 184, 232, 0.45)'
               }}
               onMouseLeave={e => {
                 (e.currentTarget as HTMLButtonElement).style.transform = 'none'
-                ;(e.currentTarget as HTMLButtonElement).style.boxShadow = '0 8px 24px rgba(94, 184, 232, 0.35)'
+                  ; (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 8px 24px rgba(94, 184, 232, 0.35)'
               }}
             >
               Explore the App

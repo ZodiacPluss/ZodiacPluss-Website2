@@ -68,12 +68,12 @@ const featuredTeam = [
   {
     name: 'Mrs. Rashmi',
     role: 'FOUNDER & CEO',
-    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1786016136/Rasmi-1_prowmf.jpg',
+    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1788897780/Rasmi-1_prowmf_lvnvoz.jpg',
   },
   {
     name: 'Mrs. Sheela',
     role: 'DIRECTOR',
-    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1786011250/sheela_ji_j2mckm.png',
+    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1788897781/sheela_ji_j2mckm_nbhpnz.png',
   },
 ]
 
@@ -81,32 +81,32 @@ const teamMembers = [
   {
     name: 'Ms. Shweta ',
     role: 'SENIOR TECHNICAL CONSULTANT',
-    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1786011226/Shweta_x67krv.jpg',
+    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1788897781/Shweta_x67krv_j15fp4.jpg',
   },
   {
     name: 'Shri Parambanandnath Maharaj  ',
     role: 'SENIOR ASTROLOGER & RAMAL SPECIALIST',
-    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1788088854/copy_of_shastri_ji_oxtyts.jpg',
+    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1788897781/copy_of_shastri_ji_oxtyts_iro0pg.jpg',
   },
   {
     name: 'Mrs. Shivani',
     role: 'MENTAL WELLNESS EXPERT',
-    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/t_hello/Shivani_lcte5s.jpg',
+    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1788897781/Shivani_lcte5s_bxye0t.jpg',
   },
   {
     name: 'Mr. Hari',
     role: 'SOCIAL MEDIA HEAD CONSULTANT',
-    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/c_crop,g_north_west,h_970,w_823,x_254,y_280/Hari_lmdiby.jpg',
+    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1788897781/Hari_lmdiby_yt3zgz.jpg',
   },
   {
     name: 'Mr. Aditya',
     role: 'SDE & PROJECT MANAGER',
-    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1786342210/my_profile_new_and_updated_unxfyt.png',
+    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1788897781/my_profile_new_and_updated_unxfyt_rzakex.png',
   },
   {
     name: 'Mr. Sunil ',
     role: 'ADVOCATE & LEGAL CONSULTANT',
-    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1786011233/Sunil_ji_ltxjqb.png',
+    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1788897782/Sunil_ji_ltxjqb_hxrkdh.png',
   },
 ]
 
@@ -284,7 +284,7 @@ export default function HomeAboutTeamSection({ onNavigate, dark }: HomeAboutTeam
                   border: '1px solid rgba(0, 0, 0, 0.25)',
                 }}
               >
-              
+
                 <span className="text-[10px] font-bold tracking-[0.15em] uppercase" style={{ color: '#b86614ff' }}>
                   Founder &amp; Visionary
                 </span>
@@ -585,9 +585,8 @@ export default function HomeAboutTeamSection({ onNavigate, dark }: HomeAboutTeam
               {stats.map((stat, i) => (
                 <div
                   key={stat.label}
-                  className={`flex flex-col items-center text-center px-3 sm:px-4 ${
-                    i > 0 ? 'sm:border-l sm:border-[#cbd5e1]/60' : ''
-                  }`}
+                  className={`flex flex-col items-center text-center px-3 sm:px-4 ${i > 0 ? 'sm:border-l sm:border-[#cbd5e1]/60' : ''
+                    }`}
                 >
                   <div className="mb-2">{stat.icon}</div>
                   <span
