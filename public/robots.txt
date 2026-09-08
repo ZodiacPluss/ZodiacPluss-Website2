@@ -1,56 +1,8 @@
-﻿# ==============================================================
+# ==============================================================
 #  robots.txt — ZodiacPluss (https://zodiacpluss.com)
-#  Controls how search engine crawlers access this site.
-#  Reference: https://www.robotstxt.org/robotstxt.html
 # ==============================================================
 
-# ── Allow all well-behaved search engine crawlers ─────────────
 User-agent: *
 Allow: /
 
-# ── Block access to build artefacts & internal tooling ────────
-Disallow: /dist/
-Disallow: /.figma/
-Disallow: /node_modules/
-Disallow: /src/
-Disallow: /.git/
-
-# ── Block low-value or private URLs ───────────────────────────
-Disallow: /coming-soon
-Disallow: /comingsoon
-
-# ── Crawl-delay (optional): be polite to the server ───────────
-Crawl-delay: 10
-
-# ── Google-specific directives ────────────────────────────────
-User-agent: Googlebot
-Allow: /
-Disallow: /.figma/
-Disallow: /node_modules/
-Crawl-delay: 5
-
-# ── Bing-specific directives ──────────────────────────────────
-User-agent: Bingbot
-Allow: /
-Disallow: /.figma/
-Disallow: /node_modules/
-Crawl-delay: 10
-
-# ── Block known bad/scraper bots ──────────────────────────────
-User-agent: AhrefsBot
-Disallow: /
-
-User-agent: MJ12bot
-Disallow: /
-
-User-agent: SemrushBot
-Disallow: /
-
-User-agent: DotBot
-Disallow: /
-
-User-agent: BLEXBot
-Disallow: /
-
-# ── Sitemap location (update with your actual domain) ─────────
 Sitemap: https://zodiacpluss.com/sitemap.xml
