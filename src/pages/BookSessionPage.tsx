@@ -393,16 +393,6 @@ export default function BookSessionPage({ onNavigate, dark }: BookSessionPagePro
 
         {/* ════ RIGHT PANEL — FORM ════ */}
         <div className="p-6 sm:p-8 lg:p-10" style={{ background: cardBg }}>
-          {/* Decorative top dots */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '6px', marginBottom: '24px' }}>
-            {[1, 2, 3].map(i => (
-              <span key={i} style={{
-                width: '6px', height: '6px', borderRadius: '50%',
-                background: i === 2 ? '#14b8a6' : (dark ? 'rgba(255,255,255,0.22)' : '#d4cef5')
-              }} />
-            ))}
-          </div>
-
           <form ref={formRef} onSubmit={onSubmit}>
             {/* Row 1: Full Name + Email */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-4.5 mb-4 sm:mb-4.5">
