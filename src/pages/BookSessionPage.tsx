@@ -419,7 +419,7 @@ export default function BookSessionPage({ onNavigate, dark }: BookSessionPagePro
                     style={{
                       ...inputStyle,
                       color: dark ? '#f5f5f5' : '#1e1035',
-                    }}
+                      0         }}
                   />
                 </InputWrap>
               </div>
