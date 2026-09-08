@@ -18,6 +18,7 @@ import {
   type PageKey,
 } from '@/utils/routes'
 import { useSEO } from '@/hooks/useSEO'
+import { Analytics } from '@vercel/analytics/react'
 
 const pageMap: Record<string, PageKey> = {
   'About': 'About Us',
@@ -127,6 +128,9 @@ export default function App() {
         onNavigate={handleNavigate}
         dark={dark}
       />
+
+      {/* Vercel Web Analytics */}
+      <Analytics />
     </div>
   )
 }
