@@ -1,56 +1,52 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { DotLottieReact, setWasmUrl, type DotLottie } from '@lottiefiles/dotlottie-react'
+import splashAnimation from '@/assets/splash.lottie?url'
 
-const LOGO_URL =
-  'https://res.cloudinary.com/pp0lpskp/image/upload/v1786032742/Zodiac_Colored_Logo_croped-removebg-preview_appzet.png'
+// Serve the renderer's WASM from our own build instead of the player's
+// default CDN, so the splash has no third-party runtime dependency.
+setWasmUrl(
+  new URL(
+    '../../node_modules/@lottiefiles/dotlottie-web/dist/dotlottie-player.wasm',
+    import.meta.url,
+  ).href,
+)
 
-const LOAD_DURATION = 1100 // ms — progress goes 0 -> 100%
-const EXIT_DELAY = 160 // ms pause at 100% before fading out
+const PLAYBACK_SPEED = 1.5 // 4 s animation → ~2.7 s
 const EXIT_DURATION = 400 // ms fade-out transition
+// The site must never stay stuck behind the splash: if the animation has not
+// finished (or failed to load) by then, dismiss it anyway.
+const SAFETY_TIMEOUT = 6000 // ms
 
 interface SplashScreenProps {
   onFinish: () => void
 }
 
 export default function SplashScreen({ onFinish }: SplashScreenProps) {
-  const [progress, setProgress] = useState(0)
   const [exiting, setExiting] = useState(false)
+  const finishedRef = useRef(false)
+
+  const finish = () => {
+    if (finishedRef.current) return
+    finishedRef.current = true
+    setExiting(true)
+    setTimeout(onFinish, EXIT_DURATION)
+  }
 
   useEffect(() => {
     const prevOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
-
-    let frameId = 0
-    let start: number | null = null
-    let exitTimer: ReturnType<typeof setTimeout>
-    let finishTimer: ReturnType<typeof setTimeout>
-
-    const tick = (t: number) => {
-      if (start === null) start = t
-      const elapsed = t - start
-      const pct = Math.min(100, (elapsed / LOAD_DURATION) * 100)
-      setProgress(pct)
-      if (pct < 100) {
-        frameId = requestAnimationFrame(tick)
-      } else {
-        exitTimer = setTimeout(() => setExiting(true), EXIT_DELAY)
-        finishTimer = setTimeout(onFinish, EXIT_DELAY + EXIT_DURATION)
-      }
-    }
-    frameId = requestAnimationFrame(tick)
-
+    const safety = setTimeout(finish, SAFETY_TIMEOUT)
     return () => {
-      cancelAnimationFrame(frameId)
-      clearTimeout(exitTimer)
-      clearTimeout(finishTimer)
+      clearTimeout(safety)
       document.body.style.overflow = prevOverflow
     }
-  }, [onFinish])
+  }, [])
 
-  const radius = 34
-  const stroke = 3.5
-  const normalizedRadius = radius - stroke * 0.5
-  const circumference = normalizedRadius * 2 * Math.PI
-  const strokeDashoffset = circumference - (progress / 100) * circumference
+  const handleRef = (instance: DotLottie | null) => {
+    if (!instance) return
+    instance.addEventListener('complete', finish)
+    instance.addEventListener('loadError', finish)
+  }
 
   return (
     <div
@@ -62,67 +58,15 @@ export default function SplashScreen({ onFinish }: SplashScreenProps) {
         pointerEvents: exiting ? 'none' : 'auto',
       }}
     >
-      {/* Side-by-side Layout: Large Circular Animated Logo + Brand & Percentage */}
-      <div className="flex items-center gap-2 sm:gap-3">
-        {/* Circular Logo with Animated Progress Ring */}
-        <div className="relative w-[68px] h-[68px] sm:w-[76px] sm:h-[76px] flex items-center justify-center shrink-0">
-          <svg
-            className="w-full h-full transform -rotate-90"
-            viewBox={`0 0 ${radius * 2} ${radius * 2}`}
-          >
-            {/* Background Track */}
-            <circle
-              stroke="#e5e7eb"
-              fill="transparent"
-              strokeWidth={stroke}
-              r={normalizedRadius}
-              cx={radius}
-              cy={radius}
-            />
-            {/* Animated Progress Circle */}
-            <circle
-              stroke="#3bb2ca"
-              fill="transparent"
-              strokeWidth={stroke}
-              strokeDasharray={`${circumference} ${circumference}`}
-              style={{
-                strokeDashoffset,
-                transition: 'stroke-dashoffset 40ms linear',
-              }}
-              strokeLinecap="round"
-              r={normalizedRadius}
-              cx={radius}
-              cy={radius}
-            />
-          </svg>
-
-          {/* Centered Logo Inside Ring */}
-          <div className="absolute inset-[4px] rounded-full overflow-hidden flex items-center justify-center bg-white">
-            <img
-              src={LOGO_URL}
-              alt="ZodiacPluss"
-              className="w-24 h-24 sm:w-18 sm:h-18 object-contain"
-            />
-          </div>
-        </div>
-
-        {/* Text Details: Brand Title & Percentage */}
-        <div className="flex flex-col justify-center leading-tight">
-          {/* Not an <h1>: the splash overlay renders on every route and a
-              second H1 would compete with each page's real heading. */}
-          <div
-            className="text-[19px] sm:text-[21px] font-bold text-gray-900 tracking-tight"
-            style={{ fontFamily: "'Inter', sans-serif" }}
-          >
-            ZodiacPluss
-          </div>
-          <span
-            className="text-[14px] sm:text-[15px] font-normal text-gray-400 tabular-nums mt-0.5"
-            style={{ fontFamily: "'Inter', sans-serif" }}
-          >
-            {Math.round(progress)}%
-          </span>
-        </div>
+      <div className="w-[220px] h-[220px] sm:w-[280px] sm:h-[280px]" aria-hidden="true">
+        <DotLottieReact
+          src={splashAnimation}
+          autoplay
+          loop={false}
+          speed={PLAYBACK_SPEED}
+          dotLottieRefCallback={handleRef}
+          style={{ width: '100%', height: '100%' }}
+        />
       </div>
     </div>
   )
