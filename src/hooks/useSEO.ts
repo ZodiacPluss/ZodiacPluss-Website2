@@ -1,58 +1,90 @@
 import { useEffect } from 'react'
-import { PAGE_TITLES, PAGE_DESCRIPTIONS, getCanonicalPath } from '@/utils/routes'
+import {
+  absoluteUrl,
+  getPageConfig,
+  NOT_FOUND_KEY,
+  OG_IMAGE,
+  SITE_LOCALE,
+  type PageKey,
+} from '@/utils/seo.config'
 
-const DOMAIN = 'https://zodiacpluss.com'
+const ROBOTS_INDEXABLE =
+  'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+const ROBOTS_NOINDEX = 'noindex, follow'
 
-/**
- * useSEO — dynamically updates <title>, <meta name="description">,
- * <link rel="canonical">, and Open Graph tags on every page navigation.
- *
- * @param page - The current PageKey (e.g. 'Home', 'About Us', 'Services')
- */
-export function useSEO(page: string) {
-  useEffect(() => {
-    // 1. Update document title
-    const title = PAGE_TITLES[page] || PAGE_TITLES['Home']
-    document.title = title
-
-    // 2. Update / create <meta name="description">
-    const description = PAGE_DESCRIPTIONS[page] || PAGE_DESCRIPTIONS['Home']
-    let descMeta = document.querySelector<HTMLMetaElement>('meta[name="description"]')
-    if (!descMeta) {
-      descMeta = document.createElement('meta')
-      descMeta.name = 'description'
-      document.head.appendChild(descMeta)
-    }
-    descMeta.content = description
-
-    // 3. Update / create dynamic <link rel="canonical">
-    const path = getCanonicalPath(page)
-    const canonicalUrl = `${DOMAIN}${path === '/' ? '/' : path}`
-    let canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]')
-    if (!canonicalLink) {
-      canonicalLink = document.createElement('link')
-      canonicalLink.rel = 'canonical'
-      document.head.appendChild(canonicalLink)
-    }
-    canonicalLink.href = canonicalUrl
-
-    // 4. Update / create <meta property="og:url">
-    let ogUrlMeta = document.querySelector<HTMLMetaElement>('meta[property="og:url"]')
-    if (ogUrlMeta) {
-      ogUrlMeta.content = canonicalUrl
-    }
-
-    // 5. Update / create <meta name="robots"> (ensure pages are indexable)
-    let robotsMeta = document.querySelector<HTMLMetaElement>('meta[name="robots"]')
-    if (!robotsMeta) {
-      robotsMeta = document.createElement('meta')
-      robotsMeta.name = 'robots'
-      document.head.appendChild(robotsMeta)
-    }
-    robotsMeta.content = 'index, follow'
-
-    // 6. Ensure <html lang="en"> for accessibility and SEO
-    document.documentElement.lang = 'en'
-  }, [page])
+function setMeta(
+  attribute: 'name' | 'property',
+  key: string,
+  content: string,
+): void {
+  const selector = `meta[${attribute}="${key}"]`
+  let element = document.querySelector<HTMLMetaElement>(selector)
+  if (!element) {
+    element = document.createElement('meta')
+    element.setAttribute(attribute, key)
+    document.head.appendChild(element)
+  }
+  element.content = content
 }
 
+function removeMeta(attribute: 'name' | 'property', key: string): void {
+  document
+    .querySelector<HTMLMetaElement>(`meta[${attribute}="${key}"]`)
+    ?.remove()
+}
+
+/**
+ * Sets the canonical link, or removes it entirely when `url` is null — which
+ * is what the Not Found page needs: it is served for arbitrary unknown paths,
+ * so any canonical it declared would be wrong.
+ */
+function setCanonical(url: string | null): void {
+  const existing = document.querySelector<HTMLLinkElement>('link[rel="canonical"]')
+  if (url === null) {
+    existing?.remove()
+    return
+  }
+  const link = existing ?? document.createElement('link')
+  link.rel = 'canonical'
+  link.href = url
+  if (!existing) document.head.appendChild(link)
+}
+
+/**
+ * useSEO — keeps <head> in sync with the current page during client-side
+ * navigation. The same values are baked into the prerendered HTML at build
+ * time (see the `seo-prerender` plugin in vite.config.ts), so crawlers get
+ * correct metadata from the raw server response too; this hook only covers
+ * in-app navigation after hydration.
+ */
+export function useSEO(page: PageKey): void {
+  useEffect(() => {
+    const config = getPageConfig(page)
+    const isNotFound = page === NOT_FOUND_KEY
+    const canonicalUrl = isNotFound ? null : absoluteUrl(config.path)
+
+    document.title = config.title
+    document.documentElement.lang = SITE_LOCALE
+
+    setMeta('name', 'description', config.description)
+    setMeta(
+      'name',
+      'robots',
+      config.indexable ? ROBOTS_INDEXABLE : ROBOTS_NOINDEX,
+    )
+    setCanonical(canonicalUrl)
+
+    if (canonicalUrl === null) {
+      removeMeta('property', 'og:url')
+    } else {
+      setMeta('property', 'og:url', canonicalUrl)
+    }
+    setMeta('property', 'og:title', config.title)
+    setMeta('property', 'og:description', config.description)
+    setMeta('property', 'og:image', OG_IMAGE)
+
+    setMeta('name', 'twitter:title', config.title)
+    setMeta('name', 'twitter:description', config.description)
+    setMeta('name', 'twitter:image', OG_IMAGE)
+  }, [page])
+}

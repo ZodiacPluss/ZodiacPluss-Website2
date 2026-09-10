@@ -17,6 +17,7 @@ const navLinks: { label: string; page: string; arrow?: boolean }[] = [
   { label: 'Home', page: 'Home' },
   { label: 'Services', page: 'Services' },
   { label: 'About', page: 'About Us' },
+  { label: 'Portfolio', page: 'Portfolio' },
   { label: 'Contact', page: 'Book' },
   { label: 'Career', page: 'Career' },
 ]
@@ -24,7 +25,7 @@ const navLinks: { label: string; page: string; arrow?: boolean }[] = [
 const contactItems = [
   { label: '+91 9868111414', href: 'tel:+91 9868111414' },
   { label: '+91 9811577859', href: 'tel:+91 9811577859' },
-  { label: 'info@zodiacpluss.com', href: 'mailto:hello@zodiacpluss.com' },
+  { label: 'info@zodiacpluss.com', href: 'mailto:info@zodiacpluss.com' },
   { label: 'Playstore', href: '#' },
   { label: 'App store', href: '#' },
 ]

@@ -56,12 +56,29 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
             paddingBottom: "clamp(20px, 3vw, 40px)",
           }}
         >
-          {/* Giant "ZODIAC PLUSS" masked with live video */}
+          {/* Giant "ZODIAC PLUSS" masked with live video.
+
+              Two renderings of the same wordmark — identical viewBox, font,
+              size and glyph positions, so the layout is the same either way:
+
+                • .zodiac-wordmark-video — SVG <foreignObject> video clipped
+                  by an SVG <clipPath>. Chromium and Firefox.
+                • .zodiac-wordmark-still + .zodiac-wordmark-live — WebKit.
+                  WebKit ignores clip-path on <foreignObject> (bug 23113), so
+                  the video painted as a bare rectangle in Safari and every
+                  iOS browser. Here a plain HTML <video> sits on top of the
+                  wordmark and is clipped with CSS `clip-path: url(#…)`, which
+                  WebKit does honour. The <text> underneath is filled with a
+                  still frame of the same video, so the letters are already
+                  correct before playback starts (or if autoplay is refused).
+
+              index.css picks the pair per engine. */}
           <div className="relative mb-4 sm:mb-6 select-none max-w-[620px] w-full">
             <h1 className="sr-only">ZODIAC PLUSS</h1>
+
             <svg
               viewBox="0 0 620 230"
-              className="w-full h-auto block"
+              className="zodiac-wordmark-video w-full h-auto block"
               style={{ overflow: 'visible' }}
               aria-hidden="true"
             >
@@ -107,6 +124,99 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
                 />
               </foreignObject>
             </svg>
+
+            {/* WebKit: SVG wordmark, three layers deep so it can never come
+                out blank —
+                  1. <text> with a gradient fill (always renders);
+                  2. an animated-WebP <image> of the video, clipped to the
+                     glyphs with an SVG-native clipPath (WebKit honours that;
+                     only <foreignObject> clipping is broken);
+                  3. the real <video> in the HTML overlay below, on top.
+                Whichever of 2/3 the engine renders, the letters move. */}
+            <svg
+              viewBox="0 0 620 230"
+              className="zodiac-wordmark-still w-full h-auto"
+              style={{ overflow: 'visible' }}
+              aria-hidden="true"
+            >
+              <defs>
+                {/* Native SVG clip, viewBox units, for the <image> layer. */}
+                <clipPath id="zodiacWordmarkTextClip">
+                  <text x="0" y="100" fontFamily="'Inter', sans-serif" fontWeight="900" fontSize="116" letterSpacing="-0.03em">
+                    ZODIAC
+                  </text>
+                  <text x="0" y="210" fontFamily="'Inter', sans-serif" fontWeight="900" fontSize="116" letterSpacing="-0.03em">
+                    PLUSS
+                  </text>
+                </clipPath>
+                {/* Clip for the HTML <video> below. objectBoundingBox units map
+                    0–1 onto the video's own box; the scale() brings the 620×230
+                    glyph coordinates into that range. The video box keeps the
+                    same 620:230 ratio as this SVG, so the mapping is uniform. */}
+                <clipPath id="zodiacWordmarkClipBox" clipPathUnits="objectBoundingBox">
+                  <g transform={`scale(${1 / 620}, ${1 / 230})`}>
+                    <text x="0" y="100" fontFamily="'Inter', sans-serif" fontWeight="900" fontSize="116" letterSpacing="-0.03em">
+                      ZODIAC
+                    </text>
+                    <text x="0" y="210" fontFamily="'Inter', sans-serif" fontWeight="900" fontSize="116" letterSpacing="-0.03em">
+                      PLUSS
+                    </text>
+                  </g>
+                </clipPath>
+                <linearGradient id="zodiacWordmarkGradient" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stopColor="#8a6a1f" />
+                  <stop offset="45%" stopColor="#e6c877" />
+                  <stop offset="100%" stopColor="#6f5518" />
+                </linearGradient>
+              </defs>
+              {(
+                [
+                  { text: 'ZODIAC', y: 100 },
+                  { text: 'PLUSS', y: 210 },
+                ] as const
+              ).map(({ text, y }) => (
+                <text
+                  key={text}
+                  x="0"
+                  y={y}
+                  fill="url(#zodiacWordmarkGradient)"
+                  fontFamily="'Inter', sans-serif"
+                  fontWeight="900"
+                  fontSize="116"
+                  letterSpacing="-0.03em"
+                >
+                  {text}
+                </text>
+              ))}
+              {/* 5 s / 12 fps animated WebP rendered by Cloudinary from the
+                  same clip (~350 KB, vs 8.8 MB for the MP4). */}
+              <image
+                href="https://res.cloudinary.com/pp0lpskp/video/upload/w_620,h_230,c_fill,du_5,fps_12,fl_animated,fl_awebp,q_50/v1787393142/141454-777657300_medium_tgotgs.webp"
+                x="0"
+                y="0"
+                width="620"
+                height="230"
+                preserveAspectRatio="xMidYMid slice"
+                clipPath="url(#zodiacWordmarkTextClip)"
+              />
+            </svg>
+
+            {/* WebKit: live video, clipped to the letterforms by the clipPath
+                above. The clip is applied to the WRAPPER, not the <video>:
+                WebKit paints video in its own accelerated layer and drops an
+                SVG-referenced clip-path set directly on it (the video simply
+                disappears). Clipping the parent works. */}
+            <div className="zodiac-wordmark-live" aria-hidden="true">
+              <video
+                src="https://res.cloudinary.com/pp0lpskp/video/upload/v1787393142/141454-777657300_medium_tgotgs.mp4"
+                poster="https://res.cloudinary.com/pp0lpskp/video/upload/so_2,w_620,h_230,c_fill/v1787393142/141454-777657300_medium_tgotgs.jpg"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+              />
+            </div>
           </div>
 
           {/* Tagline */}

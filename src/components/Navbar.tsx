@@ -52,11 +52,19 @@ export default function Navbar({ currentPage, onNavigate, dark = false, onToggle
       : (dark ? "rgba(255, 255, 255, 0.75)" : "#4b5563")
   }
 
-  // Beautiful resizable nav container layout classes
+  // Beautiful resizable nav container layout classes.
+  // `rounded-full` is right for the collapsed pill, but the mobile menu
+  // renders inside this same container: once it expands, that full radius
+  // draws a giant ellipse behind the menu. Swap to a plain rounded rectangle
+  // while the menu is open.
+  // Transition lives in .zodiac-navbar-shell (index.css) rather than
+  // `transition-all`: border-radius must NOT animate, otherwise opening the
+  // menu tweens from the pill's huge radius down to 28px and the ellipse is
+  // still visible for most of the 500ms.
   const navContainerClasses = `
-    pointer-events-auto transition-all duration-500 ease-out w-full
+    pointer-events-auto zodiac-navbar-shell w-full
     ${scrolled
-      ? "max-w-[850px] w-[92%] rounded-full py-2 px-6 translate-y-3 sm:translate-y-4"
+      ? `max-w-[850px] w-[92%] ${mobileOpen ? "rounded-[28px]" : "rounded-full"} py-2 px-6 translate-y-3 sm:translate-y-4`
       : "max-w-[1320px] w-full py-4 px-4 sm:px-8 translate-y-0"
     }
   `

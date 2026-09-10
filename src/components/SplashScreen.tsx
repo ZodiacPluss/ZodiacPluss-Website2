@@ -108,12 +108,14 @@ export default function SplashScreen({ onFinish }: SplashScreenProps) {
 
         {/* Text Details: Brand Title & Percentage */}
         <div className="flex flex-col justify-center leading-tight">
-          <h1
+          {/* Not an <h1>: the splash overlay renders on every route and a
+              second H1 would compete with each page's real heading. */}
+          <div
             className="text-[19px] sm:text-[21px] font-bold text-gray-900 tracking-tight"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             ZodiacPluss
-          </h1>
+          </div>
           <span
             className="text-[14px] sm:text-[15px] font-normal text-gray-400 tabular-nums mt-0.5"
             style={{ fontFamily: "'Inter', sans-serif" }}

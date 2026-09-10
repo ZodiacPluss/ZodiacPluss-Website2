@@ -1,6 +1,12 @@
 # ==============================================================
 #  robots.txt — ZodiacPluss (https://zodiacpluss.com)
 # ==============================================================
+#  Everything is crawlable, including the JS/CSS/assets Google
+#  needs in order to render this single-page application.
+#  Pages that should stay out of the index (/coming-soon, /experts,
+#  404s) carry a page-level `noindex, follow` instead of a Disallow,
+#  so Google can actually read the directive.
+# ==============================================================
 
 User-agent: *
 Allow: /

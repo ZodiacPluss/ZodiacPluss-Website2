@@ -1,36 +1,47 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-IN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="YBJjMCxK73b2gVZ72iq7OEGn4AZT_ARXkIy-tbuyhUI" />
-    <title>ZodiacPluss India - Your Personal Wellness Companion | Astrology &amp; Mental Wellness</title>
-    <meta name="description" content="ZodiacPluss India blends ancient astrological wisdom with modern psychology. Get personalised Vedic astrology readings, mental wellness sessions, and spiritual guidance across India." />
-    <meta name="keywords" content="ZodiacPluss, ZodiacPluss India, Zodiac Pluss, Zodiac Pluss India, ZodiacPluss Services Pvt Ltd, astrology India, mental wellness India, Vedic astrology India, therapy sessions, spiritual guidance India" />
+
+    <!-- Fonts are pulled in from src/index.css; warming the connections here
+         removes a round-trip from the critical path. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- SEO:START — regenerated per route at build time by the
+         `seo-prerender` Vite plugin. Values here are the Home page defaults
+         and come from src/utils/seo.config.ts. -->
+    <title>ZodiacPluss | Astrology &amp; Mental Wellness in India</title>
+    <meta name="description" content="ZodiacPluss brings Vedic astrology together with modern mental wellness — personalised readings, counselling sessions and corporate wellness programmes in India." />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://zodiacpluss.com/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ZodiacPluss" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:url" content="https://zodiacpluss.com/" />
+    <meta property="og:title" content="ZodiacPluss | Astrology &amp; Mental Wellness in India" />
+    <meta property="og:description" content="ZodiacPluss brings Vedic astrology together with modern mental wellness — personalised readings, counselling sessions and corporate wellness programmes in India." />
+    <meta property="og:image" content="https://zodiacpluss.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="ZodiacPluss" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@zodiacpluss" />
+    <meta name="twitter:title" content="ZodiacPluss | Astrology &amp; Mental Wellness in India" />
+    <meta name="twitter:description" content="ZodiacPluss brings Vedic astrology together with modern mental wellness — personalised readings, counselling sessions and corporate wellness programmes in India." />
+    <meta name="twitter:image" content="https://zodiacpluss.com/og-image.png" />
+    <!-- SEO:END -->
+
     <meta name="author" content="ZodiacPluss Services Pvt. Ltd." />
     <meta name="geo.region" content="IN-DL" />
     <meta name="geo.placename" content="New Delhi, India" />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <link rel="canonical" href="https://zodiacpluss.com/" />
     <link rel="icon" type="image/png" href="/logo.png" />
     <link rel="apple-touch-icon" href="/logo.png" />
     <meta name="theme-color" content="#14b8a6" />
-
-    <!-- Open Graph / Facebook / WhatsApp -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://zodiacpluss.com/" />
-    <meta property="og:site_name" content="ZodiacPluss India" />
-    <meta property="og:title" content="ZodiacPluss India - Your Personal Wellness Companion" />
-    <meta property="og:description" content="ZodiacPluss India blends ancient astrological wisdom with modern psychology. Personalized guidance for your mind, soul, and destiny across India." />
-    <meta property="og:image" content="https://zodiacpluss.com/og-image.png" />
-    <meta property="og:locale" content="en_IN" />
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@zodiacpluss" />
-    <meta name="twitter:title" content="ZodiacPluss India - Your Personal Wellness Companion" />
-    <meta name="twitter:description" content="ZodiacPluss blends ancient astrological wisdom with modern psychology in India. Personalized guidance for your mind, soul, and destiny." />
-    <meta name="twitter:image" content="https://zodiacpluss.com/og-image.png" />
 
     <!-- JSON-LD Structured Data Schema -->
     <script type="application/ld+json">
@@ -41,13 +52,26 @@
           "@type": "Organization",
           "@id": "https://zodiacpluss.com/#organization",
           "name": "ZodiacPluss",
-          "alternateName": ["ZodiacPluss India", "Zodiac Pluss", "ZodiacPluss Services Pvt. Ltd."],
           "legalName": "ZodiacPluss Services Pvt. Ltd.",
-          "url": "https://zodiacpluss.com",
-          "logo": "https://zodiacpluss.com/logo.png",
-          "description": "ZodiacPluss India provides personalized astrology readings, mental wellness sessions, and AI-powered spiritual guidance.",
+          "alternateName": [
+            "Zodiac Pluss",
+            "Zodiac Plus",
+            "ZodiacPluss India",
+            "Zodiac Plus India",
+            "ZodiacPluss Services Pvt Ltd"
+          ],
+          "url": "https://zodiacpluss.com/",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://zodiacpluss.com/#logo",
+            "url": "https://zodiacpluss.com/logo.png",
+            "contentUrl": "https://zodiacpluss.com/logo.png",
+            "caption": "ZodiacPluss"
+          },
+          "image": { "@id": "https://zodiacpluss.com/#logo" },
+          "description": "ZodiacPluss offers Vedic astrology consultations, mental wellness and counselling sessions, and corporate Employee Assistance Programme services in India.",
           "email": "info@zodiacpluss.com",
-          "telephone": "+91 9868111414",
+          "telephone": "+91-9868111414",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "Building No. 199, Pocket 20, Rohini Sector 24",
@@ -56,6 +80,16 @@
             "postalCode": "110085",
             "addressCountry": "IN"
           },
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "contactType": "customer support",
+              "telephone": "+91-9868111414",
+              "email": "info@zodiacpluss.com",
+              "areaServed": "IN",
+              "availableLanguage": ["en", "hi"]
+            }
+          ],
           "areaServed": {
             "@type": "Country",
             "name": "India"
@@ -69,14 +103,12 @@
         {
           "@type": "WebSite",
           "@id": "https://zodiacpluss.com/#website",
-          "url": "https://zodiacpluss.com",
-          "name": "ZodiacPluss India",
-          "alternateName": "ZodiacPluss",
-          "description": "ZodiacPluss India - Your Personal Wellness Companion | Astrology & Mental Wellness",
-          "publisher": {
-            "@id": "https://zodiacpluss.com/#organization"
-          },
-          "inLanguage": ["en-IN", "en-US"]
+          "url": "https://zodiacpluss.com/",
+          "name": "ZodiacPluss",
+          "alternateName": ["Zodiac Plus", "ZodiacPluss India"],
+          "description": "Astrology and mental wellness guidance from ZodiacPluss.",
+          "publisher": { "@id": "https://zodiacpluss.com/#organization" },
+          "inLanguage": "en-IN"
         }
       ]
     }

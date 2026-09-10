@@ -10,11 +10,12 @@ import BookSessionPage from '@/pages/BookSessionPage'
 import CareerPage from '@/pages/CareerPage'
 import PortfolioPage from '@/pages/PortfolioPage'
 import ComingSoonPage from '@/pages/ComingSoonPage'
-import CustomCursor from '@/components/CustomCursor'
+import NotFoundPage from '@/pages/NotFoundPage'
 import SplashScreen from '@/components/SplashScreen'
 import {
   getPageFromLocation,
   getCanonicalPath,
+  NOT_FOUND_KEY,
   type PageKey,
 } from '@/utils/routes'
 import { useSEO } from '@/hooks/useSEO'
@@ -42,11 +43,16 @@ export default function App() {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }
 
-    // Set initial canonical path if landing directly on alias or dirty path
+    // Normalise alias URLs client-side as a fallback. Vercel already serves a
+    // 301 for every alias (see vercel.json); this only catches the case where
+    // the app is reached without those redirects. Unknown paths are left alone
+    // so a 404 URL never rewrites itself into the canonical homepage.
     const initialPage = getPageFromLocation()
-    const canonicalPath = getCanonicalPath(initialPage)
-    if (window.location.pathname !== canonicalPath && !window.location.hash) {
-      window.history.replaceState({ page: initialPage }, '', canonicalPath)
+    if (initialPage !== NOT_FOUND_KEY) {
+      const canonicalPath = getCanonicalPath(initialPage)
+      if (window.location.pathname !== canonicalPath && !window.location.hash) {
+        window.history.replaceState({ page: initialPage }, '', canonicalPath)
+      }
     }
 
     window.addEventListener('popstate', handlePopState)
@@ -87,7 +93,7 @@ export default function App() {
       case 'Career':         return <CareerPage onNavigate={handleNavigate} dark={dark} />
       case 'Portfolio':      return <PortfolioPage onNavigate={handleNavigate} dark={dark} />
       case 'Coming Soon':    return <ComingSoonPage onNavigate={handleNavigate} dark={dark} />
-      default:               return <HomePage onNavigate={handleNavigate} dark={dark} />
+      default:               return <NotFoundPage onNavigate={handleNavigate} dark={dark} />
     }
   }
 
@@ -100,7 +106,6 @@ export default function App() {
       }}
     >
       {showSplash && <SplashScreen onFinish={() => setShowSplash(false)} />}
-      <CustomCursor />
       <Navbar
         currentPage={currentPage}
         onNavigate={handleNavigate}

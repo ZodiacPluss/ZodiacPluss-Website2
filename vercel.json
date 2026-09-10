@@ -1,10 +1,20 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/home", "destination": "/", "permanent": true },
+    { "source": "/about", "destination": "/about-us", "permanent": true },
+    { "source": "/aboutus", "destination": "/about-us", "permanent": true },
+    { "source": "/for-corporates", "destination": "/services", "permanent": true },
+    { "source": "/corporates", "destination": "/services", "permanent": true },
+    { "source": "/careers", "destination": "/career", "permanent": true },
+    { "source": "/jobs", "destination": "/career", "permanent": true },
+    { "source": "/book-session", "destination": "/book", "permanent": true },
+    { "source": "/contact", "destination": "/book", "permanent": true },
+    { "source": "/contact-us", "destination": "/book", "permanent": true },
+    { "source": "/connect", "destination": "/book", "permanent": true },
+    { "source": "/comingsoon", "destination": "/coming-soon", "permanent": true }
   ],
   "headers": [
     {
