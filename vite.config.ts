@@ -98,8 +98,12 @@ function seoBlock(page: SeoPageConfig): string {
 }
 
 function buildSitemap(): string {
+  const lastmod = new Date().toISOString().split('T')[0]
   const urls = getIndexablePages()
-    .map((page) => `  <url>\n    <loc>${absoluteUrl(page.path)}</loc>\n  </url>`)
+    .map(
+      (page) =>
+        `  <url>\n    <loc>${absoluteUrl(page.path)}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`,
+    )
     .join('\n')
 
   return `<?xml version="1.0" encoding="UTF-8"?>
