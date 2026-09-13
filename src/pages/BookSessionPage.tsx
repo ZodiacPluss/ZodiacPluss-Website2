@@ -266,7 +266,13 @@ export default function BookSessionPage({ onNavigate, dark }: BookSessionPagePro
                 </InfoIcon>
                 <div>
                   <div style={{ fontSize: '12px', fontWeight: 600, color: textPrimary, marginBottom: '2px' }}>Email</div>
-                  <div className="text-xs sm:text-[12.5px] break-all" style={{ color: textMuted }}>info@zodiacpluss.com</div>
+                  <a
+                    href="mailto:info@zodiacpluss.com"
+                    className="text-xs sm:text-[12.5px] break-all hover:underline transition-opacity hover:opacity-80"
+                    style={{ color: textMuted, textDecoration: 'none' }}
+                  >
+                    info@zodiacpluss.com
+                  </a>
                 </div>
               </div>
 
@@ -280,7 +286,13 @@ export default function BookSessionPage({ onNavigate, dark }: BookSessionPagePro
                 </InfoIcon>
                 <div>
                   <div style={{ fontSize: '12px', fontWeight: 600, color: textPrimary, marginBottom: '2px' }}>Phone</div>
-                  <div className="text-xs sm:text-[12.5px]" style={{ color: textMuted }}>+91 90566 41865</div>
+                  <a
+                    href="tel:+919868111414"
+                    className="text-xs sm:text-[12.5px] hover:underline transition-opacity hover:opacity-80"
+                    style={{ color: textMuted, textDecoration: 'none' }}
+                  >
+                    +91 98681 11414
+                  </a>
                 </div>
               </div>
 

@@ -10,5 +10,6 @@
 
 User-agent: *
 Allow: /
+Disallow: /api/
 
 Sitemap: https://zodiacpluss.com/sitemap.xml

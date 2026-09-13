@@ -57,6 +57,113 @@ function breadcrumbJsonLd(page: SeoPageConfig): string {
   return `\n    <script type="application/ld+json">\n${JSON.stringify(payload, null, 2)}\n    </script>`
 }
 
+const FAQS = [
+  {
+    q: 'What types of services does ZodiacPluss offer?',
+    a: 'ZodiacPluss offers Vedic astrology readings, numerology analysis, tarot guidance, cognitive behavioral therapy, crystal healing consultations, and AI-powered birth chart analysis — all in one seamless platform. Each service is delivered by verified, certified professionals.',
+  },
+  {
+    q: 'How accurate are the astrological readings?',
+    a: 'Our astrologers combine decades of traditional study with modern analytical tools. While astrology provides guidance rather than certainties, our verified experts maintain the genuine conversation and provide needfull guidance to our Zodiac Pluss Family.',
+  },
+  {
+    q: 'Are the astrologers and therapists certified and verified?',
+    a: 'Yes. Every expert on ZodiacPluss goes through a rigorous background check, credential verification, and a trial review process before being listed. Therapists hold recognized professional licenses; astrologers are evaluated for experience and accuracy.',
+  },
+  {
+    q: 'Is my personal information kept confidential?',
+    a: 'Absolutely. All sessions, birth data, and personal details are encrypted end-to-end. We never share your information with third parties. You can delete your account and all associated data at any time from your profile settings.',
+  },
+  {
+    q: 'How do I book a session with an expert?',
+    a: 'Navigate to the Experts page, browse profiles, and tap "Book Session" on any expert card. You can filter by specialty, language, availability, and price. First-time users receive a complimentary introductory session.',
+  },
+  {
+    q: 'What payment methods are accepted?',
+    a: 'We accept all major credit and debit cards, UPI (Google Pay, PhonePe, Paytm), net banking, and ZodiacPluss Wallet credits. All transactions are secured via PCI-DSS compliant payment gateways in a very secure path.',
+  },
+  {
+    q: 'Do you offer corporate wellness programs?',
+    a: 'Yes — our "For Corporates" plans provide team astro-wellness workshops, bulk therapy session packages, and custom integrations for HR portals. Contact us via the Book a Session page to request a tailored proposal.',
+  },
+  {
+    q: "Can I get a refund if I'm not satisfied?",
+    a: 'We offer a satisfaction guarantee. If you are not happy with your session, report it within 24 hours and we will issue a full ZodiacPluss Wallet credit for your next session. Monetary refunds are reviewed on a case-by-case basis.',
+  },
+]
+
+function faqJsonLd(page: SeoPageConfig): string {
+  if (page.path !== '/about-us') return ''
+  const payload = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQS.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.a,
+      },
+    })),
+  }
+  return `\n    <script type="application/ld+json">\n${JSON.stringify(payload, null, 2)}\n    </script>`
+}
+
+function serviceJsonLd(page: SeoPageConfig): string {
+  if (page.path !== '/services') return ''
+  const payload = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'ZodiacPluss Astrology & Mental Wellness Services',
+    description: 'Comprehensive Vedic astrology, tarot readings, licensed mental health counselling, and corporate wellness programmes.',
+    itemListElement: [
+      {
+        '@type': 'Service',
+        name: 'Vedic Astrology Consultation & Birth Chart Analysis',
+        description: 'Personalised birth chart readings, kundali analysis, and planetary guidance from certified Vedic astrologers.',
+        provider: {
+          '@type': 'Organization',
+          name: 'ZodiacPluss',
+          url: `${SITE_URL}/`,
+        },
+        areaServed: {
+          '@type': 'Country',
+          name: 'India',
+        },
+      },
+      {
+        '@type': 'Service',
+        name: 'Mental Wellness & Therapy Sessions',
+        description: 'One-on-one sessions with licensed therapists integrating psychological counselling and holistic wellness.',
+        provider: {
+          '@type': 'Organization',
+          name: 'ZodiacPluss',
+          url: `${SITE_URL}/`,
+        },
+        areaServed: {
+          '@type': 'Country',
+          name: 'India',
+        },
+      },
+      {
+        '@type': 'Service',
+        name: 'Corporate Wellness & Employee Assistance Programs (EAP)',
+        description: 'Corporate EAP packages, team astro-wellness workshops, and confidential mental health support for workplaces.',
+        provider: {
+          '@type': 'Organization',
+          name: 'ZodiacPluss',
+          url: `${SITE_URL}/`,
+        },
+        areaServed: {
+          '@type': 'Country',
+          name: 'India',
+        },
+      },
+    ],
+  }
+  return `\n    <script type="application/ld+json">\n${JSON.stringify(payload, null, 2)}\n    </script>`
+}
+
 function seoBlock(page: SeoPageConfig): string {
   const url = absoluteUrl(page.path)
   const title = escapeHtml(page.title)
@@ -93,7 +200,7 @@ function seoBlock(page: SeoPageConfig): string {
     <meta name="twitter:site" content="@zodiacpluss" />
     <meta name="twitter:title" content="${title}" />
     <meta name="twitter:description" content="${description}" />
-    <meta name="twitter:image" content="${OG_IMAGE}" />${breadcrumbJsonLd(page)}
+    <meta name="twitter:image" content="${OG_IMAGE}" />${breadcrumbJsonLd(page)}${faqJsonLd(page)}${serviceJsonLd(page)}
     <!-- SEO:END -->`
 }
 
@@ -102,12 +209,13 @@ function buildSitemap(): string {
   const urls = getIndexablePages()
     .map(
       (page) =>
-        `  <url>\n    <loc>${absoluteUrl(page.path)}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`,
+        `  <url>\n    <loc>${absoluteUrl(page.path)}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <image:image>\n      <image:loc>${OG_IMAGE}</image:loc>\n      <image:title>${escapeHtml(page.title)}</image:title>\n    </image:image>\n  </url>`,
     )
     .join('\n')
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${urls}
 </urlset>
 `
