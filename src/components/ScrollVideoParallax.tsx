@@ -18,7 +18,13 @@ export default function ScrollVideoParallax({
   children,
 }: ScrollVideoParallaxProps) {
   return (
-    <div style={{ position: 'relative', isolation: 'isolate' }}>
+    <div
+      style={{
+        position: 'relative',
+        isolation: 'isolate',
+        background: '#060412',
+      }}
+    >
 
       {/* ── Sticky video background ─────────────────────────────── */}
       <div
@@ -26,40 +32,37 @@ export default function ScrollVideoParallax({
         style={{
           position: 'sticky',
           top: 0,
+          left: 0,
+          width: '100%',
+          height: '100vh',
+          marginBottom: '-100vh',
           zIndex: 0,
-          height: 0,          // takes no space in flow
-          overflow: 'visible',
+          overflow: 'hidden',
           pointerEvents: 'none',
         }}
       >
+        <video
+          src={videoUrl}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            display: 'block',
+          }}
+        />
+        {/* Dark overlay for text readability */}
         <div
           style={{
             position: 'absolute',
-            top: 0,
-            left: '50%',
-            transform: 'translateX(-50%)',
-            width: '100vw',
-            height: '100vh',
+            inset: 0,
+            background: `rgba(6,4,18,${overlayOpacity})`,
           }}
-        >
-          <video
-            src={videoUrl}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-          />
-          {/* Light dark overlay for text readability */}
-          <div
-            style={{
-              position: 'absolute',
-              inset: 0,
-              background: `rgba(6,4,18,${overlayOpacity})`,
-            }}
-          />
-        </div>
+        />
       </div>
 
       {/* ── Scrollable content sits above video ─────────────────── */}

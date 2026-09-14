@@ -7,10 +7,10 @@
    ───────────────────────────────────────────────────────────────── */
 
 const DARK_BG = '#071e19'
-const ACCENT   = '#3ecfb3'   // bright teal headline accent
-const TEAL     = '#26b2a2ff'
-const TEAL_D   = '#40d0cbff'
-const NAVY     = '#1a1060'
+const ACCENT = '#3ecfb3'   // bright teal headline accent
+const TEAL = '#26b2a2ff'
+const TEAL_D = '#40d0cbff'
+const NAVY = '#1a1060'
 
 const MEDITATION =
   'https://res.cloudinary.com/pp0lpskp/image/upload/v1786114130/9eb6def5a93718e462ce7c37dcb77329_k3rqji.jpg'
@@ -20,17 +20,18 @@ const MEDITATION =
 /* ══════════════════════════════════════════════════════════════════
    BAND 1 – Dark hero
    ══════════════════════════════════════════════════════════════════ */
-function DarkHero({ onNavigate, dark = false }: { onNavigate?: (p: string) => void; dark?: boolean }) {
-  const primaryText = dark ? 'white' : '#111827'
-  const mutedText = dark ? 'rgba(255,255,255,0.60)' : '#4b5563'
-  const featureMutedText = dark ? 'rgba(255,255,255,0.50)' : '#6b7280'
+function DarkHero({ onNavigate }: { onNavigate?: (p: string) => void; dark?: boolean }) {
+  // Always pure white and soft white text in both dark and light mode
+  const primaryText = '#ffffff'
+  const mutedText = 'rgba(255, 255, 255, 0.70)'
+  const featureMutedText = 'rgba(255, 255, 255, 0.65)'
 
   const features = [
     {
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={ACCENT} strokeWidth="1.8">
-          <circle cx="12" cy="8" r="4"/><path d="M4 20c0-3.87 3.58-7 8-7s8 3.13 8 7"/>
-          <path d="m9 11 2 2 4-4" stroke={ACCENT}/>
+          <circle cx="12" cy="8" r="4" /><path d="M4 20c0-3.87 3.58-7 8-7s8 3.13 8 7" />
+          <path d="m9 11 2 2 4-4" stroke={ACCENT} />
         </svg>
       ),
       title: 'Trusted Experts',
@@ -39,9 +40,9 @@ function DarkHero({ onNavigate, dark = false }: { onNavigate?: (p: string) => vo
     {
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={ACCENT} strokeWidth="1.8">
-          <rect x="5" y="11" width="14" height="10" rx="2"/>
-          <path d="M8 11V7a4 4 0 0 1 8 0v4"/>
-          <circle cx="12" cy="16" r="1" fill={ACCENT}/>
+          <rect x="5" y="11" width="14" height="10" rx="2" />
+          <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+          <circle cx="12" cy="16" r="1" fill={ACCENT} />
         </svg>
       ),
       title: 'Private & Secure',
@@ -50,8 +51,8 @@ function DarkHero({ onNavigate, dark = false }: { onNavigate?: (p: string) => vo
     {
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={ACCENT} strokeWidth="1.8">
-          <path d="M12 2a9 9 0 0 1 9 9c0 3.5-2 6.6-5 8.2v.8a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-.8C5 17.6 3 14.5 3 11a9 9 0 0 1 9-9z"/>
-          <path d="M9 17h6M10 14h4"/>
+          <path d="M12 2a9 9 0 0 1 9 9c0 3.5-2 6.6-5 8.2v.8a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-.8C5 17.6 3 14.5 3 11a9 9 0 0 1 9-9z" />
+          <path d="M9 17h6M10 14h4" />
         </svg>
       ),
       title: 'Holistic Well-being',
@@ -69,61 +70,43 @@ function DarkHero({ onNavigate, dark = false }: { onNavigate?: (p: string) => vo
       }} />
 
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: 'clamp(48px,7vw,80px) 24px', position: 'relative', zIndex: 1 }}>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-12 items-center">
 
           {/* LEFT – headline */}
-          <div className="lg:col-span-1 order-2 lg:order-1">
+          <div className="lg:col-span-1 order-1 lg:order-1">
             {/* ZodiacPluss wordmark */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 32 }}>
-              <span style={{ color: ACCENT, fontSize: 14 }}></span>
-              <span style={{ color: primaryText, fontSize: 14, fontWeight: 700, fontFamily: "'Inter', sans-serif", letterSpacing: '0.05em' }}>ZodiacPluss</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 28 }}>
+              <span style={{ color: '#ffffff', fontSize: 14, fontWeight: 700, fontFamily: "'Inter', sans-serif", letterSpacing: '0.04em' }}>ZodiacPluss</span>
             </div>
 
             <h2 style={{
               fontFamily: "'Playfair Display', serif",
-              fontSize: 'clamp(30px, 4vw, 50px)',
-              fontWeight: 700, color: primaryText, lineHeight: 1.15,
-              margin: '0 0 6px',
+              fontSize: 'clamp(32px, 4vw, 52px)',
+              fontWeight: 700, color: '#ffffff', lineHeight: 1.15,
+              margin: '0 0 4px',
             }}>
               Guidance for<br />Your Stars.
             </h2>
             <h2 style={{
               fontFamily: "'Playfair Display', serif",
-              fontSize: 'clamp(28px, 4vw, 48px)',
-              fontWeight: 700, color: ACCENT, lineHeight: 1.2,
+              fontSize: 'clamp(30px, 3.8vw, 48px)',
+              fontWeight: 700, color: '#ffffff', lineHeight: 1.18,
               margin: '0 0 24px', fontStyle: 'italic',
             }}>
-              Support for Your Soul.
+              Support for<br />Your Soul.
             </h2>
             <p style={{
-              fontFamily: "'Inter', serif",
+              fontFamily: "'Inter', sans-serif",
               fontSize: 'clamp(13px, 1.3vw, 15px)',
               color: mutedText,
-              lineHeight: 1.75, margin: '0 0 36px', maxWidth: 340,
+              lineHeight: 1.75, margin: 0, maxWidth: 360,
             }}>
               ZodiacPluss is where ancient wisdom meets modern healing. Astrology to light your path, therapy to heal your heart.
             </p>
-            <button
-              onClick={() => onNavigate?.('Book')}
-              style={{
-                background: "linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)",
-                border: 'none', borderRadius: 999,
-                padding: '12px 26px', color: 'white',
-                fontFamily: "'Inter', sans-serif",
-                fontSize: 14, fontWeight: 700, cursor: 'pointer',
-                display: 'inline-flex', alignItems: 'center', gap: 8,
-                boxShadow: '0 6px 20px rgba(20,184,166,0.35)',
-              }}
-            >
-              Begin Your Journey
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </button>
           </div>
 
-          {/* CENTER – cosmic woman */}
-          <div className="order-1 lg:order-2 flex justify-center" style={{ position: 'relative' }}>
+          {/* CENTER – cosmic flatlay */}
+          <div className="order-2 lg:order-2 flex justify-center" style={{ position: 'relative' }}>
             <div style={{
               width: 'clamp(220px,32vw,320px)',
               height: 'clamp(220px,32vw,320px)',
@@ -145,29 +128,29 @@ function DarkHero({ onNavigate, dark = false }: { onNavigate?: (p: string) => vo
               }}>
                 <img
                   src={MEDITATION}
-                  alt="Woman meditating in cosmic light"
+                  alt="ZodiacPluss astrology consultation and wisdom"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
                 />
                 <div style={{
                   position: 'absolute', inset: 0,
-                  background: 'linear-gradient(180deg, rgba(7,30,25,0.1) 0%, rgba(7,30,25,0.4) 100%)',
+                  background: 'linear-gradient(180deg, rgba(7,30,25,0.05) 0%, rgba(7,30,25,0.3) 100%)',
                 }} />
               </div>
             </div>
           </div>
 
           {/* RIGHT – feature bullets */}
-          <div className="order-3 space-y-0">
+          <div className="order-3 lg:order-3 space-y-0">
             {features.map((f, i) => (
               <div key={i} style={{
-                display: 'flex', gap: 14, alignItems: 'flex-start',
-                padding: '18px 0',
-                borderBottom: i < features.length - 1 ? '1px solid rgba(255,255,255,0.08)' : 'none',
+                display: 'flex', gap: 16, alignItems: 'center',
+                padding: '20px 0',
+                borderBottom: i < features.length - 1 ? '1px solid rgba(255,255,255,0.10)' : 'none',
               }}>
                 <div style={{
-                  width: 40, height: 40, borderRadius: 10, flexShrink: 0,
-                  background: 'rgba(61,214,172,0.10)',
-                  border: '1px solid rgba(61,214,172,0.25)',
+                  width: 44, height: 44, borderRadius: 12, flexShrink: 0,
+                  background: 'rgba(20,184,166,0.12)',
+                  border: '1px solid rgba(20,184,166,0.25)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                 }}>
                   {f.icon}
@@ -175,7 +158,7 @@ function DarkHero({ onNavigate, dark = false }: { onNavigate?: (p: string) => vo
                 <div>
                   <p style={{
                     fontFamily: "'Inter', sans-serif",
-                    fontSize: 14, fontWeight: 700, color: primaryText, margin: '0 0 4px',
+                    fontSize: 15, fontWeight: 700, color: '#ffffff', margin: '0 0 4px',
                   }}>{f.title}</p>
                   <p style={{
                     fontFamily: "'Inter', sans-serif",
@@ -221,23 +204,30 @@ function AboutBand({ onNavigate, dark = false }: { onNavigate?: (p: string) => v
                 border: '1px solid rgba(20,184,166,0.15)',
               }} />
 
-              {/* Circle photo */}
+              {/* Circle logo */}
               <div style={{
                 width: '100%', height: '100%',
                 borderRadius: '50%', overflow: 'hidden',
-                boxShadow: '0 20px 60px rgba(7,30,25,0.18)',
+                boxShadow: dark ? '0 20px 60px rgba(0,0,0,0.5)' : '0 20px 60px rgba(7,30,25,0.12)',
                 border: `4px solid ${cardBg}`,
+                background: dark ? '#141416' : '#ffffff',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
                 position: 'relative', zIndex: 1,
+                padding: 0,
               }}>
                 <img
-                  src={MEDITATION}
-                  alt="Woman in meditation — ZodiacPluss spiritual guidance"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
+                  src="https://res.cloudinary.com/pp0lpskp/image/upload/v1786032742/Zodiac_Colored_Logo_croped-removebg-preview_appzet.png"
+                  alt="ZodiacPluss Logo"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    transform: 'scale(1.04)',
+                    display: 'block',
+                  }}
                 />
-                <div style={{
-                  position: 'absolute', inset: 0,
-                  background: 'linear-gradient(180deg, transparent 50%, rgba(7,30,25,0.35) 100%)',
-                }} />
               </div>
 
               {/* Happy souls badge */}
@@ -249,15 +239,10 @@ function AboutBand({ onNavigate, dark = false }: { onNavigate?: (p: string) => v
                 display: 'flex', alignItems: 'center', gap: 10,
                 border: '1px solid rgba(184, 146, 20, 0.2)',
               }}>
-                <div style={{
-                  width: 36, height: 36, borderRadius: 100, flexShrink: 0,
-                  background: `linear-gradient(135deg, ${TEAL}, ${TEAL_D})`,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 16,
-                }}></div>
+
                 <div>
-                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 16, fontWeight: 900, color: headingColor, lineHeight: 1 }}>20+</div>
-                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, color: dark ? '#a1a1aa' : '#888', marginTop: 1 }}>Mentors Onboarding</div>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 16, fontWeight: 900, color: headingColor, lineHeight: 1 }}>ZODIAC PLUSS</div>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, color: dark ? '#a1a1aa' : '#888', marginTop: 1 }}></div>
                 </div>
               </div>
             </div>
@@ -315,7 +300,7 @@ function AboutBand({ onNavigate, dark = false }: { onNavigate?: (p: string) => v
               >
                 Our Journey
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                  <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </button>
               <button
@@ -335,7 +320,7 @@ function AboutBand({ onNavigate, dark = false }: { onNavigate?: (p: string) => v
               >
                 Our Services
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                  <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </button>
             </div>
@@ -350,10 +335,11 @@ function AboutBand({ onNavigate, dark = false }: { onNavigate?: (p: string) => v
 /* ══════════════════════════════════════════════════════════════════
    BAND 3 – Dark mission
    ══════════════════════════════════════════════════════════════════ */
-function MissionBand({ onNavigate, dark = false }: { onNavigate?: (p: string) => void; dark?: boolean }) {
-  const primaryText = dark ? 'white' : '#111827'
-  const mutedText = dark ? 'rgba(255,255,255,0.55)' : '#4b5563'
-  const pillarMutedText = dark ? 'rgba(255,255,255,0.45)' : '#6b7280'
+function MissionBand({ onNavigate }: { onNavigate?: (p: string) => void; dark?: boolean }) {
+  // Always pure white and soft white text in both dark and light mode
+  const primaryText = '#ffffff'
+  const mutedText = 'rgba(255, 255, 255, 0.70)'
+  const pillarMutedText = 'rgba(255, 255, 255, 0.65)'
 
   const pillars = [
     {
@@ -386,8 +372,6 @@ function MissionBand({ onNavigate, dark = false }: { onNavigate?: (p: string) =>
         background: 'radial-gradient(ellipse 60% 70% at 30% 50%, rgba(61,214,172,0.07) 0%, transparent 65%)',
       }} />
 
-
-
       <div style={{ maxWidth: 1200, margin: '0 auto', position: 'relative', zIndex: 1 }}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
@@ -406,14 +390,14 @@ function MissionBand({ onNavigate, dark = false }: { onNavigate?: (p: string) =>
             >
               Our Mission
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
+                <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </button>
 
             <h2 style={{
               fontFamily: "'Playfair Display', serif",
               fontSize: 'clamp(36px,5.5vw,68px)',
-              fontWeight: 800, color: primaryText, lineHeight: 1.08,
+              fontWeight: 800, color: '#ffffff', lineHeight: 1.08,
               margin: '0 0 24px', letterSpacing: '-0.01em',
             }}>
               Empower.<br />Heal. Guide.
@@ -433,24 +417,23 @@ function MissionBand({ onNavigate, dark = false }: { onNavigate?: (p: string) =>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {pillars.map((p, i) => (
               <div key={i} style={{
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(61,214,172,0.14)',
-                borderRadius: 16, padding: '20px 20px',
+                background: 'rgba(255,255,255,0.05)',
+                border: '1px solid rgba(255,255,255,0.10)',
+                borderRadius: 18, padding: '24px 22px',
                 backdropFilter: 'blur(8px)',
                 transition: 'background 0.2s',
               }}
-                onMouseEnter={e => (e.currentTarget as HTMLDivElement).style.background = 'rgba(61,214,172,0.07)'}
-                onMouseLeave={e => (e.currentTarget as HTMLDivElement).style.background = 'rgba(255,255,255,0.04)'}
+                onMouseEnter={e => (e.currentTarget as HTMLDivElement).style.background = 'rgba(61,214,172,0.08)'}
+                onMouseLeave={e => (e.currentTarget as HTMLDivElement).style.background = 'rgba(255,255,255,0.05)'}
               >
-                <div style={{ fontSize: 26, marginBottom: 10 }}>{}</div>
                 <p style={{
                   fontFamily: "'Inter', sans-serif",
-                  fontSize: 13.5, fontWeight: 700, color: primaryText,
-                  margin: '0 0 5px',
+                  fontSize: 15, fontWeight: 700, color: '#ffffff',
+                  margin: '0 0 8px',
                 }}>{p.title}</p>
                 <p style={{
                   fontFamily: "'Inter', sans-serif",
-                  fontSize: 12.5, color: pillarMutedText,
+                  fontSize: 13, color: pillarMutedText,
                   margin: 0, lineHeight: 1.6,
                 }}>{p.desc}</p>
               </div>
@@ -471,8 +454,8 @@ interface Props { onNavigate?: (page: string) => void; dark?: boolean }
 export default function ZodiacMissionSection({ onNavigate, dark = false }: Props) {
   return (
     <>
-      <DarkHero    onNavigate={onNavigate} dark={dark} />
-      <AboutBand   onNavigate={onNavigate} dark={dark} />
+      <DarkHero onNavigate={onNavigate} dark={dark} />
+      <AboutBand onNavigate={onNavigate} dark={dark} />
       <MissionBand onNavigate={onNavigate} dark={dark} />
     </>
   )

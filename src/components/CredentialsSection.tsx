@@ -6,8 +6,8 @@ const certificates = [
     title: 'DPIIT Recognition Certificate',
     subtitle: 'Startup India – Dept. for Promotion of Industry & Internal Trade',
     badge: 'DPIIT / STARTUP INDIA',
-    certNo: 'DPIIT-84920-2024',
-    issuedBy: 'Ministry of Commerce and Industry, Govt. of India',
+    certNo: 'DIPP270484',
+    issuedBy: 'Ministry of Commerce & Industry, India',
     color: '#1aa0b8ff',
     bgLight: '#f0fdfa',
     bgDark: '#161717',
@@ -17,9 +17,9 @@ const certificates = [
   {
     id: 'gst',
     title: 'GST Registration Certificate',
-    subtitle: 'Government of India – Central Board of Indirect Taxes',
+    subtitle: 'Government of India',
     badge: 'GST REGISTERED',
-    certNo: '07AAACZ9841B1Z3',
+    certNo: ' 07AADCZ0348Q1ZS',
     color: '#1aa0b8ff',
     bgLight: '#f0fdfa',
     bgDark: '#161717',
@@ -31,7 +31,7 @@ const certificates = [
     title: 'MSME Udyam Registration',
     subtitle: 'Ministry of Micro, Small and Medium Enterprises',
     badge: 'UDYAM CERTIFIED',
-    certNo: 'UDYAM-DL-08-0049281',
+    certNo: 'UDYAM-DL-06-0212115',
     issuedBy: 'Govt. of India MSME Enterprise Portal',
     color: '#1aa0b8ff',
     bgLight: '#f0fdfa',
@@ -41,11 +41,11 @@ const certificates = [
   },
   {
     id: 'iso27001',
-    title: 'ISO 27001:2022 Security Cert.',
+    title: 'ISO 27001:2022 Security Certificate',
     subtitle: 'Information Security & Data Protection Standard',
-    badge: 'ISO 27001',
-    certNo: 'ISMS-IND-2024-8841',
-    issuedBy: 'Global Accreditation Forum (GAF)',
+    badge: 'ISO 27001  CERTIFIED',
+    certNo: '26UQAA55',
+    issuedBy: 'National Accreditation Board for Certification Bodies under the Quality Council of India (QCI)',
     color: '#1aa0b8ff',
     bgLight: '#f0fdfa',
     bgDark: '#161717',
@@ -54,10 +54,10 @@ const certificates = [
   },
   {
     id: 'iso9001',
-    title: 'ISO 9001:2015 Quality Cert.',
+    title: 'ISO 9001:2015 Quality Certificate',
     subtitle: 'Quality Management & Excellence System',
-    badge: 'ISO 9001',
-    certNo: 'QMS-IND-2024-9042',
+    badge: 'ISO 9001  CERTIFIED',
+    certNo: '26UQAB38',
     issuedBy: 'International Accreditation Service (IAS)',
     color: '#1aa0b8ff',
     bgLight: '#161717ff',
@@ -67,8 +67,6 @@ const certificates = [
   },
 ]
 
-const BG_VIDEO = 'https://res.cloudinary.com/pp0lpskp/video/upload/v1787222681/Background_video1_btmhwb.mp4'
-
 interface CredentialsSectionProps {
   dark?: boolean
 }
@@ -76,50 +74,17 @@ interface CredentialsSectionProps {
 export default function CredentialsSection({ dark = false }: CredentialsSectionProps) {
   const [activeCert, setActiveCert] = useState<string | null>(null)
 
-  const sectionBg = dark ? '#000000' : '#f8f6ff'
-  const cardBg = dark ? 'rgba(20,20,22,0.82)' : 'rgba(255,255,255,0.10)'
   const textColor = dark ? '#f5f5f5' : '#ffffff'
-  const subtextColor = dark ? '#b0b0b5' : 'rgba(220,210,255,0.75)'
+  const subtextColor = dark ? '#5aad38ff' : '#5aad38ff'
 
   return (
     <section
       className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 transition-colors duration-300 relative overflow-hidden w-full"
     >
-      {/* Background video stretched 100% across entire section height for mobile, tablet, and desktop */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <video
-          src={BG_VIDEO}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          className="w-full h-full object-cover"
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-        />
-        {/* Dark readability overlay covering 100% of background video */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: dark
-              ? 'linear-gradient(180deg, rgba(6,4,18,0.85) 0%, rgba(10,8,30,0.78) 50%, rgba(6,4,18,0.85) 100%)'
-              : 'linear-gradient(180deg, rgba(6,4,18,0.78) 0%, rgba(10,8,30,0.72) 50%, rgba(6,4,18,0.78) 100%)',
-            zIndex: 1,
-          }}
-        />
-      </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center mb-10 sm:mb-14">
-          <span
-            className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.2em] uppercase px-4 py-1.5 rounded-full mb-3"
-            style={{
-              color: '#14b8a6',
-              background: dark ? 'rgba(20,184,166,0.12)' : 'rgba(20,184,166,0.08)',
-              border: '1px solid rgba(20,184,166,0.25)',
-            }}
-          ></span>
 
           <h2
             className="text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-4"

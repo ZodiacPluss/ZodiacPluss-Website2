@@ -19,7 +19,7 @@ interface HomePageProps {
 
 export default function HomePage({ onNavigate, dark }: HomePageProps) {
   return (
-    <div className="w-full overflow-hidden transition-colors duration-300">
+    <div className="w-full overflow-x-clip transition-colors duration-300" style={{ overflowX: 'clip' }}>
       {/* Hero — excluded from parallax wrapper */}
       <HeroSection onNavigate={onNavigate} />
       <BrandsMarquee dark={dark} />
