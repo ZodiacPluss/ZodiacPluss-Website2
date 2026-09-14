@@ -188,7 +188,7 @@ export default function AboutSection({ onNavigate, dark = false }: AboutSectionP
               >
                 {services.map((svc, i) => (
                   <div
-                    key={svc.id}
+                   
                     className="h-full flex-shrink-0 px-1"
                     style={{ width: `${100 / total}%` }}
                   >
@@ -210,7 +210,7 @@ export default function AboutSection({ onNavigate, dark = false }: AboutSectionP
                       {/* Minimalist index indicator */}
                       <div className="relative z-10 p-4 sm:p-5 flex items-center justify-between pointer-events-none">
                         <span className="text-xs font-mono text-white/70 font-bold px-2 py-0.5 rounded bg-black/30 backdrop-blur-sm">
-                          {svc.id}
+                          
                         </span>
                         {i === activeIndex && (
                           <div> 

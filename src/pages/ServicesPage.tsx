@@ -48,7 +48,7 @@ const services = [
     color: '#c44832ff',
   },
   {
-    title: 'EAP, SAP & CAPP',
+    title: 'EAP, SAP & CAP',
     desc: 'Employee Assistant Programs (EAP), Student Assistant Programs (SAP) and College Assistant Programs (CAP).',
     bg: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1787548802/EAP_gjbdgp.jpg',
     tag: 'Corporate',

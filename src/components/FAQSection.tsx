@@ -214,7 +214,7 @@ export default function FAQSection({ onNavigate, dark = false }: FAQSectionProps
         {/* Bottom CTA card */}
         <div style={{
           marginTop: 52,
-          background: PINK,
+          background: 'linear-gradient(135deg, #42a1e0ff 0%, #b6a338ff 50%, #49b2fcff 100%)',
           borderRadius: 22,
           padding: 'clamp(28px, 4vw, 40px) clamp(24px, 4vw, 44px)',
           display: 'flex',

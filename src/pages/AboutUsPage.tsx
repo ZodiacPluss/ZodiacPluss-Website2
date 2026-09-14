@@ -1,5 +1,6 @@
 import FAQSection from '@/components/FAQSection'
 import CredentialsSection from '@/components/CredentialsSection'
+import VideoShowcaseSection from '@/components/VideoShowcaseSection'
 
 interface AboutUsPageProps {
   onNavigate: (page: string) => void
@@ -108,7 +109,7 @@ export default function AboutUsPage({ onNavigate, dark = false }: AboutUsPagePro
               <div
                 className="absolute inset-2 rounded-full opacity-60 blur-2xl transition-all duration-500 group-hover:opacity-85 group-hover:scale-105 pointer-events-none"
                 style={{
-                  background: 'radial-gradient(circle, rgba(216, 27, 134, 0.35) 0%, rgba(94, 184, 232, 0.3) 50%, rgba(143, 208, 106, 0.25) 75%, transparent 100%)',
+                  background: 'radial-gradient(circle, rgba(33, 216, 27, 0.35) 0%, rgba(94, 184, 232, 0.3) 50%, rgba(143, 208, 106, 0.25) 75%, transparent 100%)',
                 }}
               />
               {/* Zodiac Symbol Wheel */}
@@ -117,7 +118,7 @@ export default function AboutUsPage({ onNavigate, dark = false }: AboutUsPagePro
                 alt="ZodiacPluss Symbol Wheel"
                 className="relative z-10 w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                 style={{
-                  filter: 'drop-shadow(0 15px 35px rgba(30, 13, 64, 0.18)) drop-shadow(0 4px 14px rgba(216, 27, 134, 0.2))',
+                  filter: 'drop-shadow(0 15px 35px rgba(30, 13, 64, 0.18)) drop-shadow(0 4px 14px rgba(160, 96, 152, 0.2))',
                 }}
               />
             </div>
@@ -139,8 +140,13 @@ export default function AboutUsPage({ onNavigate, dark = false }: AboutUsPagePro
             ))}
           </div>
         </div>
+      </div>
 
-        {/* Team */}
+      {/* Video Showcase Section with 3D Coverflow */}
+      <VideoShowcaseSection dark={dark} />
+
+      {/* Team */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 transition-colors duration-300">
         <div>
           <h2 className="about-heading text-3xl font-bold text-[#1e0d40] text-center mb-8" style={{ fontFamily: "'Playfair Display', serif" }}>
             Meet the Team
