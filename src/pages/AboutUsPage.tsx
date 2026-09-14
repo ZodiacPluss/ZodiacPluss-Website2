@@ -1,5 +1,4 @@
 import FAQSection from '@/components/FAQSection'
-import CredentialsSection from '@/components/CredentialsSection'
 import VideoShowcaseSection from '@/components/VideoShowcaseSection'
 
 interface AboutUsPageProps {
@@ -43,6 +42,12 @@ const team = [
     role: 'SDE & PROJECT MANAGER',
     exp: '2+ years experience',
     img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1788897781/my_profile_new_and_updated_unxfyt_rzakex.png',
+  },
+  {
+    name: 'Mr. Sunil',
+    role: 'ADVOCATE & LEGAL CONSULTANT',
+    exp: '7+ years experience',
+    img: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1788897782/Sunil_ji_ltxjqb_hxrkdh.png',
   },
 ]
 
@@ -180,8 +185,7 @@ export default function AboutUsPage({ onNavigate, dark = false }: AboutUsPagePro
         </div>
       </div>
 
-      {/* Credentials & Licences – below Meet the Team */}
-      <CredentialsSection dark={dark} />
+
 
       {/* FAQ section */}
       <FAQSection onNavigate={onNavigate} dark={dark} />

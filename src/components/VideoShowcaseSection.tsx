@@ -111,7 +111,7 @@ export default function VideoShowcaseSection({
     if (isHovered || isDragging || expandedVideo || !isMuted) return
     const interval = setInterval(() => {
       nextSlide()
-    }, 3000)
+    }, 4000)
     return () => clearInterval(interval)
   }, [isHovered, isDragging, expandedVideo, isMuted, nextSlide])
 
@@ -447,16 +447,6 @@ export default function VideoShowcaseSection({
               <polyline points="9 18 15 12 9 6" />
             </svg>
           </button>
-        </div>
-
-        {/* Drag · Click · Arrow Keys indicator */}
-        <div className="text-center mt-3 sm:mt-4">
-          <span
-            className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.28em] transition-colors duration-300"
-            style={{ color: dark ? 'rgba(255, 255, 255, 0.4)' : 'rgba(30, 13, 64, 0.4)' }}
-          >
-            DRAG &nbsp;·&nbsp; CLICK &nbsp;·&nbsp; ARROW KEYS
-          </span>
         </div>
       </div>
 

@@ -74,7 +74,6 @@ const corporatePackages = [
   },
   {
     name: 'Full Enterprise Edition',
-    price: 'Custom',
     desc: 'Full-scale wellness programs',
     seats: 'Unlimited employees',
     features: ['Extra wellness sessions for individuals ', 'Beautifully tailored workshops', 'Exclusive wellness sessions with top therapist', '24/7 priority support','Individual Mood Tracker','All Freebie access including Ai'],
@@ -84,9 +83,9 @@ const corporatePackages = [
 
 const corporateBenefits = [
   { icon: '', title: 'Genuine Productivity', desc: 'Zodiac Pluss Application provides genuine and usefull productivity and spiritual development.' },
-  { icon: '', title: 'Better Communication', desc: 'Astrology-informed team profiles reduce interpersonal conflict by 34%.' },
+  { icon: '', title: 'Better Communication', desc: 'Astrology-informed team profiles will reduce interpersonal conflict.' },
   { icon: '', title: 'Reduced Burnout', desc: 'Holistic therapy access cuts employee burnout rates significantly.' },
-  { icon: '', title: 'Talent Retention', desc: 'Wellness-first companies retain top talent 60% longer on average.' },
+  { icon: '', title: 'Talent Retention will increase', desc: 'Wellness-first companies will retain top talent 60% longer on average.' },
 ]
 
 export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
@@ -275,11 +274,11 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-10" style={{ color: titleColor, fontFamily: "'Playfair Display', serif" }}>
             Corporate Packages &amp; Enterprise Plans
           </h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
             {corporatePackages.map((pkg) => (
               <div
                 key={pkg.name}
-                className={`rounded-2xl p-7 border transition-all duration-300 hover:-translate-y-1 ${
+                className={`flex flex-col h-full rounded-2xl p-7 border transition-all duration-300 hover:-translate-y-1 ${
                   pkg.featured
                     ? 'border-transparent shadow-2xl text-white'
                     : 'shadow-sm hover:shadow-xl'
@@ -290,35 +289,97 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
                     : { background: cardBg, borderColor: cardBorder }
                 }
               >
-                {pkg.featured && (
-                  <div className="text-xs font-bold bg-white/20 text-white px-3 py-1 rounded-full inline-block mb-4">Most Popular</div>
-                )}
-                <h3 className={`text-xl font-bold mb-1 ${pkg.featured ? 'text-white' : ''}`} style={!pkg.featured ? { color: titleColor } : {}}>{pkg.name}</h3>
-                <p className={`text-xs mb-4 ${pkg.featured ? 'text-white/70' : ''}`} style={!pkg.featured ? { color: textColor } : {}}>{pkg.desc}</p>
-                <div className={`text-3xl font-bold mb-1 ${pkg.featured ? 'text-white' : ''}`} style={!pkg.featured ? { color: titleColor } : {}}>{pkg.price}</div>
-                <div className={`text-xs mb-6 ${pkg.featured ? 'text-white/60' : ''}`} style={!pkg.featured ? { color: textColor } : {}}>{pkg.seats}</div>
-                <ul className="space-y-2.5 mb-8">
+                {/* Uniform Badge Row so titles are vertically aligned across all 3 cards */}
+                <div className="min-h-[26px] mb-3 flex items-center">
+                  {pkg.featured ? (
+                    <span className="text-xs font-bold bg-white/20 text-white px-3 py-1 rounded-full inline-block">
+                      Most Popular
+                    </span>
+                  ) : (
+                    <span className="invisible text-xs px-3 py-1 inline-block" aria-hidden="true">
+                      Spacer
+                    </span>
+                  )}
+                </div>
+
+                {/* Title */}
+                <h3
+                  className={`text-xl font-bold mb-1.5 min-h-[3.25rem] flex items-center ${
+                    pkg.featured ? 'text-white' : ''
+                  }`}
+                  style={!pkg.featured ? { color: titleColor } : {}}
+                >
+                  {pkg.name}
+                </h3>
+
+                {/* Description */}
+                <p
+                  className={`text-xs mb-3 min-h-[2rem] leading-relaxed ${
+                    pkg.featured ? 'text-white/70' : ''
+                  }`}
+                  style={!pkg.featured ? { color: textColor } : {}}
+                >
+                  {pkg.desc}
+                </p>
+
+                {/* Capacity / Seats */}
+                <div
+                  className={`text-xs font-semibold mb-6 ${
+                    pkg.featured ? 'text-white/80' : ''
+                  }`}
+                  style={!pkg.featured ? { color: textColor } : {}}
+                >
+                  {pkg.seats}
+                </div>
+
+                {/* Features list: flex-1 ensures it expands and buttons stay aligned */}
+                <ul className="space-y-3 mb-8 flex-1">
                   {pkg.features.map((f) => (
-                    <li key={f} className={`flex items-start gap-2 text-xs ${pkg.featured ? 'text-white/85' : ''}`} style={!pkg.featured ? { color: dark ? '#f5f5f5' : '#4a4a6a' } : {}}>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={pkg.featured ? '#14b8a6' : pkg.color} strokeWidth="2.5" className="flex-shrink-0 mt-0.5">
-                        <path d="M20 6L9 17l-5-5"/>
+                    <li
+                      key={f}
+                      className={`flex items-start gap-2 text-xs leading-relaxed ${
+                        pkg.featured ? 'text-white/85' : ''
+                      }`}
+                      style={
+                        !pkg.featured
+                          ? { color: dark ? '#f5f5f5' : '#4a4a6a' }
+                          : {}
+                      }
+                    >
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke={pkg.featured ? '#14b8a6' : pkg.color}
+                        strokeWidth="2.5"
+                        className="flex-shrink-0 mt-0.5"
+                      >
+                        <path d="M20 6L9 17l-5-5" />
                       </svg>
                       {f}
                     </li>
                   ))}
                 </ul>
-                <a
-                  href="/book"
-                  onClick={(e) => { e.preventDefault(); onNavigate('Book') }}
-                  className={`w-full py-2.5 rounded-full font-semibold text-sm transition-all shadow-sm block text-center no-underline ${
-                    pkg.featured
-                      ? 'bg-white text-[#d81b86] hover:bg-gray-100'
-                      : 'text-white hover:opacity-90'
-                  }`}
-                  style={!pkg.featured ? { background: pkg.color } : {}}
-                >
-                  Get Started
-                </a>
+
+                {/* Button Container: mt-auto locks all buttons to the bottom of the card */}
+                <div className="mt-auto pt-2">
+                  <a
+                    href="/book"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      onNavigate('Book')
+                    }}
+                    className={`w-full py-3 rounded-full font-semibold text-sm transition-all shadow-sm block text-center no-underline ${
+                      pkg.featured
+                        ? 'bg-white text-[#d81b86] hover:bg-gray-100'
+                        : 'text-white hover:opacity-90'
+                    }`}
+                    style={!pkg.featured ? { background: pkg.color } : {}}
+                  >
+                    Get Started
+                  </a>
+                </div>
               </div>
             ))}
           </div>
