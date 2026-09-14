@@ -591,7 +591,7 @@ export default function AppShowcaseSection() {
                   ; (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 8px 24px rgba(94, 184, 232, 0.35)'
               }}
             >
-              Explore the App
+              App Comming Soon!
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
