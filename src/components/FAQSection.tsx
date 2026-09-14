@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 const TEAL = '#14b8a6'
-const NAVY = '#1a1060'
+const PINK = '#d81b86'
 
 const faqs = [
   {
@@ -214,7 +214,7 @@ export default function FAQSection({ onNavigate, dark = false }: FAQSectionProps
         {/* Bottom CTA card */}
         <div style={{
           marginTop: 52,
-          background: NAVY,
+          background: PINK,
           borderRadius: 22,
           padding: 'clamp(28px, 4vw, 40px) clamp(24px, 4vw, 44px)',
           display: 'flex',
@@ -222,6 +222,7 @@ export default function FAQSection({ onNavigate, dark = false }: FAQSectionProps
           justifyContent: 'space-between',
           alignItems: 'center',
           gap: 20,
+          boxShadow: 'rgba(150, 186, 204, 0.25)',
         }}>
           <div>
             <p style={{
@@ -235,7 +236,7 @@ export default function FAQSection({ onNavigate, dark = false }: FAQSectionProps
             </p>
             <p style={{
               fontFamily: "'Inter', sans-serif",
-              fontSize: 14, color: 'rgba(255,255,255,0.50)', margin: 0,
+              fontSize: 14, color: 'rgba(255,255,255,0.85)', margin: 0,
             }}>
               {"We're happy to walk you through everything."}
             </p>
@@ -256,11 +257,11 @@ export default function FAQSection({ onNavigate, dark = false }: FAQSectionProps
             }}
             onMouseEnter={e => {
               (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-2px)'
-              ;(e.currentTarget as HTMLButtonElement).style.boxShadow = '0 12px 32px rgba(94, 184, 232, 0.45)'
+                ; (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 12px 32px rgba(94, 184, 232, 0.45)'
             }}
             onMouseLeave={e => {
               (e.currentTarget as HTMLButtonElement).style.transform = 'none'
-              ;(e.currentTarget as HTMLButtonElement).style.boxShadow = '0 8px 24px rgba(94, 184, 232, 0.35)'
+                ; (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 8px 24px rgba(94, 184, 232, 0.35)'
             }}
           >
             Get in Touch

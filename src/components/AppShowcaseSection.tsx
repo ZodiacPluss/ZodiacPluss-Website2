@@ -500,35 +500,9 @@ function PhoneMockup({
 
 export default function AppShowcaseSection() {
   return (
-    <section style={{ position: 'relative', overflow: 'hidden', padding: 'clamp(56px, 7vw, 96px) 24px' }}>
-      {/* Background video */}
-      <video
-        src="https://res.cloudinary.com/pp0lpskp/video/upload/v1787382162/watermark-removed-app_demo_vid2_k5d1ai.mp4"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          zIndex: 0,
-        }}
-      />
-      {/* Dark overlay for readability */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'rgba(10, 8, 30, 0.72)',
-          zIndex: 1,
-        }}
-      />
-      {/* Content sits above video */}
-      <div style={{ position: 'relative', zIndex: 2, maxWidth: 1200, margin: '0 auto' }}>
+    <section style={{ position: 'relative', overflow: 'hidden', padding: 'clamp(56px, 7vw, 96px) 24px', background: 'transparent' }}>
+      {/* Content sits above sticky video */}
+      <div style={{ position: 'relative', zIndex: 1, maxWidth: 1200, margin: '0 auto' }}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
           {/* ── LEFT: marketing copy ─────────────────────────── */}
