@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import CredentialsSection from '@/components/CredentialsSection'
+
 
 /* ── colour tokens ─────────────────────────────────────────────── */
 const TEAL   = '#14b8a6'
@@ -125,15 +125,19 @@ const steps = [
 /* ── Application form ──────────────────────────────────────────── */
 interface FormState {
   name: string; email: string; phone: string
-  role: string; linkedin: string; message: string; submitted: boolean
+  role: string; linkedin: string; message: string
 }
+
+type SubmitStatus = 'idle' | 'loading' | 'success' | 'error'
 
 function ApplicationForm({ preRole, dark = false }: { preRole?: string; dark?: boolean }) {
   const [form, setForm] = useState<FormState>({
     name: '', email: '', phone: '', role: preRole ?? '',
-    linkedin: '', message: '', submitted: false,
+    linkedin: '', message: '',
   })
   const [focused, setFocused] = useState('')
+  const [status, setStatus] = useState<SubmitStatus>('idle')
+  const [errorMsg, setErrorMsg] = useState('')
 
   const textPrimary = dark ? '#f5f5f5' : NAVY
   const textMuted = dark ? '#a1a1aa' : '#6b7280'
@@ -153,7 +157,43 @@ function ApplicationForm({ preRole, dark = false }: { preRole?: string; dark?: b
   const handle = (k: keyof FormState) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setForm(f => ({ ...f, [k]: e.target.value }))
 
-  if (form.submitted) {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setStatus('loading')
+    setErrorMsg('')
+
+    try {
+      const fd = new FormData()
+      fd.append('access_key', '462fa424-ba49-4e0d-8725-ea664cb74841')
+      fd.append('name', form.name)
+      fd.append('email', form.email)
+      fd.append('Phone Number', form.phone)
+      fd.append('Role Applying For', form.role)
+      fd.append('LinkedIn Profile', form.linkedin || 'Not provided')
+      fd.append('message', form.message)
+      fd.append('subject', `New Job Application – ${form.role} – ${form.name}`)
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: fd,
+      })
+      const data = await response.json()
+
+      if (response.ok && data.success) {
+        setStatus('success')
+        setForm({ name: '', email: '', phone: '', role: '', linkedin: '', message: '' })
+      } else {
+        setStatus('error')
+        setErrorMsg(data.message || 'Submission failed. Please try again.')
+      }
+    } catch {
+      setStatus('error')
+      setErrorMsg('Something went wrong. Please check your connection and try again.')
+    }
+  }
+
+  /* ── Success screen ── */
+  if (status === 'success') {
     return (
       <div style={{
         textAlign: 'center', padding: '60px 24px',
@@ -166,30 +206,47 @@ function ApplicationForm({ preRole, dark = false }: { preRole?: string; dark?: b
           Application Received!
         </h3>
         <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 15, color: textMuted, maxWidth: 400, margin: '0 auto 24px' }}>
-          Thank you, <strong>{form.name}</strong>. Our team will review your profile and reach out within 5 working days.
+          Thank you! Our team will review your profile and reach out within 5 working days.
         </p>
         <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: TEAL }}>
-          📧 A confirmation has been noted for <strong>{form.email}</strong>
+          📧 Also email your CV to{' '}
+          <a href="mailto:hr@zodiacpluss.com" style={{ color: TEAL, fontWeight: 700 }}>hr@zodiacpluss.com</a>
         </p>
+        <button
+          onClick={() => setStatus('idle')}
+          style={{
+            marginTop: 24, padding: '10px 28px',
+            background: 'transparent', border: `1.5px solid ${TEAL}`,
+            borderRadius: 999, color: TEAL,
+            fontFamily: "'Inter', sans-serif", fontSize: 14, fontWeight: 600,
+            cursor: 'pointer',
+          }}
+        >
+          Submit Another Application
+        </button>
       </div>
     )
   }
 
+  const isLoading = status === 'loading'
+
   return (
     <form
-      onSubmit={e => { e.preventDefault(); setForm(f => ({ ...f, submitted: true })) }}
+      onSubmit={handleSubmit}
       style={{ display: 'flex', flexDirection: 'column', gap: 16 }}
     >
+      {/* Row 1: Name + Email */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, fontWeight: 700, color: textMuted, display: 'block', marginBottom: 6 }}>
             Full Name *
           </label>
           <input
-            required value={form.name} onChange={handle('name')}
+            required name="name" value={form.name} onChange={handle('name')}
             placeholder="Dr. Ananya Rao"
             style={inputStyle('name')}
             onFocus={() => setFocused('name')} onBlur={() => setFocused('')}
+            disabled={isLoading}
           />
         </div>
         <div>
@@ -197,24 +254,27 @@ function ApplicationForm({ preRole, dark = false }: { preRole?: string; dark?: b
             Email Address *
           </label>
           <input
-            required type="email" value={form.email} onChange={handle('email')}
+            required type="email" name="email" value={form.email} onChange={handle('email')}
             placeholder="you@example.com"
             style={inputStyle('email')}
             onFocus={() => setFocused('email')} onBlur={() => setFocused('')}
+            disabled={isLoading}
           />
         </div>
       </div>
 
+      {/* Row 2: Phone + Role */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, fontWeight: 700, color: textMuted, display: 'block', marginBottom: 6 }}>
             Phone Number *
           </label>
           <input
-            required value={form.phone} onChange={handle('phone')}
+            required name="phone" value={form.phone} onChange={handle('phone')}
             placeholder="+91 xxxxx xxxxx"
             style={inputStyle('phone')}
             onFocus={() => setFocused('phone')} onBlur={() => setFocused('')}
+            disabled={isLoading}
           />
         </div>
         <div>
@@ -222,40 +282,45 @@ function ApplicationForm({ preRole, dark = false }: { preRole?: string; dark?: b
             Role Applying For *
           </label>
           <select
-            required value={form.role} onChange={handle('role')}
+            required name="role" value={form.role} onChange={handle('role')}
             style={{ ...inputStyle('role'), cursor: 'pointer' }}
             onFocus={() => setFocused('role')} onBlur={() => setFocused('')}
+            disabled={isLoading}
           >
             <option value="">Select a position…</option>
-            <option value="psychologist">Licensed Clinical Psychologist / Therapist</option>
-            <option value="eap-counsellor">EAP Psychologist / Counsellor for Corporates</option>
-            <option value="astrologer">Vedic Astrologer for Platform</option>
+            <option value="Licensed Clinical Psychologist / Therapist">Licensed Clinical Psychologist / Therapist</option>
+            <option value="EAP Psychologist / Counsellor for Corporates">EAP Psychologist / Counsellor for Corporates</option>
+            <option value="Vedic Astrologer for Platform">Vedic Astrologer for Platform</option>
           </select>
         </div>
       </div>
 
+      {/* LinkedIn */}
       <div>
         <label style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, fontWeight: 700, color: textMuted, display: 'block', marginBottom: 6 }}>
           LinkedIn Profile URL
         </label>
         <input
-          value={form.linkedin} onChange={handle('linkedin')}
+          name="linkedin" value={form.linkedin} onChange={handle('linkedin')}
           placeholder="linkedin.com/in/your-profile"
           style={inputStyle('linkedin')}
           onFocus={() => setFocused('linkedin')} onBlur={() => setFocused('')}
+          disabled={isLoading}
         />
       </div>
 
+      {/* About yourself */}
       <div>
         <label style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, fontWeight: 700, color: textMuted, display: 'block', marginBottom: 6 }}>
           Tell Us About Yourself *
         </label>
         <textarea
-          required value={form.message} onChange={handle('message')}
+          required name="message" value={form.message} onChange={handle('message')}
           placeholder="Briefly describe your experience, specialisation, and why you want to join ZodiacPluss…"
           rows={5}
           style={{ ...inputStyle('message'), resize: 'vertical' }}
           onFocus={() => setFocused('message')} onBlur={() => setFocused('')}
+          disabled={isLoading}
         />
       </div>
 
@@ -277,31 +342,72 @@ function ApplicationForm({ preRole, dark = false }: { preRole?: string; dark?: b
         </p>
       </div>
 
+      {/* Error banner */}
+      {status === 'error' && (
+        <div style={{
+          display: 'flex', alignItems: 'center', gap: 10,
+          padding: '12px 16px', borderRadius: 10,
+          background: 'rgba(239,68,68,0.07)', border: '1px solid rgba(239,68,68,0.25)',
+        }}>
+          <span style={{ fontSize: 16 }}>⚠️</span>
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: '#ef4444', margin: 0 }}>
+            {errorMsg}
+          </p>
+        </div>
+      )}
+
+      {/* Submit button */}
       <button
         type="submit"
+        disabled={isLoading}
         style={{
-          background: 'linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)',
+          background: isLoading
+            ? 'linear-gradient(90deg, #7dd3d0 0%, #b2dfa0 100%)'
+            : 'linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)',
           border: 'none', borderRadius: 12, padding: '14px 0',
           color: 'white', fontFamily: "'Inter', sans-serif",
-          fontSize: 15, fontWeight: 700, cursor: 'pointer', width: '100%',
+          fontSize: 15, fontWeight: 700,
+          cursor: isLoading ? 'not-allowed' : 'pointer',
+          width: '100%',
           boxShadow: '0 6px 20px rgba(94,184,232,0.35)',
           display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-          transition: 'transform 0.15s, box-shadow 0.15s',
+          transition: 'transform 0.15s, box-shadow 0.15s, background 0.2s',
+          opacity: isLoading ? 0.8 : 1,
         }}
         onMouseEnter={e => {
-          (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-2px)'
-          ;(e.currentTarget as HTMLButtonElement).style.boxShadow = '0 10px 28px rgba(94,184,232,0.45)'
+          if (!isLoading) {
+            (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-2px)'
+            ;(e.currentTarget as HTMLButtonElement).style.boxShadow = '0 10px 28px rgba(94,184,232,0.45)'
+          }
         }}
         onMouseLeave={e => {
           (e.currentTarget as HTMLButtonElement).style.transform = 'none'
           ;(e.currentTarget as HTMLButtonElement).style.boxShadow = '0 6px 20px rgba(94,184,232,0.35)'
         }}
       >
-        Submit Application
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-          <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
-        </svg>
+        {isLoading ? (
+          <>
+            <svg
+              width="16" height="16" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" strokeWidth="2.5"
+              style={{ animation: 'spin 0.9s linear infinite' }}
+            >
+              <circle cx="12" cy="12" r="10" strokeOpacity="0.3" />
+              <path d="M12 2a10 10 0 0 1 10 10" strokeLinecap="round" />
+            </svg>
+            Sending…
+          </>
+        ) : (
+          <>
+            Submit Application
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+            </svg>
+          </>
+        )}
       </button>
+
+      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
     </form>
   )
 }
@@ -749,9 +855,6 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
           </div>
         </div>
       </section>
-
-      {/* ─── CREDENTIALS ──────────────────────────────────────── */}
-      <CredentialsSection dark={dark} />
 
       {/* ─── TAGLINE BAND ─────────────────────────────────────── */}
       <section style={{
