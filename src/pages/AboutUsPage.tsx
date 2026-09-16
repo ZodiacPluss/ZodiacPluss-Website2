@@ -153,7 +153,7 @@ export default function AboutUsPage({ onNavigate, dark = false }: AboutUsPagePro
       </div>
 
       {/* Video Showcase Section with 3D Coverflow */}
-      <VideoShowcaseSection dark={dark} />
+      {/* <VideoShowcaseSection dark={dark} /> */}
 
       {/* Team */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 transition-colors duration-300">
