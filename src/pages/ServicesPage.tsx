@@ -20,7 +20,7 @@ const services = [
   },
   {
     title: 'Personal AI Friend',
-    desc: 'A friendly companion to talk to whenever you need, 24/7.Talk seemslessly with your AI friend. ', 
+    desc: 'A friendly companion to talk to whenever you need, 24/7.Talk seemslessly with your AI friend. ',
     bg: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1787548767/ai_sessions_inxcga.jpg',
     tag: 'AI Enhanced app',
     color: '#1487b8ff',
@@ -68,7 +68,7 @@ const corporatePackages = [
     name: 'Premium Growth',
     desc: 'For growing organizations',
     seats: 'Up to 100 employees',
-    features: ['Weekly live expert sessions', 'Individual therapy sessions','Individual Mood Tracker','All Freebie access', 'Custom workshop programs', 'Analytics dashboard'],
+    features: ['Weekly live expert sessions', 'Individual therapy sessions', 'Individual Mood Tracker', 'All Freebie access', 'Custom workshop programs', 'Analytics dashboard'],
     color: '#d81b86',
     featured: true,
   },
@@ -76,7 +76,7 @@ const corporatePackages = [
     name: 'Full Enterprise Edition',
     desc: 'Full-scale wellness programs',
     seats: 'Unlimited employees',
-    features: ['Extra wellness sessions for individuals ', 'Beautifully tailored workshops', 'Exclusive wellness sessions with top therapist', '24/7 priority support','Individual Mood Tracker','All Freebie access including Ai'],
+    features: ['Extra wellness sessions for individuals ', 'Beautifully tailored workshops', 'Exclusive wellness sessions with top therapist', '24/7 priority support', 'Individual Mood Tracker', 'All Freebie access including Ai'],
     color: '#0d5f4f',
   },
 ]
@@ -170,7 +170,7 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
                 <h3 className="font-bold text-base mb-2" style={{ color: titleColor }}>{svc.title}</h3>
                 <p className="text-xs leading-relaxed mb-4" style={{ color: textColor }}>{svc.desc}</p>
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-sm" style={{ color: titleColor }}>{}</span>
+                  <span className="font-bold text-sm" style={{ color: titleColor }}>{ }</span>
                   <a
                     href="/coming-soon"
                     onClick={(e) => { e.preventDefault(); onNavigate('Coming Soon') }}
@@ -220,7 +220,7 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
         <div className="relative z-10 max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 border border-teal-400/40 text-teal-300 text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-5">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+              <rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
             </svg>
             Corporate Wellness Solutions
           </div>
@@ -278,11 +278,10 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
             {corporatePackages.map((pkg) => (
               <div
                 key={pkg.name}
-                className={`flex flex-col h-full rounded-2xl p-7 border transition-all duration-300 hover:-translate-y-1 ${
-                  pkg.featured
+                className={`flex flex-col h-full rounded-2xl p-7 border transition-all duration-300 hover:-translate-y-1 ${pkg.featured
                     ? 'border-transparent shadow-2xl text-white'
                     : 'shadow-sm hover:shadow-xl'
-                }`}
+                  }`}
                 style={
                   pkg.featured
                     ? { background: `linear-gradient(135deg, ${pkg.color}, #1e0d40)` }
@@ -304,9 +303,8 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
 
                 {/* Title */}
                 <h3
-                  className={`text-xl font-bold mb-1.5 min-h-[3.25rem] flex items-center ${
-                    pkg.featured ? 'text-white' : ''
-                  }`}
+                  className={`text-xl font-bold mb-1.5 min-h-[3.25rem] flex items-center ${pkg.featured ? 'text-white' : ''
+                    }`}
                   style={!pkg.featured ? { color: titleColor } : {}}
                 >
                   {pkg.name}
@@ -314,9 +312,8 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
 
                 {/* Description */}
                 <p
-                  className={`text-xs mb-3 min-h-[2rem] leading-relaxed ${
-                    pkg.featured ? 'text-white/70' : ''
-                  }`}
+                  className={`text-xs mb-3 min-h-[2rem] leading-relaxed ${pkg.featured ? 'text-white/70' : ''
+                    }`}
                   style={!pkg.featured ? { color: textColor } : {}}
                 >
                   {pkg.desc}
@@ -324,9 +321,8 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
 
                 {/* Capacity / Seats */}
                 <div
-                  className={`text-xs font-semibold mb-6 ${
-                    pkg.featured ? 'text-white/80' : ''
-                  }`}
+                  className={`text-xs font-semibold mb-6 ${pkg.featured ? 'text-white/80' : ''
+                    }`}
                   style={!pkg.featured ? { color: textColor } : {}}
                 >
                   {pkg.seats}
@@ -337,9 +333,8 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
                   {pkg.features.map((f) => (
                     <li
                       key={f}
-                      className={`flex items-start gap-2 text-xs leading-relaxed ${
-                        pkg.featured ? 'text-white/85' : ''
-                      }`}
+                      className={`flex items-start gap-2 text-xs leading-relaxed ${pkg.featured ? 'text-white/85' : ''
+                        }`}
                       style={
                         !pkg.featured
                           ? { color: dark ? '#f5f5f5' : '#4a4a6a' }
@@ -370,11 +365,10 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
                       e.preventDefault()
                       onNavigate('Book')
                     }}
-                    className={`w-full py-3 rounded-full font-semibold text-sm transition-all shadow-sm block text-center no-underline ${
-                      pkg.featured
+                    className={`w-full py-3 rounded-full font-semibold text-sm transition-all shadow-sm block text-center no-underline ${pkg.featured
                         ? 'bg-white text-[#d81b86] hover:bg-gray-100'
                         : 'text-white hover:opacity-90'
-                    }`}
+                      }`}
                     style={!pkg.featured ? { background: pkg.color } : {}}
                   >
                     Get Started

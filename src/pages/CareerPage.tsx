@@ -2,10 +2,10 @@ import { useState } from 'react'
 
 
 /* ── colour tokens ─────────────────────────────────────────────── */
-const TEAL   = '#14b8a6'
+const TEAL = '#14b8a6'
 const TEAL_D = '#065350'
-const NAVY   = '#1a1060'
-const DARK   = '#071e19'
+const NAVY = '#1a1060'
+const DARK = '#071e19'
 const ACCENT = '#3ecfb3'
 const MAGENTA = '#d81b86'
 
@@ -331,7 +331,7 @@ function ApplicationForm({ preRole, dark = false }: { preRole?: string; dark?: b
         background: 'rgba(20,184,166,0.06)', border: `1px solid ${TEAL}25`,
       }}>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={TEAL} strokeWidth="2">
-          <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+          <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" />
         </svg>
         <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 12.5, color: textMuted, margin: 0 }}>
           Please also email your CV / Resume to{' '}
@@ -377,12 +377,12 @@ function ApplicationForm({ preRole, dark = false }: { preRole?: string; dark?: b
         onMouseEnter={e => {
           if (!isLoading) {
             (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-2px)'
-            ;(e.currentTarget as HTMLButtonElement).style.boxShadow = '0 10px 28px rgba(94,184,232,0.45)'
+              ; (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 10px 28px rgba(94,184,232,0.45)'
           }
         }}
         onMouseLeave={e => {
           (e.currentTarget as HTMLButtonElement).style.transform = 'none'
-          ;(e.currentTarget as HTMLButtonElement).style.boxShadow = '0 6px 20px rgba(94,184,232,0.35)'
+            ; (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 6px 20px rgba(94,184,232,0.35)'
         }}
       >
         {isLoading ? (
@@ -401,7 +401,7 @@ function ApplicationForm({ preRole, dark = false }: { preRole?: string; dark?: b
           <>
             Submit Application
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
             </svg>
           </>
         )}
@@ -492,7 +492,7 @@ function JobCard({ job, onApply, dark = false }: { job: typeof jobs[0]; onApply:
               stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"
               style={{ transition: 'transform 0.2s', transform: expanded ? 'rotate(180deg)' : 'none' }}
             >
-              <path d="M6 9l6 6 6-6"/>
+              <path d="M6 9l6 6 6-6" />
             </svg>
           </button>
           <button
@@ -512,7 +512,7 @@ function JobCard({ job, onApply, dark = false }: { job: typeof jobs[0]; onApply:
           >
             Apply Now
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
+              <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </button>
         </div>
@@ -543,7 +543,7 @@ function JobCard({ job, onApply, dark = false }: { job: typeof jobs[0]; onApply:
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                     }}>
                       <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke={job.categoryColor} strokeWidth="3" strokeLinecap="round">
-                        <path d="m20 6-11 11-5-5"/>
+                        <path d="m20 6-11 11-5-5" />
                       </svg>
                     </span>
                     <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 13.5, color: textMuted, lineHeight: 1.6 }}>{r}</span>
@@ -572,14 +572,14 @@ function JobCard({ job, onApply, dark = false }: { job: typeof jobs[0]; onApply:
               {/* Apply shortcut */}
               <button
                 onClick={() => onApply(job.id)}
-                 style={{
-                    background: "linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)",
-                    border: 'none', borderRadius: 999, padding: '13px 28px',
-                    color: 'white', fontFamily: "'Inter', sans-serif",
-                    fontSize: 14, fontWeight: 700, cursor: 'pointer',
-                    boxShadow: '0 6px 20px rgba(20,184,166,0.35)',
-                    display: 'flex', alignItems: 'center', gap: 7,
-                  }}
+                style={{
+                  background: "linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)",
+                  border: 'none', borderRadius: 999, padding: '13px 28px',
+                  color: 'white', fontFamily: "'Inter', sans-serif",
+                  fontSize: 14, fontWeight: 700, cursor: 'pointer',
+                  boxShadow: '0 6px 20px rgba(20,184,166,0.35)',
+                  display: 'flex', alignItems: 'center', gap: 7,
+                }}
               >
                 Apply for This Role →
               </button>
@@ -650,11 +650,11 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
         }} />
 
         {/* Scattered zodiac glyphs */}
-        {['♈','♋','♎','♑','♓','♊'].map((s, i) => (
+        {['♈', '♋', '♎', '♑', '♓', '♊'].map((s, i) => (
           <span key={i} style={{
             position: 'absolute',
-            top: `${[10,25,60,80,40,70][i]}%`,
-            left: `${[2,95,4,90,50,48][i]}%`,
+            top: `${[10, 25, 60, 80, 40, 70][i]}%`,
+            left: `${[2, 95, 4, 90, 50, 48][i]}%`,
             fontSize: 20, opacity: 0.18, color: '#d4a853',
             fontFamily: 'serif', pointerEvents: 'none', userSelect: 'none',
           }}>{s}</span>
@@ -703,7 +703,7 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
                 >
                   View Open Roles
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                    <path d="M6 9l6 6 6-6"/>
+                    <path d="M6 9l6 6 6-6" />
                   </svg>
                 </button>
                 <button
@@ -725,8 +725,8 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
             <div className="grid grid-cols-2 gap-4">
               {[
                 { val: '10+', label: 'New Features(Therapy & Astrology)', },
-                { val: '3+', label: 'Open Positions',},
-                { val: 'ISO', label: '27001 & 9001 Certified',},
+                { val: '3+', label: 'Open Positions', },
+                { val: 'ISO', label: '27001 & 9001 Certified', },
                 { val: '100%', label: 'Remote Friendly', },
               ].map((s, i) => (
                 <div key={i} style={{
@@ -735,7 +735,7 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
                   borderRadius: 16, padding: '22px 20px',
                   backdropFilter: 'blur(8px)',
                 }}>
-                  <div style={{ fontSize: 24, marginBottom: 8 }}>{}</div>
+                  <div style={{ fontSize: 24, marginBottom: 8 }}>{ }</div>
                   <div style={{
                     fontFamily: "'Playfair Display', serif",
                     fontSize: 28, fontWeight: 800, color: ACCENT,
@@ -771,11 +771,11 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
               }}
                 onMouseEnter={e => {
                   (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)'
-                  ;(e.currentTarget as HTMLDivElement).style.boxShadow = '0 12px 30px rgba(20,184,166,0.12)'
+                    ; (e.currentTarget as HTMLDivElement).style.boxShadow = '0 12px 30px rgba(20,184,166,0.12)'
                 }}
                 onMouseLeave={e => {
                   (e.currentTarget as HTMLDivElement).style.transform = 'none'
-                  ;(e.currentTarget as HTMLDivElement).style.boxShadow = 'none'
+                    ; (e.currentTarget as HTMLDivElement).style.boxShadow = 'none'
                 }}
               >
                 <div style={{ fontSize: 32, marginBottom: 12 }}>{w.icon}</div>

@@ -85,15 +85,15 @@ export default function App() {
 
   const renderPage = () => {
     switch (currentPage) {
-      case 'Home':           return <HomePage onNavigate={handleNavigate} dark={dark} />
-      case 'About Us':       return <AboutUsPage onNavigate={handleNavigate} dark={dark} />
-      case 'Services':       return <ServicesPage onNavigate={handleNavigate} dark={dark} />
-      case 'Experts':        return <ExpertsPage onNavigate={handleNavigate} dark={dark} />
-      case 'Book':           return <BookSessionPage onNavigate={handleNavigate} dark={dark} />
-      case 'Career':         return <CareerPage onNavigate={handleNavigate} dark={dark} />
-      case 'Portfolio':      return <PortfolioPage onNavigate={handleNavigate} dark={dark} />
-      case 'Coming Soon':    return <ComingSoonPage onNavigate={handleNavigate} dark={dark} />
-      default:               return <NotFoundPage onNavigate={handleNavigate} dark={dark} />
+      case 'Home': return <HomePage onNavigate={handleNavigate} dark={dark} />
+      case 'About Us': return <AboutUsPage onNavigate={handleNavigate} dark={dark} />
+      case 'Services': return <ServicesPage onNavigate={handleNavigate} dark={dark} />
+      case 'Experts': return <ExpertsPage onNavigate={handleNavigate} dark={dark} />
+      case 'Book': return <BookSessionPage onNavigate={handleNavigate} dark={dark} />
+      case 'Career': return <CareerPage onNavigate={handleNavigate} dark={dark} />
+      case 'Portfolio': return <PortfolioPage onNavigate={handleNavigate} dark={dark} />
+      case 'Coming Soon': return <ComingSoonPage onNavigate={handleNavigate} dark={dark} />
+      default: return <NotFoundPage onNavigate={handleNavigate} dark={dark} />
     }
   }
 

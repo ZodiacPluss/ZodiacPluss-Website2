@@ -7,31 +7,31 @@ interface AboutSectionProps {
 
 const services = [
   {
-    
+
     title: "Personalized Horoscope",
     desc: "Get insights written just for you",
     bg: "https://res.cloudinary.com/pp0lpskp/image/upload/v1789407965/Zpcard1_u6qaae.jpg",
   },
   {
-   
+
     title: "Therapy That Helps",
     desc: "Compassionate therapists for mental clarity and healing",
     bg: "https://res.cloudinary.com/pp0lpskp/image/upload/v1789407966/zpcard2_ypnuiu.jpg",
   },
   {
-   
+
     title: "Emergency Consultation",
     desc: "Talk to top astrologers and therapists in real time",
     bg: "https://res.cloudinary.com/pp0lpskp/image/upload/v1789409501/zpcard3_gffuir.jpg",
   },
   {
-   
+
     title: "Employee Assistance Program",
     desc: "Smart technology meets astrology to reveal what matters most.",
     bg: "https://res.cloudinary.com/pp0lpskp/image/upload/v1789409502/zpcard4_flpyho.jpg",
   },
   {
-   
+
     title: "More Ways to Explore",
     desc: "Smart technology meets astrology to reveal what matters most.",
     bg: "https://res.cloudinary.com/pp0lpskp/image/upload/v1789409502/zpcard5_kixxlo.jpg",
@@ -42,7 +42,7 @@ const features = [
   {
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <path d="M12 2L13.5 8.5L20 7L15.5 12L20 17L13.5 15.5L12 22L10.5 15.5L4 17L8.5 12L4 7L10.5 8.5L12 2Z"/>
+        <path d="M12 2L13.5 8.5L20 7L15.5 12L20 17L13.5 15.5L12 22L10.5 15.5L4 17L8.5 12L4 7L10.5 8.5L12 2Z" />
       </svg>
     ),
     label: "Trusted Experts",
@@ -51,7 +51,7 @@ const features = [
   {
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        <rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
       </svg>
     ),
     label: "Private & Secure",
@@ -60,7 +60,7 @@ const features = [
   {
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
       </svg>
     ),
     label: "Holistic Support",
@@ -69,7 +69,7 @@ const features = [
   {
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
       </svg>
     ),
     label: "Instant Access",
@@ -145,11 +145,11 @@ export default function AboutSection({ onNavigate, dark = false }: AboutSectionP
                 href="/services"
                 onClick={(e) => { e.preventDefault(); onNavigate("Services") }}
                 className="flex items-center gap-2 text-white text-sm font-semibold px-6 py-3 rounded-full transition-all duration-200 shadow-md cursor-pointer no-underline"
-               style={{ background: "linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)"  }}
+                style={{ background: "linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)" }}
               >
                 Explore Services
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                  <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </a>
               <a
@@ -160,7 +160,7 @@ export default function AboutSection({ onNavigate, dark = false }: AboutSectionP
               >
                 Learn More
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                   <path d="M5 12h14M12 5l7 7-7 7"/>
+                  <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </a>
             </div>
@@ -188,7 +188,7 @@ export default function AboutSection({ onNavigate, dark = false }: AboutSectionP
               >
                 {services.map((svc, i) => (
                   <div
-                   
+
                     className="h-full flex-shrink-0 px-1"
                     style={{ width: `${100 / total}%` }}
                   >
@@ -210,10 +210,10 @@ export default function AboutSection({ onNavigate, dark = false }: AboutSectionP
                       {/* Minimalist index indicator */}
                       <div className="relative z-10 p-4 sm:p-5 flex items-center justify-between pointer-events-none">
                         <span className="text-xs font-mono text-white/70 font-bold px-2 py-0.5 rounded bg-black/30 backdrop-blur-sm">
-                          
+
                         </span>
                         {i === activeIndex && (
-                          <div> 
+                          <div>
                           </div>
                         )}
                       </div>
@@ -229,7 +229,7 @@ export default function AboutSection({ onNavigate, dark = false }: AboutSectionP
                 aria-label="Previous slide"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M15 18l-6-6 6-6"/>
+                  <path d="M15 18l-6-6 6-6" />
                 </svg>
               </button>
               <button
@@ -238,7 +238,7 @@ export default function AboutSection({ onNavigate, dark = false }: AboutSectionP
                 aria-label="Next slide"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M9 18l6-6-6-6"/>
+                  <path d="M9 18l6-6-6-6" />
                 </svg>
               </button>
             </div>
