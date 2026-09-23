@@ -377,3 +377,232 @@ body {
   0%, 100% { transform: scale(1); opacity: 0.85; }
   50% { transform: scale(1.12); opacity: 1; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════
+   MOTION SYSTEM — hover & interaction layer
+   ----------------------------------------------------------------------
+   Scroll entrances are driven by GSAP (see src/components/motion). What
+   lives here is everything that reacts to a pointer, which CSS does more
+   cheaply and more reliably than JS. One easing curve (the same one the
+   GSAP layer uses) keeps the two halves feeling like one system.
+
+   Every rule degrades to nothing under `prefers-reduced-motion: reduce`,
+   which is enforced in a single block at the end of this section.
+   ══════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --zp-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --zp-dur: 420ms;
+}
+
+/* Split lines produced by SplitText — the mask needs a block box to clip. */
+.zp-split-line {
+  display: block;
+  will-change: transform;
+}
+
+/* ── Card lift ──────────────────────────────────────────────────────────
+   The workhorse. Raises the card, deepens its shadow and warms its border.
+   Pair with `.zp-media` on the image wrapper for the slow zoom. */
+.zp-card {
+  transition:
+    transform var(--zp-dur) var(--zp-ease),
+    box-shadow var(--zp-dur) var(--zp-ease),
+    border-color var(--zp-dur) var(--zp-ease);
+  will-change: transform;
+}
+
+.zp-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 22px 48px rgba(16, 24, 40, 0.13);
+}
+
+.dark .zp-card:hover {
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.6);
+}
+
+/* A softer lift for tiles that sit on a tinted panel. */
+.zp-card-soft {
+  transition:
+    transform var(--zp-dur) var(--zp-ease),
+    box-shadow var(--zp-dur) var(--zp-ease),
+    background-color var(--zp-dur) var(--zp-ease),
+    border-color var(--zp-dur) var(--zp-ease);
+}
+
+.zp-card-soft:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(16, 24, 40, 0.1);
+}
+
+.dark .zp-card-soft:hover {
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Media zoom ─────────────────────────────────────────────────────────
+   Put `.zp-media` on the (clipping) image wrapper. The image scales slowly
+   enough to read as a camera push rather than a pop. */
+.zp-media {
+  overflow: hidden;
+}
+
+.zp-media img,
+.zp-media video {
+  transition: transform 900ms var(--zp-ease);
+  will-change: transform;
+}
+
+.zp-card:hover .zp-media img,
+.zp-card:hover .zp-media video,
+.zp-media:hover img,
+.zp-media:hover video {
+  transform: scale(1.07);
+}
+
+/* ── Link underline sweep ───────────────────────────────────────────── */
+.zp-link {
+  position: relative;
+  display: inline-block;
+}
+
+.zp-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 420ms var(--zp-ease);
+}
+
+.zp-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ── Button press + sheen ───────────────────────────────────────────────
+   `.zp-btn` gives every call-to-action the same weight shift on hover and
+   the same give on press. `.zp-sheen` adds a single light pass across the
+   fill — used only on primary buttons, so it stays an accent. */
+.zp-btn {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 260ms var(--zp-ease),
+    box-shadow 260ms var(--zp-ease),
+    background-color 260ms var(--zp-ease),
+    color 260ms var(--zp-ease),
+    border-color 260ms var(--zp-ease);
+}
+
+.zp-btn:hover {
+  transform: translateY(-2px);
+}
+
+.zp-btn:active {
+  transform: translateY(0) scale(0.985);
+  transition-duration: 90ms;
+}
+
+.zp-sheen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.38) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-18deg);
+  pointer-events: none;
+}
+
+.zp-sheen:hover::before {
+  animation: zp-sheen-sweep 780ms var(--zp-ease);
+}
+
+@keyframes zp-sheen-sweep {
+  to {
+    left: 130%;
+  }
+}
+
+/* ── Arrow nudge ────────────────────────────────────────────────────────
+   For "Read more →" affordances: the glyph leads, the label stays put. */
+.zp-arrow svg,
+.zp-arrow .zp-arrow-glyph {
+  transition: transform 300ms var(--zp-ease);
+}
+
+.zp-arrow:hover svg,
+.zp-arrow:hover .zp-arrow-glyph {
+  transform: translateX(4px);
+}
+
+/* ── Icon tile pop ──────────────────────────────────────────────────── */
+.zp-icon-tile {
+  transition:
+    transform var(--zp-dur) var(--zp-ease),
+    background-color var(--zp-dur) var(--zp-ease);
+}
+
+.zp-card:hover .zp-icon-tile,
+.zp-card-soft:hover .zp-icon-tile,
+.zp-icon-tile:hover {
+  transform: translateY(-2px) scale(1.08) rotate(-4deg);
+}
+
+/* ── Slow ambient float, for decorative badges only ─────────────────── */
+@keyframes zp-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+.zp-float {
+  animation: zp-float 6s ease-in-out infinite;
+}
+
+.zp-float-slow {
+  animation: zp-float 9s ease-in-out infinite;
+}
+
+/* ── Accessibility: one switch that turns the whole system off ──────── */
+@media (prefers-reduced-motion: reduce) {
+  .zp-card,
+  .zp-card-soft,
+  .zp-btn,
+  .zp-icon-tile,
+  .zp-media img,
+  .zp-media video,
+  .zp-link::after,
+  .zp-arrow svg,
+  .zp-arrow .zp-arrow-glyph {
+    transition: none !important;
+  }
+
+  .zp-card:hover,
+  .zp-card-soft:hover,
+  .zp-btn:hover,
+  .zp-btn:active,
+  .zp-card:hover .zp-media img,
+  .zp-media:hover img,
+  .zp-card:hover .zp-icon-tile,
+  .zp-icon-tile:hover,
+  .zp-arrow:hover svg {
+    transform: none !important;
+  }
+
+  .zp-float,
+  .zp-float-slow,
+  .zp-sheen:hover::before {
+    animation: none !important;
+  }
+}

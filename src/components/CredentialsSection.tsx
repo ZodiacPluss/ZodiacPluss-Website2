@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Reveal, TextReveal } from '@/components/motion'
 
 const certificates = [
   {
@@ -91,28 +92,35 @@ export default function CredentialsSection({ dark = false }: CredentialsSectionP
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center mb-10 sm:mb-14">
-
-          <h2
+          <TextReveal
+            as="h2"
             className="text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-4"
             style={{ color: textColor, fontFamily: "'Inter', sans-serif" }}
           >
             Government Recognized &amp; Certified
-          </h2>
-          <p
-            className="text-sm sm:text-base max-w-xl mx-auto leading-relaxed"
-            style={{ color: subtextColor }}
-          >
-            ZodiacPluss Pvt. Ltd. is officially registered, ISO-certified, and recognized under Startup India DPIIT.
-          </p>
+          </TextReveal>
+          <Reveal y={18} delay={0.2}>
+            <p
+              className="text-sm sm:text-base max-w-xl mx-auto leading-relaxed"
+              style={{ color: subtextColor }}
+            >
+              ZodiacPluss Pvt. Ltd. is officially registered, ISO-certified, and recognized under Startup India DPIIT.
+            </p>
+          </Reveal>
         </div>
 
         {/* Carousel / Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-5">
+        <Reveal
+          stagger={0.08}
+          y={34}
+          duration={0.75}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-5"
+        >
           {certificates.map((cert) => (
             <div
               key={cert.id}
               onClick={() => setActiveCert(cert.id)}
-              className="group relative rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl cursor-pointer flex flex-col justify-between"
+              className="zp-card group relative rounded-2xl p-5 cursor-pointer flex flex-col justify-between"
               style={{
                 background: dark ? cert.bgDark : 'rgba(255,255,255,0.09)',
                 border: dark ? `1px solid ${cert.borderDark}` : '1px solid rgba(255,255,255,0.18)',
@@ -125,7 +133,7 @@ export default function CredentialsSection({ dark = false }: CredentialsSectionP
                 {/* Header Badge Row */}
                 <div className="flex items-center justify-between gap-2 mb-4">
                   <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+                    className="zp-icon-tile w-12 h-12 rounded-xl flex items-center justify-center"
                     style={{ background: `${cert.color}18`, color: cert.color }}
                   >
 
@@ -173,7 +181,7 @@ export default function CredentialsSection({ dark = false }: CredentialsSectionP
               </div>
             </div>
           ))}
-        </div>
+        </Reveal>
       </div>
 
       {/* Certificate Modal Preview */}

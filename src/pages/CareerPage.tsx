@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Reveal, TextReveal, StatCount } from '@/components/motion'
 
 
 /* ── colour tokens ─────────────────────────────────────────────── */
@@ -423,12 +424,11 @@ function JobCard({ job, onApply, dark = false }: { job: typeof jobs[0]; onApply:
   const chipBg = dark ? 'rgba(255,255,255,0.06)' : '#f5f3ff'
 
   return (
-    <div style={{
+    <div className="zp-card-soft" style={{
       background: cardBg, borderRadius: 20,
       border: `1.5px solid ${expanded ? job.categoryColor + '40' : cardBorder}`,
       overflow: 'hidden',
       boxShadow: expanded ? `0 12px 40px ${job.categoryColor}18` : '0 2px 10px rgba(26,16,96,0.06)',
-      transition: 'box-shadow 0.25s, border-color 0.25s',
     }}>
       {/* Card header */}
       <div style={{ padding: '28px 28px 24px' }}>
@@ -663,13 +663,15 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
         <div style={{ maxWidth: 1100, margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
+              <Reveal y={14} duration={0.6}>
               <p style={{
                 fontFamily: "'Inter', sans-serif",
                 fontSize: 12, fontWeight: 700, letterSpacing: '0.16em',
                 color: ACCENT, textTransform: 'uppercase', marginBottom: 14,
               }}>We Are Hiring</p>
+              </Reveal>
 
-              <h1 style={{
+              <TextReveal as="h1" delay={0.1} stagger={0.12} style={{
                 fontFamily: "'Playfair Display', serif",
                 fontSize: 'clamp(38px, 6vw, 72px)',
                 fontWeight: 800, color: 'white',
@@ -678,8 +680,9 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
               }}>
                 Join Our<br />
                 <span style={{ color: ACCENT, fontStyle: 'italic' }}>Mission</span>
-              </h1>
+              </TextReveal>
 
+              <Reveal y={22} delay={0.4}>
               <p style={{
                 fontFamily: "'Inter', sans-serif",
                 fontSize: 'clamp(14px, 1.5vw, 17px)',
@@ -688,8 +691,9 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
               }}>
                 Empowering People. Building Healthier Workplaces. At ZodiacPluss we provide Employee Assistance Program (EAP) solutions and authentic Vedic astrology consultations — focused on mental well-being, emotional resilience, and workplace productivity.
               </p>
+              </Reveal>
 
-              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <Reveal stagger={0.1} y={18} delay={0.55} style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
                 <button
                   onClick={() => document.getElementById('open-roles')?.scrollIntoView({ behavior: 'smooth' })}
                   style={{
@@ -718,18 +722,18 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
                 >
                   Apply Directly →
                 </button>
-              </div>
+              </Reveal>
             </div>
 
             {/* Right stats */}
-            <div className="grid grid-cols-2 gap-4">
+            <Reveal stagger={0.1} y={30} delay={0.3} className="grid grid-cols-2 gap-4">
               {[
                 { val: '10+', label: 'New Features(Therapy & Astrology)', },
                 { val: '3+', label: 'Open Positions', },
                 { val: 'ISO', label: '27001 & 9001 Certified', },
                 { val: '100%', label: 'Remote Friendly', },
               ].map((s, i) => (
-                <div key={i} style={{
+                <div key={i} className="zp-card-soft" style={{
                   background: 'rgba(255,255,255,0.06)',
                   border: '1px solid rgba(61,214,172,0.18)',
                   borderRadius: 16, padding: '22px 20px',
@@ -740,13 +744,13 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
                     fontFamily: "'Playfair Display', serif",
                     fontSize: 28, fontWeight: 800, color: ACCENT,
                     lineHeight: 1, marginBottom: 4,
-                  }}>{s.val}</div>
+                  }}><StatCount value={s.val} /></div>
                   <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, color: 'rgba(255,255,255,0.50)' }}>
                     {s.label}
                   </div>
                 </div>
               ))}
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -754,13 +758,13 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
       {/* ─── WHY JOIN US ──────────────────────────────────────── */}
       <section style={{ background: dark ? '#000000' : 'white', padding: 'clamp(48px,6vw,72px) 24px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: 44 }}>
+          <Reveal stagger={0.12} y={22} style={{ textAlign: 'center', marginBottom: 44 }}>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', color: TEAL, textTransform: 'uppercase', marginBottom: 10 }}>Culture & Benefits</p>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(26px,3.5vw,38px)', fontWeight: 700, color: textPrimary, margin: 0 }}>
               Why Join ZodiacPluss?
             </h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          </Reveal>
+          <Reveal stagger={0.1} y={30} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {whyUs.map((w, i) => (
               <div key={i} style={{
                 background: dark ? cardBg : 'linear-gradient(180deg, #f8f6ff 0%, white 100%)',
@@ -783,14 +787,14 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
                 <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: textMuted, margin: 0, lineHeight: 1.6 }}>{w.desc}</p>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* ─── OPEN ROLES ───────────────────────────────────────── */}
       <section id="open-roles" style={{ padding: 'clamp(48px,6vw,72px) 24px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <div style={{ marginBottom: 36 }}>
+          <Reveal stagger={0.12} y={22} style={{ marginBottom: 36 }}>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', color: TEAL, textTransform: 'uppercase', marginBottom: 10 }}>Current Openings</p>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(26px,3.5vw,38px)', fontWeight: 700, color: textPrimary, margin: '0 0 10px' }}>
               Open Positions
@@ -798,13 +802,13 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 15, color: textMuted, margin: 0, maxWidth: 520 }}>
               We're looking for passionate professionals to grow with us. All roles are open to applicants across India.
             </p>
-          </div>
+          </Reveal>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+          <Reveal stagger={0.1} y={26} style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
             {jobs.map(job => (
               <JobCard key={job.id} job={job} onApply={scrollToForm} dark={dark} />
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -815,14 +819,14 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
           background: 'radial-gradient(ellipse 60% 70% at 50% 50%, rgba(61,214,172,0.07) 0%, transparent 65%)',
         }} />
         <div style={{ maxWidth: 1100, margin: '0 auto', position: 'relative', zIndex: 1 }}>
-          <div style={{ textAlign: 'center', marginBottom: 48 }}>
+          <Reveal stagger={0.12} y={22} style={{ textAlign: 'center', marginBottom: 48 }}>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', color: ACCENT, textTransform: 'uppercase', marginBottom: 10 }}>How It Works</p>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(26px,3.5vw,38px)', fontWeight: 700, color: 'white', margin: 0 }}>
               Our Hiring Process
             </h2>
-          </div>
+          </Reveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <Reveal stagger={0.12} y={30} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {steps.map((s, i) => (
               <div key={i} style={{ position: 'relative' }}>
                 {/* Connector line on desktop */}
@@ -834,13 +838,13 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
                     zIndex: 0,
                   }} />
                 )}
-                <div style={{
+                <div className="zp-card-soft group" style={{
                   background: 'rgba(255,255,255,0.05)',
                   border: '1px solid rgba(61,214,172,0.18)',
                   borderRadius: 18, padding: '24px 20px',
                   position: 'relative', zIndex: 1,
                 }}>
-                  <div style={{
+                  <div className="zp-icon-tile" style={{
                     width: 48, height: 48, borderRadius: '50%', marginBottom: 14,
                     background: `linear-gradient(135deg, ${TEAL}30, ${TEAL_D}50)`,
                     border: `1.5px solid ${TEAL}50`,
@@ -852,7 +856,7 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
                 </div>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -861,6 +865,7 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
         background: `linear-gradient(120deg, ${TEAL_D}, ${TEAL})`,
         padding: '40px 24px', textAlign: 'center',
       }}>
+        <Reveal stagger={0.12} y={20}>
         <p style={{
           fontFamily: "'Playfair Display', serif",
           fontSize: 'clamp(18px, 2.8vw, 30px)',
@@ -871,12 +876,13 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
         <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: 'rgba(255,255,255,0.70)', margin: 0 }}>
           Join ZodiacPluss and make a difference.
         </p>
+        </Reveal>
       </section>
 
       {/* ─── APPLICATION FORM ─────────────────────────────────── */}
       <section id="apply-form" style={{ padding: 'clamp(56px,7vw,88px) 24px', background: pageBg }}>
         <div style={{ maxWidth: 740, margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: 44 }}>
+          <Reveal stagger={0.12} y={22} style={{ textAlign: 'center', marginBottom: 44 }}>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', color: TEAL, textTransform: 'uppercase', marginBottom: 12 }}>Join The Team</p>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(26px,3.5vw,40px)', fontWeight: 700, color: textPrimary, margin: '0 0 12px' }}>
               Submit Your Application
@@ -884,7 +890,7 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 15, color: textMuted, margin: 0 }}>
               Fill out the form below. Our team will contact you within 5 working days.
             </p>
-          </div>
+          </Reveal>
 
           {/* Contact quick links */}
           <div style={{

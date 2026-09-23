@@ -1,4 +1,5 @@
 import FAQSection from '@/components/FAQSection'
+import { Reveal, TextReveal } from '@/components/motion'
 import FounderSection from '@/components/FounderSection'
 import VideoShowcaseSection from '@/components/VideoShowcaseSection'
 
@@ -76,12 +77,18 @@ export default function AboutUsPage({ onNavigate, dark = false }: AboutUsPagePro
       >
         <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]" />
         <div className="relative z-10 max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+          <TextReveal
+            as="h1"
+            className="text-4xl md:text-6xl font-bold text-white mb-4"
+            style={{ fontFamily: "'Playfair Display', serif" }}
+          >
             Our Story &amp; Mission
-          </h1>
-          <p className="text-white/65 text-lg max-w-2xl mx-auto">
-            Born from the belief that everyone deserves access to meaningful guidance, ZodiacPluss bridges ancient wisdom with modern science.
-          </p>
+          </TextReveal>
+          <Reveal y={22} delay={0.25}>
+            <p className="text-white/65 text-lg max-w-2xl mx-auto">
+              Born from the belief that everyone deserves access to meaningful guidance, ZodiacPluss bridges ancient wisdom with modern science.
+            </p>
+          </Reveal>
         </div>
       </div>
 
@@ -89,10 +96,23 @@ export default function AboutUsPage({ onNavigate, dark = false }: AboutUsPagePro
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 transition-colors duration-300">
         <div className="grid gap-12 items-center mb-20 lg:grid-cols-2">
           <div>
-            <div className="w-12 h-1 bg-[#d81b86] rounded mb-4" />
-            <h2 className="about-heading text-4xl font-bold text-[#1e0d40] mb-5" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <Reveal
+              className="w-12 h-1 bg-[#d81b86] rounded mb-4"
+              y={0}
+              scale={0.02}
+              duration={0.7}
+              style={{ transformOrigin: 'left center' }}
+            >
+              {null}
+            </Reveal>
+            <TextReveal
+              as="h2"
+              className="about-heading text-4xl font-bold text-[#1e0d40] mb-5"
+              style={{ fontFamily: "'Playfair Display', serif" }}
+            >
               What is ZodiacPluss?
-            </h2>
+            </TextReveal>
+            <Reveal stagger={0.12} y={22} delay={0.15}>
             <p className="about-muted text-[#4a4a6a] leading-relaxed mb-4">
               Zodiac Pluss Founded in 2026, ZodiacPluss was built on a single conviction that ancient astrological wisdom and modern psychology are not opposites - they are two sides of the same coin.
             </p>
@@ -102,7 +122,7 @@ export default function AboutUsPage({ onNavigate, dark = false }: AboutUsPagePro
             <a
               href="/services"
               onClick={(e) => { e.preventDefault(); onNavigate('Services') }}
-              className="about-button inline-flex items-center gap-2 text-white text-sm font-semibold px-6 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer border-0 no-underline"
+              className="zp-btn zp-sheen zp-arrow about-button inline-flex items-center gap-2 text-white text-sm font-semibold px-6 py-3 rounded-full shadow-md hover:shadow-lg cursor-pointer border-0 no-underline"
               style={{
                 background: 'linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)',
                 boxShadow: '0 8px 24px rgba(94, 184, 232, 0.35)',
@@ -113,8 +133,9 @@ export default function AboutUsPage({ onNavigate, dark = false }: AboutUsPagePro
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </a>
+            </Reveal>
           </div>
-          <div className="flex justify-center items-center">
+          <Reveal x={34} scale={0.95} duration={1} className="flex justify-center items-center">
             <div className="relative group w-72 sm:w-96 md:w-[420px] aspect-square flex items-center justify-center">
               {/* Soft ambient cosmic radial glow */}
               <div
@@ -133,23 +154,27 @@ export default function AboutUsPage({ onNavigate, dark = false }: AboutUsPagePro
                 }}
               />
             </div>
-          </div>
+          </Reveal>
         </div>
 
         {/* Values */}
         <div className="mb-20">
-          <h2 className="text-3xl font-bold text-[#1e0d40] text-center mb-10" style={{ fontFamily: "'Playfair Display', serif" }}>
+          <TextReveal
+            as="h2"
+            className="text-3xl font-bold text-[#1e0d40] text-center mb-10"
+            style={{ fontFamily: "'Playfair Display', serif" }}
+          >
             Our Core Values
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          </TextReveal>
+          <Reveal stagger={0.1} y={30} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((v) => (
-              <div key={v.title} className="about-surface bg-white rounded-2xl p-6 shadow-sm border border-purple-100 hover:shadow-md transition-all duration-300">
-                <div className="text-[#d81b86] text-xl mb-3">{v.icon}</div>
+              <div key={v.title} className="zp-card group about-surface bg-white rounded-2xl p-6 shadow-sm border border-purple-100">
+                <div className="zp-icon-tile text-[#d81b86] text-xl mb-3">{v.icon}</div>
                 <h3 className="about-heading font-bold text-[#1e0d40] mb-2">{v.title}</h3>
                 <p className="about-muted text-xs text-[#6b5b8f] leading-relaxed">{v.desc}</p>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </div>
 
@@ -162,19 +187,23 @@ export default function AboutUsPage({ onNavigate, dark = false }: AboutUsPagePro
       {/* Team */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 transition-colors duration-300">
         <div>
-          <h2 className="about-heading text-3xl font-bold text-[#1e0d40] text-center mb-8" style={{ fontFamily: "'Playfair Display', serif" }}>
+          <TextReveal
+            as="h2"
+            className="about-heading text-3xl font-bold text-[#1e0d40] text-center mb-8"
+            style={{ fontFamily: "'Playfair Display', serif" }}
+          >
             Meet the Team
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
+          </TextReveal>
+          <Reveal stagger={0.07} y={32} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
             {team.map((member) => (
               <div
                 key={member.name}
-                className="group relative rounded-2xl sm:rounded-3xl overflow-hidden aspect-[3/4] shadow-md transition-all duration-500 hover:shadow-2xl hover:-translate-y-1.5 cursor-pointer bg-gray-900"
+                className="zp-card zp-media group relative rounded-2xl sm:rounded-3xl aspect-[3/4] shadow-md cursor-pointer bg-gray-900"
               >
                 <img
                   src={member.img}
                   alt={member.name}
-                  className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
+                  className="w-full h-full object-cover object-center"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-3.5 sm:p-4 z-10">
@@ -190,7 +219,7 @@ export default function AboutUsPage({ onNavigate, dark = false }: AboutUsPagePro
                 </div>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </div>
 

@@ -174,7 +174,7 @@ export default function Navbar({ currentPage, onNavigate, dark = false, onToggle
             <a
               href={PAGE_TO_PATH["Book"]}
               onClick={(e) => { e.preventDefault(); onNavigate("Book") }}
-              className="flex items-center gap-2 text-white text-[13px] font-semibold px-5 py-2 rounded-full transition-all duration-200 hover:opacity-90 shadow-sm cursor-pointer border-0 no-underline"
+              className="zp-btn zp-sheen flex items-center gap-2 text-white text-[13px] font-semibold px-5 py-2 rounded-full hover:opacity-90 shadow-sm cursor-pointer border-0 no-underline"
               style={{ background: "linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)" }}
             >
               Connect Us

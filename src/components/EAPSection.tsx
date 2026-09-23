@@ -5,6 +5,8 @@
    why EAP matfters, solution pillars, pricing, CAP/SAP add-ons, CTA.
    ───────────────────────────────────────────────────────────────── */
 
+import { Reveal, StatCount } from '@/components/motion'
+
 const GRADIENT = 'linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)'
 
 const LOGO_URL =
@@ -125,14 +127,16 @@ export default function EAPSection({ onNavigate, dark = false }: EAPSectionProps
       {/* ── Title + credibility ─────────────────────────────────── */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-14">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-6">
+          <Reveal y={0} scale={0.85} duration={0.8} className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-6">
             <img
               src={LOGO_URL}
               alt="ZodiacPluss"
               className="w-20 h-14 sm:w-20 sm:h-20 object-contain filter drop-shadow-md transition-transform duration-300 hover:scale-105"
             />
-          </div>
+          </Reveal>
 
+          {/* Gradient-clipped span inside — masked block reveal, never a split */}
+          <Reveal mask duration={1} delay={0.1}>
           <h2
             className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold leading-[1.15] mb-4"
             style={{ color: headingColor, fontFamily: "'Playfair Display', serif" }}
@@ -148,46 +152,49 @@ export default function EAPSection({ onNavigate, dark = false }: EAPSectionProps
               (EAP) Solutions
             </span>
           </h2>
+          </Reveal>
 
+          <Reveal y={20} delay={0.25}>
           <p className="text-[15px] sm:text-base leading-relaxed" style={{ color: bodyColor }}>
             ZodiacPluss brings certified mental-health professionals, always-on crisis support, and structured
             wellness programs to your workplace — built for
             supporting organizations across India.
           </p>
+          </Reveal>
         </div>
 
         {/* Credibility stats */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+        <Reveal stagger={0.09} y={30} className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
           {credibilityStats.map((s) => (
             <div
               key={s.label}
-              className="rounded-2xl text-center py-6 px-3"
+              className="zp-card-soft rounded-2xl text-center py-6 px-3"
               style={{ background: cardBg, border: `1px solid ${cardBorder}` }}
             >
               <div className="text-2xl sm:text-3xl font-extrabold mb-1" style={{ color: headingColor, fontFamily: "'Playfair Display', serif" }}>
-                {s.value}
+                <StatCount value={s.value} />
               </div>
               <div className="text-[11px] sm:text-xs font-medium" style={{ color: bodyColor }}>
                 {s.label}
               </div>
             </div>
           ))}
-        </div>
+        </Reveal>
       </div>
 
       {/* ── Why EAP Matters ─────────────────────────────────────── */}
       <div style={{ background: altBg, transition: 'background 0.4s ease' }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-          <div className="text-center max-w-xl mx-auto mb-12">
+          <Reveal stagger={0.12} y={22} className="text-center max-w-xl mx-auto mb-12">
             <p className="text-[11px] font-bold tracking-[0.18em] uppercase mb-3" style={{ color: '#16abd8ff' }}>
               Why ZodiacPluss EAP Matters ?
             </p>
             <h3 className="text-2xl sm:text-3xl font-bold" style={{ color: headingColor, fontFamily: "'Playfair Display', serif" }}>
               Wellbeing Is the Foundation of Performance
             </h3>
-          </div>
+          </Reveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4 items-stretch relative">
+          <Reveal stagger={0.14} y={30} className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4 items-stretch relative">
             {whyMatters.map((w, i) => (
               <div key={w.title} className="relative flex flex-col items-center text-center px-4">
                 {i < whyMatters.length - 1 && (
@@ -197,7 +204,7 @@ export default function EAPSection({ onNavigate, dark = false }: EAPSectionProps
                   />
                 )}
                 <div
-                  className="relative z-10 w-16 h-16 rounded-full flex items-center justify-center mb-4"
+                  className="zp-icon-tile relative z-10 w-16 h-16 rounded-full flex items-center justify-center mb-4"
                   style={{ background: cardBg, border: `1.5px solid rgba(20,184,166,0.4)`, color: '#14b8a6' }}
                 >
                   {w.icon}
@@ -210,30 +217,30 @@ export default function EAPSection({ onNavigate, dark = false }: EAPSectionProps
                 </p>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </div>
 
       {/* ── Our EAP Solution ────────────────────────────────────── */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-        <div className="text-center max-w-xl mx-auto mb-12">
+        <Reveal stagger={0.12} y={22} className="text-center max-w-xl mx-auto mb-12">
           <p className="text-[11px] font-bold tracking-[0.18em] uppercase mb-3" style={{ color: '#14b8a6' }}>
             Our EAP Solution
           </p>
           <h3 className="text-2xl sm:text-3xl font-bold" style={{ color: headingColor, fontFamily: "'Playfair Display', serif" }}>
             A Complete Corporate Wellness Framework
           </h3>
-        </div>
+        </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Reveal stagger={0.1} y={32} className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {solutionPillars.map((p) => (
             <div
               key={p.tag}
-              className="rounded-2xl p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              className="zp-card group rounded-2xl p-6 sm:p-7"
               style={{ background: cardBg, border: `1px solid ${cardBorder}` }}
             >
               <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                className="zp-icon-tile w-12 h-12 rounded-xl flex items-center justify-center mb-5"
                 style={{ background: dark ? 'rgba(20,184,166,0.12)' : '#f0fdfa', color: '#0d9488' }}
               >
                 {p.icon}
@@ -249,29 +256,29 @@ export default function EAPSection({ onNavigate, dark = false }: EAPSectionProps
               </p>
             </div>
           ))}
-        </div>
+        </Reveal>
       </div>
 
       {/* ── Other Offerings: CAP & SAP ──────────────────────────── */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-        <div className="text-center max-w-xl mx-auto mb-12">
+        <Reveal stagger={0.12} y={22} className="text-center max-w-xl mx-auto mb-12">
           <p className="text-[11px] font-bold tracking-[0.18em] uppercase mb-3" style={{ color: '#14b8a6' }}>
             Other Offerings
           </p>
           <h3 className="text-2xl sm:text-3xl font-bold" style={{ color: headingColor, fontFamily: "'Playfair Display', serif" }}>
             Beyond Core EAP: CAP &amp; SAP Programs
           </h3>
-        </div>
+        </Reveal>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <Reveal stagger={0.12} y={30} className="grid md:grid-cols-2 gap-6">
           {otherOfferings.map((o) => (
             <div
               key={o.abbr}
-              className="rounded-2xl p-6 sm:p-7 flex gap-5"
+              className="zp-card group rounded-2xl p-6 sm:p-7 flex gap-5"
               style={{ background: cardBg, border: `1px solid ${cardBorder}` }}
             >
               <div
-                className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0"
+                className="zp-icon-tile w-14 h-14 rounded-2xl flex items-center justify-center shrink-0"
                 style={{ background: `${o.color}22`, color: o.color }}
               >
                 {o.icon}
@@ -294,10 +301,12 @@ export default function EAPSection({ onNavigate, dark = false }: EAPSectionProps
               </div>
             </div>
           ))}
-        </div>
+        </Reveal>
 
         {/* ── CTA ──────────────────────────────────────────────── */}
-        <div
+        <Reveal
+          y={34}
+          duration={0.9}
           className="mt-14 rounded-3xl p-8 md:p-10 text-center text-white shadow-lg"
           style={{ background: 'linear-gradient(135deg, #42a1e0ff 0%, #b6a338ff 50%, #49b2fcff 100%)' }}
         >
@@ -309,7 +318,7 @@ export default function EAPSection({ onNavigate, dark = false }: EAPSectionProps
           </p>
           <button
             onClick={() => onNavigate?.('Book')}
-            className="inline-flex items-center gap-2 text-white font-semibold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer border-0"
+            className="zp-btn zp-sheen zp-arrow inline-flex items-center gap-2 text-white font-semibold px-8 py-3 rounded-full shadow-md hover:shadow-lg cursor-pointer border-0"
             style={{ background: GRADIENT, boxShadow: '0 8px 24px rgba(94, 184, 232, 0.35)' }}
           >
             Request a Corporate Demo
@@ -317,7 +326,7 @@ export default function EAPSection({ onNavigate, dark = false }: EAPSectionProps
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </button>
-        </div>
+        </Reveal>
       </div>
     </section>
   )

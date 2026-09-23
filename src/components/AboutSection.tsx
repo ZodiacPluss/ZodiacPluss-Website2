@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react"
+import { Reveal, TextReveal } from "@/components/motion"
 
 interface AboutSectionProps {
   onNavigate: (page: string) => void
@@ -108,27 +109,39 @@ export default function AboutSection({ onNavigate, dark = false }: AboutSectionP
           <div className="lg:w-[42%] flex-shrink-0">
 
             {/* Heading */}
-            <h2
+            <TextReveal
+              as="h2"
               className="text-[36px] sm:text-[42px] md:text-[50px] font-semibold leading-tight mb-2"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
               <span style={{ color: dark ? '#f5f5f5' : '#1e0d40' }}>Guidance that</span>
               <br />
               <span style={{ color: dark ? 'linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)' : '' }}>understands you</span>
-            </h2>
+            </TextReveal>
 
-            {/* Teal underline accent */}
-            <div className="w-12 h-1 bg-teal-500 rounded mb-6" />
+            {/* Teal underline accent — wipes out from the left behind the heading */}
+            <Reveal
+              className="w-12 h-1 bg-teal-500 rounded mb-6"
+              y={0}
+              scale={0.02}
+              delay={0.35}
+              duration={0.7}
+              style={{ transformOrigin: 'left center' }}
+            >
+              {null}
+            </Reveal>
 
-            <p className="text-base leading-relaxed mb-8 max-w-md" style={{ color: dark ? '#a1a1aa' : '#4a4a6a' }}>
-              ZodiacPluss blends ancient astrology with modern psychological insights to help you understand yourself better and make confident decisions.
-            </p>
+            <Reveal y={20} delay={0.2}>
+              <p className="text-base leading-relaxed mb-8 max-w-md" style={{ color: dark ? '#a1a1aa' : '#4a4a6a' }}>
+                ZodiacPluss blends ancient astrology with modern psychological insights to help you understand yourself better and make confident decisions.
+              </p>
+            </Reveal>
 
             {/* Feature badges */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+            <Reveal stagger={0.09} y={24} delay={0.15} className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
               {features.map((f) => (
-                <div key={f.label} className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: dark ? 'rgba(20,184,166,0.12)' : '#f0fdfa', border: dark ? '1px solid rgba(20,184,166,0.28)' : '1px solid #99f6e4', color: '#0d9488' }}>
+                <div key={f.label} className="zp-card-soft group flex items-start gap-3">
+                  <div className="zp-icon-tile w-9 h-9 rounded-xl flex items-center justify-center shrink-0 mt-0.5" style={{ background: dark ? 'rgba(20,184,166,0.12)' : '#f0fdfa', border: dark ? '1px solid rgba(20,184,166,0.28)' : '1px solid #99f6e4', color: '#0d9488' }}>
                     {f.icon}
                   </div>
                   <div>
@@ -137,14 +150,14 @@ export default function AboutSection({ onNavigate, dark = false }: AboutSectionP
                   </div>
                 </div>
               ))}
-            </div>
+            </Reveal>
 
             {/* Buttons */}
-            <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+            <Reveal stagger={0.1} y={18} delay={0.2} className="flex flex-wrap items-center gap-3 sm:gap-4">
               <a
                 href="/services"
                 onClick={(e) => { e.preventDefault(); onNavigate("Services") }}
-                className="flex items-center gap-2 text-white text-sm font-semibold px-6 py-3 rounded-full transition-all duration-200 shadow-md cursor-pointer no-underline"
+                className="zp-btn zp-sheen zp-arrow flex items-center gap-2 text-white text-sm font-semibold px-6 py-3 rounded-full shadow-md cursor-pointer no-underline"
                 style={{ background: "linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)" }}
               >
                 Explore Services
@@ -155,7 +168,7 @@ export default function AboutSection({ onNavigate, dark = false }: AboutSectionP
               <a
                 href="/about-us"
                 onClick={(e) => { e.preventDefault(); onNavigate("About Us") }}
-                className="flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-full transition-all duration-200 cursor-pointer no-underline"
+                className="zp-btn zp-arrow flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-full cursor-pointer no-underline"
                 style={{ border: dark ? '1px solid rgba(255,255,255,0.3)' : '1px solid #1d6499ff', color: dark ? '#f5f5f5' : '#1d6499ff' }}
               >
                 Learn More
@@ -163,11 +176,14 @@ export default function AboutSection({ onNavigate, dark = false }: AboutSectionP
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </a>
-            </div>
+            </Reveal>
           </div>
 
           {/* Right: Auto-scrolling card carousel */}
-          <div
+          <Reveal
+            x={44}
+            y={16}
+            duration={0.95}
             className="lg:w-[58%] w-full"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
@@ -188,8 +204,8 @@ export default function AboutSection({ onNavigate, dark = false }: AboutSectionP
               >
                 {services.map((svc, i) => (
                   <div
-
-                    className="h-full flex-shrink-0 px-1"
+                    key={svc.title}
+                    className="h-full shrink-0 px-1"
                     style={{ width: `${100 / total}%` }}
                   >
                     <div className="w-full h-full rounded-2xl overflow-hidden relative group cursor-pointer border border-white/20">
@@ -225,7 +241,7 @@ export default function AboutSection({ onNavigate, dark = false }: AboutSectionP
               {/* Nav arrows */}
               <button
                 onClick={goPrev}
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 backdrop-blur-md border border-white/30 flex items-center justify-center text-white hover:bg-black/60 transition-all z-20 shadow-lg cursor-pointer"
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 backdrop-blur-md border border-white/30 flex items-center justify-center text-white hover:bg-black/60 transition-colors z-20 shadow-lg cursor-pointer"
                 aria-label="Previous slide"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -259,7 +275,7 @@ export default function AboutSection({ onNavigate, dark = false }: AboutSectionP
                 />
               ))}
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

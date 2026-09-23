@@ -4,6 +4,8 @@
    Right: app screenshot image (image-8.png) displayed as-is
    ───────────────────────────────────────────────────────────────── */
 
+import { Reveal, TextReveal } from '@/components/motion'
+
 const TEAL = '#14b8a6'
 const TEAL_DARK = '#065350'
 const NAVY = '#1a1060'
@@ -509,7 +511,7 @@ export default function AppShowcaseSection() {
           <div>
 
             {/* Main heading */}
-            <h2 style={{
+            <TextReveal as="h2" style={{
               fontFamily: "'Playfair Display', serif",
               fontSize: 'clamp(32px, 4vw, 54px)',
               fontWeight: 700, lineHeight: 1.12,
@@ -521,9 +523,10 @@ export default function AppShowcaseSection() {
                 fontStyle: 'italic',
                 color: '#24c5d6',
               }}>clarity</em>
-            </h2>
+            </TextReveal>
 
             {/* Subtext */}
+            <Reveal y={22} delay={0.25}>
             <p style={{
               fontFamily: "'Inter', sans-serif",
               fontSize: 'clamp(14px, 1.4vw, 17px)',
@@ -532,11 +535,12 @@ export default function AppShowcaseSection() {
             }}>
               ZodiacPluss combines intuitive design with powerful features to help you seek guidance, connect with experts, and grow every day.
             </p>
+            </Reveal>
 
             {/* Feature grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4" style={{ marginBottom: 40 }}>
+            <Reveal stagger={0.09} y={26} className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4" style={{ marginBottom: 40 }}>
               {features.map((f, i) => (
-                <div key={i} style={{
+                <div key={i} className="zp-card-soft group" style={{
                   display: 'flex', alignItems: 'flex-start', gap: 11,
                   padding: '14px 16px',
                   background: 'rgba(255,255,255,0.07)',
@@ -545,7 +549,7 @@ export default function AppShowcaseSection() {
                   backdropFilter: 'blur(8px)',
                   transition: 'box-shadow 0.2s',
                 }}>
-                  <div style={{
+                  <div className="zp-icon-tile" style={{
                     width: 36, height: 36, borderRadius: 10, flexShrink: 0,
                     background: `linear-gradient(135deg, ${TEAL}20, ${TEAL}10)`,
                     border: `1px solid ${TEAL}30`,
@@ -566,10 +570,12 @@ export default function AppShowcaseSection() {
                   </div>
                 </div>
               ))}
-            </div>
+            </Reveal>
 
             {/* CTA button */}
+            <Reveal y={20} delay={0.1}>
             <button
+              className="zp-btn zp-sheen zp-arrow"
               style={{
                 background: 'linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)',
                 border: 'none', borderRadius: 999,
@@ -596,28 +602,30 @@ export default function AppShowcaseSection() {
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </button>
+            </Reveal>
 
             {/* Trust line */}
-            <div style={{
+            <Reveal y={14} delay={0.2} style={{
               display: 'flex', alignItems: 'center', gap: 7,
               fontFamily: "'Inter', sans-serif",
               fontSize: 13, color: 'rgba(200,230,255,0.65)',
             }}>
               <span style={{ color: '#f59e0b', fontSize: 15 }}>★</span>
               Trusted by thousands of users across India
-            </div>
+            </Reveal>
           </div>
 
           {/* ── RIGHT: phone mockups ──────────────────────────── */}
           <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: 0, padding: 0 }}>
-            <h3 style={{
+            <TextReveal as="h3" style={{
               fontFamily: "'Playfair Display', serif",
               fontSize: 'clamp(20px, 2.4vw, 28px)',
               fontWeight: 600, color: '#f0f9ff',
               margin: '0 0 8px',
             }}>
               Explore the ZodiacPluss App
-            </h3>
+            </TextReveal>
+            <Reveal y={16} delay={0.2}>
             <p style={{
               fontFamily: "'Inter', sans-serif",
               fontSize: 'clamp(13px, 1.2vw, 15px)',
@@ -625,9 +633,13 @@ export default function AppShowcaseSection() {
             }}>
               Everything you need for guidance, growth and well‑being.
             </p>
+            </Reveal>
 
             {/* App showcase demo video */}
-            <div
+            <Reveal
+              y={30}
+              scale={0.96}
+              duration={1}
               className="w-full relative rounded-[26px] overflow-hidden transition-transform duration-500 hover:scale-[1.01]"
               style={{
                 border: '1px solid rgba(20, 184, 166, 0.12)',
@@ -653,7 +665,7 @@ export default function AppShowcaseSection() {
                   borderRadius: 26,
                 }}
               />
-            </div>
+            </Reveal>
           </div>
 
         </div>

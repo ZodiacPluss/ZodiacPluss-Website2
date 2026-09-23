@@ -1,3 +1,5 @@
+import { Reveal, TextReveal } from '@/components/motion'
+
 interface ServicesPageProps {
   onNavigate: (page: string) => void
   dark?: boolean
@@ -113,19 +115,21 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
         />
 
         <div className="relative z-10 max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-md" style={{ fontFamily: "'Playfair Display', serif" }}>
+          <TextReveal as="h1" className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-md" style={{ fontFamily: "'Playfair Display', serif" }}>
             Everything You Need to Thrive
-          </h1>
+          </TextReveal>
+          <Reveal y={22} delay={0.25}>
           <p className="text-white/85 text-base md:text-lg max-w-xl mx-auto leading-relaxed drop-shadow-sm">
             From daily horoscopes and 1-on-1 therapy to comprehensive enterprise wellness programs, ZodiacPluss supports both individual seekers and forward-thinking teams.
           </p>
+          </Reveal>
         </div>
       </div>
 
       {/* ─── Section 1: Individual Services Grid ─── */}
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="flex items-center justify-between mb-10">
-          <div>
+          <Reveal stagger={0.1} y={22}>
             <div className="w-10 h-1 bg-[#d81b86] rounded mb-2" />
             <h2 className="text-2xl md:text-3xl font-bold" style={{ color: titleColor, fontFamily: "'Playfair Display', serif" }}>
               Personal &amp; Spiritual Wellness Services
@@ -133,14 +137,14 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
             <p className="text-xs md:text-sm mt-1" style={{ color: textColor }}>
               Individual sessions, AI reports, and daily cosmic guidance tailored to your unique journey.
             </p>
-          </div>
+          </Reveal>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <Reveal stagger={0.09} y={34} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((svc) => (
             <div
               key={svc.id}
-              className="group rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+              className="zp-card group rounded-2xl overflow-hidden shadow-sm"
               style={{
                 background: cardBg,
                 border: `1px solid ${cardBorder}`,
@@ -174,7 +178,7 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
                   <a
                     href="/coming-soon"
                     onClick={(e) => { e.preventDefault(); onNavigate('Coming Soon') }}
-                    className="text-xs font-semibold px-4 py-1.5 rounded-full text-white transition-all hover:opacity-90 shadow-sm cursor-pointer no-underline"
+                    className="zp-btn text-xs font-semibold px-4 py-1.5 rounded-full text-white hover:opacity-90 shadow-sm cursor-pointer no-underline"
                     style={{ background: svc.color }}
                   >
                     coming soon
@@ -183,10 +187,12 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
               </div>
             </div>
           ))}
-        </div>
+        </Reveal>
 
         {/* Discovery Call CTA */}
-        <div
+        <Reveal
+          y={32}
+          duration={0.9}
           className="mt-16 rounded-3xl p-8 md:p-10 text-center text-white shadow-lg"
           style={{ background: 'linear-gradient(135deg, #6095ceff, #575308ff)' }}
         >
@@ -207,7 +213,7 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
           >
             Book a Free Call →
           </a>
-        </div>
+        </Reveal>
       </div>
 
       {/* ─── Corporate Wellness Section Divider / Banner ─── */}
@@ -217,7 +223,7 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
           background: 'linear-gradient(135deg, #0d2535 0%, #0b4a3f 50%, #1e0d40 100%)',
         }}
       >
-        <div className="relative z-10 max-w-3xl mx-auto">
+        <Reveal stagger={0.12} y={26} className="relative z-10 max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 border border-teal-400/40 text-teal-300 text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-5">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
@@ -241,21 +247,21 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
           >
             Request a Corporate Demo →
           </a>
-        </div>
+        </Reveal>
       </div>
 
       {/* ─── Section 2: For Corporates Content (Benefits & Packages) ─── */}
       <div className="max-w-6xl mx-auto px-6 py-16">
         {/* Why Companies Choose Us Benefits */}
         <div className="mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-10" style={{ color: titleColor, fontFamily: "'Playfair Display', serif" }}>
+          <TextReveal as="h2" className="text-2xl md:text-3xl font-bold text-center mb-10" style={{ color: titleColor, fontFamily: "'Playfair Display', serif" }}>
             Why Companies Choose Us
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+          </TextReveal>
+          <Reveal stagger={0.09} y={30} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             {corporateBenefits.map((b) => (
               <div
                 key={b.title}
-                className="rounded-2xl p-6 text-center shadow-sm transition-all duration-300 hover:shadow-md"
+                className="zp-card-soft group rounded-2xl p-6 text-center shadow-sm"
                 style={{
                   background: cardBg,
                   border: `1px solid ${cardBorder}`,
@@ -266,19 +272,19 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
                 <p className="text-xs leading-relaxed" style={{ color: textColor }}>{b.desc}</p>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
 
         {/* Corporate Packages */}
         <div>
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-10" style={{ color: titleColor, fontFamily: "'Playfair Display', serif" }}>
+          <TextReveal as="h2" className="text-2xl md:text-3xl font-bold text-center mb-10" style={{ color: titleColor, fontFamily: "'Playfair Display', serif" }}>
             Corporate Packages &amp; Enterprise Plans
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+          </TextReveal>
+          <Reveal stagger={0.12} y={34} className="grid md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
             {corporatePackages.map((pkg) => (
               <div
                 key={pkg.name}
-                className={`flex flex-col h-full rounded-2xl p-7 border transition-all duration-300 hover:-translate-y-1 ${pkg.featured
+                className={`zp-card flex flex-col h-full rounded-2xl p-7 border ${pkg.featured
                     ? 'border-transparent shadow-2xl text-white'
                     : 'shadow-sm hover:shadow-xl'
                   }`}
@@ -365,7 +371,7 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
                       e.preventDefault()
                       onNavigate('Book')
                     }}
-                    className={`w-full py-3 rounded-full font-semibold text-sm transition-all shadow-sm block text-center no-underline ${pkg.featured
+                    className={`zp-btn w-full py-3 rounded-full font-semibold text-sm shadow-sm block text-center no-underline ${pkg.featured
                         ? 'bg-white text-[#d81b86] hover:bg-gray-100'
                         : 'text-white hover:opacity-90'
                       }`}
@@ -376,7 +382,7 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
                 </div>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </div>
     </div>

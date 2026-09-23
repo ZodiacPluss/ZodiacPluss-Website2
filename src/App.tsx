@@ -21,6 +21,7 @@ import {
 } from '@/utils/routes'
 import { useSEO } from '@/hooks/useSEO'
 import { Analytics } from '@vercel/analytics/react'
+import { setSplashActive, refreshMotion } from '@/components/motion'
 
 const pageMap: Record<string, PageKey> = {
   'About': 'About Us',
@@ -34,7 +35,13 @@ const pageMap: Record<string, PageKey> = {
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageKey>(() => getPageFromLocation())
   const [dark, setDark] = useState(false)
-  const [showSplash, setShowSplash] = useState(true)
+  // Flagged during render, not in an effect: child effects run before the
+  // parent's, so an effect here would fire after the first sections have
+  // already set up their entrances and missed the gate.
+  const [showSplash, setShowSplash] = useState(() => {
+    setSplashActive(true)
+    return true
+  })
 
   // Listen to browser Back / Forward buttons and sync URL on initial mount
   useEffect(() => {
@@ -62,6 +69,13 @@ export default function App() {
 
   // Dynamically update <title> + <meta description> + robots on every page change
   useSEO(currentPage)
+
+  // Each route swaps the whole document body, so every scroll trigger measured
+  // against the previous page is stale. Re-measure once the new one has painted.
+  useEffect(() => {
+    const raf = requestAnimationFrame(refreshMotion)
+    return () => cancelAnimationFrame(raf)
+  }, [currentPage])
 
   const handleNavigate = (page: string, replace = false) => {
     const resolved: PageKey = pageMap[page] ?? (page as PageKey)
@@ -107,7 +121,14 @@ export default function App() {
         transition: 'background 0.4s ease',
       }}
     >
-      {showSplash && <SplashScreen onFinish={() => setShowSplash(false)} />}
+      {showSplash && (
+        <SplashScreen
+          onFinish={() => {
+            setSplashActive(false)
+            setShowSplash(false)
+          }}
+        />
+      )}
       <Navbar
         currentPage={currentPage}
         onNavigate={handleNavigate}

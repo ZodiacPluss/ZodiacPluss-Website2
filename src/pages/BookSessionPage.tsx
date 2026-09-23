@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import { Reveal } from '@/components/motion'
 
 interface BookSessionPageProps {
   onNavigate: (page: string) => void
@@ -173,7 +174,9 @@ export default function BookSessionPage({ onNavigate, dark }: BookSessionPagePro
       }}
     >
       {/* Page wrapper card */}
-      <div
+      <Reveal
+        y={34}
+        duration={0.9}
         className="max-w-[1060px] mx-auto rounded-2xl sm:rounded-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-[340px_1fr] transition-colors duration-400 shadow-xl"
         style={{
           background: cardBg,
@@ -189,7 +192,7 @@ export default function BookSessionPage({ onNavigate, dark }: BookSessionPagePro
             background: dark ? '#0d0d0f' : '#f5fbfa',
           }}
         >
-          <div>
+          <Reveal stagger={0.1} y={22} delay={0.2}>
             {/* CONTACT US badge */}
             <div
               style={{
@@ -238,11 +241,20 @@ export default function BookSessionPage({ onNavigate, dark }: BookSessionPagePro
               </span>
             </h1>
 
-            {/* Teal underline */}
-            <div style={{
-              width: '170px', height: '3px', background: '#63be74ff',
-              borderRadius: '2px', margin: '8px 0 16px'
-            }} />
+            {/* Teal underline — wipes out from the left */}
+            <Reveal
+              y={0}
+              scale={0.02}
+              delay={0.45}
+              duration={0.7}
+              style={{
+                width: '170px', height: '3px', background: '#63be74ff',
+                borderRadius: '2px', margin: '8px 0 16px',
+                transformOrigin: 'left center',
+              }}
+            >
+              {null}
+            </Reveal>
 
             {/* Description */}
             <p
@@ -340,7 +352,7 @@ export default function BookSessionPage({ onNavigate, dark }: BookSessionPagePro
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
 
           {/* "Let's Create Clarity" card */}
           <div
@@ -750,7 +762,7 @@ export default function BookSessionPage({ onNavigate, dark }: BookSessionPagePro
             </div>
           </form>
         </div>
-      </div>
+      </Reveal>
 
       {/* ════ MAP SECTION ════ */}
       <div className="max-w-[1060px] mx-auto mt-6 sm:mt-8">

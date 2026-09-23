@@ -1,3 +1,5 @@
+import { Reveal, StatCount } from '@/components/motion'
+
 interface PortfolioPageProps {
   onNavigate: (page: string) => void
   dark?: boolean
@@ -80,6 +82,7 @@ export default function PortfolioPage({ onNavigate, dark = false }: PortfolioPag
 
       {/* Hero */}
       <section style={{ padding: '48px 20px 32px', textAlign: 'center', maxWidth: '700px', margin: '0 auto' }}>
+        <Reveal y={14} duration={0.6}>
         <span
           style={{
             display: 'inline-block',
@@ -97,6 +100,8 @@ export default function PortfolioPage({ onNavigate, dark = false }: PortfolioPag
         >
           Our Work
         </span>
+        </Reveal>
+        <Reveal mask delay={0.1} duration={1}>
         <h1
           style={{
             fontSize: 'clamp(28px, 7vw, 48px)',
@@ -118,10 +123,13 @@ export default function PortfolioPage({ onNavigate, dark = false }: PortfolioPag
             Highlights
           </span>
         </h1>
+        </Reveal>
+        <Reveal y={20} delay={0.3}>
         <p style={{ fontSize: '15px', color: textSecondary, lineHeight: 1.7, fontFamily: 'Inter, sans-serif' }}>
           A curated showcase of our astrology products, wellness programs, expert network,
           and technology initiatives that have transformed lives.
         </p>
+        </Reveal>
       </section>
 
       {/* Stats */}
@@ -136,8 +144,11 @@ export default function PortfolioPage({ onNavigate, dark = false }: PortfolioPag
         }}
       >
         {stats.map((s) => (
-          <div
+          <Reveal
             key={s.label}
+            y={26}
+            duration={0.7}
+            className="zp-card-soft"
             style={{
               background: cardBg,
               borderRadius: '16px',
@@ -157,18 +168,20 @@ export default function PortfolioPage({ onNavigate, dark = false }: PortfolioPag
                 fontFamily: "'Playfair Display', serif",
               }}
             >
-              {s.value}
+              <StatCount value={s.value} />
             </div>
             <div style={{ fontSize: '10px', color: textSecondary, marginTop: '4px', fontFamily: 'Inter, sans-serif', fontWeight: 500 }}>
               {s.label}
             </div>
-          </div>
+          </Reveal>
         ))}
       </section>
 
       {/* Portfolio Grid */}
       <section style={{ maxWidth: '900px', margin: '0 auto', padding: '0 20px 80px' }}>
-        <div
+        <Reveal
+          stagger={0.09}
+          y={32}
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
@@ -276,12 +289,14 @@ export default function PortfolioPage({ onNavigate, dark = false }: PortfolioPag
               </div>
             </div>
           ))}
-        </div>
+        </Reveal>
       </section>
 
       {/* CTA */}
       <section style={{ padding: '0 20px 80px', textAlign: 'center' }}>
+        <Reveal y={24}>
         <button
+          className="zp-btn zp-sheen"
           onClick={() => onNavigate('Book')}
           style={{
             background: 'linear-gradient(135deg, #7c3aed 0%, #d81b86 100%)',
@@ -309,6 +324,7 @@ export default function PortfolioPage({ onNavigate, dark = false }: PortfolioPag
         >
           Book a Session →
         </button>
+        </Reveal>
       </section>
     </div>
   )

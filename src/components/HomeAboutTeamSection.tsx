@@ -3,6 +3,7 @@
    About Us hero, core values, team grid, and stats banner
    ───────────────────────────────────────────────────────────────── */
 import MagneticButton from '@/components/MagneticButton'
+import { Reveal, StatCount } from '@/components/motion'
 
 const GRADIENT = 'linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)'
 const GRADIENT_TEXT: React.CSSProperties = {
@@ -226,7 +227,7 @@ export default function HomeAboutTeamSection({ onNavigate, dark }: HomeAboutTeam
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 lg:pt-24 pb-12 sm:pb-16">
         <div className="grid gap-10 lg:gap-14 items-center lg:grid-cols-2">
           {/* Left column */}
-          <div>
+          <Reveal stagger={0.1} y={26}>
             <span
               className="inline-block text-[11px] font-semibold tracking-[0.18em] uppercase px-4 py-1.5 rounded-full mb-6"
               style={{
@@ -258,7 +259,7 @@ export default function HomeAboutTeamSection({ onNavigate, dark }: HomeAboutTeam
 
             <button
               onClick={() => onNavigate?.('About Us')}
-              className="inline-flex items-center gap-2.5 text-white text-sm font-semibold px-6 py-3 rounded-full shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-300 cursor-pointer border-0"
+              className="zp-btn zp-sheen inline-flex items-center gap-2.5 text-white text-sm font-semibold px-6 py-3 rounded-full shadow-md hover:shadow-lg cursor-pointer border-0"
               style={{ background: GRADIENT }}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -266,10 +267,13 @@ export default function HomeAboutTeamSection({ onNavigate, dark }: HomeAboutTeam
               </svg>
               Our Mission
             </button>
-          </div>
+          </Reveal>
 
           {/* Founder card */}
-          <div
+          <Reveal
+            x={36}
+            y={18}
+            duration={1}
             className="relative rounded-3xl overflow-hidden flex flex-col sm:block min-h-0 sm:min-h-[560px] shadow-xl"
             style={{
               background: founderCardBg,
@@ -381,17 +385,17 @@ export default function HomeAboutTeamSection({ onNavigate, dark }: HomeAboutTeam
                 }}
               />
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
 
       {/* ── Core Values ───────────────────────────────────────────── */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8 sm:gap-10">
+        <Reveal stagger={0.1} y={30} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8 sm:gap-10">
           {values.map((v) => (
-            <div key={v.title} className="text-center sm:text-left xl:text-center px-2">
+            <div key={v.title} className="zp-card-soft group text-center sm:text-left xl:text-center px-2">
               <div
-                className="inline-flex items-center justify-center w-14 h-14 rounded-full mb-4 mx-auto sm:mx-0 xl:mx-auto"
+                className="zp-icon-tile inline-flex items-center justify-center w-14 h-14 rounded-full mb-4 mx-auto sm:mx-0 xl:mx-auto"
                 style={{ background: dark ? 'rgba(255,255,255,0.06)' : v.iconBg, color: v.iconColor }}
               >
                 {v.icon}
@@ -404,7 +408,7 @@ export default function HomeAboutTeamSection({ onNavigate, dark }: HomeAboutTeam
               </p>
             </div>
           ))}
-        </div>
+        </Reveal>
       </div>
 
       {/* ── Meet Our Team Section ─────────────────────────────────────────── */}
@@ -412,7 +416,7 @@ export default function HomeAboutTeamSection({ onNavigate, dark }: HomeAboutTeam
         {/* Header Row: Left Text + Right 2 Featured Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-center mb-6 sm:mb-8 lg:mb-10">
           {/* Left Column: Title, Subtitle, CTA */}
-          <div className="lg:col-span-6 xl:col-span-5">
+          <Reveal stagger={0.12} y={26} className="lg:col-span-6 xl:col-span-5">
             <h2
               className="text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.12] mb-3 sm:mb-4 tracking-tight"
               style={{ color: headingColor, fontFamily: "'Inter', sans-serif" }}
@@ -448,25 +452,25 @@ export default function HomeAboutTeamSection({ onNavigate, dark }: HomeAboutTeam
                 JOIN OUR TEAM
               </button>
             </MagneticButton>
-          </div>
+          </Reveal>
 
           {/* Right Column: 2 Featured Cards side-by-side */}
-          <div className="lg:col-span-6 xl:col-span-7 grid grid-cols-2 gap-3 sm:gap-4 md:gap-5">
+          <Reveal stagger={0.12} y={34} delay={0.15} className="lg:col-span-6 xl:col-span-7 grid grid-cols-2 gap-3 sm:gap-4 md:gap-5">
             {featuredTeam.map((member) => (
               <div
                 key={member.name}
-                className="group rounded-2xl sm:rounded-3xl overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer"
+                className="zp-card group rounded-2xl sm:rounded-3xl overflow-hidden shadow-md cursor-pointer"
                 style={{
                   background: dark ? 'rgba(56, 52, 52, 0.85)' : '#ffffff',
                   border: dark ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(200,190,240,0.35)',
                 }}
               >
                 {/* Image */}
-                <div className="overflow-hidden" style={{ aspectRatio: '3/3.2' }}>
+                <div className="zp-media" style={{ aspectRatio: '3/3.2' }}>
                   <img
                     src={member.img}
                     alt={member.name}
-                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover object-top"
                   />
                 </div>
                 {/* Name + Role below */}
@@ -496,26 +500,26 @@ export default function HomeAboutTeamSection({ onNavigate, dark }: HomeAboutTeam
                 </div>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
 
         {/* Main Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
+        <Reveal stagger={0.06} y={30} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
           {teamMembers.map((member) => (
             <div
               key={member.name}
-              className="group rounded-2xl overflow-hidden shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer"
+              className="zp-card group rounded-2xl overflow-hidden shadow-sm cursor-pointer"
               style={{
                 background: dark ? 'rgba(56, 52, 52, 0.85)' : '#ffffff',
                 border: dark ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(200,190,240,0.3)',
               }}
             >
               {/* Image */}
-              <div className="overflow-hidden" style={{ aspectRatio: '3/3' }}>
+              <div className="zp-media" style={{ aspectRatio: '3/3' }}>
                 <img
                   src={member.img}
                   alt={member.name}
-                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover object-top"
                 />
               </div>
               {/* Name + Role */}
@@ -545,11 +549,13 @@ export default function HomeAboutTeamSection({ onNavigate, dark }: HomeAboutTeam
               </div>
             </div>
           ))}
-        </div>
+        </Reveal>
       </div>
 
       {/* ── Stats Banner ──────────────────────────────────────────── */}
-      <div
+      <Reveal
+        y={32}
+        duration={0.9}
         className="relative z-10 mx-4 sm:mx-6 lg:mx-8 mb-0 rounded-2xl sm:rounded-3xl overflow-hidden"
         style={{
           background: dark
@@ -563,7 +569,7 @@ export default function HomeAboutTeamSection({ onNavigate, dark }: HomeAboutTeam
             {/* Left summary */}
             <div className="flex items-start sm:items-center gap-4 lg:flex-1 lg:max-w-[42%]">
               <div
-                className="shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center"
+                className="zp-float shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center"
                 style={{ background: 'linear-gradient(135deg, #5eb8e8, #8fd06a)' }}
               >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
@@ -581,7 +587,7 @@ export default function HomeAboutTeamSection({ onNavigate, dark }: HomeAboutTeam
             </div>
 
             {/* Stats columns */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-0 lg:flex-1">
+            <Reveal stagger={0.1} y={20} delay={0.2} className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-0 lg:flex-1">
               {stats.map((stat, i) => (
                 <div
                   key={stat.label}
@@ -593,17 +599,17 @@ export default function HomeAboutTeamSection({ onNavigate, dark }: HomeAboutTeam
                     className="text-2xl sm:text-3xl font-bold mb-1"
                     style={{ color: headingColor }}
                   >
-                    {stat.value}
+                    <StatCount value={String(stat.value)} />
                   </span>
                   <span className="text-[11px] sm:text-xs font-medium" style={{ color: bodyColor }}>
                     {stat.label}
                   </span>
                 </div>
               ))}
-            </div>
+            </Reveal>
           </div>
         </div>
-      </div>
+      </Reveal>
 
     </section>
   )

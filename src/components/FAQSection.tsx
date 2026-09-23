@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Reveal, TextReveal } from '@/components/motion'
 
 const TEAL = '#14b8a6'
 const PINK = '#d81b86'
@@ -62,6 +63,7 @@ export default function FAQSection({ onNavigate, dark = false }: FAQSectionProps
       <div style={{ maxWidth: 900, margin: '0 auto' }}>
 
         {/* GOT QUESTIONS? label */}
+        <Reveal y={14} duration={0.6}>
         <p style={{
           fontSize: 12, fontWeight: 700, letterSpacing: '0.16em',
           color: TEAL, marginBottom: 18, textTransform: 'uppercase',
@@ -69,9 +71,10 @@ export default function FAQSection({ onNavigate, dark = false }: FAQSectionProps
         }}>
           GOT QUESTIONS?
         </p>
+        </Reveal>
 
         {/* Main heading */}
-        <h2 style={{
+        <TextReveal as="h2" delay={0.1} stagger={0.11} style={{
           fontFamily: "'Inter', sans-serif",
           fontSize: 'clamp(44px, 7vw, 84px)',
           fontWeight: 800,
@@ -81,13 +84,20 @@ export default function FAQSection({ onNavigate, dark = false }: FAQSectionProps
           letterSpacing: '-0.02em',
         }}>
           Frequently<br />Asked Questions
-        </h2>
+        </TextReveal>
 
         {/* Curved teal underline */}
+        <Reveal
+          y={0}
+          scale={0.02}
+          delay={0.35}
+          duration={0.8}
+          style={{ transformOrigin: 'left center', marginBottom: 28 }}
+        >
         <svg
           viewBox="0 0 380 20"
           fill="none"
-          style={{ width: 'clamp(200px, 45%, 380px)', height: 'auto', marginBottom: 28, display: 'block' }}
+          style={{ width: 'clamp(200px, 45%, 380px)', height: 'auto', display: 'block' }}
         >
           <path
             d="M4 16 C95 4, 285 4, 376 16"
@@ -97,8 +107,10 @@ export default function FAQSection({ onNavigate, dark = false }: FAQSectionProps
             fill="none"
           />
         </svg>
+        </Reveal>
 
         {/* Subtext */}
+        <Reveal y={20} delay={0.3}>
         <p style={{
           fontFamily: "'Inter', sans-serif",
           fontSize: 'clamp(14px, 1.4vw, 17px)',
@@ -123,11 +135,13 @@ export default function FAQSection({ onNavigate, dark = false }: FAQSectionProps
             Just reach out.
           </button>
         </p>
+        </Reveal>
 
         {/* Top divider */}
         <div style={{ height: 1, background: dividerColor }} />
 
         {/* FAQ accordion rows */}
+        <Reveal stagger={0.07} y={20} duration={0.55}>
         {faqs.map((faq, i) => {
           const isOpen = openIndex === i
           return (
@@ -210,9 +224,10 @@ export default function FAQSection({ onNavigate, dark = false }: FAQSectionProps
             </div>
           )
         })}
+        </Reveal>
 
         {/* Bottom CTA card */}
-        <div style={{
+        <Reveal y={30} duration={0.9} style={{
           marginTop: 52,
           background: 'linear-gradient(135deg, #42a1e0ff 0%, #b6a338ff 50%, #49b2fcff 100%)',
           borderRadius: 22,
@@ -242,6 +257,7 @@ export default function FAQSection({ onNavigate, dark = false }: FAQSectionProps
             </p>
           </div>
           <button
+            className="zp-btn zp-sheen zp-arrow"
             onClick={() => onNavigate?.('Book')}
             style={{
               background: 'linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)',
@@ -269,7 +285,7 @@ export default function FAQSection({ onNavigate, dark = false }: FAQSectionProps
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </button>
-        </div>
+        </Reveal>
 
       </div>
     </section>

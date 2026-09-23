@@ -1,4 +1,5 @@
 import { PAGE_TO_PATH } from '@/utils/routes'
+import { Reveal } from '@/components/motion'
 
 /* ── tokens ────────────────────────────────────────────────────── */
 const INK = '#0d1128'          // the near-black navy of the 404 numerals
@@ -284,7 +285,10 @@ export default function NotFoundPage({ onNavigate, dark = false }: NotFoundPageP
       </div>
 
       {/* ── centred content column ── */}
-      <div
+      <Reveal
+        stagger={0.12}
+        y={26}
+        delay={0.1}
         className="relative mx-auto flex flex-col items-center justify-center text-center px-5"
         style={{ maxWidth: 1180, minHeight: '100vh', paddingTop: 'clamp(120px, 14vh, 170px)', paddingBottom: 'clamp(150px, 20vh, 230px)' }}
       >
@@ -333,7 +337,7 @@ export default function NotFoundPage({ onNavigate, dark = false }: NotFoundPageP
         <a
           href={PAGE_TO_PATH['Home'] ?? '/'}
           onClick={(e) => { e.preventDefault(); onNavigate('Home') }}
-          className="inline-flex items-center justify-center rounded-full no-underline transition-transform duration-200 hover:-translate-y-0.5"
+          className="zp-btn inline-flex items-center justify-center rounded-full no-underline"
           style={{
             marginTop: 30,
             padding: '17px 34px',
@@ -348,7 +352,7 @@ export default function NotFoundPage({ onNavigate, dark = false }: NotFoundPageP
         >
           BACK TO HOME
         </a>
-      </div>
+      </Reveal>
     </section>
   )
 }

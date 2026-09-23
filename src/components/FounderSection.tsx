@@ -8,6 +8,8 @@
    ───────────────────────────────────────────────────────────────── */
 
 /* ── colour tokens ─────────────────────────────────────────────── */
+import { Reveal } from '@/components/motion'
+
 const PURPLE = '#7d5fd3'        // the heading + signature purple
 const PURPLE_DEEP = '#6b4fbb'
 const PURPLE_SOFT = '#a78bda'   // badge gradient top
@@ -111,6 +113,7 @@ export default function FounderSection({ dark = false }: FounderSectionProps) {
           <div className="max-w-[520px]">
             {/* eyebrow */}
 
+            <Reveal mask duration={1}>
             <h2
               className="m-0 mt-5 leading-[0.98]"
               style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 'clamp(40px, 5.2vw, 66px)', letterSpacing: '-0.015em' }}
@@ -119,18 +122,19 @@ export default function FounderSection({ dark = false }: FounderSectionProps) {
               <br />
               <span style={GRADIENT_TEXT}>Founder</span>
             </h2>
+            </Reveal>
 
             
-            <div className="mt-8 flex flex-col gap-4">
+            <Reveal stagger={0.12} y={22} delay={0.2} className="mt-8 flex flex-col gap-4">
               {PARAGRAPHS.map((text) => (
                 <p key={text.slice(0, 24)} className="m-0" style={{ color: body, fontFamily: SANS, fontSize: 14.5, lineHeight: 1.72 }}>
                   {text}
                 </p>
               ))}
-            </div>
+            </Reveal>
 
             {/* signature */}
-            <div className="mt-9">
+            <Reveal y={18} delay={0.15} className="mt-9">
               <p className="m-0 leading-none inline-block" style={{ fontFamily: SCRIPT, fontSize: 40, ...GRADIENT_TEXT }}>
                 RashmI
               </p>
@@ -138,7 +142,7 @@ export default function FounderSection({ dark = false }: FounderSectionProps) {
               <p className="m-0" style={{ color: body, fontFamily: SANS, fontSize: 12.5 }}>
                 Founder &amp; CEO, ZodiacPluss
               </p>
-            </div>
+            </Reveal>
           </div>
 
           {/* ══════════ right: portrait, badge, quote ══════════ */}
@@ -181,8 +185,11 @@ export default function FounderSection({ dark = false }: FounderSectionProps) {
                     borderRadius: 26,
                   }}
                 />
-                <div
-                  className="relative overflow-hidden"
+                <Reveal
+                  className="zp-media relative"
+                  y={26}
+                  scale={0.95}
+                  duration={1}
                   style={{
                     borderRadius: 26,
                     aspectRatio: '420 / 430',
@@ -196,15 +203,20 @@ export default function FounderSection({ dark = false }: FounderSectionProps) {
                     alt="Rashmi, Founder and CEO of ZodiacPluss"
                     className="w-full h-full object-cover object-top"
                   />
-                </div>
+                </Reveal>
               </div>
 
               {/* experience badge, overlapping the portrait's left edge */}
+              <Reveal
+                className="absolute"
+                x={-24}
+                y={0}
+                delay={0.4}
+                style={{ left: 0, top: 'clamp(58px, 9%, 96px)' }}
+              >
               <div
-                className="absolute flex flex-col items-center text-center"
+                className="zp-float flex flex-col items-center text-center"
                 style={{
-                  left: 0,
-                  top: 'clamp(58px, 9%, 96px)',
                   width: 'clamp(84px, 12vw, 104px)',
                   padding: '20px 10px 18px',
                   borderRadius: 18,
@@ -241,11 +253,14 @@ export default function FounderSection({ dark = false }: FounderSectionProps) {
                   <Sparkle size={9} opacity={0.85} />
                 </span>
               </div>
+              </Reveal>
             </div>
 
             {/* pull quote */}
-            <div
-              className="relative flex items-start gap-3 lg:mr-[86px]"
+            <Reveal
+              y={24}
+              delay={0.25}
+              className="zp-card-soft relative flex items-start gap-3 lg:mr-[86px]"
               style={{
                 marginTop: 38,
                 marginLeft: 'clamp(26px, 8vw, 92px)',
@@ -273,7 +288,7 @@ export default function FounderSection({ dark = false }: FounderSectionProps) {
                   <Eyebrow color={dark ? '#8f8f9a' : '#6f6880'}>Rashmi</Eyebrow>
                 </div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </div>

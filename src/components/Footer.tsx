@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { PAGE_TO_PATH } from '@/utils/routes'
+import { Reveal } from '@/components/motion'
 
 interface FooterProps {
   onNavigate: (page: string) => void
@@ -99,7 +100,9 @@ export default function Footer({ onNavigate, dark = false }: FooterProps) {
 
         {/* ── Gradient main panel ─────────────────────────────────── */}
         <div style={{ background: GRADIENT }}>
-          <div
+          <Reveal
+            stagger={0.1}
+            y={26}
             className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-0 items-start"
             style={{
               padding: 'clamp(30px, 4vw, 46px) clamp(20px, 3.5vw, 42px) clamp(26px, 3vw, 34px)',
@@ -212,7 +215,7 @@ export default function Footer({ onNavigate, dark = false }: FooterProps) {
                   key={label}
                   href={PAGE_TO_PATH[page] ?? '/'}
                   onClick={(e) => { e.preventDefault(); onNavigate(page) }}
-                  className="text-left bg-transparent border-0 p-0 cursor-pointer transition-all duration-200 hover:translate-x-1 hover:text-white no-underline"
+                  className="zp-arrow text-left bg-transparent border-0 p-0 cursor-pointer transition-all duration-200 hover:translate-x-1 hover:text-white no-underline"
                   style={{
                     color: 'rgba(255, 255, 255, 0.94)',
                     fontSize: '14px',
@@ -255,7 +258,7 @@ export default function Footer({ onNavigate, dark = false }: FooterProps) {
                 ))}
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
 
         {/* ── White sub-footer bar ────────────────────────────────── */}
@@ -322,7 +325,7 @@ export default function Footer({ onNavigate, dark = false }: FooterProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.name}
-                  className="rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-110"
+                  className="zp-btn zp-icon-tile rounded-full flex items-center justify-center cursor-pointer"
                   style={{
                     width: '36px',
                     height: '36px',

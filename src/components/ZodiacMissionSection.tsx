@@ -6,6 +6,8 @@
    3. Dark mission – "Empower. Heal. Guide." + 4-column icons
    ───────────────────────────────────────────────────────────────── */
 
+import { Reveal, TextReveal } from '@/components/motion'
+
 const DARK_BG = '#071e19'
 const ACCENT = '#3ecfb3'   // bright teal headline accent
 const TEAL = '#26b2a2ff'
@@ -75,26 +77,27 @@ function DarkHero({ onNavigate }: { onNavigate?: (p: string) => void; dark?: boo
           {/* LEFT – headline */}
           <div className="lg:col-span-1 order-1 lg:order-1">
             {/* ZodiacPluss wordmark */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 28 }}>
+            <Reveal y={14} duration={0.6} style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 28 }}>
               <span style={{ color: '#ffffff', fontSize: 14, fontWeight: 700, fontFamily: "'Inter', sans-serif", letterSpacing: '0.04em' }}>ZodiacPluss</span>
-            </div>
+            </Reveal>
 
-            <h2 style={{
+            <TextReveal as="h2" delay={0.1} style={{
               fontFamily: "'Playfair Display', serif",
               fontSize: 'clamp(32px, 4vw, 52px)',
               fontWeight: 700, color: '#ffffff', lineHeight: 1.15,
               margin: '0 0 4px',
             }}>
               Guidance for<br />Your Stars.
-            </h2>
-            <h2 style={{
+            </TextReveal>
+            <TextReveal as="h2" delay={0.25} style={{
               fontFamily: "'Playfair Display', serif",
               fontSize: 'clamp(30px, 3.8vw, 48px)',
               fontWeight: 700, color: '#ffffff', lineHeight: 1.18,
               margin: '0 0 24px', fontStyle: 'italic',
             }}>
               Support for<br />Your Soul.
-            </h2>
+            </TextReveal>
+            <Reveal y={20} delay={0.45}>
             <p style={{
               fontFamily: "'Inter', sans-serif",
               fontSize: 'clamp(13px, 1.3vw, 15px)',
@@ -103,11 +106,18 @@ function DarkHero({ onNavigate }: { onNavigate?: (p: string) => void; dark?: boo
             }}>
               ZodiacPluss is where ancient wisdom meets modern healing. Astrology to light your path, therapy to heal your heart.
             </p>
+            </Reveal>
           </div>
 
           {/* CENTER – cosmic flatlay */}
-          <div className="order-2 lg:order-2 flex justify-center" style={{ position: 'relative' }}>
-            <div style={{
+          <Reveal
+            className="order-2 lg:order-2 flex justify-center"
+            y={0}
+            scale={0.88}
+            duration={1.1}
+            style={{ position: 'relative' }}
+          >
+            <div className="zp-float-slow" style={{
               width: 'clamp(220px,32vw,320px)',
               height: 'clamp(220px,32vw,320px)',
               position: 'relative',
@@ -137,17 +147,17 @@ function DarkHero({ onNavigate }: { onNavigate?: (p: string) => void; dark?: boo
                 }} />
               </div>
             </div>
-          </div>
+          </Reveal>
 
           {/* RIGHT – feature bullets */}
-          <div className="order-3 lg:order-3 space-y-0">
+          <Reveal stagger={0.12} y={26} className="order-3 lg:order-3 space-y-0">
             {features.map((f, i) => (
-              <div key={i} style={{
+              <div key={i} className="zp-card-soft group" style={{
                 display: 'flex', gap: 16, alignItems: 'center',
                 padding: '20px 0',
                 borderBottom: i < features.length - 1 ? '1px solid rgba(255,255,255,0.10)' : 'none',
               }}>
-                <div style={{
+                <div className="zp-icon-tile" style={{
                   width: 44, height: 44, borderRadius: 12, flexShrink: 0,
                   background: 'rgba(20,184,166,0.12)',
                   border: '1px solid rgba(20,184,166,0.25)',
@@ -167,7 +177,7 @@ function DarkHero({ onNavigate }: { onNavigate?: (p: string) => void; dark?: boo
                 </div>
               </div>
             ))}
-          </div>
+          </Reveal>
 
         </div>
       </div>
@@ -190,7 +200,7 @@ function AboutBand({ onNavigate, dark = false }: { onNavigate?: (p: string) => v
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
 
           {/* LEFT – circular image with zodiac ring + badge */}
-          <div style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
+          <Reveal x={-30} scale={0.93} duration={1} style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
             <div style={{ position: 'relative', width: 'clamp(260px,38vw,420px)', height: 'clamp(260px,38vw,420px)' }}>
               {/* Outer decorative ring */}
               <div style={{
@@ -246,7 +256,7 @@ function AboutBand({ onNavigate, dark = false }: { onNavigate?: (p: string) => v
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
 
           {/* RIGHT – copy */}
           <div>
@@ -256,17 +266,26 @@ function AboutBand({ onNavigate, dark = false }: { onNavigate?: (p: string) => v
               color: TEAL, textTransform: 'uppercase', marginBottom: 16,
             }}></p>
 
-            <h2 style={{
+            <TextReveal as="h2" style={{
               fontFamily: "'Playfair Display', serif",
               fontSize: 'clamp(28px,4vw,48px)',
               fontWeight: 700, color: headingColor, lineHeight: 1.15, margin: '0 0 8px',
             }}>
               We Create Experiences<br />That{' '}
               <span style={{ color: TEAL, fontStyle: 'italic' }}>Transform Lives</span>
-            </h2>
+            </TextReveal>
 
-            <div style={{ width: 48, height: 3, background: TEAL, borderRadius: 2, margin: '16px 0 24px' }} />
+            <Reveal
+              y={0}
+              scale={0.02}
+              delay={0.3}
+              duration={0.7}
+              style={{ width: 48, height: 3, background: TEAL, borderRadius: 2, margin: '16px 0 24px', transformOrigin: 'left center' }}
+            >
+              {null}
+            </Reveal>
 
+            <Reveal stagger={0.12} y={22} delay={0.15}>
             <p style={{
               fontFamily: "'Inter', sans-serif",
               fontSize: 'clamp(13px,1.3vw,15.5px)',
@@ -284,6 +303,7 @@ function AboutBand({ onNavigate, dark = false }: { onNavigate?: (p: string) => v
 
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
               <button
+                className="zp-btn zp-sheen zp-arrow"
                 onClick={() => onNavigate?.('About Us')}
                 style={{
                   background: "linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)",
@@ -304,6 +324,7 @@ function AboutBand({ onNavigate, dark = false }: { onNavigate?: (p: string) => v
                 </svg>
               </button>
               <button
+                className="zp-btn zp-arrow"
                 onClick={() => onNavigate?.('Services')}
                 style={{
                   background: 'transparent',
@@ -324,6 +345,7 @@ function AboutBand({ onNavigate, dark = false }: { onNavigate?: (p: string) => v
                 </svg>
               </button>
             </div>
+            </Reveal>
           </div>
 
         </div>
@@ -377,7 +399,9 @@ function MissionBand({ onNavigate }: { onNavigate?: (p: string) => void; dark?: 
 
           {/* LEFT – mission text */}
           <div>
+            <Reveal y={16} duration={0.6}>
             <button
+              className="zp-btn zp-arrow"
               onClick={() => onNavigate?.('About Us')}
               style={{
                 background: 'none', border: `1px solid rgba(61,214,172,0.35)`,
@@ -393,16 +417,18 @@ function MissionBand({ onNavigate }: { onNavigate?: (p: string) => void; dark?: 
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </button>
+            </Reveal>
 
-            <h2 style={{
+            <TextReveal as="h2" delay={0.1} stagger={0.12} style={{
               fontFamily: "'Playfair Display', serif",
               fontSize: 'clamp(36px,5.5vw,68px)',
               fontWeight: 800, color: '#ffffff', lineHeight: 1.08,
               margin: '0 0 24px', letterSpacing: '-0.01em',
             }}>
               Empower.<br />Heal. Guide.
-            </h2>
+            </TextReveal>
 
+            <Reveal y={22} delay={0.35}>
             <p style={{
               fontFamily: "'Inter', sans-serif",
               fontSize: 'clamp(13px,1.3vw,15.5px)',
@@ -411,17 +437,17 @@ function MissionBand({ onNavigate }: { onNavigate?: (p: string) => void; dark?: 
             }}>
               We empower individuals to understand themselves better, heal emotionally, and make conscious decisions. Through trusted experts and a compassionate community, we aim to provide balance, clarity, and growth in every life we touch.
             </p>
+            </Reveal>
           </div>
 
           {/* RIGHT – 4 pillars */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <Reveal stagger={0.1} y={30} className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {pillars.map((p, i) => (
-              <div key={i} style={{
+              <div key={i} className="zp-card-soft" style={{
                 background: 'rgba(255,255,255,0.05)',
                 border: '1px solid rgba(255,255,255,0.10)',
                 borderRadius: 18, padding: '24px 22px',
                 backdropFilter: 'blur(8px)',
-                transition: 'background 0.2s',
               }}
                 onMouseEnter={e => (e.currentTarget as HTMLDivElement).style.background = 'rgba(61,214,172,0.08)'}
                 onMouseLeave={e => (e.currentTarget as HTMLDivElement).style.background = 'rgba(255,255,255,0.05)'}
@@ -438,7 +464,7 @@ function MissionBand({ onNavigate }: { onNavigate?: (p: string) => void; dark?: 
                 }}>{p.desc}</p>
               </div>
             ))}
-          </div>
+          </Reveal>
 
         </div>
       </div>

@@ -1,3 +1,5 @@
+import { Reveal } from '@/components/motion'
+
 interface HeroSectionProps {
   onNavigate: (page: string) => void
 }
@@ -73,7 +75,13 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
                   correct before playback starts (or if autoplay is refused).
 
               index.css picks the pair per engine. */}
-          <div className="relative mb-4 sm:mb-6 select-none max-w-[620px] w-full">
+          <Reveal
+            className="relative mb-4 sm:mb-6 select-none max-w-[620px] w-full"
+            y={26}
+            scale={0.96}
+            duration={1.1}
+            delay={0.1}
+          >
             <h1 className="sr-only">ZODIAC PLUSS</h1>
 
             <svg
@@ -217,32 +225,34 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
                 preload="auto"
               />
             </div>
-          </div>
+          </Reveal>
 
           {/* Tagline */}
-          <div className="flex items-center gap-2 mb-3">
+          <Reveal className="flex items-center gap-2 mb-3" y={16} delay={0.45} duration={0.6}>
             <span className="text-base" style={{ color: "#5eb8e8" }}></span>
             <span
               className="text-sm sm:text-base font-bold tracking-wide"
               style={{ color: "#2a7d6e", fontFamily: "'Inter', sans-serif" }}
             >We Care Your Life!
             </span>
-          </div>
+          </Reveal>
 
           {/* Subtitle */}
+          <Reveal y={20} delay={0.6}>
           <p
             className="text-xl sm:text-2xl font-semibold leading-snug mb-8 max-w-md"
             style={{ color: "#c7c7d6ff", fontFamily: "'Inter', sans-serif" }}
           >
             Take Guidance under<br />Professional assistance
           </p>
+          </Reveal>
 
           {/* CTA Buttons */}
-          <div className="flex flex-wrap items-center gap-4">
+          <Reveal className="flex flex-wrap items-center gap-4" y={18} delay={0.78} stagger={0.12}>
             <a
               href="/services"
               onClick={(e) => { e.preventDefault(); onNavigate("Services") }}
-              className="flex items-center gap-2 px-6 sm:px-7 py-3.5 rounded-full text-white font-semibold text-xs sm:text-sm transition-all duration-300 shadow-md hover:shadow-lg hover:scale-[1.03] cursor-pointer border-0 no-underline"
+              className="zp-btn zp-sheen zp-arrow flex items-center gap-2 px-6 sm:px-7 py-3.5 rounded-full text-white font-semibold text-xs sm:text-sm shadow-md hover:shadow-lg cursor-pointer border-0 no-underline"
               style={{ background: "linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)" }}
             >
               Explore Services
@@ -253,7 +263,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
             <a
               href="/about-us"
               onClick={(e) => { e.preventDefault(); onNavigate("About Us") }}
-              className="flex items-center gap-2 px-6 sm:px-7 py-3.5 rounded-full font-semibold text-xs sm:text-sm transition-all duration-300 hover:scale-[1.03] cursor-pointer bg-transparent no-underline"
+              className="zp-btn zp-arrow flex items-center gap-2 px-6 sm:px-7 py-3.5 rounded-full font-semibold text-xs sm:text-sm cursor-pointer bg-transparent no-underline"
               style={{
                 border: "2px solid #428cab",
                 color: "#428cabff",
@@ -265,7 +275,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </a>
-          </div>
+          </Reveal>
         </div>
 
 

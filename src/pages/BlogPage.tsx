@@ -1,4 +1,5 @@
 import { useMemo, useState, type FormEvent } from 'react'
+import { Reveal, TextReveal } from '@/components/motion'
 
 /* ── colour tokens ─────────────────────────────────────────────── */
 const GRADIENT = 'linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)'
@@ -243,7 +244,7 @@ function GradientCircleButton({ label }: { label: string }) {
     <button
       type="submit"
       aria-label={label}
-      className="flex-shrink-0 flex items-center justify-center rounded-full text-white transition-transform duration-200 hover:scale-105 cursor-pointer border-0"
+      className="zp-btn zp-arrow shrink-0 flex items-center justify-center rounded-full text-white cursor-pointer border-0"
       style={{ width: 40, height: 40, background: GRADIENT, boxShadow: '0 6px 16px rgba(94,184,232,0.35)' }}
     >
       <ArrowIcon size={15} />
@@ -261,7 +262,7 @@ function ArticleCard({ article, dark }: { article: Article; dark: boolean }) {
 
   return (
     <article
-      className="group flex flex-col transition-all duration-300 hover:-translate-y-1.5"
+      className="zp-card group flex flex-col"
       style={{
         background: dark ? '#0f0f12' : '#ffffff',
         border: dark ? '1px solid rgba(255,255,255,0.08)' : '1px solid #f0f2f5',
@@ -271,12 +272,12 @@ function ArticleCard({ article, dark }: { article: Article; dark: boolean }) {
       }}
     >
       {/* image sits inset inside the card, with its own softer radius */}
-      <div className="relative overflow-hidden" style={{ borderRadius: 20, aspectRatio: '4 / 3' }}>
+      <div className="zp-media relative" style={{ borderRadius: 20, aspectRatio: '4 / 3' }}>
         <img
           src={article.image}
           alt={article.title}
           loading="lazy"
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
+          className="w-full h-full object-cover"
         />
         <div className="absolute" style={{ left: 12, bottom: 12 }}>
           <CategoryChip category={article.category} dark={dark} />
@@ -332,7 +333,7 @@ function ArticleCard({ article, dark }: { article: Article; dark: boolean }) {
           <a
             href="#"
             onClick={(e) => e.preventDefault()}
-            className="flex-1 inline-flex items-center justify-center rounded-full no-underline transition-transform duration-200 active:scale-[0.98]"
+            className="zp-btn zp-sheen flex-1 inline-flex items-center justify-center rounded-full no-underline"
             style={{
               background: pillBg,
               color: pillFg,
@@ -350,7 +351,7 @@ function ArticleCard({ article, dark }: { article: Article; dark: boolean }) {
             aria-label={saved ? 'Remove from saved' : 'Save article'}
             aria-pressed={saved}
             onClick={() => setSaved((v) => !v)}
-            className="shrink-0 flex items-center justify-center rounded-full cursor-pointer transition-all duration-200 hover:scale-105"
+            className="zp-btn shrink-0 flex items-center justify-center rounded-full cursor-pointer"
             style={{
               width: 48,
               height: 48,
@@ -424,6 +425,7 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_minmax(0,400px)] items-center gap-10 lg:gap-6">
             {/* ── copy ── */}
             <div className="max-w-[560px]">
+              <Reveal y={14} delay={0.15} duration={0.6}>
               <p
                 className="uppercase"
                 style={{
@@ -435,6 +437,11 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
               >
                 Our Journal &amp; Insights
               </p>
+              </Reveal>
+
+              {/* The headline carries a gradient-clipped word, so it rises as
+                  one masked block rather than being split into spans. */}
+              <Reveal mask delay={0.25} duration={1}>
               <h1
                 className="mt-3 leading-[1.08]"
                 style={{ fontFamily: SERIF, fontWeight: 700, color: heading, fontSize: 'clamp(32px, 4vw, 50px)', letterSpacing: '-0.015em' }}
@@ -454,17 +461,23 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
                 <br />
                 Mind, Life &amp; Workplace
               </h1>
+              </Reveal>
+              <Reveal y={22} delay={0.5}>
               <p className="mt-5" style={{ color: muted, fontSize: 15.5, lineHeight: 1.65, maxWidth: 470 }}>
                 Explore thoughtful insights on mental wellness, astrology, relationships,
                 personal growth, and building healthier workplaces.
               </p>
+              </Reveal>
             </div>
 
             {/* ── handwritten note ── */}
-            <div
+            <Reveal
               className="hidden lg:block self-start mt-10 text-center leading-[1.15] select-none"
+              y={18}
+              scale={0.92}
+              delay={0.7}
+              duration={0.9}
               style={{ fontFamily: HAND, color: SCRIPT, fontSize: 30, transform: 'rotate(-12deg)', width: 120 }}
-              aria-hidden="true"
             >
               Small
               <br />
@@ -473,16 +486,20 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
               Brighter
               <br />
               Days
-            </div>
+            </Reveal>
 
             {/* ── image composition ── */}
             <div className="relative mx-auto w-full max-w-[420px] lg:mx-0" style={{ paddingTop: 28, paddingBottom: 36 }}>
-              <div className="absolute pointer-events-none" style={{ top: -6, right: -24 }}>
+              <div className="zp-float-slow absolute pointer-events-none" style={{ top: -6, right: -24 }}>
                 <ZodiacWheel />
               </div>
 
-              <div
-                className="relative overflow-hidden"
+              <Reveal
+                className="zp-media relative"
+                scale={0.94}
+                y={30}
+                delay={0.3}
+                duration={1}
                 style={{
                   aspectRatio: '240 / 272',
                   maxWidth: 300,
@@ -495,31 +512,40 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
                   alt="A calm mug resting on a stack of books beside a plant"
                   className="w-full h-full object-cover"
                 />
-              </div>
+              </Reveal>
 
-              {/* floating wellness card */}
-              <div
-                className="absolute flex items-center gap-3 rounded-2xl"
-                style={{
-                  right: 0,
-                  bottom: 48,
-                  padding: '14px 16px',
-                  width: 168,
-                  background: surface,
-                  border: surfaceBorder,
-                  boxShadow: dark ? '0 14px 34px rgba(0,0,0,0.6)' : '0 14px 34px rgba(16,24,40,0.12)',
-                }}
+              {/* Floating wellness card. The entrance (GSAP) and the idle
+                  breathing (CSS) both drive `transform`, so they are kept on
+                  separate elements — otherwise the looping keyframes win and
+                  the entrance never shows. */}
+              <Reveal
+                className="absolute"
+                y={0}
+                x={26}
+                delay={0.85}
+                style={{ right: 0, bottom: 48 }}
               >
                 <div
-                  className="flex items-center justify-center rounded-full flex-shrink-0"
-                  style={{ width: 32, height: 32, background: dark ? 'rgba(143,208,106,0.16)' : '#eef8e6' }}
+                  className="zp-float flex items-center gap-3 rounded-2xl"
+                  style={{
+                    padding: '14px 16px',
+                    width: 168,
+                    background: surface,
+                    border: surfaceBorder,
+                    boxShadow: dark ? '0 14px 34px rgba(0,0,0,0.6)' : '0 14px 34px rgba(16,24,40,0.12)',
+                  }}
                 >
-                  <LeafIcon color="#6bb548" size={18} />
+                  <div
+                    className="zp-icon-tile flex items-center justify-center rounded-full shrink-0"
+                    style={{ width: 32, height: 32, background: dark ? 'rgba(143,208,106,0.16)' : '#eef8e6' }}
+                  >
+                    <LeafIcon color="#6bb548" size={18} />
+                  </div>
+                  <p style={{ color: heading, fontSize: 11.5, fontWeight: 600, lineHeight: 1.35 }}>
+                    Wellness for a brighter tomorrow
+                  </p>
                 </div>
-                <p style={{ color: heading, fontSize: 11.5, fontWeight: 600, lineHeight: 1.35 }}>
-                  Wellness for a brighter tomorrow
-                </p>
-              </div>
+              </Reveal>
             </div>
           </div>
         </div>
@@ -528,8 +554,10 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
       {/* ═══════════ FEATURED ARTICLE ═══════════ */}
       <section className="pt-2 pb-8 sm:pb-10" style={{ background: pageBg }}>
         <div className="mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8">
-          <div
-            className="grid grid-cols-1 lg:grid-cols-[minmax(0,440px)_1fr] gap-6 lg:gap-8 items-center rounded-3xl"
+          <Reveal
+            y={36}
+            duration={0.9}
+            className="zp-card-soft grid grid-cols-1 lg:grid-cols-[minmax(0,440px)_1fr] gap-6 lg:gap-8 items-center rounded-3xl"
             style={{
               background: surface,
               border: surfaceBorder,
@@ -537,7 +565,7 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
               padding: 18,
             }}
           >
-            <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: '430 / 262' }}>
+            <div className="zp-media relative rounded-2xl" style={{ aspectRatio: '430 / 262' }}>
               <img src={featured.image} alt={featured.title} className="w-full h-full object-cover" />
               <div
                 className="absolute inset-0 pointer-events-none"
@@ -552,7 +580,7 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
               </p>
             </div>
 
-            <div className="flex flex-col items-start gap-4 py-2 pr-2 lg:pr-6">
+            <Reveal stagger={0.09} delay={0.2} y={22} className="flex flex-col items-start gap-4 py-2 pr-2 lg:pr-6">
               <div className="flex flex-wrap items-center gap-2">
                 <CategoryChip category={featured.category} dark={dark} />
                 <span
@@ -579,21 +607,21 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
               <a
                 href="#"
                 onClick={(e) => e.preventDefault()}
-                className="inline-flex items-center gap-2 rounded-full text-white transition-all duration-200 hover:opacity-90 hover:translate-x-0.5 no-underline"
+                className="zp-btn zp-sheen zp-arrow inline-flex items-center gap-2 rounded-full text-white no-underline"
                 style={{ background: GRADIENT, fontSize: 13.5, fontWeight: 600, padding: '11px 22px', boxShadow: '0 8px 20px rgba(94,184,232,0.3)' }}
               >
                 Read article
                 <ArrowIcon size={13} />
               </a>
-            </div>
-          </div>
+            </Reveal>
+          </Reveal>
         </div>
       </section>
 
       {/* ═══════════ CATEGORY FILTER ═══════════ */}
       <section className="pb-8" style={{ background: pageBg }}>
         <div className="mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center gap-2.5 sm:gap-3">
+          <Reveal stagger={0.05} y={16} duration={0.5} className="flex flex-wrap justify-center gap-2.5 sm:gap-3">
             {(['All', ...categories] as const).map((c) => {
               const isActive = active === c
               return (
@@ -601,7 +629,7 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
                   key={c}
                   type="button"
                   onClick={() => setActive(c)}
-                  className="rounded-full cursor-pointer transition-all duration-200 hover:-translate-y-0.5"
+                  className="zp-btn rounded-full cursor-pointer"
                   style={{
                     background: isActive ? GRADIENT : surface,
                     color: isActive ? '#ffffff' : dark ? '#e4e4e7' : '#344054',
@@ -616,7 +644,7 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
                 </button>
               )
             })}
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -625,17 +653,22 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
         <div className="mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-end justify-between gap-4 mb-7">
             <div>
-              <h2 style={{ fontFamily: SERIF, fontWeight: 700, color: heading, fontSize: 'clamp(26px, 3vw, 34px)', letterSpacing: '-0.01em' }}>
+              <TextReveal
+                as="h2"
+                style={{ fontFamily: SERIF, fontWeight: 700, color: heading, fontSize: 'clamp(26px, 3vw, 34px)', letterSpacing: '-0.01em' }}
+              >
                 Latest from ZodiacPluss
-              </h2>
-              <p className="mt-1.5" style={{ color: muted, fontSize: 14.5 }}>
-                Practical insights, expert advice and real stories for a healthier, happier you.
-              </p>
+              </TextReveal>
+              <Reveal y={18} delay={0.25}>
+                <p className="mt-1.5" style={{ color: muted, fontSize: 14.5 }}>
+                  Practical insights, expert advice and real stories for a healthier, happier you.
+                </p>
+              </Reveal>
             </div>
             <button
               type="button"
               onClick={() => setShowAll((v) => !v)}
-              className="inline-flex items-center gap-1.5 cursor-pointer bg-transparent border-0 transition-colors duration-200"
+              className="zp-arrow zp-link inline-flex items-center gap-1.5 cursor-pointer bg-transparent border-0"
               style={{ color: heading, fontSize: 13, fontWeight: 500, padding: 0 }}
             >
               {showAll ? 'Show fewer articles' : 'View all articles'}
@@ -644,11 +677,11 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
           </div>
 
           {visible.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Reveal stagger={0.1} y={40} duration={0.8} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {visible.map((a) => (
                 <ArticleCard key={a.id} article={a} dark={dark} />
               ))}
-            </div>
+            </Reveal>
           ) : (
             <div
               className="rounded-2xl text-center"
@@ -663,7 +696,9 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
       {/* ═══════════ NEWSLETTER ═══════════ */}
       <section className="pb-16 sm:pb-20" style={{ background: pageBg }}>
         <div className="mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8">
-          <div
+          <Reveal
+            y={34}
+            duration={0.9}
             className="relative overflow-hidden rounded-3xl grid grid-cols-1 lg:grid-cols-[auto_1fr_auto_auto] items-center gap-6 lg:gap-8"
             style={{
               background: dark
@@ -674,7 +709,7 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
             }}
           >
             <div
-              className="flex items-center justify-center rounded-full flex-shrink-0"
+              className="zp-float flex items-center justify-center rounded-full shrink-0"
               style={{ width: 60, height: 60, background: GRADIENT, boxShadow: '0 10px 24px rgba(94,184,232,0.35)' }}
             >
               <LeafIcon color="#ffffff" size={26} />
@@ -724,7 +759,7 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
               <br />
               Together
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
     </div>
