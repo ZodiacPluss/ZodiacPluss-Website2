@@ -148,6 +148,12 @@ const ArrowIcon = ({ size = 14 }: { size?: number }) => (
 )
 
 
+const BookmarkIcon = ({ color, filled }: { color: string; filled: boolean }) => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill={filled ? color : 'none'} stroke={color} strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M6 4h12a1 1 0 0 1 1 1v15l-7-4.2L5 20V5a1 1 0 0 1 1-1z" />
+  </svg>
+)
+
 const MailIcon = ({ color }: { color: string }) => (
   <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <rect x="3" y="5" width="18" height="14" rx="2" />
@@ -246,40 +252,115 @@ function GradientCircleButton({ label }: { label: string }) {
 }
 
 function ArticleCard({ article, dark }: { article: Article; dark: boolean }) {
+  const [saved, setSaved] = useState(false)
+
+  const metaIcon = dark ? '#8b8b93' : '#98a2b3'
+  const metaText = dark ? '#e4e4e7' : '#1d2939'
+  const pillBg = dark ? '#f5f5f5' : '#0b0f19'
+  const pillFg = dark ? '#0b0f19' : '#ffffff'
+
   return (
     <article
-      className="group flex flex-col overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-1"
+      className="group flex flex-col transition-all duration-300 hover:-translate-y-1.5"
       style={{
         background: dark ? '#0f0f12' : '#ffffff',
-        border: dark ? '1px solid rgba(255,255,255,0.09)' : '1px solid #eef1f4',
-        boxShadow: dark ? '0 10px 30px rgba(0,0,0,0.5)' : '0 8px 24px rgba(16,24,40,0.06)',
+        border: dark ? '1px solid rgba(255,255,255,0.08)' : '1px solid #f0f2f5',
+        borderRadius: 28,
+        padding: 12,
+        boxShadow: dark ? '0 14px 40px rgba(0,0,0,0.55)' : '0 10px 34px rgba(16,24,40,0.07)',
       }}
     >
-      <div className="overflow-hidden" style={{ aspectRatio: '212 / 122' }}>
+      {/* image sits inset inside the card, with its own softer radius */}
+      <div className="relative overflow-hidden" style={{ borderRadius: 20, aspectRatio: '4 / 3' }}>
         <img
           src={article.image}
           alt={article.title}
           loading="lazy"
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
         />
-      </div>
-      <div className="flex flex-col flex-1 gap-2.5" style={{ padding: '14px 14px 16px' }}>
-        <div>
+        <div className="absolute" style={{ left: 12, bottom: 12 }}>
           <CategoryChip category={article.category} dark={dark} />
         </div>
+      </div>
+
+      <div className="flex flex-col flex-1" style={{ padding: '18px 8px 4px' }}>
         <h3
-          className="leading-snug"
-          style={{ color: dark ? '#f5f5f5' : NAVY, fontFamily: SANS, fontWeight: 700, fontSize: 16.5, letterSpacing: '-0.01em' }}
+          style={{
+            color: dark ? '#f7f7f8' : '#0b0f19',
+            fontFamily: SANS,
+            fontWeight: 700,
+            fontSize: 22,
+            lineHeight: 1.2,
+            letterSpacing: '-0.025em',
+          }}
         >
           {article.title}
         </h3>
+
         <p
-          className="flex-1"
-          style={{ color: dark ? '#a1a1aa' : '#667085', fontFamily: SANS, fontSize: 13, lineHeight: 1.55 }}
+          className="mt-1.5"
+          style={{
+            color: dark ? '#8b8b93' : '#9aa3b0',
+            fontFamily: SANS,
+            fontSize: 14.5,
+            lineHeight: 1.45,
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
+          }}
         >
           {article.excerpt}
         </p>
-        <Meta readTime={article.readTime} date={article.date} dark={dark} />
+
+        {/* icon + value meta row, like the sample's price / airport line */}
+        <div
+          className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-4"
+          style={{ fontFamily: SANS, fontSize: 13.5 }}
+        >
+          <span className="inline-flex items-center gap-2">
+            <ClockIcon color={metaIcon} />
+            <span style={{ color: metaText, fontWeight: 600 }}>{article.readTime}</span>
+          </span>
+          <span className="inline-flex items-center gap-2">
+            <CalendarIcon color={metaIcon} />
+            <span style={{ color: metaText, fontWeight: 600 }}>{article.date}</span>
+          </span>
+        </div>
+
+        <div className="flex items-center gap-2.5 mt-auto pt-5">
+          <a
+            href="#"
+            onClick={(e) => e.preventDefault()}
+            className="flex-1 inline-flex items-center justify-center rounded-full no-underline transition-transform duration-200 active:scale-[0.98]"
+            style={{
+              background: pillBg,
+              color: pillFg,
+              fontFamily: SANS,
+              fontSize: 14.5,
+              fontWeight: 600,
+              height: 48,
+              letterSpacing: '-0.01em',
+            }}
+          >
+            Read article
+          </a>
+          <button
+            type="button"
+            aria-label={saved ? 'Remove from saved' : 'Save article'}
+            aria-pressed={saved}
+            onClick={() => setSaved((v) => !v)}
+            className="shrink-0 flex items-center justify-center rounded-full cursor-pointer transition-all duration-200 hover:scale-105"
+            style={{
+              width: 48,
+              height: 48,
+              background: 'transparent',
+              border: dark ? '1px solid rgba(255,255,255,0.14)' : '1px solid #e8ebef',
+            }}
+          >
+            <BookmarkIcon color={SCRIPT} filled={saved} />
+          </button>
+        </div>
       </div>
     </article>
   )
@@ -299,7 +380,7 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
 
   const visible = useMemo(() => {
     const list = articles.filter((a) => active === 'All' || a.category === active)
-    return showAll || active !== 'All' ? list : list.slice(0, 4)
+    return showAll || active !== 'All' ? list : list.slice(0, 3)
   }, [active, showAll])
 
   const heading = dark ? '#f5f5f5' : NAVY
@@ -563,7 +644,7 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
           </div>
 
           {visible.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {visible.map((a) => (
                 <ArticleCard key={a.id} article={a} dark={dark} />
               ))}

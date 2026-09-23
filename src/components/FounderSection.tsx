@@ -15,12 +15,20 @@ const INK = '#1c1030'           // "Meet Our" near-black
 const BODY_TEXT = '#4b4458'
 const LAVENDER = '#efeafb'      // quote card / soft fills
 
+const GRADIENT = 'linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)'
+const GRADIENT_TEXT: React.CSSProperties = {
+  background: GRADIENT,
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  backgroundClip: 'text',
+}
+
 const SERIF = "'Playfair Display', serif"
 const SANS = "'Inter', sans-serif"
 const SCRIPT = "'Playball', cursive"
 
 const FOUNDER_IMG =
-  'https://res.cloudinary.com/pp0lpskp/image/upload/v1788897780/Rasmi-1_prowmf_lvnvoz.jpg'
+  'https://res.cloudinary.com/dogyg03f7/image/upload/v1790170217/WhatsApp_Image_2026-09-23_at_5.57.35_PM_zitqnw.jpg'
 
 const PARAGRAPHS = [
   'I hold a Master’s degree from Mahatma Gandhi Kashi Vidyapith, Varanasi, and over 25+ years of experience in astrology.',
@@ -66,11 +74,11 @@ function OrbitLines({ color, className, style }: { color: string; className?: st
 }
 
 /** Small letterspaced caps used for both eyebrows. */
-function Eyebrow({ children, color, className = '' }: { children: React.ReactNode; color: string; className?: string }) {
+function Eyebrow({ children, color, className = '', style }: { children: React.ReactNode; color?: string; className?: string; style?: React.CSSProperties }) {
   return (
     <p
       className={`m-0 uppercase whitespace-nowrap ${className}`}
-      style={{ color, fontFamily: SANS, fontSize: 10.5, fontWeight: 600, letterSpacing: '0.22em' }}
+      style={{ ...(color ? { color } : {}), fontFamily: SANS, fontSize: 10.5, fontWeight: 600, letterSpacing: '0.22em', ...style }}
     >
       {children}
     </p>
@@ -88,7 +96,7 @@ export default function FounderSection({ dark = false }: FounderSectionProps) {
   const line = dark ? 'rgba(183,157,240,0.35)' : 'rgba(125,95,211,0.3)'
   const quoteBg = dark ? 'rgba(167,139,218,0.10)' : LAVENDER
   const frameLine = dark ? 'rgba(183,157,240,0.5)' : 'rgba(125,95,211,0.45)'
-  const sectionBg = dark ? '#000000' : '#fbfaff'
+  const sectionBg = dark ? '#000000' : '#ffffff'
 
   return (
     <section
@@ -101,11 +109,7 @@ export default function FounderSection({ dark = false }: FounderSectionProps) {
 
           {/* ══════════ left: the story ══════════ */}
           <div className="max-w-[520px]">
-            {/* eyebrow + rule */}
-            <div className="flex items-center gap-4">
-              <Eyebrow color={accent}>People Behind Our Purpose</Eyebrow>
-              <span className="hidden sm:block flex-1 h-px" style={{ background: line, maxWidth: 90 }} />
-            </div>
+            {/* eyebrow */}
 
             <h2
               className="m-0 mt-5 leading-[0.98]"
@@ -113,15 +117,10 @@ export default function FounderSection({ dark = false }: FounderSectionProps) {
             >
               <span style={{ color: heading }}>Meet Our</span>
               <br />
-              <span style={{ color: accent }}>Founder</span>
+              <span style={GRADIENT_TEXT}>Founder</span>
             </h2>
 
-            <div className="mt-5 flex items-center gap-2.5" style={{ flexWrap: 'wrap' }}>
-              <Eyebrow color={dark ? '#8f8f9a' : '#6f6880'}>A Stronger Mind</Eyebrow>
-              <Sparkle size={10} color={accent} />
-              <Eyebrow color={dark ? '#8f8f9a' : '#6f6880'}>A Brighter Tomorrow</Eyebrow>
-            </div>
-
+            
             <div className="mt-8 flex flex-col gap-4">
               {PARAGRAPHS.map((text) => (
                 <p key={text.slice(0, 24)} className="m-0" style={{ color: body, fontFamily: SANS, fontSize: 14.5, lineHeight: 1.72 }}>
@@ -132,8 +131,8 @@ export default function FounderSection({ dark = false }: FounderSectionProps) {
 
             {/* signature */}
             <div className="mt-9">
-              <p className="m-0 leading-none" style={{ fontFamily: SCRIPT, color: accent, fontSize: 40 }}>
-                Rashmi
+              <p className="m-0 leading-none inline-block" style={{ fontFamily: SCRIPT, fontSize: 40, ...GRADIENT_TEXT }}>
+                RashmI
               </p>
               <span className="block mt-3 mb-2 h-px" style={{ background: line, width: 148 }} />
               <p className="m-0" style={{ color: body, fontFamily: SANS, fontSize: 12.5 }}>
@@ -209,8 +208,8 @@ export default function FounderSection({ dark = false }: FounderSectionProps) {
                   width: 'clamp(84px, 12vw, 104px)',
                   padding: '20px 10px 18px',
                   borderRadius: 18,
-                  background: `linear-gradient(180deg, ${PURPLE_SOFT} 0%, ${PURPLE_DEEP} 100%)`,
-                  boxShadow: '0 18px 36px rgba(84,56,160,0.34)',
+                  background: 'linear-gradient(180deg, #9fe67e 0%, #72bc4b 100%)',
+                  boxShadow: '0 18px 36px rgba(114, 188, 75, 0.35)',
                 }}
               >
                 <Sparkle size={15} />
