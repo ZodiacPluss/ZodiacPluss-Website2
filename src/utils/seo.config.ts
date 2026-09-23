@@ -19,6 +19,7 @@ export type PageKey =
   | 'About Us'
   | 'Services'
   | 'Career'
+  | 'Blog'
   | 'Book'
   | 'Experts'
   | 'Portfolio'
@@ -82,6 +83,15 @@ export const SEO_PAGE_CONFIG: readonly SeoPageConfig[] = [
       'Work with ZodiacPluss. We hire astrologers, counsellors, therapists and technology professionals who care about mental and spiritual well-being at work.',
     indexable: true,
     breadcrumb: 'Careers',
+  },
+  {
+    key: 'Blog',
+    path: '/blog',
+    title: 'Blog | Mental Wellness, Astrology & Workplace Insights | ZodiacPluss',
+    description:
+      'Thoughtful articles on mental wellness, astrology, relationships, personal growth and building healthier workplaces from the ZodiacPluss team.',
+    indexable: true,
+    breadcrumb: 'Blog',
   },
   {
     key: 'Portfolio',

@@ -1,4 +1,5 @@
 import FAQSection from '@/components/FAQSection'
+import FounderSection from '@/components/FounderSection'
 import VideoShowcaseSection from '@/components/VideoShowcaseSection'
 
 interface AboutUsPageProps {
@@ -90,10 +91,10 @@ export default function AboutUsPage({ onNavigate, dark = false }: AboutUsPagePro
           <div>
             <div className="w-12 h-1 bg-[#d81b86] rounded mb-4" />
             <h2 className="about-heading text-4xl font-bold text-[#1e0d40] mb-5" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Why ZodiacPluss?
+              What is ZodiacPluss?
             </h2>
             <p className="about-muted text-[#4a4a6a] leading-relaxed mb-4">
-              Founded in 2026, ZodiacPluss was built on a single conviction: that ancient astrological wisdom and modern psychology are not opposites - they are two sides of the same coin.
+              Zodiac Pluss Founded in 2026, ZodiacPluss was built on a single conviction that ancient astrological wisdom and modern psychology are not opposites - they are two sides of the same coin.
             </p>
             <p className="about-muted text-[#4a4a6a] leading-relaxed mb-6">
               Our platform gives every person access to certified astrologers, licensed therapists, and AI-powered insights - all in one seamless, private space.
@@ -154,6 +155,9 @@ export default function AboutUsPage({ onNavigate, dark = false }: AboutUsPagePro
 
       {/* Video Showcase Section with 3D Coverflow */}
       {/* <VideoShowcaseSection dark={dark} /> */}
+
+      {/* Meet Our Founder */}
+      <FounderSection dark={dark} />
 
       {/* Team */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 transition-colors duration-300">

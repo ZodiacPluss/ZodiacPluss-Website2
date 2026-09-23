@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { PAGE_TO_PATH } from "@/utils/routes"
 
-const navLinks = ["Home", "About Us", "Services", "Career"]
+const navLinks = ["Home", "About Us", "Services", "Career", "Blog"]
 
 interface NavbarProps {
   currentPage: string
@@ -24,8 +24,10 @@ export default function Navbar({ currentPage, onNavigate, dark = false, onToggle
   }, [])
 
   // Identify pages with dark background hero sections where text needs to be white when transparent
-  const isBannerDark = currentPage !== "Book"
+  const lightHeroPages = ["Book", "Blog", "Not Found"]
+  const isBannerDark = dark || !lightHeroPages.includes(currentPage)
   const isHeroUnscrolled = !scrolled && (currentPage === "Home" || isBannerDark)
+  const compact = scrolled
 
   // Base dynamic styling variables (pure white text for hero navbar in both light & dark mode)
   const textColor = isHeroUnscrolled
@@ -63,14 +65,14 @@ export default function Navbar({ currentPage, onNavigate, dark = false, onToggle
   // still visible for most of the 500ms.
   const navContainerClasses = `
     pointer-events-auto zodiac-navbar-shell w-full
-    ${scrolled
+    ${compact
       ? `max-w-[850px] w-[92%] ${mobileOpen ? "rounded-[28px]" : "rounded-full"} py-2 px-6 translate-y-3 sm:translate-y-4`
       : "max-w-[1320px] w-full py-4 px-4 sm:px-8 translate-y-0"
     }
   `
 
   // High-performance custom enhanced glassmorphism styling
-  const navStyle: React.CSSProperties = scrolled
+  const navStyle: React.CSSProperties = compact
     ? {
         background: dark
           ? "linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(18, 16, 28, 0.62) 100%)"

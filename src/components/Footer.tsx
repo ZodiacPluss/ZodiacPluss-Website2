@@ -20,6 +20,7 @@ const navLinks: { label: string; page: string; arrow?: boolean }[] = [
   { label: 'Portfolio', page: 'Portfolio' },
   { label: 'Contact', page: 'Book' },
   { label: 'Career', page: 'Career' },
+  { label: 'Blog', page: 'Blog' },
 ]
 
 const contactItems = [
