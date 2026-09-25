@@ -418,10 +418,6 @@ export default function BlogPage({ onNavigate, dark = false }: BlogPageProps) {
 
             {/* ΓöÇΓöÇ image composition ΓöÇΓöÇ */}
             <div className="relative mx-auto w-full max-w-[420px] lg:mx-0" style={{ paddingTop: 28, paddingBottom: 36 }}>
-              <div className="zp-float-slow absolute pointer-events-none" style={{ top: -6, right: -24 }}>
-                <ZodiacWheel />
-              </div>
-
               <Reveal
                 className="zp-media relative"
                 scale={0.94}

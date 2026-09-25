@@ -54,7 +54,7 @@ export default function App() {
       const page = (event.state?.page as PageKey) || getPageFromLocation()
       setCurrentPage(page)
       setBlogArticlePath(window.location.pathname)
-      window.scrollTo({ top: 0, behavior: 'smooth' })
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
     }
 
     // Normalise alias URLs client-side as a fallback. Vercel already serves a
@@ -81,9 +81,10 @@ export default function App() {
   // Each route swaps the whole document body, so every scroll trigger measured
   // against the previous page is stale. Re-measure once the new one has painted.
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
     const raf = requestAnimationFrame(refreshMotion)
     return () => cancelAnimationFrame(raf)
-  }, [currentPage])
+  }, [currentPage, blogArticlePath])
 
   const handleNavigate = (page: string, replace = false) => {
     const isBlogArticle = page.startsWith('/blog/')
@@ -105,7 +106,7 @@ export default function App() {
       }
     }
 
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
   }
 
   const renderPage = () => {
