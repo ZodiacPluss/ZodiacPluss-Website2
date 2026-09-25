@@ -1,7 +1,8 @@
-import { useMemo, useState, type FormEvent } from 'react'
+﻿import { useMemo, useState, type FormEvent } from 'react'
 import { Reveal, TextReveal } from '@/components/motion'
+import { featuredBlog, getBlogPath } from '@/data/blogs'
 
-/* ── colour tokens ─────────────────────────────────────────────── */
+/* ΓöÇΓöÇ colour tokens ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
 const GRADIENT = 'linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)'
 const TEXT_GRADIENT = 'linear-gradient(90deg, #2ba9a0 0%, #3fb9a8 60%, #6cc48f 100%)'
 const SCRIPT = '#2f9e94'
@@ -11,7 +12,7 @@ const SERIF = "'Playfair Display', serif"
 const SANS = "'Inter', sans-serif"
 const HAND = "'Playball', cursive"
 
-/* ── categories ────────────────────────────────────────────────── */
+/* ΓöÇΓöÇ categories ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
 type Category =
   | 'Mental Wellness'
   | 'Astrology'
@@ -29,7 +30,7 @@ const categories: Category[] = [
   'Self-Care',
 ]
 
-/* Chip tint per category — soft pastel bg with a deeper matching label. */
+/* Chip tint per category ΓÇö soft pastel bg with a deeper matching label. */
 const chipTone: Record<Category, { bg: string; fg: string; darkBg: string; darkFg: string }> = {
   'Mental Wellness': { bg: '#dcf5e9', fg: '#1f7a55', darkBg: 'rgba(52,211,153,0.16)', darkFg: '#6ee7b7' },
   'Astrology': { bg: '#e3ecfb', fg: '#2b57a5', darkBg: 'rgba(96,165,250,0.16)', darkFg: '#93c5fd' },
@@ -39,7 +40,7 @@ const chipTone: Record<Category, { bg: string; fg: string; darkBg: string; darkF
   'Self-Care': { bg: '#e0f0fb', fg: '#1d6fa5', darkBg: 'rgba(56,189,248,0.16)', darkFg: '#7dd3fc' },
 }
 
-/* ── article data ──────────────────────────────────────────────── */
+/* ΓöÇΓöÇ article data ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
 interface Article {
   id: string
   category: Category
@@ -53,81 +54,10 @@ interface Article {
 const IMG = (id: string, w = 900) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`
 
-const featured: Article = {
-  id: 'emotional-wellbeing',
-  category: 'Mental Wellness',
-  title: 'Understanding Your Emotional Wellbeing: Where Should You Begin?',
-  excerpt:
-    'A practical guide to help you recognise your emotions, build healthier habits and take the first step towards a calmer, more balanced life.',
-  readTime: '8 min read',
-  date: 'Sep 12, 2026',
-  image: IMG('photo-1499750310107-5fef28a66643', 1100),
-}
+const featured: Article = featuredBlog
 
-const articles: Article[] = [
-  {
-    id: 'daily-mindfulness',
-    category: 'Self-Care',
-    title: 'The Power of Daily Mindfulness',
-    excerpt:
-      'Simple mindfulness practices that can help you feel more present, focused and calm.',
-    readTime: '6 min read',
-    date: 'Sep 10, 2026',
-    image: IMG('photo-1506126613408-eca07ce68773'),
-  },
-  {
-    id: 'zodiac-personality',
-    category: 'Astrology',
-    title: 'How Your Zodiac Sign Shapes Your Personality',
-    excerpt:
-      'Explore how astrological insights can help you understand your strengths, challenges and life path.',
-    readTime: '5 min read',
-    date: 'Sep 8, 2026',
-    image: IMG('photo-1419242902214-272b3f66ee7a'),
-  },
-  {
-    id: 'healthier-relationships',
-    category: 'Relationships',
-    title: 'Building Healthier Relationships',
-    excerpt:
-      'Communication, trust and empathy are the keys to stronger, more meaningful connections.',
-    readTime: '7 min read',
-    date: 'Sep 5, 2026',
-    image: IMG('photo-1516589178581-6cd7833ae3b2'),
-  },
-  {
-    id: 'healthy-workplace',
-    category: 'Workplace Wellness',
-    title: 'Creating a Mentally Healthy Workplace',
-    excerpt:
-      'Practical strategies for companies to support employee wellbeing and build a positive work culture.',
-    readTime: '6 min read',
-    date: 'Sep 1, 2026',
-    image: IMG('photo-1497215728101-856f4ea42174'),
-  },
-  {
-    id: 'growth-mindset',
-    category: 'Personal Growth',
-    title: 'Small Habits, Big Changes: A Growth Mindset',
-    excerpt:
-      'How tiny, consistent routines compound into lasting confidence and personal progress.',
-    readTime: '5 min read',
-    date: 'Aug 28, 2026',
-    image: IMG('photo-1499209974431-9dddcece7f88'),
-  },
-  {
-    id: 'managing-anxiety',
-    category: 'Mental Wellness',
-    title: 'Managing Everyday Anxiety with Kindness',
-    excerpt:
-      'Gentle, evidence-based techniques to quiet a racing mind and reconnect with the present.',
-    readTime: '7 min read',
-    date: 'Aug 24, 2026',
-    image: IMG('photo-1518241353330-0f7941c2d9b5'),
-  },
-]
+const articles: Article[] = [featured]
 
-/* ── icons ─────────────────────────────────────────────────────── */
 const ClockIcon = ({ color }: { color: string }) => (
   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="9" />
@@ -202,7 +132,7 @@ const ZodiacWheel = () => (
   </svg>
 )
 
-/* ── small shared pieces ───────────────────────────────────────── */
+/* ΓöÇΓöÇ small shared pieces ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
 function CategoryChip({ category, dark }: { category: Category; dark: boolean }) {
   const tone = chipTone[category]
   return (
@@ -252,7 +182,7 @@ function GradientCircleButton({ label }: { label: string }) {
   )
 }
 
-function ArticleCard({ article, dark }: { article: Article; dark: boolean }) {
+function ArticleCard({ article, dark, onNavigate }: { article: Article; dark: boolean; onNavigate: (page: string) => void }) {
   const [saved, setSaved] = useState(false)
 
   const metaIcon = dark ? '#8b8b93' : '#98a2b3'
@@ -331,8 +261,8 @@ function ArticleCard({ article, dark }: { article: Article; dark: boolean }) {
 
         <div className="flex items-center gap-2.5 mt-auto pt-5">
           <a
-            href="#"
-            onClick={(e) => e.preventDefault()}
+            href={getBlogPath(article)}
+            onClick={(e) => { e.preventDefault(); onNavigate(getBlogPath(article)) }}
             className="zp-btn zp-sheen flex-1 inline-flex items-center justify-center rounded-full no-underline"
             style={{
               background: pillBg,
@@ -367,22 +297,20 @@ function ArticleCard({ article, dark }: { article: Article; dark: boolean }) {
   )
 }
 
-/* ── page ──────────────────────────────────────────────────────── */
+/* ΓöÇΓöÇ page ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
 interface BlogPageProps {
   onNavigate: (page: string) => void
   dark?: boolean
 }
 
-export default function BlogPage({ dark = false }: BlogPageProps) {
+export default function BlogPage({ onNavigate, dark = false }: BlogPageProps) {
   const [active, setActive] = useState<'All' | Category>('All')
   const [email, setEmail] = useState('')
   const [subscribed, setSubscribed] = useState(false)
-  const [showAll, setShowAll] = useState(false)
 
   const visible = useMemo(() => {
-    const list = articles.filter((a) => active === 'All' || a.category === active)
-    return showAll || active !== 'All' ? list : list.slice(0, 3)
-  }, [active, showAll])
+    return articles.filter((a) => active === 'All' || a.category === active)
+  }, [active])
 
   const heading = dark ? '#f5f5f5' : NAVY
   const muted = dark ? '#a1a1aa' : '#4b5563'
@@ -401,7 +329,7 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
 
   return (
     <div style={{ background: pageBg, fontFamily: SANS, transition: 'background 0.4s ease' }}>
-      {/* ═══════════ HERO ═══════════ */}
+      {/* ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ HERO ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ */}
       <section
         className="relative overflow-hidden pt-24 sm:pt-28 lg:pt-32 pb-8 sm:pb-10"
         style={{ background: heroBg }}
@@ -423,7 +351,7 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
 
         <div className="relative mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_minmax(0,400px)] items-center gap-10 lg:gap-6">
-            {/* ── copy ── */}
+            {/* ΓöÇΓöÇ copy ΓöÇΓöÇ */}
             <div className="max-w-[560px]">
               <Reveal y={14} delay={0.15} duration={0.6}>
               <p
@@ -470,7 +398,7 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
               </Reveal>
             </div>
 
-            {/* ── handwritten note ── */}
+            {/* ΓöÇΓöÇ handwritten note ΓöÇΓöÇ */}
             <Reveal
               className="hidden lg:block self-start mt-10 text-center leading-[1.15] select-none"
               y={18}
@@ -488,7 +416,7 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
               Days
             </Reveal>
 
-            {/* ── image composition ── */}
+            {/* ΓöÇΓöÇ image composition ΓöÇΓöÇ */}
             <div className="relative mx-auto w-full max-w-[420px] lg:mx-0" style={{ paddingTop: 28, paddingBottom: 36 }}>
               <div className="zp-float-slow absolute pointer-events-none" style={{ top: -6, right: -24 }}>
                 <ZodiacWheel />
@@ -516,7 +444,7 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
 
               {/* Floating wellness card. The entrance (GSAP) and the idle
                   breathing (CSS) both drive `transform`, so they are kept on
-                  separate elements — otherwise the looping keyframes win and
+                  separate elements ΓÇö otherwise the looping keyframes win and
                   the entrance never shows. */}
               <Reveal
                 className="absolute"
@@ -551,7 +479,7 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
         </div>
       </section>
 
-      {/* ═══════════ FEATURED ARTICLE ═══════════ */}
+      {/* ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ FEATURED ARTICLE ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ */}
       <section className="pt-2 pb-8 sm:pb-10" style={{ background: pageBg }}>
         <div className="mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8">
           <Reveal
@@ -605,8 +533,8 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
               <p style={{ color: muted, fontSize: 15, lineHeight: 1.6, maxWidth: 520 }}>{featured.excerpt}</p>
               <Meta readTime={featured.readTime} date={featured.date} dark={dark} />
               <a
-                href="#"
-                onClick={(e) => e.preventDefault()}
+                href={getBlogPath(featured)}
+                onClick={(e) => { e.preventDefault(); onNavigate(getBlogPath(featured)) }}
                 className="zp-btn zp-sheen zp-arrow inline-flex items-center gap-2 rounded-full text-white no-underline"
                 style={{ background: GRADIENT, fontSize: 13.5, fontWeight: 600, padding: '11px 22px', boxShadow: '0 8px 20px rgba(94,184,232,0.3)' }}
               >
@@ -618,7 +546,7 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
         </div>
       </section>
 
-      {/* ═══════════ CATEGORY FILTER ═══════════ */}
+      {/* ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ CATEGORY FILTER ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ */}
       <section className="pb-8" style={{ background: pageBg }}>
         <div className="mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8">
           <Reveal stagger={0.05} y={16} duration={0.5} className="flex flex-wrap justify-center gap-2.5 sm:gap-3">
@@ -648,7 +576,7 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
         </div>
       </section>
 
-      {/* ═══════════ LATEST ARTICLES ═══════════ */}
+      {/* ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ LATEST ARTICLES ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ */}
       <section className="pb-12 sm:pb-14" style={{ background: pageBg }}>
         <div className="mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-end justify-between gap-4 mb-7">
@@ -665,21 +593,12 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
                 </p>
               </Reveal>
             </div>
-            <button
-              type="button"
-              onClick={() => setShowAll((v) => !v)}
-              className="zp-arrow zp-link inline-flex items-center gap-1.5 cursor-pointer bg-transparent border-0"
-              style={{ color: heading, fontSize: 13, fontWeight: 500, padding: 0 }}
-            >
-              {showAll ? 'Show fewer articles' : 'View all articles'}
-              <ArrowIcon size={13} />
-            </button>
           </div>
 
           {visible.length > 0 ? (
             <Reveal stagger={0.1} y={40} duration={0.8} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {visible.map((a) => (
-                <ArticleCard key={a.id} article={a} dark={dark} />
+                <ArticleCard key={a.id} article={a} dark={dark} onNavigate={onNavigate} />
               ))}
             </Reveal>
           ) : (
@@ -687,13 +606,13 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
               className="rounded-2xl text-center"
               style={{ background: surface, border: surfaceBorder, padding: '40px 20px', color: muted, fontSize: 14 }}
             >
-              No articles in “{active}” yet. Pick another category to keep reading.
+              No articles in {active} yet. Pick another category to keep reading.
             </div>
           )}
         </div>
       </section>
 
-      {/* ═══════════ NEWSLETTER ═══════════ */}
+      {/* ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ NEWSLETTER ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ */}
       <section className="pb-16 sm:pb-20" style={{ background: pageBg }}>
         <div className="mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8">
           <Reveal
@@ -738,7 +657,7 @@ export default function BlogPage({ dark = false }: BlogPageProps) {
                 required
                 value={email}
                 onChange={(e) => { setEmail(e.target.value); setSubscribed(false) }}
-                placeholder={subscribed ? 'Thanks — you’re subscribed!' : 'Enter your email address'}
+                placeholder={subscribed ? 'Thanks ΓÇö youΓÇÖre subscribed!' : 'Enter your email address'}
                 aria-label="Email address"
                 className="flex-1 min-w-0 bg-transparent outline-none border-0"
                 style={{ color: heading, fontSize: 13, padding: '8px 4px' }}

@@ -13,6 +13,7 @@ import {
   NOT_FOUND_KEY,
   type PageKey,
 } from '@/utils/seo.config'
+import { getBlogByPath } from '@/data/blogs'
 
 export type { PageKey }
 export { NOT_FOUND_KEY, HOME_KEY }
@@ -52,6 +53,7 @@ export function getPageFromLocation(): PageKey {
   }
 
   const fromPath = getPageConfigByPath(resolvePath(window.location.pathname))
+  if (getBlogByPath(window.location.pathname)) return 'Blog'
   return fromPath ? fromPath.key : NOT_FOUND_KEY
 }
 
