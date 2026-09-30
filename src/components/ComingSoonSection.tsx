@@ -8,7 +8,7 @@ import { Reveal, TextReveal } from '@/components/motion'
 import { useState, useEffect } from 'react'
 
 const UI_IMAGE =
-  'https://res.cloudinary.com/pp0lpskp/image/upload/v1788897782/app_showcase_ui_wsc2kc_invwin.png'
+  'https://res.cloudinary.com/o6laufzn/image/upload/v1790786986/app_showcase_ui.png'
 
 interface ComingSoonSectionProps {
   onNavigate?: (page: string) => void

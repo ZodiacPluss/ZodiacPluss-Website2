@@ -131,7 +131,7 @@ export default function Footer({ onNavigate, dark = false }: FooterProps) {
                 <div className="flex items-center gap-1 px-3.5 pt-[14px] pb-3">
                   <div className="shrink-0 flex items-center justify-center">
                     <img
-                      src="https://res.cloudinary.com/pp0lpskp/image/upload/v1786032742/Zodiac_Colored_Logo_croped-removebg-preview_appzet.png"
+                      src="https://res.cloudinary.com/o6laufzn/image/upload/v1790790316/LOGOSMALL.png"
                       alt="ZodiacPluss Logo"
                       className="w-14 h-14 sm:w-15 sm:h-15 object-contain flex-shrink-0"
                     />

@@ -20,7 +20,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
         {/* Background video (PRESERVED) */}
         <video
           className="absolute inset-0 h-full w-full object-cover"
-          src="https://res.cloudinary.com/pp0lpskp/video/upload/v1787393149/169025-840244222_medium_us3ejw.mp4"
+          src="https://res.cloudinary.com/o6laufzn/video/upload/v1790802590/162889-826740615.mp4"
           autoPlay
           muted
           loop
@@ -116,7 +116,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
               </defs>
               <foreignObject x="0" y="0" width="620" height="230" clipPath="url(#zodiacVideoClip)">
                 <video
-                  src="https://res.cloudinary.com/pp0lpskp/video/upload/v1787393142/141454-777657300_medium_tgotgs.mp4"
+                  src="https://res.cloudinary.com/o6laufzn/video/upload/v1790802539/129938-745943774.mp4"
                   autoPlay
                   muted
                   loop
@@ -216,7 +216,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
                 disappears). Clipping the parent works. */}
             <div className="zodiac-wordmark-live" aria-hidden="true">
               <video
-                src="https://res.cloudinary.com/pp0lpskp/video/upload/v1787393142/141454-777657300_medium_tgotgs.mp4"
+                src="https://res.cloudinary.com/o6laufzn/video/upload/v1790802539/129938-745943774.mp4"
                 poster="https://res.cloudinary.com/pp0lpskp/video/upload/so_2,w_620,h_230,c_fill/v1787393142/141454-777657300_medium_tgotgs.jpg"
                 autoPlay
                 muted

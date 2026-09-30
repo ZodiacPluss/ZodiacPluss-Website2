@@ -650,7 +650,7 @@ export default function AppShowcaseSection() {
               }}
             >
               <video
-                src="https://res.cloudinary.com/pp0lpskp/video/upload/v1787382162/watermark-removed-app_demo_vid2_k5d1ai.mp4"
+                src="https://res.cloudinary.com/o6laufzn/video/upload/v1790787002/watermark-removed-app_demo_vid2.mp4"
                 autoPlay
                 muted
                 loop

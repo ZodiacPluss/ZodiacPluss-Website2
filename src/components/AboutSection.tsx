@@ -11,31 +11,31 @@ const services = [
 
     title: "Personalized Horoscope",
     desc: "Get insights written just for you",
-    bg: "https://res.cloudinary.com/pp0lpskp/image/upload/v1789407965/Zpcard1_u6qaae.jpg",
+    bg: "https://res.cloudinary.com/o6laufzn/image/upload/v1790779382/Zpcard1.jpg",
   },
   {
 
     title: "Therapy That Helps",
     desc: "Compassionate therapists for mental clarity and healing",
-    bg: "https://res.cloudinary.com/pp0lpskp/image/upload/v1789407966/zpcard2_ypnuiu.jpg",
+    bg: "https://res.cloudinary.com/o6laufzn/image/upload/v1790779381/zpcard2.jpg",
   },
   {
 
     title: "Emergency Consultation",
     desc: "Talk to top astrologers and therapists in real time",
-    bg: "https://res.cloudinary.com/pp0lpskp/image/upload/v1789409501/zpcard3_gffuir.jpg",
+    bg: "https://res.cloudinary.com/o6laufzn/image/upload/v1790779381/zpcard3.jpg",
   },
   {
 
     title: "Employee Assistance Program",
     desc: "Smart technology meets astrology to reveal what matters most.",
-    bg: "https://res.cloudinary.com/pp0lpskp/image/upload/v1789409502/zpcard4_flpyho.jpg",
+    bg: "https://res.cloudinary.com/o6laufzn/image/upload/v1790779382/zpcard4.jpg",
   },
   {
 
     title: "More Ways to Explore",
     desc: "Smart technology meets astrology to reveal what matters most.",
-    bg: "https://res.cloudinary.com/pp0lpskp/image/upload/v1789409502/zpcard5_kixxlo.jpg",
+    bg: "https://res.cloudinary.com/o6laufzn/image/upload/v1790779382/zpcard5.jpg",
   },
 ]
 

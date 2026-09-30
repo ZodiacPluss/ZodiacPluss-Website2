@@ -10,7 +10,7 @@ import { Reveal, StatCount } from '@/components/motion'
 const GRADIENT = 'linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)'
 
 const LOGO_URL =
-  'https://res.cloudinary.com/pp0lpskp/image/upload/v1786032742/Zodiac_Colored_Logo_croped-removebg-preview_appzet.png'
+  'https://res.cloudinary.com/o6laufzn/image/upload/v1790790316/LOGOSMALL.png'
 
 const credibilityStats = [
   { value: '10+', label: 'Special Features & insights ' },

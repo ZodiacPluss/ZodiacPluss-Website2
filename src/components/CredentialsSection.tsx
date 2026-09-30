@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Reveal, TextReveal } from '@/components/motion'
 
 const certificates = [
@@ -9,7 +9,7 @@ const certificates = [
     badge: 'DPIIT / STARTUP INDIA',
     certNo: 'DIPP270484',
     issuedBy: 'Ministry of Commerce & Industry, India',
-    imageUrl: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1789408154/Certification_of_recognition_r2ohgr.png',
+    imageUrl: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790787604/Certification_of_recognition_2.png',
     color: '#1aa0b8ff',
     bgLight: '#f0fdfa',
     bgDark: '#161717',
@@ -22,7 +22,7 @@ const certificates = [
     subtitle: 'Government of India',
     badge: 'GST REGISTERED',
     certNo: ' 07AADCZ0348Q1ZS',
-    imageUrl: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1789408152/GST_v54byv.png',
+    imageUrl: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790787592/GST_1.png',
     color: '#1aa0b8ff',
     bgLight: '#f0fdfa',
     bgDark: '#161717',
@@ -36,7 +36,7 @@ const certificates = [
     badge: 'UDYAM CERTIFIED',
     certNo: 'UDYAM-DL-06-0212115',
     issuedBy: 'Govt. of India MSME Enterprise Portal',
-    imageUrl: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1789408152/Udyam_Registration_Certification_l3c6u0.png',
+    imageUrl: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790787597/Udyam_Registration_Certification_1.png',
     color: '#1aa0b8ff',
     bgLight: '#f0fdfa',
     bgDark: '#161717',
@@ -50,7 +50,7 @@ const certificates = [
     badge: 'ISO 27001  CERTIFIED',
     certNo: '26UQAA55',
     issuedBy: 'National Accreditation Board for Certification Bodies under the Quality Council of India (QCI)',
-    imageUrl: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1789408161/Frame_512_nvaofh.png',
+    imageUrl: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790787588/ISO_27001.png',
     color: '#1aa0b8ff',
     bgLight: '#f0fdfa',
     bgDark: '#161717',
@@ -64,7 +64,7 @@ const certificates = [
     badge: 'ISO 9001  CERTIFIED',
     certNo: '26UQAB38',
     issuedBy: 'International Accreditation Service (IAS)',
-    imageUrl: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1789408163/ISO_9001_2015_g429eh.png',
+    imageUrl: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790787626/ISO_9001_2015_1.png',
     color: '#1aa0b8ff',
     bgLight: '#161717ff',
     bgDark: '#161717',
@@ -80,6 +80,44 @@ interface CredentialsSectionProps {
 export default function CredentialsSection({ dark = false }: CredentialsSectionProps) {
   const [activeCert, setActiveCert] = useState<string | null>(null)
   const [previewCertImage, setPreviewCertImage] = useState<{ url: string; title: string } | null>(null)
+  const isCertificatePreviewOpen = Boolean(activeCert || previewCertImage)
+
+  useEffect(() => {
+    if (!isCertificatePreviewOpen) return
+
+    const scrollY = window.scrollY
+    const body = document.body
+    const html = document.documentElement
+    const previousBodyStyles = {
+      position: body.style.position,
+      top: body.style.top,
+      width: body.style.width,
+    }
+    const previousHtmlOverflow = html.style.overflow
+
+    body.style.position = 'fixed'
+    body.style.top = `-${scrollY}px`
+    body.style.width = '100%'
+    html.style.overflow = 'hidden'
+
+    return () => {
+      body.style.position = previousBodyStyles.position
+      body.style.top = previousBodyStyles.top
+      body.style.width = previousBodyStyles.width
+      html.style.overflow = previousHtmlOverflow
+      window.scrollTo(0, scrollY)
+    }
+  }, [isCertificatePreviewOpen])
+
+  useEffect(() => {
+    if (!activeCert) return
+
+    const certificate = certificates.find((item) => item.id === activeCert)
+    if (certificate) {
+      const image = new Image()
+      image.src = certificate.imageUrl
+    }
+  }, [activeCert])
 
   const textColor = dark ? '#f5f5f5' : '#ffffff'
   const subtextColor = dark ? '#5aad38ff' : '#5aad38ff'

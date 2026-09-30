@@ -228,7 +228,7 @@ function AboutBand({ onNavigate, dark = false }: { onNavigate?: (p: string) => v
                 padding: 0,
               }}>
                 <img
-                  src="https://res.cloudinary.com/pp0lpskp/image/upload/v1786032742/Zodiac_Colored_Logo_croped-removebg-preview_appzet.png"
+                  src="https://res.cloudinary.com/o6laufzn/image/upload/v1790790316/LOGOSMALL.png"
                   alt="ZodiacPluss Logo"
                   style={{
                     width: '100%',

@@ -104,7 +104,7 @@ export default function Navbar({ currentPage, onNavigate, dark = false, onToggle
             className="flex items-center gap-1.5 cursor-pointer border-0 bg-transparent p-0 no-underline"
           >
             <img
-              src="https://res.cloudinary.com/pp0lpskp/image/upload/v1786032742/Zodiac_Colored_Logo_croped-removebg-preview_appzet.png"
+              src="https://res.cloudinary.com/o6laufzn/image/upload/v1790790316/LOGOSMALL.png"
               alt="ZodiacPluss Logo"
               className="w-9 h-9 sm:w-10 sm:h-10 object-contain flex-shrink-0"
             />
