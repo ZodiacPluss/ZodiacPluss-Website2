@@ -8,6 +8,7 @@ import ServicesPage from '@/pages/ServicesPage'
 import ExpertsPage from '@/pages/ExpertsPage'
 import BookSessionPage from '@/pages/BookSessionPage'
 import CareerPage from '@/pages/CareerPage'
+import BlogArticlePage from '@/pages/BlogArticlePage'
 import BlogPage from '@/pages/BlogPage'
 import PortfolioPage from '@/pages/PortfolioPage'
 import ComingSoonPage from '@/pages/ComingSoonPage'
@@ -22,6 +23,7 @@ import {
 import { useSEO } from '@/hooks/useSEO'
 import { Analytics } from '@vercel/analytics/react'
 import { setSplashActive, refreshMotion } from '@/components/motion'
+import { featuredBlog, getBlogByPath } from '@/data/blogs'
 
 const pageMap: Record<string, PageKey> = {
   'About': 'About Us',
@@ -34,6 +36,9 @@ const pageMap: Record<string, PageKey> = {
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageKey>(() => getPageFromLocation())
+  const [blogArticlePath, setBlogArticlePath] = useState(() => (
+    typeof window !== 'undefined' ? window.location.pathname : ''
+  ))
   const [dark, setDark] = useState(false)
   // Flagged during render, not in an effect: child effects run before the
   // parent's, so an effect here would fire after the first sections have
@@ -48,7 +53,8 @@ export default function App() {
     const handlePopState = (event: PopStateEvent) => {
       const page = (event.state?.page as PageKey) || getPageFromLocation()
       setCurrentPage(page)
-      window.scrollTo({ top: 0, behavior: 'smooth' })
+      setBlogArticlePath(window.location.pathname)
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
     }
 
     // Normalise alias URLs client-side as a fallback. Vercel already serves a
@@ -56,7 +62,7 @@ export default function App() {
     // the app is reached without those redirects. Unknown paths are left alone
     // so a 404 URL never rewrites itself into the canonical homepage.
     const initialPage = getPageFromLocation()
-    if (initialPage !== NOT_FOUND_KEY) {
+    if (initialPage !== NOT_FOUND_KEY && !getBlogByPath(window.location.pathname)) {
       const canonicalPath = getCanonicalPath(initialPage)
       if (window.location.pathname !== canonicalPath && !window.location.hash) {
         window.history.replaceState({ page: initialPage }, '', canonicalPath)
@@ -67,35 +73,40 @@ export default function App() {
     return () => window.removeEventListener('popstate', handlePopState)
   }, [])
 
-  // Dynamically update <title> + <meta description> + robots on every page change
-  useSEO(currentPage)
+  const currentBlogArticle = currentPage === 'Blog' ? getBlogByPath(blogArticlePath) : undefined
+
+  // Dynamically update page or article metadata on every route change.
+  useSEO(currentPage, currentBlogArticle)
 
   // Each route swaps the whole document body, so every scroll trigger measured
   // against the previous page is stale. Re-measure once the new one has painted.
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
     const raf = requestAnimationFrame(refreshMotion)
     return () => cancelAnimationFrame(raf)
-  }, [currentPage])
+  }, [currentPage, blogArticlePath])
 
   const handleNavigate = (page: string, replace = false) => {
+    const isBlogArticle = page.startsWith('/blog/')
     const resolved: PageKey = pageMap[page] ?? (page as PageKey)
-    const targetPath = getCanonicalPath(resolved)
+    const targetPath = isBlogArticle ? page : getCanonicalPath(resolved)
 
-    setCurrentPage(resolved)
+    setCurrentPage(isBlogArticle ? 'Blog' : resolved)
+    setBlogArticlePath(isBlogArticle ? page : '')
 
     // Update browser URL in address bar without reloading
     if (typeof window !== 'undefined') {
       const currentPath = window.location.pathname
       if (currentPath !== targetPath || window.location.hash) {
         if (replace) {
-          window.history.replaceState({ page: resolved }, '', targetPath)
+          window.history.replaceState({ page: isBlogArticle ? 'Blog' : resolved }, '', targetPath)
         } else {
-          window.history.pushState({ page: resolved }, '', targetPath)
+          window.history.pushState({ page: isBlogArticle ? 'Blog' : resolved }, '', targetPath)
         }
       }
     }
 
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
   }
 
   const renderPage = () => {
@@ -106,7 +117,13 @@ export default function App() {
       case 'Experts': return <ExpertsPage onNavigate={handleNavigate} dark={dark} />
       case 'Book': return <BookSessionPage onNavigate={handleNavigate} dark={dark} />
       case 'Career': return <CareerPage onNavigate={handleNavigate} dark={dark} />
-      case 'Blog': return <BlogPage onNavigate={handleNavigate} dark={dark} />
+      case 'Blog': {
+        const article = getBlogByPath(blogArticlePath) ?? featuredBlog
+        const isArticlePage = Boolean(getBlogByPath(blogArticlePath))
+        return isArticlePage
+          ? <BlogArticlePage article={article} onNavigate={handleNavigate} dark={dark} />
+          : <BlogPage onNavigate={handleNavigate} dark={dark} />
+      }
       case 'Portfolio': return <PortfolioPage onNavigate={handleNavigate} dark={dark} />
       case 'Coming Soon': return <ComingSoonPage onNavigate={handleNavigate} dark={dark} />
       default: return <NotFoundPage onNavigate={handleNavigate} dark={dark} />

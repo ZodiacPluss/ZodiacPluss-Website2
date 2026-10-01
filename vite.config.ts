@@ -13,6 +13,7 @@ import {
   OG_IMAGE,
   type SeoPageConfig,
 } from './src/utils/seo.config.ts'
+import { blogArticles, getBlogPath, type BlogArticle } from './src/data/blogs.ts'
 
 const SEO_BLOCK_RE = /<!-- SEO:START[\s\S]*?SEO:END -->/
 
@@ -32,6 +33,10 @@ function escapeHtml(value: string): string {
 function outputFileName(page: SeoPageConfig): string {
   if (page.path === '/') return 'index.html'
   return `${page.path.replace(/^\//, '')}.html`
+}
+
+function outputArticleFileName(article: BlogArticle): string {
+  return `${getBlogPath(article).replace(/^\//, '')}/index.html`
 }
 
 function breadcrumbJsonLd(page: SeoPageConfig): string {
@@ -164,11 +169,16 @@ function serviceJsonLd(page: SeoPageConfig): string {
   return `\n    <script type="application/ld+json">\n${JSON.stringify(payload, null, 2)}\n    </script>`
 }
 
-function seoBlock(page: SeoPageConfig): string {
-  const url = absoluteUrl(page.path)
-  const title = escapeHtml(page.title)
-  const description = escapeHtml(page.description)
+function seoBlock(page: SeoPageConfig, article?: BlogArticle): string {
+  const path = article ? getBlogPath(article) : page.path
+  const url = absoluteUrl(path)
+  const title = escapeHtml(article?.seoTitle ?? page.title)
+  const description = escapeHtml(article?.seoDescription ?? page.description)
   const robots = page.indexable ? ROBOTS_INDEXABLE : ROBOTS_NOINDEX
+  const keywordsTag = article
+    ? `\n    <meta name="keywords" content="${escapeHtml(article.focusKeyword)}" />`
+    : ''
+  const image = article?.image ?? OG_IMAGE
 
   // The 404 document is served for arbitrary unknown paths, so it must not
   // declare a canonical or an og:url — either would advertise `/404` as a
@@ -183,7 +193,7 @@ function seoBlock(page: SeoPageConfig): string {
 
   return `<!-- SEO:START — generated at build time from src/utils/seo.config.ts -->
     <title>${title}</title>
-    <meta name="description" content="${description}" />
+    <meta name="description" content="${description}" />${keywordsTag}
     <meta name="robots" content="${robots}" />${canonicalTag}
 
     <meta property="og:type" content="website" />
@@ -191,7 +201,7 @@ function seoBlock(page: SeoPageConfig): string {
     <meta property="og:locale" content="en_IN" />${ogUrlTag}
     <meta property="og:title" content="${title}" />
     <meta property="og:description" content="${description}" />
-    <meta property="og:image" content="${OG_IMAGE}" />
+    <meta property="og:image" content="${image}" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="ZodiacPluss" />
@@ -200,7 +210,7 @@ function seoBlock(page: SeoPageConfig): string {
     <meta name="twitter:site" content="@zodiacpluss" />
     <meta name="twitter:title" content="${title}" />
     <meta name="twitter:description" content="${description}" />
-    <meta name="twitter:image" content="${OG_IMAGE}" />${breadcrumbJsonLd(page)}${faqJsonLd(page)}${serviceJsonLd(page)}
+    <meta name="twitter:image" content="${image}" />${breadcrumbJsonLd(page)}${faqJsonLd(page)}${serviceJsonLd(page)}
     <!-- SEO:END -->`
 }
 
@@ -257,6 +267,14 @@ function seoPrerender(): Plugin {
 
         for (const page of getPrerenderablePages()) emit(page)
 
+        const blogPage = getPageConfig('Blog')
+        for (const article of blogArticles) {
+          const html = template.replace(SEO_BLOCK_RE, seoBlock(blogPage, article))
+          const file = path.join(outDir, outputArticleFileName(article))
+          fs.mkdirSync(path.dirname(file), { recursive: true })
+          fs.writeFileSync(file, html)
+        }
+
         // Vercel serves 404.html with an HTTP 404 status for unmatched paths.
         const notFound = getPageConfig(NOT_FOUND_KEY)
         fs.writeFileSync(
@@ -267,7 +285,7 @@ function seoPrerender(): Plugin {
         fs.writeFileSync(path.join(outDir, 'sitemap.xml'), buildSitemap())
 
         const routes = getPrerenderablePages().map((p) => p.path).join(', ')
-        this.info?.(`seo-prerender: emitted ${routes}, 404.html and sitemap.xml`)
+        this.info?.(`seo-prerender: emitted ${routes}, blog articles, 404.html and sitemap.xml`)
       },
     },
   }

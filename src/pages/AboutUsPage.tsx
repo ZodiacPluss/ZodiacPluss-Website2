@@ -210,7 +210,7 @@ export default function AboutUsPage({ onNavigate, dark = false }: AboutUsPagePro
                   <h3 className="text-sm sm:text-base font-bold text-white leading-tight drop-shadow-sm">
                     {member.name}
                   </h3>
-                  <p className="text-[10px] sm:text-xs font-semibold text-gray-300 uppercase tracking-wider mt-0.5">
+                  <p className="text-[10px] sm:text-xs font-semibold text-gray-300 uppercase tracking-tight mt-0.5">
                     {member.role}
                   </p>
                   <p className="text-[10px] text-[#2dd4bf] font-medium mt-1">

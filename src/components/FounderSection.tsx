@@ -49,32 +49,6 @@ function Sparkle({ size = 14, color = '#ffffff', opacity = 1 }: { size?: number;
   )
 }
 
-/** Thin orbit rings, dots and the crescent behind the top-right corner. */
-function OrbitLines({ color, className, style }: { color: string; className?: string; style?: React.CSSProperties }) {
-  return (
-    <svg viewBox="0 0 320 320" fill="none" className={className} style={style} aria-hidden="true">
-      <g stroke={color} strokeWidth="1" opacity="0.55">
-        <circle cx="160" cy="160" r="152" />
-        <circle cx="160" cy="160" r="120" strokeDasharray="2 7" opacity="0.8" />
-        <circle cx="160" cy="160" r="86" />
-        <path d="M18 108 A 152 152 0 0 1 128 14" strokeWidth="1.6" opacity="0.9" />
-      </g>
-      <g fill={color} opacity="0.75">
-        <circle cx="160" cy="8" r="3" />
-        <circle cx="299" cy="212" r="2.4" />
-        <circle cx="42" cy="236" r="2" />
-        <circle cx="246" cy="52" r="1.8" />
-      </g>
-      {/* crescent */}
-      <path
-        d="M196 34 a 15 15 0 1 0 13 20 a 12 12 0 1 1 -13 -20 z"
-        fill={color}
-        opacity="0.85"
-      />
-    </svg>
-  )
-}
-
 /** Small letterspaced caps used for both eyebrows. */
 function Eyebrow({ children, color, className = '', style }: { children: React.ReactNode; color?: string; className?: string; style?: React.CSSProperties }) {
   return (
@@ -135,8 +109,8 @@ export default function FounderSection({ dark = false }: FounderSectionProps) {
 
             {/* signature */}
             <Reveal y={18} delay={0.15} className="mt-9">
-              <p className="m-0 leading-none inline-block" style={{ fontFamily: SCRIPT, fontSize: 40, ...GRADIENT_TEXT }}>
-                RashmI
+              <p className="m-0 leading-none " style={{ fontFamily: SCRIPT, fontSize: 40, ...GRADIENT_TEXT }}>
+                Rashmi
               </p>
               <span className="block mt-3 mb-2 h-px" style={{ background: line, width: 148 }} />
               <p className="m-0" style={{ color: body, fontFamily: SANS, fontSize: 12.5 }}>
@@ -147,19 +121,12 @@ export default function FounderSection({ dark = false }: FounderSectionProps) {
 
           {/* ══════════ right: portrait, badge, quote ══════════ */}
           <div className="relative">
-            {/* orbit line-work behind the top-right corner */}
-            <OrbitLines
-              color={accent}
-              className="absolute pointer-events-none hidden md:block"
-              style={{ top: '-10%', right: '-8%', width: 'clamp(230px, 24vw, 310px)' }}
-            />
-
             {/* vertical caption, top right */}
             <div
               className="absolute z-10 hidden lg:flex flex-col items-end gap-1.5 text-right"
               style={{ top: 4, right: 0 }}
             >
-              {['Same', 'Stars', 'Brighter', 'Lives'].map((word) => (
+              {['Same', 'Stars', 'Lives'].map((word) => (
                 <Eyebrow key={word} color={dark ? '#8f8f9a' : '#6f6880'}>
                   {word}
                 </Eyebrow>

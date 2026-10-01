@@ -7,6 +7,7 @@ import {
   SITE_LOCALE,
   type PageKey,
 } from '@/utils/seo.config'
+import type { BlogArticle } from '@/data/blogs'
 
 const ROBOTS_INDEXABLE =
   'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
@@ -57,16 +58,25 @@ function setCanonical(url: string | null): void {
  * correct metadata from the raw server response too; this hook only covers
  * in-app navigation after hydration.
  */
-export function useSEO(page: PageKey): void {
+export function useSEO(page: PageKey, article?: BlogArticle): void {
   useEffect(() => {
     const config = getPageConfig(page)
+    const articlePath = article ? `/blog/${article.category.toLowerCase().replace(/\s+/g, '-')}/${article.id}` : null
+    const title = article?.seoTitle ?? config.title
+    const description = article?.seoDescription ?? config.description
+    const canonicalPath = articlePath ?? config.path
     const isNotFound = page === NOT_FOUND_KEY
-    const canonicalUrl = isNotFound ? null : absoluteUrl(config.path)
+    const canonicalUrl = isNotFound ? null : absoluteUrl(canonicalPath)
 
-    document.title = config.title
+    document.title = title
     document.documentElement.lang = SITE_LOCALE
 
-    setMeta('name', 'description', config.description)
+    setMeta('name', 'description', description)
+    if (article) {
+      setMeta('name', 'keywords', article.focusKeyword)
+    } else {
+      removeMeta('name', 'keywords')
+    }
     setMeta(
       'name',
       'robots',
@@ -79,12 +89,12 @@ export function useSEO(page: PageKey): void {
     } else {
       setMeta('property', 'og:url', canonicalUrl)
     }
-    setMeta('property', 'og:title', config.title)
-    setMeta('property', 'og:description', config.description)
-    setMeta('property', 'og:image', OG_IMAGE)
+    setMeta('property', 'og:title', title)
+    setMeta('property', 'og:description', description)
+    setMeta('property', 'og:image', article?.image ?? OG_IMAGE)
 
-    setMeta('name', 'twitter:title', config.title)
-    setMeta('name', 'twitter:description', config.description)
-    setMeta('name', 'twitter:image', OG_IMAGE)
-  }, [page])
+    setMeta('name', 'twitter:title', title)
+    setMeta('name', 'twitter:description', description)
+    setMeta('name', 'twitter:image', article?.image ?? OG_IMAGE)
+  }, [page, article])
 }
