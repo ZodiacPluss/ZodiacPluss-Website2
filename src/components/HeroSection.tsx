@@ -20,7 +20,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
         {/* Background video (PRESERVED) */}
         <video
           className="absolute inset-0 h-full w-full object-cover"
-          src="https://res.cloudinary.com/o6laufzn/video/upload/v1790802590/162889-826740615.mp4"
+          src="https://res.cloudinary.com/o6laufzn/video/upload/v1790936025/back-hero.mp4"
           autoPlay
           muted
           loop
@@ -199,7 +199,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
               {/* 5 s / 12 fps animated WebP rendered by Cloudinary from the
                   same clip (~350 KB, vs 8.8 MB for the MP4). */}
               <image
-                href="https://res.cloudinary.com/pp0lpskp/video/upload/w_620,h_230,c_fill,du_5,fps_12,fl_animated,fl_awebp,q_50/v1787393142/141454-777657300_medium_tgotgs.webp"
+                href="https://res.cloudinary.com/o6laufzn/video/upload/v1790938090/Zodiac.textoverlay.mp4"
                 x="0"
                 y="0"
                 width="620"

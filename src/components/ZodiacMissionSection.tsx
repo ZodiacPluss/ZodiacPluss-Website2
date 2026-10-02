@@ -15,7 +15,7 @@ const TEAL_D = '#40d0cbff'
 const NAVY = '#1a1060'
 
 const MEDITATION =
-  'https://res.cloudinary.com/pp0lpskp/image/upload/v1786114130/9eb6def5a93718e462ce7c37dcb77329_k3rqji.jpg'
+  'https://res.cloudinary.com/o6laufzn/image/upload/v1790941009/image.jpg'
 
 
 
@@ -118,32 +118,41 @@ function DarkHero({ onNavigate }: { onNavigate?: (p: string) => void; dark?: boo
             style={{ position: 'relative' }}
           >
             <div className="zp-float-slow" style={{
-              width: 'clamp(220px,32vw,320px)',
-              height: 'clamp(220px,32vw,320px)',
+              width: 'clamp(260px,36vw,420px)',
+              height: 'clamp(260px,36vw,420px)',
               position: 'relative',
               filter: 'drop-shadow(0 0 40px rgba(54, 58, 57, 0.25))',
             }}>
               {/* Subtle glow behind */}
               <div style={{
-                position: 'absolute', inset: 0, borderRadius: '50%',
-                background: 'radial-gradient(circle, rgba(56, 62, 60, 0.3) 0%, transparent 70%)',
-                boxShadow: '0 0 50px 15px rgba(44, 48, 47, 0.18)',
+                position: 'absolute', inset: '8%', borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(56, 62, 60, 0.28) 0%, transparent 72%)',
+                boxShadow: '0 0 50px 15px rgba(123, 136, 133, 0.12)',
               }} />
               {/* Photo */}
               <div style={{
                 position: 'absolute',
-                inset: 0,
+                inset: '7%',
                 borderRadius: '50%', overflow: 'hidden',
-                border: '2px solid rgba(212, 226, 223, 0.4)',
+                border: '3px solid rgba(0, 0, 0, 0.9)',
+                background: '#02060d',
+                boxShadow: 'inset 0 0 0 2px rgba(255,255,255,0.06)',
               }}>
                 <img
                   src={MEDITATION}
                   alt="ZodiacPluss astrology consultation and wisdom"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center center',
+                    transform: 'scale(1.3)',
+                    display: 'block',
+                  }}
                 />
                 <div style={{
                   position: 'absolute', inset: 0,
-                  background: 'linear-gradient(180deg, rgba(7,30,25,0.05) 0%, rgba(7,30,25,0.3) 100%)',
+                  background: 'linear-gradient(180deg, rgba(7,30,25,0.05) 0%, rgba(7,30,25,0.28) 100%)',
                 }} />
               </div>
             </div>
