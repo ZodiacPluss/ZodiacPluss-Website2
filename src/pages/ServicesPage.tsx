@@ -9,35 +9,35 @@ const services = [
   {
     title: 'Personalized Horoscope',
     desc: 'Receive a deeply detailed horoscope crafted uniquely for your birth chart. Understand your personality, strengths, challenges, and cosmic timing.',
-    bg: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1787548977/Daily_hororscope_qmjbbj.jpg',
+    bg: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790960429/ChatGPT_Image_Oct_2_2026_10_20_15_PM.png',
     tag: 'Most Accurate',
     color: '#d81b86',
   },
   {
     title: 'Live Sessions with Experts',
     desc: 'Book a one-on-one video or chat session with our certified astrologers and therapists. Real-time guidance for life\'s most pressing questions.',
-    bg: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1787550158/live_session_with_expert_bymrtl.jpg',
+    bg: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790960459/ChatGPT_Image_Oct_2_2026_10_21_31_PM.png',
     tag: 'Premium feature',
     color: '#5b2d8e',
   },
   {
     title: 'Personal AI Friend',
     desc: 'A friendly companion to talk to whenever you need, 24/7.Talk seemslessly with your AI friend. ',
-    bg: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1787548767/ai_sessions_inxcga.jpg',
+    bg: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790960492/ChatGPT_Image_Oct_2_2026_10_23_59_PM.png',
     tag: 'AI Enhanced app',
     color: '#1487b8ff',
   },
   {
     title: 'Therapy That Helps',
     desc: 'Work with licensed therapists who integrate holistic and astrological perspectives to support your mental health and emotional well-being.',
-    bg: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1787549207/therapy_sessions_d61iol.jpg',
+    bg: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790960507/ChatGPT_Image_Oct_2_2026_10_26_06_PM.png',
     tag: 'Wellness feature',
     color: '#0d5f4f',
   },
   {
     title: 'Tarot Card of the Day',
     desc: 'Draw your daily tarot card and receive an in-depth reading that provides guidance, reflection, and a daily cosmic check-in.',
-    bg: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1787549557/copy_of_tarot_card_reading_wl55x5.jpg',
+    bg: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790960520/ChatGPT_Image_Oct_2_2026_10_27_16_PM.png',
     tag: 'Daily',
     color: '#7c3aed',
   },
@@ -45,14 +45,14 @@ const services = [
     id: '06',
     title: '24 x 7  Emergency Support',
     desc: 'Get immediate access to mental health professionals who can support you before any crisis.',
-    bg: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1787549489/emergencu_service_p05rrc.jpg',
+    bg: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790961598/ChatGPT_Image_Oct_2_2026_10_49_13_PM_1.png',
     tag: 'Freebie ',
     color: '#c44832ff',
   },
   {
     title: 'EAP, SAP & CAP',
     desc: 'Employee Assistant Programs (EAP), Student Assistant Programs (SAP) and College Assistant Programs (CAP).',
-    bg: 'https://res.cloudinary.com/pp0lpskp/image/upload/v1787548802/EAP_gjbdgp.jpg',
+    bg: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790960531/ChatGPT_Image_Oct_2_2026_10_29_30_PM.png',
     tag: 'Corporate',
     color: '#0891b2',
   },
@@ -102,7 +102,7 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
       <div
         className="relative overflow-hidden pt-32 pb-24 px-6 text-center bg-cover bg-center transition-all duration-300"
         style={{
-          backgroundImage: "url('https://res.cloudinary.com/pp0lpskp/image/upload/v1787326065/service_hero_abpics.jpg')",
+          backgroundImage: "url('https://res.cloudinary.com/o6laufzn/image/upload/v1790960435/ChatGPT_Image_Oct_2_2026_10_20_49_PM.png')",
         }}
       >
         {/* Soft dark vignette overlay for optimal text contrast and seamless blending */}

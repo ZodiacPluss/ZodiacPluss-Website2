@@ -72,7 +72,7 @@ export default function AboutUsPage({ onNavigate, dark = false }: AboutUsPagePro
       <div
         className="relative overflow-hidden py-32 md:py-44 px-6 text-center transition-all duration-300 bg-cover bg-top"
         style={{
-          backgroundImage: "url('https://res.cloudinary.com/pp0lpskp/image/upload/v1786114754/webheader1_er7sxb.jpg')",
+          backgroundImage: "url('https://res.cloudinary.com/o6laufzn/image/upload/v1790955490/ChatGPT_Image_Oct_2_2026_09_07_15_PM_2.png')",
         }}
       >
         <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]" />
@@ -146,7 +146,7 @@ export default function AboutUsPage({ onNavigate, dark = false }: AboutUsPagePro
               />
               {/* Zodiac Symbol Wheel */}
               <img
-                src="https://res.cloudinary.com/pp0lpskp/image/upload/v1786032742/Zodiac_Colored_Logo_croped-removebg-preview_appzet.png"
+                src="https://res.cloudinary.com/o6laufzn/image/upload/v1790790316/LOGOSMALL.png"
                 alt="ZodiacPluss Symbol Wheel"
                 className="relative z-10 w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                 style={{
