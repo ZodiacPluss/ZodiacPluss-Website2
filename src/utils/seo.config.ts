@@ -142,7 +142,7 @@ export const SEO_PAGE_CONFIG: readonly SeoPageConfig[] = [
   },
   {
     key: 'Privacy Policy',
-    path: '/privacy-policy',
+    path: '/policies/privacy',
     title: 'Privacy Policy | ZodiacPluss',
     description:
       'How ZodiacPluss collects, uses, shares and protects your personal information, and the rights you have over it.',
@@ -151,7 +151,7 @@ export const SEO_PAGE_CONFIG: readonly SeoPageConfig[] = [
   },
   {
     key: 'Terms & Conditions',
-    path: '/terms-and-conditions',
+    path: '/policies/terms',
     title: 'Terms & Conditions | ZodiacPluss',
     description:
       'The terms and conditions that govern your use of the ZodiacPluss website, app and services.',
@@ -160,7 +160,7 @@ export const SEO_PAGE_CONFIG: readonly SeoPageConfig[] = [
   },
   {
     key: 'Refund Policy',
-    path: '/refund-policy',
+    path: '/policies/refund',
     title: 'Refund Policy | ZodiacPluss',
     description:
       'When and how ZodiacPluss refunds money for booked appointments, instant sessions and wallet recharges.',
@@ -169,7 +169,7 @@ export const SEO_PAGE_CONFIG: readonly SeoPageConfig[] = [
   },
   {
     key: 'Wallet Policy',
-    path: '/wallet-policy',
+    path: '/policies/wallet',
     title: 'Wallet Policy | ZodiacPluss',
     description: 'How the ZodiacPluss wallet, recharges and Zodiac Coins work, and what you can use your balance for.',
     indexable: true,
@@ -177,7 +177,7 @@ export const SEO_PAGE_CONFIG: readonly SeoPageConfig[] = [
   },
   {
     key: 'Community Guidelines',
-    path: '/community-guidelines',
+    path: '/policies/community-guidelines',
     title: 'Community Guidelines | ZodiacPluss',
     description:
       'How users and experts on ZodiacPluss are expected to behave to keep the community safe, honest and respectful.',
@@ -186,7 +186,7 @@ export const SEO_PAGE_CONFIG: readonly SeoPageConfig[] = [
   },
   {
     key: 'Expert Agreement',
-    path: '/expert-agreement',
+    path: '/policies/expert-agreement',
     title: 'Expert Agreement | ZodiacPluss',
     description:
       'The agreement between ZodiacPluss and the astrologers, psychologists and counsellors who offer services on the platform.',
@@ -221,6 +221,14 @@ export const ROUTE_ALIASES: Readonly<Record<string, string>> = {
   '/contact-us': '/book',
   '/connect': '/book',
   '/comingsoon': '/coming-soon',
+  // Earlier website URLs for the policy pages; the canonical ones are the
+  // backend's own /policies/<slug> links, so app and email links resolve as-is.
+  '/privacy-policy': '/policies/privacy',
+  '/terms-and-conditions': '/policies/terms',
+  '/refund-policy': '/policies/refund',
+  '/wallet-policy': '/policies/wallet',
+  '/community-guidelines': '/policies/community-guidelines',
+  '/expert-agreement': '/policies/expert-agreement',
 }
 
 export const NOT_FOUND_KEY: PageKey = 'Not Found'
