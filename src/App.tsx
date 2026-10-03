@@ -12,6 +12,7 @@ import BlogArticlePage from '@/pages/BlogArticlePage'
 import BlogPage from '@/pages/BlogPage'
 import PortfolioPage from '@/pages/PortfolioPage'
 import ComingSoonPage from '@/pages/ComingSoonPage'
+import InvitePage from '@/pages/InvitePage'
 import NotFoundPage from '@/pages/NotFoundPage'
 import SplashScreen from '@/components/SplashScreen'
 import {
@@ -44,6 +45,8 @@ export default function App() {
   // parent's, so an effect here would fire after the first sections have
   // already set up their entrances and missed the gate.
   const [showSplash, setShowSplash] = useState(() => {
+    // The invite landing page is a standalone, share-link screen: no splash.
+    if (getPageFromLocation() === 'Invite') return false
     setSplashActive(true)
     return true
   })
@@ -128,6 +131,16 @@ export default function App() {
       case 'Coming Soon': return <ComingSoonPage onNavigate={handleNavigate} dark={dark} />
       default: return <NotFoundPage onNavigate={handleNavigate} dark={dark} />
     }
+  }
+
+  // The invite page is a full-bleed standalone screen (no site chrome).
+  if (currentPage === 'Invite') {
+    return (
+      <>
+        <InvitePage onNavigate={handleNavigate} />
+        <Analytics />
+      </>
+    )
   }
 
   return (

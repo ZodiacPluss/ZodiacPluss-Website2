@@ -24,6 +24,7 @@ export type PageKey =
   | 'Experts'
   | 'Portfolio'
   | 'Coming Soon'
+  | 'Invite'
   | 'Not Found'
 
 export interface SeoPageConfig {
@@ -123,6 +124,15 @@ export const SEO_PAGE_CONFIG: readonly SeoPageConfig[] = [
     // it indexable would create a duplicate of `/`.
     indexable: false,
     breadcrumb: 'Coming Soon',
+  },
+  {
+    key: 'Invite',
+    path: '/invite',
+    title: "You've been invited to Zodiac Pluss",
+    description:
+      'Claim your Zodiac Pluss referral benefit. Save your invite code and enter it while registering.',
+    // Per-user referral landing page; the code lives in the query string.
+    indexable: false,
   },
   {
     key: 'Not Found',
