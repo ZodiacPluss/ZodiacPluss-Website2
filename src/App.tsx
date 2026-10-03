@@ -13,6 +13,8 @@ import BlogPage from '@/pages/BlogPage'
 import PortfolioPage from '@/pages/PortfolioPage'
 import ComingSoonPage from '@/pages/ComingSoonPage'
 import InvitePage from '@/pages/InvitePage'
+import PrivacyPolicyPage from '@/pages/PrivacyPolicyPage'
+import TermsPage from '@/pages/TermsPage'
 import NotFoundPage from '@/pages/NotFoundPage'
 import SplashScreen from '@/components/SplashScreen'
 import {
@@ -35,6 +37,9 @@ const pageMap: Record<string, PageKey> = {
   'ComingSoon': 'Coming Soon',
 }
 
+// Full-bleed pages rendered without the site navbar, footer or splash.
+const STANDALONE_PAGES = new Set<PageKey>(['Invite', 'Privacy Policy', 'Terms & Conditions'])
+
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageKey>(() => getPageFromLocation())
   const [blogArticlePath, setBlogArticlePath] = useState(() => (
@@ -45,8 +50,8 @@ export default function App() {
   // parent's, so an effect here would fire after the first sections have
   // already set up their entrances and missed the gate.
   const [showSplash, setShowSplash] = useState(() => {
-    // The invite landing page is a standalone, share-link screen: no splash.
-    if (getPageFromLocation() === 'Invite') return false
+    // Standalone screens (invite link, legal pages) open without the splash.
+    if (STANDALONE_PAGES.has(getPageFromLocation())) return false
     setSplashActive(true)
     return true
   })
@@ -133,11 +138,13 @@ export default function App() {
     }
   }
 
-  // The invite page is a full-bleed standalone screen (no site chrome).
-  if (currentPage === 'Invite') {
+  // Standalone screens skip the site chrome entirely.
+  if (STANDALONE_PAGES.has(currentPage)) {
     return (
       <>
-        <InvitePage onNavigate={handleNavigate} />
+        {currentPage === 'Invite' && <InvitePage onNavigate={handleNavigate} />}
+        {currentPage === 'Privacy Policy' && <PrivacyPolicyPage onNavigate={handleNavigate} />}
+        {currentPage === 'Terms & Conditions' && <TermsPage onNavigate={handleNavigate} />}
         <Analytics />
       </>
     )

@@ -25,6 +25,8 @@ export type PageKey =
   | 'Portfolio'
   | 'Coming Soon'
   | 'Invite'
+  | 'Privacy Policy'
+  | 'Terms & Conditions'
   | 'Not Found'
 
 export interface SeoPageConfig {
@@ -133,6 +135,25 @@ export const SEO_PAGE_CONFIG: readonly SeoPageConfig[] = [
       'Claim your Zodiac Pluss referral benefit. Save your invite code and enter it while registering.',
     // Per-user referral landing page; the code lives in the query string.
     indexable: false,
+  },
+  {
+    key: 'Privacy Policy',
+    path: '/privacy-policy',
+    title: 'Privacy Policy | ZodiacPluss',
+    description:
+      'How ZodiacPluss collects, uses, shares and protects your personal information, and the rights you have over it.',
+    indexable: true,
+    breadcrumb: 'Privacy Policy',
+  },
+  {
+    key: 'Terms & Conditions',
+    path: '/terms-and-conditions',
+    title: 'Terms & Conditions | ZodiacPluss',
+    description:
+      'The terms and conditions that govern your use of the ZodiacPluss website, app and services.',
+    // Placeholder copy for now — flip to true once the final terms are published.
+    indexable: false,
+    breadcrumb: 'Terms & Conditions',
   },
   {
     key: 'Not Found',
