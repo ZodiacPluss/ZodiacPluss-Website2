@@ -1,17 +1,17 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react'
+import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
+import { normalizeReferralCode, validateReferralCode, type ReferralCheckResult } from '@/utils/referralApi'
 
 interface InvitePageProps {
   onNavigate?: (page: string) => void
 }
 
-const DEFAULT_CODE = 'ZP7K9A'
+type CodeStatus = 'checking' | ReferralCheckResult
 
 function readInviteCode() {
-  if (typeof window === 'undefined') return DEFAULT_CODE
+  if (typeof window === 'undefined') return ''
 
   const params = new URLSearchParams(window.location.search)
-  const code = params.get('code') || params.get('invite') || params.get('ref')
-  return (code || DEFAULT_CODE).trim().toUpperCase()
+  return normalizeReferralCode(params.get('code') || params.get('invite') || params.get('ref'))
 }
 
 /* ── Icons (stroke icons, 24px grid) ────────────────────────────────── */
@@ -49,7 +49,15 @@ const InfoIcon = ({ className }: { className?: string }) => (
   </svg>
 )
 
-const ArrowRightIcon = ({ className }: { className?: string }) => (
+const AlertIcon = ({ className }: { className?: string }) => (
+  <svg {...iconProps} className={className} strokeWidth={2}>
+    <circle cx="12" cy="12" r="9.25" />
+    <path d="M12 7.5v5.5" />
+    <path d="M12 16.4v.01" strokeWidth={2.6} />
+  </svg>
+)
+
+const ArrowRightIcon =({ className }: { className?: string }) => (
   <svg {...iconProps} className={className} strokeWidth={2}>
     <path d="M5 12h14" />
     <path d="M13 6l6 6-6 6" />
@@ -181,12 +189,33 @@ const FEATURES: { icon: ReactNode; label: [string, string] }[] = [
 
 export default function InvitePage({ onNavigate }: InvitePageProps) {
   const [inviteCode] = useState(readInviteCode)
+  const [status, setStatus] = useState<CodeStatus>('checking')
   const [copied, setCopied] = useState(false)
   const resetTimer = useRef<number | undefined>(undefined)
+  const checkRequest = useRef<AbortController | null>(null)
+
+  const checkCode = useCallback(async () => {
+    checkRequest.current?.abort()
+    const controller = new AbortController()
+    checkRequest.current = controller
+
+    setStatus('checking')
+    const result = await validateReferralCode(inviteCode, controller.signal)
+    if (!controller.signal.aborted) setStatus(result)
+  }, [inviteCode])
+
+  useEffect(() => {
+    checkCode()
+    return () => checkRequest.current?.abort()
+  }, [checkCode])
 
   useEffect(() => () => window.clearTimeout(resetTimer.current), [])
 
+  const canCopy = status === 'valid'
+
   const handleCopy = async () => {
+    if (!canCopy) return
+
     try {
       await navigator.clipboard.writeText(inviteCode)
     } catch {
@@ -253,33 +282,80 @@ export default function InvitePage({ onNavigate }: InvitePageProps) {
           aria-labelledby="referral-code-label"
           className="zp-rise zp-d3 mt-10 w-full rounded-[22px] border border-[#ebeee7] bg-white/90 p-5 shadow-[0_18px_50px_-18px_rgba(15,61,46,0.18),0_2px_6px_rgba(15,61,46,0.04)] backdrop-blur-sm sm:p-7"
         >
-          <p
-            id="referral-code-label"
-            className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#6b7470] sm:text-xs"
-          >
-            Your referral code
-          </p>
+          <div className="flex items-center justify-between gap-3">
+            <p
+              id="referral-code-label"
+              className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#6b7470] sm:text-xs"
+            >
+              Your referral code
+            </p>
+
+            {status === 'checking' && (
+              <span className="inline-flex items-center gap-2 text-[12px] font-medium text-[#6b7470]" role="status">
+                <span className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-[#5c9e7c]/30 border-t-[#3f8463]" />
+                Verifying code…
+              </span>
+            )}
+            {status === 'valid' && (
+              <span className="inline-flex items-center gap-1.5 text-[12px] font-semibold text-[#3f8463]">
+                <CheckIcon className="h-4 w-4" />
+                Verified
+              </span>
+            )}
+          </div>
 
           <div className="mt-4 flex items-stretch gap-3">
             <div
-              className="flex min-w-0 flex-1 items-center justify-center rounded-2xl bg-[#eef3ee] px-3 py-4 sm:py-[18px]"
-              aria-live="polite"
+              className={`flex min-w-0 flex-1 items-center justify-center rounded-2xl px-3 py-4 transition-colors duration-300 sm:py-[18px] ${
+                status === 'invalid' ? 'bg-[#fdf1f1] ring-1 ring-[#f1c4c4]' : 'bg-[#eef3ee]'
+              }`}
             >
-              <span className="select-all truncate text-[26px] font-extrabold tracking-[0.04em] text-[#0f3d2e] sm:text-[32px]">
-                {inviteCode}
+              <span
+                className={`select-all truncate text-[26px] font-extrabold tracking-[0.04em] sm:text-[32px] ${
+                  status === 'invalid' ? `text-[#9b3b3b] ${inviteCode ? 'line-through decoration-2' : ''}` : 'text-[#0f3d2e]'
+                } ${status === 'checking' ? 'opacity-60' : ''}`}
+              >
+                {inviteCode || '——'}
               </span>
             </div>
 
             <button
               type="button"
               onClick={handleCopy}
+              disabled={!canCopy}
               aria-label={copied ? 'Referral code copied' : 'Copy referral code'}
-              className="inline-flex shrink-0 items-center justify-center gap-2.5 rounded-2xl bg-[#0f3d2e] px-4 text-[14px] font-medium text-white shadow-[0_8px_20px_-8px_rgba(15,61,46,0.6)] transition-all duration-200 hover:bg-[#145240] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5c9e7c] focus-visible:ring-offset-2 sm:px-6 sm:text-[15px]"
+              className="inline-flex shrink-0 items-center justify-center gap-2.5 rounded-2xl bg-[#0f3d2e] px-4 text-[14px] font-medium text-white shadow-[0_8px_20px_-8px_rgba(15,61,46,0.6)] transition-all duration-200 hover:bg-[#145240] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5c9e7c] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:bg-[#9aaba3] disabled:shadow-none disabled:active:scale-100 sm:px-6 sm:text-[15px]"
             >
               {copied ? <CheckIcon className="h-[22px] w-[22px]" /> : <CopyIcon className="h-[22px] w-[22px]" />}
               <span className="min-w-[72px] whitespace-nowrap text-left sm:min-w-[80px]">{copied ? 'Copied!' : 'Copy Code'}</span>
             </button>
           </div>
+
+          {status === 'invalid' && (
+            <div
+              role="alert"
+              className="zp-pop mt-4 flex items-center gap-3 rounded-xl border border-[#f3c7c7] bg-[#fdeeee] px-4 py-3 text-[14px] font-semibold text-[#c62828] shadow-[0_8px_22px_-12px_rgba(198,40,40,0.45)]"
+            >
+              <AlertIcon className="h-5 w-5 shrink-0" />
+              This code is invalid
+            </div>
+          )}
+
+          {status === 'error' && (
+            <div
+              role="alert"
+              className="zp-pop mt-4 flex items-center justify-between gap-3 rounded-xl border border-[#e3e7df] bg-[#f4f6f2] px-4 py-3 text-[13.5px] text-[#5f6b66]"
+            >
+              <span>Couldn’t verify the code right now. Please try again.</span>
+              <button
+                type="button"
+                onClick={checkCode}
+                className="shrink-0 rounded-lg bg-white px-3 py-1.5 text-[13px] font-semibold text-[#0f3d2e] ring-1 ring-[#dfe5dc] transition hover:bg-[#eef3ee] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5c9e7c]"
+              >
+                Retry
+              </button>
+            </div>
+          )}
 
           <div className="mt-5 flex items-start gap-3.5">
             <InfoIcon className="mt-0.5 h-[22px] w-[22px] shrink-0 text-[#2b3a34]" />
@@ -332,8 +408,14 @@ export default function InvitePage({ onNavigate }: InvitePageProps) {
         .zp-d3 { animation-delay: 0.24s; }
         .zp-d4 { animation-delay: 0.32s; }
         .zp-d5 { animation-delay: 0.4s; }
+        @keyframes zpPop {
+          0%   { opacity: 0; transform: translateY(-6px) scale(0.96); }
+          60%  { opacity: 1; transform: translateY(0) scale(1.02); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .zp-pop { animation: zpPop 0.38s cubic-bezier(0.22, 1, 0.36, 1) both; }
         @media (prefers-reduced-motion: reduce) {
-          .zp-rise { animation: none; }
+          .zp-rise, .zp-pop { animation: none; }
         }
       `}</style>
     </main>
