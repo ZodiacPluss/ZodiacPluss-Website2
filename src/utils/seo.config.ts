@@ -27,6 +27,10 @@ export type PageKey =
   | 'Invite'
   | 'Privacy Policy'
   | 'Terms & Conditions'
+  | 'Refund Policy'
+  | 'Wallet Policy'
+  | 'Community Guidelines'
+  | 'Expert Agreement'
   | 'Not Found'
 
 export interface SeoPageConfig {
@@ -151,9 +155,43 @@ export const SEO_PAGE_CONFIG: readonly SeoPageConfig[] = [
     title: 'Terms & Conditions | ZodiacPluss',
     description:
       'The terms and conditions that govern your use of the ZodiacPluss website, app and services.',
-    // Placeholder copy for now — flip to true once the final terms are published.
-    indexable: false,
+    indexable: true,
     breadcrumb: 'Terms & Conditions',
+  },
+  {
+    key: 'Refund Policy',
+    path: '/refund-policy',
+    title: 'Refund Policy | ZodiacPluss',
+    description:
+      'When and how ZodiacPluss refunds money for booked appointments, instant sessions and wallet recharges.',
+    indexable: true,
+    breadcrumb: 'Refund Policy',
+  },
+  {
+    key: 'Wallet Policy',
+    path: '/wallet-policy',
+    title: 'Wallet Policy | ZodiacPluss',
+    description: 'How the ZodiacPluss wallet, recharges and Zodiac Coins work, and what you can use your balance for.',
+    indexable: true,
+    breadcrumb: 'Wallet Policy',
+  },
+  {
+    key: 'Community Guidelines',
+    path: '/community-guidelines',
+    title: 'Community Guidelines | ZodiacPluss',
+    description:
+      'How users and experts on ZodiacPluss are expected to behave to keep the community safe, honest and respectful.',
+    indexable: true,
+    breadcrumb: 'Community Guidelines',
+  },
+  {
+    key: 'Expert Agreement',
+    path: '/expert-agreement',
+    title: 'Expert Agreement | ZodiacPluss',
+    description:
+      'The agreement between ZodiacPluss and the astrologers, psychologists and counsellors who offer services on the platform.',
+    indexable: true,
+    breadcrumb: 'Expert Agreement',
   },
   {
     key: 'Not Found',

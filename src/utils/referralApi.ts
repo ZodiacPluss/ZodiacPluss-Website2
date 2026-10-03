@@ -1,10 +1,4 @@
-// Backend base URL. Override per environment with VITE_API_BASE_URL.
-const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || 'https://zp-backend-mm0y.onrender.com').replace(
-  /\/+$/,
-  '',
-)
-
-const API_PREFIX = '/api/v1'
+import { apiUrl, type ApiEnvelope } from '@/utils/apiConfig'
 
 // Render cold starts can take ~50s, so give the first request room to wake the server.
 const REQUEST_TIMEOUT_MS = 60_000
@@ -13,11 +7,6 @@ const REQUEST_TIMEOUT_MS = 60_000
 const REFERRAL_CODE_PATTERN = /^[A-Z0-9]{4,12}$/
 
 export type ReferralCheckResult = 'valid' | 'invalid' | 'error'
-
-interface ApiEnvelope<T> {
-  success: boolean
-  data?: T
-}
 
 export function normalizeReferralCode(raw: string | null | undefined) {
   return (raw || '').trim().toUpperCase()
@@ -41,7 +30,7 @@ export async function validateReferralCode(code: string, signal?: AbortSignal): 
   signal?.addEventListener('abort', abortFromCaller)
 
   try {
-    const response = await fetch(`${API_BASE_URL}${API_PREFIX}/referrals/validate`, {
+    const response = await fetch(apiUrl('/referrals/validate'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ code }),

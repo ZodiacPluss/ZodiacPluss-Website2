@@ -13,8 +13,8 @@ import BlogPage from '@/pages/BlogPage'
 import PortfolioPage from '@/pages/PortfolioPage'
 import ComingSoonPage from '@/pages/ComingSoonPage'
 import InvitePage from '@/pages/InvitePage'
-import PrivacyPolicyPage from '@/pages/PrivacyPolicyPage'
-import TermsPage from '@/pages/TermsPage'
+import PolicyPage from '@/pages/PolicyPage'
+import { POLICY_PAGES, isPolicyPage } from '@/data/policies'
 import NotFoundPage from '@/pages/NotFoundPage'
 import SplashScreen from '@/components/SplashScreen'
 import {
@@ -38,7 +38,7 @@ const pageMap: Record<string, PageKey> = {
 }
 
 // Full-bleed pages rendered without the site navbar, footer or splash.
-const STANDALONE_PAGES = new Set<PageKey>(['Invite', 'Privacy Policy', 'Terms & Conditions'])
+const STANDALONE_PAGES = new Set<PageKey>(['Invite', ...(Object.keys(POLICY_PAGES) as PageKey[])])
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageKey>(() => getPageFromLocation())
@@ -143,8 +143,7 @@ export default function App() {
     return (
       <>
         {currentPage === 'Invite' && <InvitePage onNavigate={handleNavigate} />}
-        {currentPage === 'Privacy Policy' && <PrivacyPolicyPage onNavigate={handleNavigate} />}
-        {currentPage === 'Terms & Conditions' && <TermsPage onNavigate={handleNavigate} />}
+        {isPolicyPage(currentPage) && <PolicyPage policy={currentPage} onNavigate={handleNavigate} />}
         <Analytics />
       </>
     )

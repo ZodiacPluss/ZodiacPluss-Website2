@@ -1,25 +1,24 @@
-import { Fragment, useEffect, useState, type MouseEvent, type ReactNode } from 'react'
+import { useEffect, useState, type MouseEvent } from 'react'
+import ReactMarkdown, { type Components } from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import remarkBreaks from 'remark-breaks'
+import type { PolicySection } from '@/utils/policyApi'
 
 /* ─────────────────────────────────────────────────────────────────
-   LegalPageLayout — standalone shell shared by the Privacy Policy and
-   Terms & Conditions pages. Content is plain data (title + sections of
-   text) so it can later be swapped for backend-provided documents
-   without touching the layout.
+   LegalPageLayout — standalone shell for the policy pages (Privacy,
+   Terms, Refund, …). Content arrives as Markdown from the backend and is
+   rendered with react-markdown, which never injects raw HTML.
    ───────────────────────────────────────────────────────────────── */
-
-export interface LegalSection {
-  id: string
-  title: string
-  /** One string per paragraph. Email addresses are linked automatically. */
-  body: string | readonly string[]
-}
 
 export interface LegalDocument {
   title: string
   subtitle: string
-  /** Human-readable date, e.g. "01 October 2026". Hidden when omitted. */
+  /** Human-readable date, e.g. "03 October 2026". Hidden when omitted. */
   lastUpdated?: string
-  sections: readonly LegalSection[]
+  version?: string
+  /** Markdown shown above the numbered sections. */
+  intro: string
+  sections: readonly PolicySection[]
 }
 
 interface LegalPageLayoutProps {
@@ -33,24 +32,60 @@ const LOGO_URL = 'https://res.cloudinary.com/o6laufzn/image/upload/v1790790316/L
 // the highlight changes as a heading reaches the top of the viewport.
 const SPY_OFFSET = 140
 
-const EMAIL_PATTERN = /([A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,})/gi
+const remarkPlugins = [remarkGfm, remarkBreaks]
 
-function linkifyEmails(text: string): ReactNode {
-  const parts = text.split(EMAIL_PATTERN)
-  if (parts.length === 1) return text
-
-  return parts.map((part, index) =>
-    index % 2 === 1 ? (
+const markdownComponents: Components = {
+  p: ({ node: _node, ...props }) => (
+    <p className="mt-3 text-[14.5px] leading-[1.7] text-[#56625d] first:mt-2 sm:text-[15px]" {...props} />
+  ),
+  strong: ({ node: _node, ...props }) => <strong className="font-semibold text-[#1d3d33]" {...props} />,
+  em: ({ node: _node, ...props }) => <em className="italic" {...props} />,
+  a: ({ node: _node, href = '', ...props }) => {
+    const external = /^https?:\/\//i.test(href)
+    return (
       <a
-        key={index}
-        href={`mailto:${part}`}
+        href={href}
+        {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
         className="font-medium text-[#2f8a63] underline-offset-[3px] transition-colors hover:text-[#1f6b4b] hover:underline"
-      >
-        {part}
-      </a>
-    ) : (
-      <Fragment key={index}>{part}</Fragment>
-    ),
+        {...props}
+      />
+    )
+  },
+  ul: ({ node: _node, ...props }) => (
+    <ul className="mt-3 list-disc space-y-2 pl-5 text-[14.5px] leading-[1.7] text-[#56625d] marker:text-[#7fae95] sm:text-[15px]" {...props} />
+  ),
+  ol: ({ node: _node, ...props }) => (
+    <ol className="mt-3 list-decimal space-y-2 pl-5 text-[14.5px] leading-[1.7] text-[#56625d] marker:text-[#5f8a78] sm:text-[15px]" {...props} />
+  ),
+  li: ({ node: _node, ...props }) => <li className="pl-1" {...props} />,
+  h1: ({ node: _node, ...props }) => <h3 className="mt-5 text-[17px] font-semibold text-[#0b3a2f]" {...props} />,
+  h2: ({ node: _node, ...props }) => <h3 className="mt-5 text-[17px] font-semibold text-[#0b3a2f]" {...props} />,
+  h3: ({ node: _node, ...props }) => <h3 className="mt-5 text-[16.5px] font-semibold text-[#0b3a2f]" {...props} />,
+  h4: ({ node: _node, ...props }) => <h4 className="mt-4 text-[15.5px] font-semibold text-[#0b3a2f]" {...props} />,
+  blockquote: ({ node: _node, ...props }) => (
+    <blockquote className="mt-3 border-l-[3px] border-[#cfe2d6] pl-4 text-[#56625d]" {...props} />
+  ),
+  hr: () => <hr className="my-6 border-[#e8ece8]" />,
+  code: ({ node: _node, ...props }) => (
+    <code className="rounded bg-[#f1f5f2] px-1.5 py-0.5 text-[13px] text-[#1d3d33]" {...props} />
+  ),
+  table: ({ node: _node, ...props }) => (
+    <div className="mt-4 overflow-x-auto rounded-xl border border-[#e3eae5]">
+      <table className="w-full border-collapse text-left text-[14px] text-[#56625d]" {...props} />
+    </div>
+  ),
+  th: ({ node: _node, ...props }) => (
+    <th className="border-b border-[#e3eae5] bg-[#f5f9f6] px-4 py-2.5 font-semibold text-[#0c3b30]" {...props} />
+  ),
+  td: ({ node: _node, ...props }) => <td className="border-t border-[#eef2ef] px-4 py-2.5 align-top" {...props} />,
+  img: () => null,
+}
+
+function Markdown({ children }: { children: string }) {
+  return (
+    <ReactMarkdown remarkPlugins={remarkPlugins} components={markdownComponents}>
+      {children}
+    </ReactMarkdown>
   )
 }
 
@@ -172,7 +207,7 @@ function HeroArt() {
 /* ── Layout ─────────────────────────────────────────────────────── */
 
 export default function LegalPageLayout({ document: doc, onNavigate }: LegalPageLayoutProps) {
-  const { title, subtitle, lastUpdated, sections } = doc
+  const { title, subtitle, lastUpdated, version, intro, sections } = doc
   const [activeId, setActiveId] = useState(sections[0]?.id ?? '')
   const [tocOpen, setTocOpen] = useState(false)
 
@@ -227,7 +262,7 @@ export default function LegalPageLayout({ document: doc, onNavigate }: LegalPage
     onNavigate('Home')
   }
 
-  const activeTitle = sections.find((s) => s.id === activeId)?.title ?? sections[0]?.title
+  const activeTitle = sections.find((s) => s.id === activeId)?.label ?? sections[0]?.label
 
   return (
     <div className="min-h-screen w-full bg-white font-['Inter',sans-serif] text-[#0c3b30] antialiased">
@@ -255,9 +290,19 @@ export default function LegalPageLayout({ document: doc, onNavigate }: LegalPage
             {title}
           </h1>
           <p className="mt-4 max-w-[440px] text-[16px] leading-[1.55] text-[#4d5e57] sm:text-[17.5px]">{subtitle}</p>
-          {lastUpdated && (
-            <p className="mt-5 text-[13px] text-[#5f6b66]">
-              Last updated: <span className="font-semibold text-[#0c3b30]">{lastUpdated}</span>
+          {(lastUpdated || version) && (
+            <p className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] text-[#5f6b66]">
+              {lastUpdated && (
+                <span>
+                  Last updated: <span className="font-semibold text-[#0c3b30]">{lastUpdated}</span>
+                </span>
+              )}
+              {lastUpdated && version && <span aria-hidden className="h-1 w-1 rounded-full bg-[#9fb3aa]" />}
+              {version && (
+                <span>
+                  Version <span className="font-semibold text-[#0c3b30]">{version}</span>
+                </span>
+              )}
             </p>
           )}
         </div>
@@ -305,7 +350,7 @@ export default function LegalPageLayout({ document: doc, onNavigate }: LegalPage
                       section.id === activeId ? 'bg-[#e6f0ea] font-medium text-[#0c3b30]' : 'text-[#5a6762] hover:text-[#0c3b30]'
                     }`}
                   >
-                    {section.title}
+                    {section.label}
                   </a>
                 </li>
               ))}
@@ -317,30 +362,29 @@ export default function LegalPageLayout({ document: doc, onNavigate }: LegalPage
       {/* ── Body ── */}
       <div className="mx-auto grid w-full max-w-[1120px] grid-cols-1 gap-10 px-5 pb-20 pt-6 sm:px-8 sm:pt-8 lg:grid-cols-[minmax(0,1fr)_268px] lg:gap-16">
         <article className="min-w-0 max-w-[680px]">
-          {sections.map((section, index) => {
-            const paragraphs = typeof section.body === 'string' ? [section.body] : section.body
-            return (
-              <section
-                key={section.id}
-                id={section.id}
-                aria-labelledby={`${section.id}-heading`}
-                className={`scroll-mt-24 py-5 lg:scroll-mt-8 ${index > 0 ? 'border-t border-[#e8ece8]' : ''}`}
+          {intro && (
+            <div className="pb-5 pt-5">
+              <Markdown>{intro}</Markdown>
+            </div>
+          )}
+
+          {sections.map((section, index) => (
+            <section
+              key={section.id}
+              id={section.id}
+              aria-labelledby={`${section.id}-heading`}
+              className={`scroll-mt-24 py-5 lg:scroll-mt-8 ${index > 0 || intro ? 'border-t border-[#e8ece8]' : ''}`}
+            >
+              <h2
+                id={`${section.id}-heading`}
+                className="text-[19px] font-bold tracking-[-0.015em] text-[#0b3a2f] sm:text-[21px]"
               >
-                <h2
-                  id={`${section.id}-heading`}
-                  className="text-[19px] font-bold tracking-[-0.015em] text-[#0b3a2f] sm:text-[21px]"
-                >
-                  <span className="mr-2 tabular-nums">{index + 1}.</span>
-                  {section.title}
-                </h2>
-                {paragraphs.map((paragraph, i) => (
-                  <p key={i} className="mt-2 text-[14.5px] leading-[1.7] text-[#56625d] sm:text-[15px]">
-                    {linkifyEmails(paragraph)}
-                  </p>
-                ))}
-              </section>
-            )
-          })}
+                {section.number && <span className="mr-2 tabular-nums">{section.number}</span>}
+                {section.label}
+              </h2>
+              {section.markdown && <Markdown>{section.markdown}</Markdown>}
+            </section>
+          ))}
         </article>
 
         <aside className="hidden lg:block">
@@ -364,7 +408,7 @@ export default function LegalPageLayout({ document: doc, onNavigate }: LegalPage
                           : 'border-transparent text-[#5a6762] hover:bg-[#eff5f1] hover:text-[#0c3b30]'
                       }`}
                     >
-                      {section.title}
+                      {section.label}
                     </a>
                   </li>
                 )
