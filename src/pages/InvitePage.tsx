@@ -252,7 +252,7 @@ export default function InvitePage({ onNavigate }: InvitePageProps) {
       <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-[600px] flex-col items-center px-5 pb-80 pt-14 sm:px-8 sm:pt-16 sm:pb-72">
         {/* Emblem */}
         <img
-          src="/logo.png"
+          src="https://res.cloudinary.com/o6laufzn/image/upload/v1790790316/LOGOSMALL.png"
           alt="Zodiac Pluss emblem"
           width={260}
           height={260}
