@@ -28,6 +28,16 @@ const team = [
     img: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790779425/Shweta.jpg',
   },
   {
+    name: 'Mr. Subhash',
+    role: 'Admin Manager',
+    img: 'https://res.cloudinary.com/o6laufzn/image/upload/v1791097768/Sir-1.jpg',
+  },
+  {
+    name: 'Mr. Gatik',
+    role: 'Consultant',
+    img: 'https://res.cloudinary.com/o6laufzn/image/upload/v1791097768/Sir-2.jpg',
+  },
+  {
     name: 'Shri Parambanandnath Maharaj  ',
     role: 'SENIOR ASTROLOGER & RAMAL SPECIALIST',
     img: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790779425/shastri_ji.jpg',
