@@ -12,6 +12,9 @@ import BlogArticlePage from '@/pages/BlogArticlePage'
 import BlogPage from '@/pages/BlogPage'
 import PortfolioPage from '@/pages/PortfolioPage'
 import ComingSoonPage from '@/pages/ComingSoonPage'
+import InvitePage from '@/pages/InvitePage'
+import PolicyPage from '@/pages/PolicyPage'
+import { POLICY_PAGES, isPolicyPage } from '@/data/policies'
 import NotFoundPage from '@/pages/NotFoundPage'
 import SplashScreen from '@/components/SplashScreen'
 import {
@@ -34,6 +37,9 @@ const pageMap: Record<string, PageKey> = {
   'ComingSoon': 'Coming Soon',
 }
 
+// Full-bleed pages rendered without the site navbar, footer or splash.
+const STANDALONE_PAGES = new Set<PageKey>(['Invite', ...(Object.keys(POLICY_PAGES) as PageKey[])])
+
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageKey>(() => getPageFromLocation())
   const [blogArticlePath, setBlogArticlePath] = useState(() => (
@@ -44,6 +50,8 @@ export default function App() {
   // parent's, so an effect here would fire after the first sections have
   // already set up their entrances and missed the gate.
   const [showSplash, setShowSplash] = useState(() => {
+    // Standalone screens (invite link, legal pages) open without the splash.
+    if (STANDALONE_PAGES.has(getPageFromLocation())) return false
     setSplashActive(true)
     return true
   })
@@ -128,6 +136,17 @@ export default function App() {
       case 'Coming Soon': return <ComingSoonPage onNavigate={handleNavigate} dark={dark} />
       default: return <NotFoundPage onNavigate={handleNavigate} dark={dark} />
     }
+  }
+
+  // Standalone screens skip the site chrome entirely.
+  if (STANDALONE_PAGES.has(currentPage)) {
+    return (
+      <>
+        {currentPage === 'Invite' && <InvitePage onNavigate={handleNavigate} />}
+        {isPolicyPage(currentPage) && <PolicyPage policy={currentPage} onNavigate={handleNavigate} />}
+        <Analytics />
+      </>
+    )
   }
 
   return (

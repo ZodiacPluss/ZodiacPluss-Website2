@@ -61,24 +61,24 @@ const services = [
 const corporatePackages = [
   {
     name: 'Growth Starter',
-    desc: 'Perfect for small teams',
-    seats: 'Up to 25 employees',
-    features: ['Monthly Therapy session', 'Employee wellness reports', 'All Freebie access', 'Work stress support', 'Individual Mood Tracker'],
+    desc: 'Confidential Counselling Sessions',
+    seats: 'Mood Tracker',
+    features: ['Wellness Resource Library', 'Employee wellness reports', 'Monthly Wellness Report', 'Work stress support', 'Email & Chat Support', 'Individual Mood Tracker'],
     color: '#0d5f4f',
   },
   {
     name: 'Premium Growth',
     desc: 'For growing organizations',
     seats: 'Up to 100 employees',
-    features: ['Weekly live expert sessions', 'Individual therapy sessions', 'Individual Mood Tracker', 'All Freebie access', 'Custom workshop programs', 'Analytics dashboard'],
+    features: ['Weekly live expert sessions', 'Individual therapy sessions', 'Individual Mood Tracker', 'Custom workshop programs', 'Analytics dashboard'],
     color: '#d81b86',
     featured: true,
   },
   {
     name: 'Full Enterprise Edition',
     desc: 'Full-scale wellness programs',
-    seats: 'Unlimited employees',
-    features: ['Extra wellness sessions for individuals ', 'Beautifully tailored workshops', 'Exclusive wellness sessions with top therapist', '24/7 priority support', 'Individual Mood Tracker', 'All Freebie access including Ai'],
+    seats: '24×7 Crisis Support',
+    features: ['Dedicated Account Manager ', 'Leadership Coaching', 'Family Counselling Support', 'Customized Wellness Programs', 'Individua,l Mood Tracker', 'Analytics Dashboard'],
     color: '#0d5f4f',
   },
 ]
@@ -120,7 +120,12 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
           </TextReveal>
           <Reveal y={22} delay={0.25}>
           <p className="text-white/85 text-base md:text-lg max-w-xl mx-auto leading-relaxed drop-shadow-sm">
-            From daily horoscopes and 1-on-1 therapy to comprehensive enterprise wellness programs, ZodiacPluss supports both individual seekers and forward-thinking teams.
+            From daily horoscopes and 1-on-1 therapy to comprehensive enterprise wellness programs, ZodiacPluss supports both individual seekers and forw
+            
+             
+             
+             
+             rd-thinking teams.
           </p>
           </Reveal>
         </div>

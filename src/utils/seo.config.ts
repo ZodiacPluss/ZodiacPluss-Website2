@@ -24,6 +24,13 @@ export type PageKey =
   | 'Experts'
   | 'Portfolio'
   | 'Coming Soon'
+  | 'Invite'
+  | 'Privacy Policy'
+  | 'Terms & Conditions'
+  | 'Refund Policy'
+  | 'Wallet Policy'
+  | 'Community Guidelines'
+  | 'Expert Agreement'
   | 'Not Found'
 
 export interface SeoPageConfig {
@@ -125,6 +132,68 @@ export const SEO_PAGE_CONFIG: readonly SeoPageConfig[] = [
     breadcrumb: 'Coming Soon',
   },
   {
+    key: 'Invite',
+    path: '/invite',
+    title: "You've been invited to Zodiac Pluss",
+    description:
+      'Claim your Zodiac Pluss referral benefit. Save your invite code and enter it while registering.',
+    // Per-user referral landing page; the code lives in the query string.
+    indexable: false,
+  },
+  {
+    key: 'Privacy Policy',
+    path: '/policies/privacy',
+    title: 'Privacy Policy | ZodiacPluss',
+    description:
+      'How ZodiacPluss collects, uses, shares and protects your personal information, and the rights you have over it.',
+    indexable: true,
+    breadcrumb: 'Privacy Policy',
+  },
+  {
+    key: 'Terms & Conditions',
+    path: '/policies/terms',
+    title: 'Terms & Conditions | ZodiacPluss',
+    description:
+      'The terms and conditions that govern your use of the ZodiacPluss website, app and services.',
+    indexable: true,
+    breadcrumb: 'Terms & Conditions',
+  },
+  {
+    key: 'Refund Policy',
+    path: '/policies/refund',
+    title: 'Refund Policy | ZodiacPluss',
+    description:
+      'When and how ZodiacPluss refunds money for booked appointments, instant sessions and wallet recharges.',
+    indexable: true,
+    breadcrumb: 'Refund Policy',
+  },
+  {
+    key: 'Wallet Policy',
+    path: '/policies/wallet',
+    title: 'Wallet Policy | ZodiacPluss',
+    description: 'How the ZodiacPluss wallet, recharges and Zodiac Coins work, and what you can use your balance for.',
+    indexable: true,
+    breadcrumb: 'Wallet Policy',
+  },
+  {
+    key: 'Community Guidelines',
+    path: '/policies/community-guidelines',
+    title: 'Community Guidelines | ZodiacPluss',
+    description:
+      'How users and experts on ZodiacPluss are expected to behave to keep the community safe, honest and respectful.',
+    indexable: true,
+    breadcrumb: 'Community Guidelines',
+  },
+  {
+    key: 'Expert Agreement',
+    path: '/policies/expert-agreement',
+    title: 'Expert Agreement | ZodiacPluss',
+    description:
+      'The agreement between ZodiacPluss and the astrologers, psychologists and counsellors who offer services on the platform.',
+    indexable: true,
+    breadcrumb: 'Expert Agreement',
+  },
+  {
     key: 'Not Found',
     path: '/404',
     title: 'Page Not Found | ZodiacPluss',
@@ -152,6 +221,14 @@ export const ROUTE_ALIASES: Readonly<Record<string, string>> = {
   '/contact-us': '/book',
   '/connect': '/book',
   '/comingsoon': '/coming-soon',
+  // Earlier website URLs for the policy pages; the canonical ones are the
+  // backend's own /policies/<slug> links, so app and email links resolve as-is.
+  '/privacy-policy': '/policies/privacy',
+  '/terms-and-conditions': '/policies/terms',
+  '/refund-policy': '/policies/refund',
+  '/wallet-policy': '/policies/wallet',
+  '/community-guidelines': '/policies/community-guidelines',
+  '/expert-agreement': '/policies/expert-agreement',
 }
 
 export const NOT_FOUND_KEY: PageKey = 'Not Found'

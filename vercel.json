@@ -14,7 +14,13 @@
     { "source": "/contact", "destination": "/book", "permanent": true },
     { "source": "/contact-us", "destination": "/book", "permanent": true },
     { "source": "/connect", "destination": "/book", "permanent": true },
-    { "source": "/comingsoon", "destination": "/coming-soon", "permanent": true }
+    { "source": "/comingsoon", "destination": "/coming-soon", "permanent": true },
+    { "source": "/privacy-policy", "destination": "/policies/privacy", "permanent": true },
+    { "source": "/terms-and-conditions", "destination": "/policies/terms", "permanent": true },
+    { "source": "/refund-policy", "destination": "/policies/refund", "permanent": true },
+    { "source": "/wallet-policy", "destination": "/policies/wallet", "permanent": true },
+    { "source": "/community-guidelines", "destination": "/policies/community-guidelines", "permanent": true },
+    { "source": "/expert-agreement", "destination": "/policies/expert-agreement", "permanent": true }
   ],
   "headers": [
     {
