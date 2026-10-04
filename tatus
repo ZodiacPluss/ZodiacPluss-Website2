@@ -1,0 +1,18 @@
+ package-lock.json                  | 1649 [32m++++++++++++++++++++++++++++++++++[m[31m--[m
+ package.json                       |    8 [32m+[m[31m-[m
+ scripts/sync-policies.mjs          |   35 [32m+[m
+ src/App.tsx                        |   19 [32m+[m
+ src/components/LegalPageLayout.tsx |  422 [32m+++++++++[m
+ src/data/policies/index.ts         |   59 [32m++[m
+ src/data/policies/snapshot.json    |   44 [32m+[m
+ src/index.css                      |    2 [32m+[m[31m-[m
+ src/pages/InvitePage.tsx           |  423 [32m+++++++++[m
+ src/pages/PolicyPage.tsx           |   41 [32m+[m
+ src/pages/ServicesPage.tsx         |   19 [32m+[m[31m-[m
+ src/utils/apiConfig.ts             |   15 [32m+[m
+ src/utils/policyApi.ts             |  146 [32m++++[m
+ src/utils/referralApi.ts           |   53 [32m++[m
+ src/utils/seo.config.ts            |   77 [32m++[m
+ src/vite-env.d.ts                  |    8 [32m+[m
+ vercel.json                        |    8 [32m+[m[31m-[m
+ 17 files changed, 2967 insertions(+), 61 deletions(-)
