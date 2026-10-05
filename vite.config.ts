@@ -178,7 +178,7 @@ function seoBlock(page: SeoPageConfig, article?: BlogArticle): string {
   const keywordsTag = article
     ? `\n    <meta name="keywords" content="${escapeHtml(article.focusKeyword)}" />`
     : ''
-  const image = article?.image ?? OG_IMAGE
+  const image = article?.image || OG_IMAGE
 
   // The 404 document is served for arbitrary unknown paths, so it must not
   // declare a canonical or an og:url — either would advertise `/404` as a
@@ -216,12 +216,15 @@ function seoBlock(page: SeoPageConfig, article?: BlogArticle): string {
 
 function buildSitemap(): string {
   const lastmod = new Date().toISOString().split('T')[0]
-  const urls = getIndexablePages()
-    .map(
-      (page) =>
-        `  <url>\n    <loc>${absoluteUrl(page.path)}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <image:image>\n      <image:loc>${OG_IMAGE}</image:loc>\n      <image:title>${escapeHtml(page.title)}</image:title>\n    </image:image>\n  </url>`,
-    )
-    .join('\n')
+  const pageUrls = getIndexablePages().map(
+    (page) =>
+      `  <url>\n    <loc>${absoluteUrl(page.path)}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <image:image>\n      <image:loc>${OG_IMAGE}</image:loc>\n      <image:title>${escapeHtml(page.title)}</image:title>\n    </image:image>\n  </url>`,
+  )
+  const articleUrls = blogArticles.map(
+    (article) =>
+      `  <url>\n    <loc>${absoluteUrl(getBlogPath(article))}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <image:image>\n      <image:loc>${article.image || OG_IMAGE}</image:loc>\n      <image:title>${escapeHtml(article.title)}</image:title>\n    </image:image>\n  </url>`,
+  )
+  const urls = [...pageUrls, ...articleUrls].join('\n')
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"

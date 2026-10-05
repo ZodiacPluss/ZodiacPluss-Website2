@@ -91,10 +91,10 @@ export function useSEO(page: PageKey, article?: BlogArticle): void {
     }
     setMeta('property', 'og:title', title)
     setMeta('property', 'og:description', description)
-    setMeta('property', 'og:image', article?.image ?? OG_IMAGE)
+    setMeta('property', 'og:image', article?.image || OG_IMAGE)
 
     setMeta('name', 'twitter:title', title)
     setMeta('name', 'twitter:description', description)
-    setMeta('name', 'twitter:image', article?.image ?? OG_IMAGE)
+    setMeta('name', 'twitter:image', article?.image || OG_IMAGE)
   }, [page, article])
 }

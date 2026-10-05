@@ -203,12 +203,14 @@ function ArticleCard({ article, dark, onNavigate }: { article: Article; dark: bo
     >
       {/* image sits inset inside the card, with its own softer radius */}
       <div className="zp-media relative" style={{ borderRadius: 20, aspectRatio: '4 / 3' }}>
-        <img
-          src={article.image}
-          alt={article.title}
-          loading="lazy"
-          className="w-full h-full object-cover"
-        />
+        {article.image && (
+          <img
+            src={article.image}
+            alt={article.title}
+            loading="lazy"
+            className="w-full h-full object-fit"
+          />
+        )}
         <div className="absolute" style={{ left: 12, bottom: 12 }}>
           <CategoryChip category={article.category} dark={dark} />
         </div>

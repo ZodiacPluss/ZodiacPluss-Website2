@@ -78,7 +78,7 @@ export default function BlogArticlePage({ article, onNavigate, dark = false }: B
             border: dark ? '1px solid rgba(255,255,255,0.12)' : '1px solid #e7eeeb',
           }}
         >
-          <img src={article.image} alt={article.title} className="w-full h-full object-contain" />
+          {article.image && <img src={article.image} alt={article.title} className="w-full h-full object-contain" />}
         </Reveal>
       </div>
 
