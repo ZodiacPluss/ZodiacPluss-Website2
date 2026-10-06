@@ -441,14 +441,15 @@ export default function Astrolist({ onNavigate, dark = false }: AstrolistProps) 
                     >
                       View Profile
                     </button>
-                    <button
-                      type="button"
-                      onClick={() => onNavigate('Book')}
-                      className="rounded-lg px-2 py-2 text-[11px] font-semibold text-white transition hover:opacity-90"
-                      style={{ background: 'linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)' }}
+                    <span
+                      className="flex items-center justify-center rounded-lg px-2 py-2 text-[11px] font-semibold"
+                      style={{
+                        background: softSurface,
+                        color: dark ? '#5eead4' : '#0d5f4f',
+                      }}
                     >
-                      Consult Now
-                    </button>
+                      ₹{astrologer.price}/min
+                    </span>
                   </div>
                 </div>
               </article>
@@ -475,7 +476,7 @@ export default function Astrolist({ onNavigate, dark = false }: AstrolistProps) 
             </button>
           </div>
         )}
-        {visibleCount == filteredAstrologers.length && (
+        {visibleCount > PAGE_SIZE && visibleCount >= filteredAstrologers.length && (
           <div className="mt-9 flex justify-center">
             <button
               type="button"
@@ -535,17 +536,15 @@ export default function Astrolist({ onNavigate, dark = false }: AstrolistProps) 
             <p className="mb-6 text-xs" style={{ color: muted }}>
               Languages: {selectedAstrologer.languages.join(', ')}
             </p>
-            <button
-              type="button"
-              onClick={() => {
-                setSelectedAstrologer(null)
-                onNavigate('Book')
+            <div
+              className="w-full rounded-full py-3 text-center text-sm font-semibold"
+              style={{
+                background: softSurface,
+                color: dark ? '#5eead4' : '#0d5f4f',
               }}
-              className="w-full rounded-full py-3 text-sm font-semibold text-white"
-              style={{ background: 'linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)' }}
             >
-              Consult Now
-            </button>
+              ₹{selectedAstrologer.price}/min
+            </div>
           </section>
         </div>
       )}
