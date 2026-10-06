@@ -219,10 +219,10 @@ function ArticleCard({ article, dark, onNavigate }: { article: Article; dark: bo
       <div className="flex flex-col flex-1" style={{ padding: '18px 8px 4px' }}>
         <h3
           style={{
-            color: dark ? '#f7f7f8' : '#0b0f19',
+            color: dark ? '#f7f7f8' : '#101216',
             fontFamily: SANS,
-            fontWeight: 700,
-            fontSize: 22,
+            fontWeight: 600,
+            fontSize: 20,
             lineHeight: 1.2,
             letterSpacing: '-0.025em',
           }}
