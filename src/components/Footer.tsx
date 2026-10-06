@@ -18,10 +18,10 @@ const navLinks: { label: string; page: string; arrow?: boolean }[] = [
   { label: 'Home', page: 'Home' },
   { label: 'Services', page: 'Services' },
   { label: 'About', page: 'About Us' },
-  { label: 'Portfolio', page: 'Portfolio' },
   { label: 'Contact', page: 'Book' },
   { label: 'Career', page: 'Career' },
   { label: 'Blog', page: 'Blog' },
+  { label: 'Delete Account', page: 'Delete Account' },
 ]
 
 const contactItems = [

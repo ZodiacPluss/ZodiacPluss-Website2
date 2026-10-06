@@ -6,19 +6,26 @@ interface ServicesPageProps {
 }
 
 const services = [
+    {
+    title: 'Live Sessions with Astrologers',
+    desc: 'Book a one-on-one video or chat session with our certified astrologers. Real-time guidance for life\'s most pressing questions.',
+    bg: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790960459/ChatGPT_Image_Oct_2_2026_10_21_31_PM.png',
+    tag: 'Premium feature',
+    color: '#5b2d8e',
+  },
+    {
+    title: 'Live Sessions with wellness experts',
+    desc: 'Book a one-on-one video or chat session with our certified therapists. Real-time guidance for life\'s most pressing questions.',
+    bg: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790960459/ChatGPT_Image_Oct_2_2026_10_21_31_PM.png',
+    tag: 'Premium feature',
+    color: '#5b2d8e',
+  },
   {
     title: 'Personalized Horoscope',
     desc: 'Receive a deeply detailed horoscope crafted uniquely for your birth chart. Understand your personality, strengths, challenges, and cosmic timing.',
     bg: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790960429/ChatGPT_Image_Oct_2_2026_10_20_15_PM.png',
     tag: 'Most Accurate',
     color: '#d81b86',
-  },
-  {
-    title: 'Live Sessions with Experts',
-    desc: 'Book a one-on-one video or chat session with our certified astrologers and therapists. Real-time guidance for life\'s most pressing questions.',
-    bg: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790960459/ChatGPT_Image_Oct_2_2026_10_21_31_PM.png',
-    tag: 'Premium feature',
-    color: '#5b2d8e',
   },
   {
     title: 'Personal AI Friend',
@@ -146,7 +153,10 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
         </div>
 
         <Reveal stagger={0.09} y={34} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((svc) => (
+          {services.map((svc) => {
+            const isAstrologerService = svc.title === 'Live Sessions with Astrologers'
+
+            return (
             <div
               key={svc.id}
               className="zp-card group rounded-2xl overflow-hidden shadow-sm"
@@ -181,17 +191,21 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-sm" style={{ color: titleColor }}>{ }</span>
                   <a
-                    href="/coming-soon"
-                    onClick={(e) => { e.preventDefault(); onNavigate('Coming Soon') }}
+                    href={isAstrologerService ? '/astrologers' : '/coming-soon'}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      onNavigate(isAstrologerService ? 'Astrologers' : 'Coming Soon')
+                    }}
                     className="zp-btn text-xs font-semibold px-4 py-1.5 rounded-full text-white hover:opacity-90 shadow-sm cursor-pointer no-underline"
                     style={{ background: svc.color }}
                   >
-                    coming soon
+                    {isAstrologerService ? 'Talk to an Astrologer' : 'coming soon'}
                   </a>
                 </div>
               </div>
             </div>
-          ))}
+            )
+          })}
         </Reveal>
 
         {/* Discovery Call CTA */}

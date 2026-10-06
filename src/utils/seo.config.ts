@@ -18,6 +18,7 @@ export type PageKey =
   | 'Home'
   | 'About Us'
   | 'Services'
+  | 'Astrologers'
   | 'Career'
   | 'Blog'
   | 'Book'
@@ -31,6 +32,7 @@ export type PageKey =
   | 'Wallet Policy'
   | 'Community Guidelines'
   | 'Expert Agreement'
+  | 'Delete Account'
   | 'Not Found'
 
 export interface SeoPageConfig {
@@ -72,6 +74,15 @@ export const SEO_PAGE_CONFIG: readonly SeoPageConfig[] = [
       'Vedic astrology consultations, tarot readings, one-on-one therapy and counselling, and Employee Assistance Programme plans for teams — the ZodiacPluss services.',
     indexable: true,
     breadcrumb: 'Services',
+  },
+  {
+    key: 'Astrologers',
+    path: '/astrologers',
+    title: 'Talk to an Astrologer | ZodiacPluss',
+    description:
+      'Meet the ZodiacPluss astrologers and find a guide for your personal astrology session.',
+    indexable: true,
+    breadcrumb: 'Astrologers',
   },
   {
     key: 'Book',
@@ -192,6 +203,14 @@ export const SEO_PAGE_CONFIG: readonly SeoPageConfig[] = [
       'The agreement between ZodiacPluss and the astrologers, psychologists and counsellors who offer services on the platform.',
     indexable: true,
     breadcrumb: 'Expert Agreement',
+  },
+  {
+    key: 'Delete Account',
+    path: '/delete-account',
+    title: 'Delete Your Account | ZodiacPluss',
+    description: 'Information about deleting your ZodiacPluss account.',
+    indexable: true,
+    breadcrumb: 'Delete Account',
   },
   {
     key: 'Not Found',

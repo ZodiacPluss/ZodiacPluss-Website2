@@ -5,6 +5,7 @@ import MobileBottomNav from '@/components/MobileBottomNav'
 import HomePage from '@/pages/HomePage'
 import AboutUsPage from '@/pages/AboutUsPage'
 import ServicesPage from '@/pages/ServicesPage'
+import Astrolist from '@/pages/astrolist'
 import ExpertsPage from '@/pages/ExpertsPage'
 import BookSessionPage from '@/pages/BookSessionPage'
 import CareerPage from '@/pages/CareerPage'
@@ -16,6 +17,7 @@ import InvitePage from '@/pages/InvitePage'
 import PolicyPage from '@/pages/PolicyPage'
 import { POLICY_PAGES, isPolicyPage } from '@/data/policies'
 import NotFoundPage from '@/pages/NotFoundPage'
+import DeleteAccountPage from '@/pages/DeleteAccountPage'
 import SplashScreen from '@/components/SplashScreen'
 import {
   getPageFromLocation,
@@ -122,6 +124,7 @@ export default function App() {
       case 'Home': return <HomePage onNavigate={handleNavigate} dark={dark} />
       case 'About Us': return <AboutUsPage onNavigate={handleNavigate} dark={dark} />
       case 'Services': return <ServicesPage onNavigate={handleNavigate} dark={dark} />
+      case 'Astrologers': return <Astrolist onNavigate={handleNavigate} dark={dark} />
       case 'Experts': return <ExpertsPage onNavigate={handleNavigate} dark={dark} />
       case 'Book': return <BookSessionPage onNavigate={handleNavigate} dark={dark} />
       case 'Career': return <CareerPage onNavigate={handleNavigate} dark={dark} />
@@ -134,6 +137,7 @@ export default function App() {
       }
       case 'Portfolio': return <PortfolioPage onNavigate={handleNavigate} dark={dark} />
       case 'Coming Soon': return <ComingSoonPage onNavigate={handleNavigate} dark={dark} />
+      case 'Delete Account': return <DeleteAccountPage dark={dark} />
       default: return <NotFoundPage onNavigate={handleNavigate} dark={dark} />
     }
   }

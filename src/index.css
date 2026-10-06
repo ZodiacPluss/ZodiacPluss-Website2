@@ -115,6 +115,14 @@ body {
   border-radius: 3px;
 }
 
+.astrologer-category-scroll {
+  scrollbar-width: thin;
+}
+
+.astrologer-category-scroll::-webkit-scrollbar {
+  height: 3px;
+}
+
 /* ══════════════════════════════════════════════════════════════════
    DARK MODE — applied via .dark class on the root wrapper
    Premium black/charcoal-grey surfaces, off-white text, teal accents.
