@@ -24,7 +24,7 @@ export default function Navbar({ currentPage, onNavigate, dark = false, onToggle
   }, [])
 
   // Identify pages with dark background hero sections where text needs to be white when transparent
-  const lightHeroPages = ["Book", "Blog", "Not Found"]
+  const lightHeroPages = ["Book", "Blog", "Career", "Not Found"]
   const isBannerDark = dark || !lightHeroPages.includes(currentPage)
   const isHeroUnscrolled = !scrolled && (currentPage === "Home" || isBannerDark)
   const compact = scrolled
@@ -127,7 +127,9 @@ export default function Navbar({ currentPage, onNavigate, dark = false, onToggle
           </a>
 
           {/* Desktop Nav Links - centered */}
-          <div className="hidden lg:flex items-center gap-7">
+          <div className={currentPage === "Career"
+            ? "hidden md:flex items-center gap-3 lg:gap-7"
+            : "hidden lg:flex items-center gap-7"}>
             {navLinks.map((link) => (
               <a
                 key={link}
@@ -152,7 +154,7 @@ export default function Navbar({ currentPage, onNavigate, dark = false, onToggle
           </div>
 
           {/* Right side */}
-          <div className="hidden lg:flex items-center gap-3.5">
+          <div className={currentPage === "Career" ? "hidden md:flex items-center gap-2.5 lg:gap-3.5" : "hidden lg:flex items-center gap-3.5"}>
             {/* Day/Night mode toggle */}
             <button
               onClick={onToggleTheme}
@@ -185,7 +187,7 @@ export default function Navbar({ currentPage, onNavigate, dark = false, onToggle
           </div>
 
           {/* Mobile controls: Theme toggle + Sidebar button */}
-          <div className="lg:hidden flex items-center gap-1.5">
+          <div className={currentPage === "Career" ? "md:hidden flex items-center gap-1.5" : "lg:hidden flex items-center gap-1.5"}>
             <button
               onClick={onToggleTheme}
               className="w-7 h-7 rounded-full flex items-center justify-center shadow-sm transition-transform duration-200 hover:scale-105"
@@ -222,7 +224,7 @@ export default function Navbar({ currentPage, onNavigate, dark = false, onToggle
         {/* Mobile menu */}
         {mobileOpen && (
           <div
-            className="lg:hidden mt-3 rounded-2xl p-4 transition-all duration-300"
+            className={`${currentPage === "Career" ? "md:hidden" : "lg:hidden"} mt-3 rounded-2xl p-4 transition-all duration-300`}
             style={{
               background: dark
                 ? "linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(20, 20, 24, 0.85) 100%)"

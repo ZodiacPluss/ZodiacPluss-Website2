@@ -34,7 +34,7 @@ const certificates = [
     title: 'MSME Udyam Registration',
     subtitle: 'Ministry of Micro, Small and Medium Enterprises',
     badge: 'UDYAM CERTIFIED',
-    certNo: 'UDYAM-DL-06-0212115',
+    certNo: 'UDYAM DL 06 0212115',
     issuedBy: 'Govt. of India MSME Enterprise Portal',
     imageUrl: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790787597/Udyam_Registration_Certification_1.png',
     color: '#1aa0b8ff',

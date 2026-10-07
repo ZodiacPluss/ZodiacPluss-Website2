@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { Reveal, TextReveal, StatCount } from '@/components/motion'
+import { ChartNoAxesCombined, FileText, Handshake, Heart, House, MessageSquare, Search, Users } from 'lucide-react'
 /* ── colour tokens ─────────────────────────────────────────────── */
 const TEAL = '#14b8a6'
 const TEAL_D = '#065350'
 const NAVY = '#1a1060'
-const DARK = '#071e19'
 const ACCENT = '#3ecfb3'
 const MAGENTA = '#d81b86'
 /* ── Job data from pamphlet ────────────────────────────────────── */
@@ -90,33 +90,34 @@ const jobs = [
 /* ── Why Join Us ───────────────────────────────────────────────── */
 const whyUs = [
   {
-    icon: '❤️',
+    icon: Heart,
     title: 'Real Impact',
     desc: 'Directly touch thousands of lives through meaningful, purpose-led work every single day.',
   },
   {
-    icon: '🏠',
+    icon: House,
     title: 'Flexible Options',
     desc: 'Remote, hybrid, and on-site roles available across India. Work on your terms.',
   },
   {
-    icon: '📈',
+    icon: ChartNoAxesCombined,
     title: 'Growth & Learning',
     desc: 'Continuous training, supervision, certifications, and career development pathways.',
   },
   {
-    icon: '🤝',
+    icon: Handshake,
     title: 'Passionate Team',
     desc: 'Collaborate with India\'s top astrologers, therapists, and wellness technologists.',
   },
 ]
 /* ── Hiring process ────────────────────────────────────────────── */
 const steps = [
-  { n: '01', title: 'Apply', desc: 'Submit your CV and brief profile to hr@zodiacpluss.com or use the form below.' },
-  { n: '02', title: 'Screening', desc: 'Our HR team reviews your credentials and shortlists qualified candidates within 5 working days.' },
-  { n: '03', title: 'Interview', desc: 'A structured video / in-person interview with our clinical lead or platform head.' },
-  { n: '04', title: 'Onboarding', desc: 'Sign your agreement, complete orientation, and start serving clients on the ZodiacPluss platform.' },
+  { n: '01', title: 'Apply', desc: 'Submit your application through our online form. Tell us about yourself and your interests.' },
+  { n: '02', title: 'Screening', desc: 'Our team reviews your application and shortlists candidates based on role requirements.' },
+  { n: '03', title: 'Interview', desc: 'Virtual or in-person discussion with the team to understand your skills, experience and goals.' },
+  { n: '04', title: 'Onboarding', desc: 'Welcome to ZodiacPluss! Get the support and resources you need to start making an impact.' },
 ]
+const processIcons = [FileText, Search, MessageSquare, Users]
 /* ── Application form ──────────────────────────────────────────── */
 interface FormState {
   name: string; email: string; phone: string
@@ -403,52 +404,52 @@ function JobCard({ job, onApply, dark = false }: { job: typeof jobs[0]; onApply:
       boxShadow: expanded ? `0 8px 24px ${job.categoryColor}14` : '0 2px 8px rgba(23,33,60,0.04)',
     }}>
       {/* Card header */}
-      <div style={{ padding: '28px 28px 24px' }}>
-        {/* Category + type badges */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 16 }}>
-          <span style={{
+      <div className="career-job-summary">
+        <div className="career-job-copy">
+          <div className="career-job-badges">
+            <span style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: 10.5, fontWeight: 800, letterSpacing: '0.08em',
+              color: job.categoryColor,
+              background: `${job.categoryColor}15`,
+              border: `1px solid ${job.categoryColor}30`,
+              borderRadius: 999, padding: '3px 10px',
+            }}>{job.category}</span>
+            <span style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: 10.5, fontWeight: 600,
+              color: textMuted, background: chipBg,
+              border: `1px solid ${cardBorder}`,
+              borderRadius: 999, padding: '3px 10px',
+            }}>{job.type}</span>
+            <span style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: 10.5, fontWeight: 600,
+              color: textMuted, background: chipBg,
+              border: `1px solid ${cardBorder}`,
+              borderRadius: 999, padding: '3px 10px',
+            }}>📍 {job.mode} · {job.location}</span>
+          </div>
+          <h3 style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: 'clamp(20px, 1.7vw, 30px)',
+            fontWeight: 700, color: textPrimary, margin: '0 0 6px', lineHeight: 1.25,
+          }}>{job.title}</h3>
+          <p style={{
             fontFamily: "'Inter', sans-serif",
-            fontSize: 10.5, fontWeight: 800, letterSpacing: '0.08em',
-            color: job.categoryColor,
-            background: `${job.categoryColor}15`,
-            border: `1px solid ${job.categoryColor}30`,
-            borderRadius: 999, padding: '3px 10px',
-          }}>{job.category}</span>
-          <span style={{
-            fontFamily: "'Inter', sans-serif",
-            fontSize: 10.5, fontWeight: 600,
-            color: textMuted, background: chipBg,
-            border: `1px solid ${cardBorder}`,
-            borderRadius: 999, padding: '3px 10px',
-          }}>{job.type}</span>
-          <span style={{
-            fontFamily: "'Inter', sans-serif",
-            fontSize: 10.5, fontWeight: 600,
-            color: textMuted, background: chipBg,
-            border: `1px solid ${cardBorder}`,
-            borderRadius: 999, padding: '3px 10px',
-          }}>📍 {job.mode} · {job.location}</span>
+            fontSize: 15, color: textMuted,
+            margin: 0, fontStyle: 'italic',
+          }}>{job.tagline}</p>
         </div>
-        <h3 style={{
-          fontFamily: "'Playfair Display', serif",
-          fontSize: 'clamp(18px, 2.2vw, 24px)',
-          fontWeight: 700, color: textPrimary, margin: '0 0 6px', lineHeight: 1.25,
-        }}>{job.title}</h3>
-        <p style={{
-          fontFamily: "'Inter', sans-serif",
-          fontSize: 13.5, color: textMuted,
-          margin: '0 0 20px', fontStyle: 'italic',
-        }}>{job.tagline}</p>
-        {/* Expand / collapse */}
-        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+        <div className="career-job-actions">
           <button
             onClick={() => setExpanded(!expanded)}
             style={{
               background: expanded ? `${job.categoryColor}18` : chipBg,
               border: `1.5px solid ${expanded ? job.categoryColor + '40' : cardBorder}`,
-              borderRadius: 999, padding: '8px 18px',
+              borderRadius: 999, padding: '8px 15px',
               fontFamily: "'Inter', sans-serif",
-              fontSize: 13, fontWeight: 700,
+              fontSize: 11, fontWeight: 700,
               color: expanded ? job.categoryColor : (dark ? '#f5f5f5' : '#5b2d8e'),
               cursor: 'pointer',
               display: 'flex', alignItems: 'center', gap: 6,
@@ -468,9 +469,9 @@ function JobCard({ job, onApply, dark = false }: { job: typeof jobs[0]; onApply:
             onClick={() => onApply(job.id)}
             style={{
               background: 'linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)',
-              border: 'none', borderRadius: 999, padding: '8px 20px',
+              border: 'none', borderRadius: 999, padding: '8px 15px',
               fontFamily: "'Inter', sans-serif",
-              fontSize: 13, fontWeight: 700, color: 'white',
+              fontSize: 11, fontWeight: 700, color: 'white',
               cursor: 'pointer',
               display: 'flex', alignItems: 'center', gap: 6,
               boxShadow: '0 6px 20px rgba(94,184,232,0.3)',
@@ -571,7 +572,7 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
       document.getElementById('apply-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }, 80)
   }
-  const pageBg = dark ? '#000000' : '#ffffff'
+  const pageBg = dark ? '#000000' : '#fafffd'
   const cardBg = dark ? '#141416' : 'white'
   const cardBorder = dark ? 'rgba(255,255,255,0.1)' : '#e8e3f8'
   const textPrimary = dark ? '#f5f5f5' : NAVY
@@ -579,25 +580,27 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
   return (
     <div className="career-page" style={{ background: pageBg }}>
 {/* ─── HERO ─────────────────────────────────────────────── */}
-      <section className="career-hero" style={{ background: dark ? '#141416' : '#f7f5ef' }}>
-        <div className="career-hero-layout">
-          <div className="career-hero-copy">
+      <section className={`career-hero career-hero-reference${dark ? ' career-hero-reference-dark' : ''}`}>
+        <div className="career-hero-layout career-reference-layout">
+          <div className="career-hero-copy career-reference-copy">
             <Reveal y={14} duration={0.6}>
-              <p className="career-eyebrow" style={{ color: dark ? '#6bd0c0' : TEAL_D }}>We Are Hiring</p>
+              <p className="career-eyebrow career-reference-eyebrow">
+                We are hiring
+              </p>
             </Reveal>
             <TextReveal as="h1" delay={0.1} stagger={0.12} style={{
               fontFamily: "'Playfair Display', serif",
-              fontSize: 'clamp(38px, 5.2vw, 64px)',
-              fontWeight: 700, color: dark ? '#f5f5f5' : NAVY,
-              lineHeight: 1.04, margin: '0 0 18px',
-              letterSpacing: '-0.035em',
+              fontSize: 'clamp(34px, 4.5vw, 54px)',
+              fontWeight: 600, color: dark ? '#f5f5f5' : NAVY,
+              lineHeight: 1.02, margin: '0 0 22px',
+              letterSpacing: '-0.04em',
             }}>
               Join the team<br />
-              building a<br className="career-title-break" />
-              <span style={{ color: dark ? '#6bd0c0' : '#0cb397', fontStyle: 'italic' }}> healthier</span> tomorrow.
+              building a <span className="career-reference-highlight">healthier</span><br />
+              tomorrow.
             </TextReveal>
             <Reveal y={22} delay={0.3}>
-              <p className="career-hero-description" style={{ color: dark ? '#c4c4c8' : '#5b6470' }}>
+              <p className="career-hero-description career-reference-description">
                 At ZodiacPluss, we bring authentic Vedic wisdom and human care together to make mental well-being more accessible—for individuals and organizations across India.
               </p>
             </Reveal>
@@ -614,46 +617,56 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
               <button
                 onClick={() => document.getElementById('why-join')?.scrollIntoView({ behavior: 'smooth' })}
                 className="career-button career-button-secondary"
-                style={{ color: dark ? '#f5f5f5' : 'Navy', borderColor: dark ? 'rgba(255,255,255,0.3)' : '#82aaa3' }}
+                style={{ color: dark ? '#f5f5f5' : NAVY, borderColor: dark ? 'rgba(255,255,255,0.3)' : '#cbd5e1' }}
               >
                 Our Culture
               </button>
             </Reveal>
           </div>
-          <div className="career-hero-art">
-            <img
-              src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1400&q=85"
-              alt="A calm, light-filled workspace"
-              fetchPriority="high"
-            />
-          </div>
+          <Reveal y={18} delay={0.25} className="career-hero-visual" aria-hidden="true">
+            <div className="career-hero-orbit">
+              <span className="career-orbit-star career-orbit-star-one">✦</span>
+              <span className="career-orbit-star career-orbit-star-two">✧</span>
+              <div className="career-brand-seal">
+                <img src="https://res.cloudinary.com/o6laufzn/image/upload/v1790790316/LOGOSMALL.png" alt="" />
+              </div>
+            </div>
+            <strong>ZodiacPluss</strong>
+            <span>Your Personal Wellness Companion</span>
+          </Reveal>
         </div>
-        <Reveal className="career-stats" stagger={0.08}>
+        <Reveal className="career-stats career-stats-reference" stagger={0.08}>
           {[
-            { val: '10+', label: 'New Features (Therapy & Astrology)' },
-            { val: '3+', label: 'Open Positions' },
-            { val: 'ISO', label: '27001 & 9001 Certified' },
-            { val: '100%', label: 'Remote Friendly' },
+            { val: '10+', label: 'New Features', icon: '✦', detail: '(Therapy & Astrology)' },
+            { val: '3+', label: 'Open Positions', icon: '♟' },
+            { val: 'ISO', label: 'Certified', icon: '✓', detail: '27001 & 9001' },
+            { val: '100%', label: 'Remote Friendly', icon: '▣' },
           ].map((s) => (
             <div key={s.label} className="career-stat">
+              <span className="career-stat-icon" aria-hidden="true">{s.icon}</span>
+              <div className="career-stat-copy">
               <div className="career-stat-value"><StatCount value={s.val} /></div>
-              <div className="career-stat-label" style={{ color: dark ? '#b7b7bd' : '#606976' }}>{s.label}</div>
+              <div className="career-stat-label">{s.label}{s.detail && <small>{s.detail}</small>}</div>
+              </div>
             </div>
           ))}
         </Reveal>
       </section>
       {/* ─── WHY JOIN US ──────────────────────────────────────── */}
-      <section id="why-join" style={{ background: dark ? '#000000' : 'white', padding: 'clamp(48px,6vw,72px) 24px' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <Reveal stagger={0.12} y={22} style={{ textAlign: 'center', marginBottom: 44 }}>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', color: TEAL, textTransform: 'uppercase', marginBottom: 10 }}>Culture & Benefits</p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(26px,3.5vw,38px)', fontWeight: 700, color: textPrimary, margin: 0 }}>
-              Why Join ZodiacPluss?
+      <section id="why-join" className="career-benefits" style={{ background: dark ? '#000000' : 'transparent', padding: 'clamp(28px,4vw,42px) 24px 20px' }}>
+        <div className="career-benefits-container" style={{ maxWidth: 1500, margin: '0 auto' }}>
+          <Reveal stagger={0.12} y={22} className="career-benefits-heading" style={{ textAlign: 'center', marginBottom: 44 }}>
+            <p className="career-benefits-eyebrow" style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', color: TEAL, textTransform: 'uppercase', marginBottom: 10 }}>Culture & Benefits</p>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(30px,4vw,48px)', fontWeight: 700, color: textPrimary, margin: '0 0 10px' }}>
+              Why Join <span className="career-gradient-text">ZodiacPluss?</span>
             </h2>
+            <p className="career-benefits-intro" style={{ fontFamily: "'Inter', sans-serif", fontSize: 16, color: textMuted, margin: '0 auto', maxWidth: 660, lineHeight: 1.55 }}>
+              Be part of a purpose-driven team that blends Vedic wisdom, modern technology, and genuine human care to create a positive impact.
+            </p>
           </Reveal>
-          <Reveal stagger={0.1} y={30} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <Reveal stagger={0.1} y={30} className="career-benefits-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {whyUs.map((w, i) => (
-              <div key={i} style={{
+              <div className={`career-benefit-card career-benefit-card-${i}`} key={i} style={{
                 background: dark ? cardBg : '#fbfaf7',
                 border: `1px solid ${cardBorder}`,
                 borderRadius: 14, padding: '24px 20px',
@@ -669,7 +682,9 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
                     ; (e.currentTarget as HTMLDivElement).style.boxShadow = 'none'
                 }}
               >
-                <div style={{ fontSize: 32, marginBottom: 12 }}>{w.icon}</div>
+                <div className={`career-benefit-icon career-benefit-icon-${i}`} aria-hidden="true">
+                  <w.icon size={28} strokeWidth={2.4} />
+                </div>
                 <h3 style={{ fontFamily: "'Inter', sans-serif", fontSize: 15, fontWeight: 800, color: textPrimary, margin: '0 0 8px' }}>{w.title}</h3>
                 <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: textMuted, margin: 0, lineHeight: 1.6 }}>{w.desc}</p>
               </div>
@@ -678,18 +693,26 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
         </div>
       </section>
       {/* ─── OPEN ROLES ───────────────────────────────────────── */}
-      <section id="open-roles" style={{ padding: 'clamp(48px,6vw,72px) 24px' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <Reveal stagger={0.12} y={22} style={{ marginBottom: 36 }}>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', color: TEAL, textTransform: 'uppercase', marginBottom: 10 }}>Current Openings</p>
+      <section id="open-roles" className="career-openings" style={{ padding: 'clamp(38px,5vw,56px) 24px' }}>
+        <div style={{ maxWidth: 1375, margin: '0 auto' }}>
+          <div className="career-openings-heading">
+          <Reveal stagger={0.12} y={22}>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', color: TEAL_D, textTransform: 'uppercase', marginBottom: 7 }}>Current Openings</p>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(26px,3.5vw,38px)', fontWeight: 700, color: textPrimary, margin: '0 0 10px' }}>
               Open Positions
             </h2>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 15, color: textMuted, margin: 0, maxWidth: 520 }}>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: textMuted, margin: 0, maxWidth: 520 }}>
               We're looking for passionate professionals to grow with us. All roles are open to applicants across India.
             </p>
           </Reveal>
-          <Reveal stagger={0.1} y={26} style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+          <div className="career-category-chips" aria-label="Open role categories">
+            <span className="career-category-chip career-category-chip-active">All Roles</span>
+            <span className="career-category-chip">Therapy</span>
+            <span className="career-category-chip">Astrology</span>
+            <span className="career-category-chip">Corporate Wellness</span>
+          </div>
+          </div>
+          <Reveal stagger={0.1} y={26} className="career-job-list">
             {jobs.map(job => (
               <JobCard key={job.id} job={job} onApply={scrollToForm} dark={dark} />
             ))}
@@ -697,76 +720,53 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
         </div>
       </section>
       {/* ─── HIRING PROCESS ───────────────────────────────────── */}
-      <section style={{ background: DARK, padding: 'clamp(48px,6vw,72px) 24px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{
-          position: 'absolute', inset: 0, pointerEvents: 'none',
-          background: 'radial-gradient(ellipse 60% 70% at 50% 50%, rgba(61,214,172,0.07) 0%, transparent 65%)',
-        }} />
-        <div style={{ maxWidth: 1100, margin: '0 auto', position: 'relative', zIndex: 1 }}>
-          <Reveal stagger={0.12} y={22} style={{ textAlign: 'center', marginBottom: 48 }}>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', color: ACCENT, textTransform: 'uppercase', marginBottom: 10 }}>How It Works</p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(26px,3.5vw,38px)', fontWeight: 700, color: 'white', margin: 0 }}>
-              Our Hiring Process
+      <section className="career-process" style={{
+        background: dark ? '#000000' : 'transparent',
+        padding: 'clamp(38px,5vw,56px) 24px 28px',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        <div className="career-process-container" style={{ maxWidth: 1375, margin: '0 auto', position: 'relative', zIndex: 1 }}>
+          <Reveal stagger={0.12} y={22} className="career-process-heading" style={{ textAlign: 'center', marginBottom: 26 }}>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.16em', color: TEAL_D, textTransform: 'uppercase', marginBottom: 6 }}>How It Works</p>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(32px,4vw,54px)', fontWeight: 700, color: textPrimary, margin: '0 0 10px' }}>
+              Our Hiring <span className="career-gradient-text">Process</span>
             </h2>
+            <p className="career-process-intro" style={{ fontFamily: "'Inter', sans-serif", fontSize: 16, color: textMuted, margin: '0 auto', maxWidth: 680, lineHeight: 1.55 }}>
+              A simple and transparent process to help you join the ZodiacPluss team and start making a meaningful impact.
+            </p>
           </Reveal>
-          <Reveal stagger={0.12} y={30} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {steps.map((s, i) => (
-              <div key={i} style={{ position: 'relative' }}>
-                {/* Connector line on desktop */}
-                {i < steps.length - 1 && (
-                  <div className="hidden lg:block" style={{
-                    position: 'absolute', top: 28, left: '100%',
-                    width: '100%', height: 1,
-                    background: `linear-gradient(90deg, ${TEAL}40, transparent)`,
-                    zIndex: 0,
-                  }} />
-                )}
-                <div className="zp-card-soft group" style={{
-                  background: 'rgba(255,255,255,0.05)',
-                  border: '1px solid rgba(61,214,172,0.18)',
-                  borderRadius: 18, padding: '24px 20px',
-                  position: 'relative', zIndex: 1,
-                }}>
-                  <div className="zp-icon-tile" style={{
-                    width: 48, height: 48, borderRadius: '50%', marginBottom: 14,
-                    background: `linear-gradient(135deg, ${TEAL}30, ${TEAL_D}50)`,
-                    border: `1.5px solid ${TEAL}50`,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontFamily: "'Inter', sans-serif", fontSize: 15, fontWeight: 900, color: ACCENT,
-                  }}>{s.n}</div>
-                  <h3 style={{ fontFamily: "'Inter', sans-serif", fontSize: 16, fontWeight: 800, color: 'white', margin: '0 0 8px' }}>{s.title}</h3>
-                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: 'rgba(255,255,255,0.50)', margin: 0, lineHeight: 1.65 }}>{s.desc}</p>
+          <Reveal stagger={0.12} y={30} className="career-process-steps grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {steps.map((s, i) => {
+              const Icon = processIcons[i]
+              return (
+                <div className={`career-process-step career-process-step-${i}`} key={i}>
+                  <div className="career-process-card" style={{
+                    background: dark ? '#141416' : 'rgba(255,255,255,0.72)',
+                    border: `1px solid ${dark ? 'rgba(255,255,255,0.1)' : '#dce8ef'}`,
+                  }}>
+                    <div className={`career-process-icon career-process-icon-${i}`} aria-hidden="true">
+                      <Icon size={32} strokeWidth={2.2} />
+                    </div>
+                    <div className="career-process-content">
+                      <span className="career-process-number">{s.n}</span>
+                      <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 18, fontWeight: 700, color: textPrimary, margin: '3px 0 8px' }}>{s.title}</h3>
+                      <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: textMuted, margin: 0, lineHeight: 1.55 }}>{s.desc}</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </Reveal>
         </div>
       </section>
-      {/* ─── TAGLINE BAND ─────────────────────────────────────── */}
-      <section style={{
-        background: dark ? '#141f1d' : TEAL_D,
-        padding: '40px 24px', textAlign: 'center',
-      }}>
-        <Reveal stagger={0.12} y={20}>
-        <p style={{
-          fontFamily: "'Playfair Display', serif",
-          fontSize: 'clamp(18px, 2.8vw, 30px)',
-          fontWeight: 700, color: 'white', margin: '0 0 6px', fontStyle: 'italic',
-        }}>
-          "Your knowledge can light the path for millions."
-        </p>
-        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: 'rgba(255,255,255,0.70)', margin: 0 }}>
-          Join ZodiacPluss and make a difference.
-        </p>
-        </Reveal>
-      </section>
       {/* ─── APPLICATION FORM ─────────────────────────────────── */}
-      <section id="apply-form" style={{ padding: 'clamp(56px,7vw,88px) 24px', background: pageBg }}>
+      <section id="apply-form" className="career-application" style={{ padding: 'clamp(36px,5vw,56px) 24px', background: pageBg }}>
         <div style={{ maxWidth: 740, margin: '0 auto' }}>
-          <Reveal stagger={0.12} y={22} style={{ textAlign: 'center', marginBottom: 44 }}>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', color: TEAL, textTransform: 'uppercase', marginBottom: 12 }}>Join The Team</p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(26px,3.5vw,40px)', fontWeight: 700, color: textPrimary, margin: '0 0 12px' }}>
-              Submit Your Application
+          <Reveal stagger={0.12} y={22} className="career-application-heading" style={{ textAlign: 'center', marginBottom: 24 }}>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.16em', color: TEAL_D, textTransform: 'uppercase', marginBottom: 7 }}>Join The Team</p>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(26px,3.5vw,36px)', fontWeight: 700, color: textPrimary, margin: '0 0 8px' }}>
+              Submit Your <span className="career-gradient-text">Application</span>
             </h2>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 15, color: textMuted, margin: 0 }}>
               Fill out the form below. Our team will contact you within 5 working days.
@@ -775,7 +775,7 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
           {/* Contact quick links */}
           <div style={{
             display: 'flex', gap: 12, justifyContent: 'center',
-            flexWrap: 'wrap', marginBottom: 36,
+            flexWrap: 'wrap', marginBottom: 24,
           }}>
             {[
               { icon: '📧', label: 'hr@zodiacpluss.com', href: 'mailto:hr@zodiacpluss.com' },
@@ -784,8 +784,9 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
               <a
                 key={i}
                 href={c.href}
-                target="_blank"
+                target={c.href.startsWith('mailto:') ? undefined : '_blank'}
                 rel="noreferrer"
+                className="career-contact-link"
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: 8,
                   background: cardBg, border: `1.5px solid ${TEAL}30`,
@@ -801,7 +802,7 @@ export default function CareerPage({ onNavigate, dark = false }: CareerPageProps
             ))}
           </div>
           {/* Form card */}
-          <div style={{
+          <div className="career-form-card" style={{
             background: cardBg, borderRadius: 24,
             padding: 'clamp(24px,4vw,40px)',
             boxShadow: '0 4px 40px rgba(26,16,96,0.08)',
