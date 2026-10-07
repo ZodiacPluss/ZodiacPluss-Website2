@@ -468,7 +468,9 @@ export default function Astrolist({ onNavigate, dark = false }: AstrolistProps) 
           <div className="mt-9 flex justify-center">
             <button
               type="button"
-              onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}
+              onClick={() =>
+                setVisibleCount((count) => Math.min(count + PAGE_SIZE, filteredAstrologers.length))
+              }
               className="rounded-full px-7 py-3 text-sm font-semibold text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg"
               style={{ background: 'linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)' }}
             >
@@ -476,18 +478,23 @@ export default function Astrolist({ onNavigate, dark = false }: AstrolistProps) 
             </button>
           </div>
         )}
-        {visibleCount > PAGE_SIZE && visibleCount >= filteredAstrologers.length && (
-          <div className="mt-9 flex justify-center">
-            <button
-              type="button"
-              onClick={() => setVisibleCount((count) => count - PAGE_SIZE)}
-              className="rounded-full px-7 py-3 text-sm font-semibold text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg"
-              style={{ background: 'linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)' }}
-            >
-              view less
-            </button>
-          </div>
-        )}
+        {filteredAstrologers.length >= PAGE_SIZE &&
+          visibleCount >= filteredAstrologers.length && (
+            <div className="mt-9 flex justify-center">
+              <button
+                type="button"
+                onClick={() =>
+                  setVisibleCount((count) =>
+                    count > PAGE_SIZE ? PAGE_SIZE : Math.ceil(PAGE_SIZE / 2),
+                  )
+                }
+                className="rounded-full px-7 py-3 text-sm font-semibold text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg"
+                style={{ background: 'linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)' }}
+              >
+                view less
+              </button>
+            </div>
+          )}
       </div>
 
       {selectedAstrologer && (
