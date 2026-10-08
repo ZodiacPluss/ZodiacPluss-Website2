@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+/*import { useEffect, useMemo, useState } from 'react'
 import { astrologers, type Astrologer } from '@/data/experts/astrologers'
 
 interface AstrolistProps {
@@ -604,3 +604,4 @@ export default function Astrolist({ onNavigate, dark = false }: AstrolistProps) 
     </main>
   )
 }
+*/

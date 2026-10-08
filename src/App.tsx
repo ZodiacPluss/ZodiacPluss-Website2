@@ -5,7 +5,6 @@ import MobileBottomNav from '@/components/MobileBottomNav'
 import HomePage from '@/pages/HomePage'
 import AboutUsPage from '@/pages/AboutUsPage'
 import ServicesPage from '@/pages/ServicesPage'
-import Astrolist from '@/pages/astrolist'
 import ExpertsPage from '@/pages/ExpertsPage'
 import BookSessionPage from '@/pages/BookSessionPage'
 import CareerPage from '@/pages/CareerPage'
@@ -124,7 +123,7 @@ export default function App() {
       case 'Home': return <HomePage onNavigate={handleNavigate} dark={dark} />
       case 'About Us': return <AboutUsPage onNavigate={handleNavigate} dark={dark} />
       case 'Services': return <ServicesPage onNavigate={handleNavigate} dark={dark} />
-      case 'Astrologers': return <Astrolist onNavigate={handleNavigate} dark={dark} />
+      case 'Astrologers': return <ComingSoonPage onNavigate={handleNavigate} dark={dark} />
       case 'Experts': return <ExpertsPage onNavigate={handleNavigate} dark={dark} />
       case 'Book': return <BookSessionPage onNavigate={handleNavigate} dark={dark} />
       case 'Career': return <CareerPage onNavigate={handleNavigate} dark={dark} />
