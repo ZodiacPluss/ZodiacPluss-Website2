@@ -7,7 +7,7 @@ import {
   SITE_LOCALE,
   type PageKey,
 } from '@/utils/seo.config'
-import type { BlogArticle } from '@/data/blogs'
+import { getBlogPath, type BlogArticle } from '@/data/blogs'
 
 const ROBOTS_INDEXABLE =
   'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
@@ -61,7 +61,7 @@ function setCanonical(url: string | null): void {
 export function useSEO(page: PageKey, article?: BlogArticle): void {
   useEffect(() => {
     const config = getPageConfig(page)
-    const articlePath = article ? `/blog/${article.category.toLowerCase().replace(/\s+/g, '-')}/${article.id}` : null
+    const articlePath = article ? getBlogPath(article) : null
     const title = article?.seoTitle ?? config.title
     const description = article?.seoDescription ?? config.description
     const canonicalPath = articlePath ?? config.path

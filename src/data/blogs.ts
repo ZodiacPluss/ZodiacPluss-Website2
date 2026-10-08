@@ -17,6 +17,7 @@ export interface BlogSection {
 
 export interface BlogArticle {
   id: string
+  slug?: string
   category: BlogCategory
   title: string
   excerpt: string
@@ -453,20 +454,259 @@ export const blogArticles: BlogArticle[] = [
       },
     ],
   },
-
+  {
+  id: 'relationship-astrology-recurring-relationship-problems',
+  slug: 'relationship-astrology-recurring-relationship-problems',
+  category: 'Relationships',
+  title: 'Why Do the Same Relationship Problems Keep Coming Back? What Relationship Astrology May Help You Notice',
+  excerpt: 'Discover why the same relationship problems keep returning and how relationship astrology may help you notice patterns, triggers, and emotional dynamics.',
+  seoTitle: 'Why Relationship Problems Keep Coming Back | Astrology',
+  seoDescription: 'Discover why the same relationship problems keep returning and how relationship astrology may help you notice patterns, triggers, and emotional dynamics.',
+  focusKeyword: 'relationship astrology',
+  readTime: '7 min read',
+  date: 'Oct 8, 2026',
+  image: 'https://res.cloudinary.com/h4x5ehyi/image/upload/v1791446663/Why_Do_the_Same_Relationship_Problems_Keep_Coming_Back.png',
+  sections: [
+    {
+      paragraphs: [
+        'Relationships can bring comfort, connection, and happiness, but they can also reveal patterns we do not immediately understand. You may notice that the same arguments keep returning, communication breaks down around similar subjects, or you repeatedly feel misunderstood. Sometimes, even after changing relationships, familiar problems seem to appear again.',
+        'When this happens, it is natural to wonder why. Relationship difficulties can be influenced by communication habits, expectations, past experiences, boundaries, and individual circumstances. Some people also explore relationship astrology as a reflective way to look at personality differences and recurring patterns.',
+        'Astrology cannot diagnose a relationship or guarantee its future. However, it may offer another perspective that encourages people to notice how they communicate, respond to emotions, and approach their needs.',
+      ],
+    },
+    {
+      heading: 'Why Do Relationship Patterns Repeat?',
+      paragraphs: [
+        'Repeated problems do not always mean that a relationship is failing. Sometimes, they develop because the same reactions are being used in the same situations.',
+        'One person may avoid difficult conversations while the other wants to resolve issues immediately. Someone may need reassurance, while their partner may naturally show care through actions rather than words. These differences can become recurring conflicts when neither person understands what is happening underneath them.',
+        'This is one reason people may explore astrology for relationship problems. Instead of using astrology to decide who is right or wrong, it can encourage useful questions. What do I need from a relationship? How do I react during disagreements? What does my partner need to feel understood?',
+        'Recognizing a repeated pattern can be the first step toward changing it.',
+      ],
+      image: 'https://res.cloudinary.com/h4x5ehyi/image/upload/v1791446662/What_Does_Relationship_Astrology_Explore.png',
+    },
+    {
+      heading: 'What Does Relationship Astrology Explore?',
+      paragraphs: [
+        'Relationship astrology generally looks at birth charts and how different astrological placements are traditionally interpreted. Rather than focusing only on zodiac signs, a broader reading may explore themes connected with emotions, communication, affection, expectations, and personal tendencies.',
+        'This does not mean a birth chart can explain every disagreement. Relationships are also influenced by upbringing, experiences, values, choices, responsibilities, and changing circumstances.',
+        'A thoughtful approach can therefore be less about predicting whether two people are “meant to be” and more about noticing differences that may deserve attention.',
+        'Astrology can offer a starting point for reflection, while real understanding still comes from communication and experience.',
+      ],
+    },
+    {
+      heading: 'Communication May Be the Pattern You Keep Missing',
+      paragraphs: [
+        'Many relationship problems appear to be about one subject when the deeper issue is communication.',
+        'An argument about household responsibilities, for example, may actually involve feeling unappreciated. A disagreement about spending time together may reflect different expectations about closeness and independence.',
+        'Love astrology is sometimes explored to understand how people may express affection or respond emotionally. The useful part is not treating an astrological interpretation as a proven fact. Instead, ask whether the idea helps you notice something meaningful in your relationship.',
+        'If it does, that observation can become the beginning of a more honest conversation. If it does not, there is no need to force an interpretation to fit your situation.',
+      ],
+    },
+    {
+      heading: 'Different Ways of Showing Care Can Create Confusion',
+      paragraphs: [
+        'People do not always express care in the same way. One person may communicate affection openly, while another shows it by helping with practical responsibilities. One may enjoy frequent conversations, while another needs quiet time to process emotions.',
+        'These differences can create assumptions. Someone may think, “If they cared, they would communicate the way I do.” Meanwhile, the other person may feel that their efforts are being overlooked.',
+        'Using astrology as a way to reflect on relationship problems can help people understand their differences without saying that one way is better than another.',
+        'The more important question is whether both people can communicate their needs, understand each other’s preferences, and make reasonable adjustments.',
+      ],
+    },
+    {
+      heading: 'Are Expectations Creating the Same Conflict?',
+      paragraphs: [
+        'Some recurring relationship problems begin with expectations that were never clearly discussed.',
+        'You may expect your partner to know when you need support. You might assume that you both have similar ideas about money, family, personal space, communication, or future plans. When reality does not match those expectations, disappointment can follow.',
+        'Relationship compatibility astrology often attracts people who want to understand whether two personalities naturally work well together. However, compatibility should not be reduced to matching zodiac signs.',
+        'Even people considered astrologically compatible can struggle when communication, trust, and respect are missing. People with different personalities can also have strong relationships when they understand and respect their differences.',
+        'Compatibility can be a starting point for reflection, not a final verdict on a relationship.',
+      ],
+    },
+    {
+      heading: 'Look at Your Own Role in Repeated Problems',
+      paragraphs: [
+        'It is usually easier to notice what another person is doing than to examine our own reactions.',
+        'If the same issue keeps returning, think about what normally happens before the disagreement. Do you become defensive? Do you stop communicating? Do you expect your partner to guess what you need? Do previous disagreements enter every new conversation?',
+        'Relationship astrology may encourage this type of self-observation by introducing themes that you can compare with your actual behaviour.',
+        'The aim is not to blame yourself or your partner. It is to identify patterns that may be keeping the same disagreement alive.',
+        'Once you notice a pattern, you have a better opportunity to respond differently when a similar situation appears again.',
+      ],
+    },
+    {
+      heading: 'Can a Love Horoscope Solve Relationship Problems?',
+      paragraphs: [
+        'A love horoscope can be interesting and may offer a theme to reflect on, but it cannot understand the complete reality of an individual relationship.',
+        'Relationships involve personal histories, choices, responsibilities, emotions, and circumstances that cannot be captured by a general horoscope.',
+        'Instead of asking a love horoscope to decide what will happen, consider using it as a reflection prompt. If something feels relevant, ask yourself why. If it raises a useful question, consider discussing that question openly with your partner.',
+        'The value comes from what you thoughtfully notice and do rather than accepting every prediction as certain.',
+      ],
+    },
+    {
+      heading: 'When Astrology Is Not Enough',
+      paragraphs: [
+        'There are clear limits to what relationship astrology can offer. Serious relationship concerns require appropriate real-world support.',
+        'Abuse, threats, coercive control, stalking, or violence should never be explained away through zodiac compatibility or astrological placements. Safety should come first, and professional or emergency support may be necessary.',
+        'Persistent relationship distress may also benefit from qualified counselling or other appropriate professional support.',
+        'Astrology can encourage reflection, but it should not replace mental health care, legal advice, or professional intervention when these are needed.',
+      ],
+      image: 'https://res.cloudinary.com/h4x5ehyi/image/upload/v1791447045/Ask_Better_Questions_Instead_of_Looking_for_Perfect_Predictions.png',
+    },
+    {
+      heading: 'Ask Better Questions Instead of Looking for Perfect Predictions',
+      paragraphs: [
+        'The healthiest use of astrology relationship guidance may be to help people ask better questions instead of searching for guaranteed answers.',
+        'Instead of asking, “Are we compatible?” consider asking, “Where do we understand each other well, and where do we struggle?”',
+        'Instead of asking, “Will this relationship last?” you might ask, “What needs more attention if we want this relationship to become healthier?”',
+        'These questions keep responsibility with the people involved. They also make room for communication, boundaries, effort, understanding, and personal choice.',
+        'Relationship astrology can add another perspective, but the relationship itself is shaped by everyday behaviour and decisions.',
+      ],
+    },
+    {
+      heading: 'Final Thoughts',
+      paragraphs: [
+        'When the same relationship problem keeps returning, it may be worth looking beyond the latest argument. There could be a repeated communication habit, an unmet expectation, a difference in emotional needs, or a pattern neither person has clearly recognized.',
+        'Relationship astrology can provide one way to reflect on these patterns. Used thoughtfully, it may encourage greater self-awareness and help people consider how they communicate, express care, and respond to differences.',
+        'But astrology should not decide whether a relationship is right or wrong. Healthy relationships still depend on communication, respect, trust, boundaries, effort, and personal responsibility.',
+        'Sometimes, seeing the situation differently is enough to begin a better conversation. And that conversation, rather than a prediction, may be the most useful first step toward changing a pattern that keeps coming back.',
+      ],
+    },
+  ],
+  },
+  {
+  id: 'workplace-stress-affecting-employees-at-home',
+  slug: 'workplace-stress-affecting-employees-at-home',
+  category: 'Workplace Wellness',
+  title: 'When Workplace Stress Starts Following Employees Home: What Organizations Should Pay Attention To',
+  excerpt: 'Learn how workplace stress can affect employees beyond work hours and what organizations should notice to support employee well-being and a healthier workplace.',
+  seoTitle: 'Workplace Stress: When Work Follows Employees Home',
+  seoDescription: 'Learn how workplace stress can affect employees beyond work hours and what organizations should notice to support employee well-being and a healthier workplace.',
+  focusKeyword: 'workplace stress',
+  readTime: '8 min read',
+  date: 'Oct 8, 2026',
+  image: 'https://res.cloudinary.com/h4x5ehyi/image/upload/v1791446663/Workplace_Stress_Follows_Home.png',
+  sections: [
+    {
+      paragraphs: [
+        'Work should ideally stay within working hours, but that is not always what happens. An unfinished task, a difficult meeting, constant deadlines, or uncertainty about responsibilities can continue occupying an employee’s mind long after the workday ends. When this happens regularly, work pressure can begin affecting rest, family time, motivation, and overall quality of life.',
+        'For organizations, workplace stress should not be viewed only as an employee’s personal problem. The way work is planned, communicated, and managed can also influence how much pressure employees experience. Supporting employee wellbeing means paying attention to these factors and creating an environment where people can raise concerns before they become more difficult to manage.',
+      ],
+    },
+    {
+      heading: 'When Does Normal Work Pressure Become a Concern?',
+      paragraphs: [
+        'Almost every job includes some pressure. Deadlines, busy periods, new responsibilities, and unexpected problems are normal parts of working life. The concern begins when workplace stress becomes frequent and employees struggle to mentally disconnect after work. Someone may leave the office but continue thinking about targets, messages, unfinished tasks, or the next day’s responsibilities throughout the evening.',
+        'Over time, this can reduce opportunities for proper rest and recovery. Organizations should therefore look beyond whether employees are completing their work. Consistent performance does not always mean someone is coping comfortably with the pressure behind it.',
+      ],
+    },
+    {
+      heading: 'Signs Organizations Should Pay Attention To',
+      paragraphs: [
+        'Stress can appear differently from one employee to another. Some people openly discuss difficulties, while others continue working without saying anything.',
+        'Changes may appear gradually. An employee who usually contributes during meetings may become quieter. Someone who is normally organized may start missing small details. Others may seem tired, distracted, irritable, or less engaged than usual.',
+        'These changes do not always mean an employee has a health problem, and managers should not try to diagnose them. However, noticeable changes can provide an opportunity for a respectful conversation.',
+        'Organizations can remind employees about available workplace stress support and make it clear that asking for help is acceptable. The aim should be support, not assumptions or unnecessary monitoring.',
+      ],
+      image: 'https://res.cloudinary.com/h4x5ehyi/image/upload/v1791446662/Signs_Organizations_Should_Pay_Attention_To.png',
+    },
+    {
+      heading: 'Why Employees May Stay Silent',
+      paragraphs: [
+        'Employees do not always ask for help when they are under pressure. Some may worry that speaking openly will make them appear less capable. Others may fear being judged or believe that discussing stress could affect future opportunities.',
+        'This is why employee wellbeing depends on more than having a support policy. Employees need to feel that raising a genuine concern will be treated respectfully.',
+        'Managers can help by listening, avoiding quick judgement, maintaining appropriate privacy, and explaining available resources. Employees should not have to reach a breaking point before they feel comfortable saying that something is becoming difficult.',
+      ],
+    },
+    {
+      heading: 'Focus on the Cause, Not Just the Signs',
+      paragraphs: [
+        'Wellbeing activities can be useful, but they cannot fix unhealthy working conditions on their own.',
+        'If employees constantly face unrealistic deadlines, unclear responsibilities, excessive workloads, or pressure to remain available outside working hours, simply encouraging them to manage stress better does not address the real cause.',
+        'A practical employee wellness approach should also examine how work is organized. Are priorities clear? Are workloads reasonable? Do employees understand their responsibilities? Are changes communicated properly? Are unnecessary meetings creating additional pressure?',
+        'Sometimes reducing workplace stress requires improving a process rather than expecting employees to become more resilient.',
+      ],
+    },
+    {
+      heading: 'Healthy Boundaries Matter After Work',
+      paragraphs: [
+        'Technology has made work more flexible, but it has also made it easier for work to enter personal time. Emails, messages, and notifications can create an impression that employees should always be available.',
+        'Clear expectations can help. Unless a role genuinely requires after-hours availability, employees should know when they are expected to respond and when communication can wait.',
+        'Managers should also consider the example they set. Sending non-urgent messages late at night may unintentionally create pressure even when an immediate response is not requested.',
+        'Healthy boundaries support employee wellbeing because they allow people to disconnect, rest, spend time with family, and return to work with better focus.',
+      ],
+    },
+    {
+      heading: 'Managers Need the Right Support Too',
+      paragraphs: [
+        'Managers are often expected to recognize when team members are struggling, but they may not always know what to say or do.',
+        'A manager does not need to become a therapist. Their role is to manage work responsibly, listen to concerns, understand organizational resources, and direct employees toward appropriate help when required.',
+        'Managers can also experience workplace stress themselves. A strong workplace wellbeing program should therefore consider employees at different levels rather than assuming that people in leadership positions are unaffected by pressure.',
+      ],
+    },
+    {
+      heading: 'Make Support Easy to Find',
+      paragraphs: [
+        'Employees are unlikely to use resources they do not understand or cannot easily access.',
+        'Organizations should clearly communicate what workplace stress support is available, how employees can access it, what confidentiality protections apply, and any relevant limits.',
+        'Support may be included within an employee wellness program, an Employee Assistance Program, or other internal wellbeing resources depending on what the organization provides.',
+        'Regular reminders can also help employees remember that support exists before a difficult period becomes overwhelming. Clear information makes it easier to know where to turn when help is needed.',
+        'The message should remain simple: using appropriate support is a normal option and does not mean someone has failed to cope.',
+      ],
+    },
+    {
+      heading: 'Employee Wellness Is More Than an Annual Activity',
+      paragraphs: [
+        'Everyday workplace practices often have a greater impact than occasional activities. Clear expectations, fair workloads, respectful communication, proper breaks, recognition, and chances to share feedback all help create a better employee experience.',
+        'A workplace wellbeing program is more effective when these practices support its goals.',
+        'If an organization publicly promotes wellbeing but employees privately feel unable to discuss workload or take reasonable time to recover, trust can quickly disappear. What employees experience every day matters more than a slogan.',
+      ],
+      image: 'https://res.cloudinary.com/h4x5ehyi/image/upload/v1791446663/What_Is_an_Employee_Assistance_Program.png'
+    },
+    {
+      heading: 'Listen to Employee Feedback',
+      paragraphs: [
+        'Organizations cannot improve problems they do not understand. Employees need suitable ways to explain what is making work unnecessarily difficult.',
+        'Feedback may come through check-ins, surveys, team conversations, or confidential channels. What matters is that organizations listen and respond appropriately.',
+        'If employees repeatedly raise the same workload or communication problem and nothing changes, they may eventually stop speaking up.',
+      ],
+    },
+    {
+      heading: 'Know When Professional Support Is Needed',
+      paragraphs: [
+        'Workplace initiatives have limits. Serious or persistent mental health concerns may require qualified professional support.',
+        'Managers should not try to diagnose or treat their employees. If someone is in immediate danger or experiencing a crisis, appropriate emergency or crisis support should be contacted according to the situation and local procedures.',
+        'Workplace stress support can help employees understand available options, but it should complement professional care rather than replace it.',
+      ],
+    },
+    {
+      heading: 'Final Thoughts',
+      paragraphs: [
+        'When work stress regularly affects employees at home, organizations should take notice. The answer is not to remove every deadline, challenge, or demanding period from work. Instead, employers can identify unnecessary pressure, improve communication, encourage healthy boundaries, and make appropriate support easier to access.',
+        'Strong employee wellbeing is built through everyday decisions about workloads, expectations, communication, privacy, and support.',
+        'A thoughtful employee wellness approach considers both the individual and the working environment around them. When organizations listen early and respond responsibly, employees have a better chance to perform effectively without allowing work pressure to take over the rest of their lives.',
+      ],
+    },
+  ],
+  },
 ]
 
 export function slugifyCategory(category: BlogCategory): string {
   return category.toLowerCase().replace(/\s+/g, '-')
 }
 
-export function getBlogPath(article: Pick<BlogArticle, 'category' | 'id'>): string {
+export function getBlogPath(
+  article: Pick<BlogArticle, 'category' | 'id'> & Partial<Pick<BlogArticle, 'slug'>>,
+): string {
+  if (article.slug) return `/blog/${article.slug}`
   return `/blog/${slugifyCategory(article.category)}/${article.id}`
 }
 
 export function getBlogByPath(pathname: string): BlogArticle | undefined {
   const parts = pathname.replace(/\/+$/, '').split('/').filter(Boolean)
-  if (parts.length !== 3 || parts[0].toLowerCase() !== 'blog') return undefined
+  if (parts[0]?.toLowerCase() !== 'blog') return undefined
+
+  if (parts.length === 2) {
+    return blogArticles.find((article) => article.slug === parts[1])
+  }
+  if (parts.length !== 3) return undefined
 
   return blogArticles.find(
     (article) => slugifyCategory(article.category) === parts[1].toLowerCase() && article.id === parts[2],
