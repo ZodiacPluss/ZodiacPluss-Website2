@@ -80,12 +80,6 @@ const ArrowIcon = ({ size = 14 }: { size?: number }) => (
 )
 
 
-const BookmarkIcon = ({ color, filled }: { color: string; filled: boolean }) => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill={filled ? color : 'none'} stroke={color} strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M6 4h12a1 1 0 0 1 1 1v15l-7-4.2L5 20V5a1 1 0 0 1 1-1z" />
-  </svg>
-)
-
 const MailIcon = ({ color }: { color: string }) => (
   <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <rect x="3" y="5" width="18" height="14" rx="2" />
@@ -184,8 +178,6 @@ function GradientCircleButton({ label }: { label: string }) {
 }
 
 function ArticleCard({ article, dark, onNavigate }: { article: Article; dark: boolean; onNavigate: (page: string) => void }) {
-  const [saved, setSaved] = useState(false)
-
   const metaIcon = dark ? '#8b8b93' : '#98a2b3'
   const metaText = dark ? '#e4e4e7' : '#1d2939'
   const pillBg = dark ? '#f5f5f5' : '#0b0f19'
@@ -279,21 +271,6 @@ function ArticleCard({ article, dark, onNavigate }: { article: Article; dark: bo
           >
             Read article
           </a>
-          <button
-            type="button"
-            aria-label={saved ? 'Remove from saved' : 'Save article'}
-            aria-pressed={saved}
-            onClick={() => setSaved((v) => !v)}
-            className="zp-btn shrink-0 flex items-center justify-center rounded-full cursor-pointer"
-            style={{
-              width: 48,
-              height: 48,
-              background: 'transparent',
-              border: dark ? '1px solid rgba(255,255,255,0.14)' : '1px solid #e8ebef',
-            }}
-          >
-            <BookmarkIcon color={SCRIPT} filled={saved} />
-          </button>
         </div>
       </div>
     </article>
