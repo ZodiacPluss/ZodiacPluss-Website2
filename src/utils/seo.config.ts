@@ -26,13 +26,13 @@ export type PageKey =
   | 'Portfolio'
   | 'Coming Soon'
   | 'Invite'
+  | 'Delete Account'
   | 'Privacy Policy'
   | 'Terms & Conditions'
   | 'Refund Policy'
   | 'Wallet Policy'
   | 'Community Guidelines'
   | 'Expert Agreement'
-  | 'Delete Account'
   | 'Not Found'
 
 export interface SeoPageConfig {
@@ -207,8 +207,9 @@ export const SEO_PAGE_CONFIG: readonly SeoPageConfig[] = [
   {
     key: 'Delete Account',
     path: '/delete-account',
-    title: 'Delete Your Account | ZodiacPluss',
-    description: 'Information about deleting your ZodiacPluss account.',
+    title: 'Request Account Deletion | ZodiacPluss',
+    description:
+      'How to delete your ZodiacPluss or ZodiacPluss Expert account, what is deleted, what we may keep and what happens next.',
     indexable: true,
     breadcrumb: 'Delete Account',
   },
@@ -228,6 +229,7 @@ export const SEO_PAGE_CONFIG: readonly SeoPageConfig[] = [
  * never appear in sitemap.xml.
  */
 export const ROUTE_ALIASES: Readonly<Record<string, string>> = {
+  '/account-delete': '/delete-account',
   '/home': '/',
   '/about': '/about-us',
   '/aboutus': '/about-us',

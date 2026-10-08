@@ -6,7 +6,7 @@ import { writeFile, mkdir } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-const API_BASE_URL = (process.env.VITE_API_BASE_URL || 'https://zp-backend-mm0y.onrender.com').replace(/\/+$/, '')
+const API_BASE_URL = (process.env.VITE_API_BASE_URL || 'https://zp-backend-pn8i.onrender.com').replace(/\/+$/, '')
 const SLUGS = ['privacy', 'terms', 'refund', 'wallet', 'community-guidelines', 'expert-agreement']
 const OUT_FILE = resolve(dirname(fileURLToPath(import.meta.url)), '../src/data/policies/snapshot.json')
 

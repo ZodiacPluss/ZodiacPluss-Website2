@@ -3,6 +3,7 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
+    { "source": "/account-delete", "destination": "/delete-account", "permanent": true },
     { "source": "/home", "destination": "/", "permanent": true },
     { "source": "/about", "destination": "/about-us", "permanent": true },
     { "source": "/aboutus", "destination": "/about-us", "permanent": true },

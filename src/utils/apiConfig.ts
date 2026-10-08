@@ -1,5 +1,5 @@
 // Backend base URL. Override per environment with VITE_API_BASE_URL.
-export const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || 'https://zp-backend-mm0y.onrender.com').replace(
+export const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || 'https://zp-backend-pn8i.onrender.com').replace(
   /\/+$/,
   '',
 )
