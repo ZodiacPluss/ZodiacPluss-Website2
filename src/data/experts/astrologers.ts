@@ -17,31 +17,28 @@ export interface Astrologer {
 
 
 export const astrologers: Astrologer[] = [
-  {
-  id: "astro-032",
-  name: "Yashika Joshi",
+{
+  id: "astro-041",
+  name: "Siya Trivedi",
   field: "Vedic Astrologer",
   tags: [
     "Vedic Astrology",
     "Kundli Analysis",
     "Planetary Analysis",
-    "Yogas & Rajyogas",
-    "Vimshottari Dasha",
-    "Marriage & Relationships",
+    "Love & Relationships",
+    "Marriage Guidance",
     "Career Guidance",
-    "Business Guidance",
-    "Finance Guidance",
-    "Property Guidance",
-    "Education Guidance",
+    "Financial Guidance",
+    "Life Guidance",
   ],
-  experience: 9,
+  experience: 4,
   languages: ["Hindi", "English"],
-  rating: 4.9,
-  consultations: 980,
-  price: 25,
+  rating: 4.8,
+  consultations: 640,
+  price: 20,
   description:
-    "I’m Yashika Joshi, a professional Vedic Astrologer with 9 years of experience in astrology and Kundli analysis. I have studied astrology at Gorakhnath College and have gained strong practical knowledge through continuous learning and client consultations.\n\nI specialize in Kundli analysis, planetary positions, Yogas and Rajyogas, Vimshottari Dasha, marriage and relationships, career, business, finance, property, and education. I provide personalized and easy-to-understand guidance based on each client’s birth chart.",
-  image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791399361/Studio_Portrait_in_Magenta_and_Gold.png",
+    "Vedic Astrology ke kshetra mein mera 4 years ka anubhav hai. Main Kundli aur grahon ki sthiti ke madhyam se love, marriage, career, finance aur life se jude sawalon par guidance deti hoon.\n\nMera vishwas hai ki Kundli sirf bhavishya batane ka madhyam nahi, balki apni life ko behtar samajhne ka ek raasta hai. Aapki Kundli mein chhupe sanketon ko samajhkar, aapko simple aur practical guidance dena hi meri koshish hai.",
+  image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791318024/a-4.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
 },
@@ -69,27 +66,7 @@ export const astrologers: Astrologer[] = [
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
 },
-  {
-  id: "astro-008",
-  name: "Smriti Ji",
-  field: "Astrologer",
-  tags: [
-    "Vedic Astrology",
-    "Birth Chart Analysis",
-    "Personal Guidance",
-    "Life Guidance",
-  ],
-  experience: 7,
-  languages: ["Hindi", "English"],
-  rating: 4.8,
-  consultations: 940,
-  price: 35,
-  description:
-    "I’m Smriti Ji, an astrologer who believes that astrology can help us understand ourselves and the different phases of life with greater clarity. I take a calm and personal approach to every consultation, giving you the space to share what is on your mind.\n\nMy aim is to make astrology simple and easy to understand, so you can look at your situation from a fresh perspective and feel more confident about the path ahead.",
-  image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791308716/Elegant_Teal_Earrings_Portrait.png",
-  isAvailable: true,
-  appLink: "YOUR_APP_LINK",
-},
+
 {
   id: "astro-011",
   name: "Ishani Joshi",
@@ -112,7 +89,29 @@ export const astrologers: Astrologer[] = [
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
 },
-
+{
+  id: "astro-018",
+  name: "Rohini Ji",
+  field: "Jyotish Acharya",
+  tags: [
+    "Jyotish Acharya",
+    "Jyotish Visharada",
+    "Nadi Astrology",
+    "Vaastu",
+    "Horoscope Reading",
+    "Tarot Reading",
+  ],
+  experience: 6,
+  languages: ["Hindi", "English"],
+  rating: 4.9,
+  consultations: 840,
+  price: 26,
+  description:
+    "I’m Rohini Ji, a Jyotish Acharya and Jyotish Visharada with training in Nadi Astrology and Vaastu. I have also completed a Diploma in Horoscope Reading and have studied Tarot Card Reading, giving me exposure to different traditional systems of guidance. My qualifications include certifications from the Indian Council of Astrological Sciences (ICAS).\n\nI enjoy looking at a person’s concerns through a careful study of their chart and the relevant astrological principles. During my consultations, I try to keep things clear and personal, taking time to understand what you are seeking before sharing my observations and guidance.",
+  image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791401005/Friendly_Portrait_on_Sky-Blue_Background_1.png",
+  isAvailable: true,
+  appLink: "YOUR_APP_LINK",
+},
 
 {
   id: "astro-012",
@@ -176,6 +175,27 @@ export const astrologers: Astrologer[] = [
   description:
     "I’m Divya Acharya, and I have 7+ years of experience in Astrology. I offer insightful guidance on love, marriage, career, finance, and other important life-related concerns. I have learned Astrology under the guidance of Acharya Prashant, with a focus on understanding planetary influences and the deeper reasons behind different life situations.\n\nMy approach goes beyond predictions. I aim to help you find clarity, practical guidance, and meaningful solutions to your concerns. I believe your questions deserve clarity and your journey deserves direction.",
   image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791399843/Thoughtful_Astrologer_at_Her_Desk.png",
+  isAvailable: true,
+  appLink: "YOUR_APP_LINK",
+},
+  {
+  id: "astro-008",
+  name: "Smriti Ji",
+  field: "Astrologer",
+  tags: [
+    "Vedic Astrology",
+    "Birth Chart Analysis",
+    "Personal Guidance",
+    "Life Guidance",
+  ],
+  experience: 7,
+  languages: ["Hindi", "English"],
+  rating: 4.8,
+  consultations: 940,
+  price: 35,
+  description:
+    "I’m Smriti Ji, an astrologer who believes that astrology can help us understand ourselves and the different phases of life with greater clarity. I take a calm and personal approach to every consultation, giving you the space to share what is on your mind.\n\nMy aim is to make astrology simple and easy to understand, so you can look at your situation from a fresh perspective and feel more confident about the path ahead.",
+  image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791308716/Elegant_Teal_Earrings_Portrait.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
 },
@@ -390,7 +410,7 @@ export const astrologers: Astrologer[] = [
   price: 39,
   description:
     "I’m Vaidehi Vashisht, an astrologer with a particular interest in Lal Kitab Medical Astrology. I was recognized by Adhyatmik Jyotishi Ekta Manch Foundation with a Certificate of Appreciation for a special contribution to Lal Kitab Medical Astrology in December 2025.\n\nI believe astrology is best approached with patience, observation, and a genuine understanding of the person seeking guidance. In my consultations, I aim to listen carefully to your concerns and share my astrological observations in a simple, thoughtful, and easy-to-understand manner.",
-  image: "/astrologers/vaidehi-vashisht.webp",
+  image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791401005/Professional_Portrait_on_a_Blue_Background_1.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
 },
@@ -459,6 +479,34 @@ export const astrologers: Astrologer[] = [
   description:
     "I’m Ananya Acharya, an astrologer who believes astrology can offer a meaningful perspective when you’re looking for clarity or guidance in life. I aim to keep my consultations simple, comfortable, and easy to understand, while giving proper attention to the questions and concerns you bring to the conversation.\n\nMy approach is personal and thoughtful. I take time to listen carefully to what you are seeking and share astrology-based guidance in a clear and practical manner, so that the insights feel relevant to your situation.",
   image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791399360/Smiling_Indian_Woman_in_Pink_on_Blue.png",
+  isAvailable: true,
+  appLink: "YOUR_APP_LINK",
+},
+  {
+  id: "astro-032",
+  name: "Yashika Joshi",
+  field: "Vedic Astrologer",
+  tags: [
+    "Vedic Astrology",
+    "Kundli Analysis",
+    "Planetary Analysis",
+    "Yogas & Rajyogas",
+    "Vimshottari Dasha",
+    "Marriage & Relationships",
+    "Career Guidance",
+    "Business Guidance",
+    "Finance Guidance",
+    "Property Guidance",
+    "Education Guidance",
+  ],
+  experience: 9,
+  languages: ["Hindi", "English"],
+  rating: 4.9,
+  consultations: 980,
+  price: 25,
+  description:
+    "I’m Yashika Joshi, a professional Vedic Astrologer with 9 years of experience in astrology and Kundli analysis. I have studied astrology at Gorakhnath College and have gained strong practical knowledge through continuous learning and client consultations.\n\nI specialize in Kundli analysis, planetary positions, Yogas and Rajyogas, Vimshottari Dasha, marriage and relationships, career, business, finance, property, and education. I provide personalized and easy-to-understand guidance based on each client’s birth chart.",
+  image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791399361/Studio_Portrait_in_Magenta_and_Gold.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
 },
@@ -612,34 +660,10 @@ export const astrologers: Astrologer[] = [
   price: 25,
   description:
     "I’m Vivek Acharya, an astrologer and Shastri with a strong foundation in traditional Sanskrit studies. I have completed my Shastri examination and Acharya examination from Sampurnanand Sanskrit University, Varanasi, building my understanding through formal study of traditional Indian knowledge.\n\nMy approach to astrology is rooted in learning, careful observation, and respect for traditional practices. During a consultation, I aim to understand your concerns first and then share my observations in a clear and simple manner, so that the guidance remains easy to follow and relevant to your situation.",
-  image: "/astrologers/vivek-acharya.webp",
+  image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791455315/Namaste_in_Mustard_Ikat_Kurta.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
 },
-{
-  id: "astro-018",
-  name: "Rohini Ji",
-  field: "Jyotish Acharya",
-  tags: [
-    "Jyotish Acharya",
-    "Jyotish Visharada",
-    "Nadi Astrology",
-    "Vaastu",
-    "Horoscope Reading",
-    "Tarot Reading",
-  ],
-  experience: 6,
-  languages: ["Hindi", "English"],
-  rating: 4.9,
-  consultations: 840,
-  price: 26,
-  description:
-    "I’m Rohini Ji, a Jyotish Acharya and Jyotish Visharada with training in Nadi Astrology and Vaastu. I have also completed a Diploma in Horoscope Reading and have studied Tarot Card Reading, giving me exposure to different traditional systems of guidance. My qualifications include certifications from the Indian Council of Astrological Sciences (ICAS).\n\nI enjoy looking at a person’s concerns through a careful study of their chart and the relevant astrological principles. During my consultations, I try to keep things clear and personal, taking time to understand what you are seeking before sharing my observations and guidance.",
-  image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791308714/Smiling_Indian_Woman_in_Traditional_Attire.png",
-  isAvailable: true,
-  appLink: "YOUR_APP_LINK",
-},
-
 
 {
   id: "astro-002",
@@ -682,7 +706,7 @@ export const astrologers: Astrologer[] = [
   price: 30,
   description:
     "I’m Ajay Kumar Mishra, a Pandit and Jyotishacharya with a traditional approach to astrology and Jyotish consultation. I believe in studying a person’s chart carefully and understanding the relevant astrological principles before offering guidance.\n\nDuring my consultations, I try to keep the conversation personal and easy to understand. My aim is to listen to your concerns, study the chart thoughtfully, and share my observations in a clear and meaningful way.",
-  image: "/astrologers/ajay-kumar-mishra.webp",
+  image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791401868/Namaste_Portrait_in_Yellow_Kurta.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
 },
@@ -703,7 +727,7 @@ export const astrologers: Astrologer[] = [
   price: 22,
   description:
     "I’m Vedant Acharya, an astrologer associated with ZodiacPluss. I believe astrology can offer a useful perspective when you are looking for guidance or trying to understand a situation from a different point of view.\n\nDuring a consultation, I aim to listen carefully to your concerns and keep the conversation simple and comfortable. My focus is to share astrology-based guidance in a clear and practical manner, so that you can understand the insights being discussed and relate them to your situation.",
-  image: "/astrologers/vedant-acharya.webp",
+  image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791456745/Refined_Studio_Portrait_on_Blue.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
 },
@@ -749,7 +773,7 @@ export const astrologers: Astrologer[] = [
   price: 30,
   description:
     "I’m Arjun Shastri, an astrologer with an academic background in Vedic knowledge and related studies. My studies include Shastri-level Vedic studies along with coursework in Maharishi Yog and Vedic Science, giving me a strong connection with traditional Indian knowledge systems.\n\nI believe astrology is best understood with patience and a clear understanding of the principles behind it. In my consultations, I aim to keep the conversation simple and approachable, while offering guidance based on the information and questions you bring to the session.",
-  image: "/astrologers/arjun-shastri.webp",
+  image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791454573/Ceremonial_Indian_Portrait_in_Blue.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
 },
@@ -862,7 +886,7 @@ export const astrologers: Astrologer[] = [
   price: 26,
   description:
     "I’m Uday Vashisht, an astrologer associated with ZodiacPluss. I believe astrology can provide a meaningful perspective when you are looking for clarity in different situations of life. My aim is to keep consultations simple, comfortable, and focused on understanding the questions that matter most to you.\n\nI take a thoughtful approach to every consultation, listening carefully to your concerns and discussing the astrological perspective in a clear and easy-to-understand manner. My goal is to help you gain a better understanding of your situation and find greater clarity.",
-  image: "/astrologers/uday-vashisht.webp",
+  image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791455314/Refined_South_Asian_Professional_Portrait.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
 },

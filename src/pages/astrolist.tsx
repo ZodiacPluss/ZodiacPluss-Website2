@@ -8,7 +8,53 @@ interface AstrolistProps {
 
 const PAGE_SIZE = 15
 const HERO_IMAGE =
-  'https://res.cloudinary.com/o6laufzn/image/upload/v1791305809/Celestial_Altar_Still_Life_in_Warm_Neutrals.png'
+  'https://res.cloudinary.com/h4x5ehyi/image/upload/v1791453873/Serene_Zodiac_Wellness_Still_Life.png'
+const RECOMMENDED_ASTROLOGER_ORDER = [
+  'astro-041',
+  'astro-014',
+  'astro-011',
+  'astro-028',
+  'astro-012',
+  'astro-038',
+  'astro-002',
+  'astro-034',
+  'astro-032',
+  'astro-001',
+  'astro-020',
+  'astro-019',
+  'astro-008',
+  'astro-0010',
+  'astro-033',
+  'astro-007',
+  'astro-021',
+  'astro-036',
+  'astro-040',
+  'astro-030',
+  'astro-018',
+  'astro-017',
+  'astro-016',
+  'astro-005',
+  'astro-006',
+  'astro-015',
+  'astro-003',
+  'astro-013',
+  'astro-037',
+  'astro-035',
+  'astro-004',
+  'astro-022',
+  'astro-023',
+  'astro-027',
+  'astro-024',
+  'astro-029',
+  'astro-026',
+  'astro-025',
+  'astro-009',
+]
+const recommendedOrder = new Map(
+  RECOMMENDED_ASTROLOGER_ORDER.map((id, index) => [id, index]),
+)
+const selectClass =
+  'min-w-0 rounded-full border px-4 py-3 text-sm outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20'
 
 const categories = [
   'Vedic Astrology',
@@ -19,9 +65,6 @@ const categories = [
   'Lal Kitab',
   'Love & Relationships',
 ]
-
-const selectClass =
-  'min-w-0 rounded-full border px-4 py-3 text-sm outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20'
 
 function astrologerMatchesCategory(astrologer: Astrologer, category: string): boolean {
   if (category === 'All Experts') return true
@@ -89,7 +132,13 @@ export default function Astrolist({ onNavigate, dark = false }: AstrolistProps) 
     } else if (sort === 'experience-low') {
       filtered.sort((a, b) => a.experience - b.experience)
     } else {
-      filtered.sort((a, b) => Number(b.isAvailable) - Number(a.isAvailable))
+      filtered.sort(
+        (a, b) =>
+          (recommendedOrder.get(a.id) ?? Number.MAX_SAFE_INTEGER) -
+            (recommendedOrder.get(b.id) ?? Number.MAX_SAFE_INTEGER) ||
+          b.experience - a.experience ||
+          b.rating - a.rating,
+      )
     }
 
     return filtered
@@ -254,7 +303,6 @@ export default function Astrolist({ onNavigate, dark = false }: AstrolistProps) 
           </div>
         )}
 
-        {/*
         <div className="mb-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-[minmax(250px,1fr)_repeat(3,minmax(130px,155px))]">
           <label className="relative">
             <span className="sr-only">Search astrologers</span>
@@ -325,13 +373,12 @@ export default function Astrolist({ onNavigate, dark = false }: AstrolistProps) 
             </select>
           </label>
         </div>
-        */}
 
         <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
           <p className="text-xs" style={{ color: muted }} aria-live="polite">
             Showing {Math.min(visibleCount, filteredAstrologers.length)} of {filteredAstrologers.length} astrologers
           </p>
-          {/*
+
           <label className="flex items-center gap-2 text-xs" style={{ color: muted }}>
             Sort by
             <select
@@ -345,7 +392,6 @@ export default function Astrolist({ onNavigate, dark = false }: AstrolistProps) 
               <option value="experience-low">Least experience</option>
             </select>
           </label>
-          */}
         </div>
 
         {filteredAstrologers.length ? (
