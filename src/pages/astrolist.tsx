@@ -47,7 +47,7 @@ const featuredOrder = new Map(
 const selectClass =
   "h-12 min-w-0 appearance-none rounded-full border px-4 pr-11 text-sm outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20"
 
-const categories: { label: string icon: LucideIcon }[] = [
+const categories: { label: string; icon: LucideIcon }[] = [
   { label: "Vedic Astrology", icon: Flower2 },
 
   { label: "Tarot Reading", icon: PanelsTopLeft },
@@ -649,7 +649,7 @@ export default function Astrolist({
             className="my-auto grid max-h-[calc(100dvh-1.5rem)] w-full max-w-5xl grid-cols-1 overflow-y-auto rounded-[1.75rem] border shadow-2xl sm:max-h-[calc(100dvh-3rem)] md:grid-cols-[minmax(250px,0.38fr)_minmax(0,0.62fr)]"
             style={{ background: surface, color: text, borderColor: border }}
           >
-            <div className="relative min-h-[300px] overflow-hidden bg-slate-100 md:min-h-[490px]">
+            <div className="relative hidden min-h-[300px] overflow-hidden bg-slate-100 md:block md:min-h-[490px]">
               <img
                 src={selectedAstrologer.image}
                 alt={selectedAstrologer.name}
@@ -658,7 +658,7 @@ export default function Astrolist({
                   event.currentTarget.style.display = "none"
                 }}
               />
-              <div className="absolute inset-x-4 bottom-4 grid grid-cols-3 divide-x divide-slate-200/80 rounded-2xl border border-white/70 bg-white/90 px-2 py-3 text-center shadow-lg backdrop-blur-sm sm:inset-x-6 sm:bottom-6 sm:px-3 sm:py-4">
+              <div className="absolute inset-x-4 bottom-4 grid grid-cols-1 rounded-2xl border border-white/70 bg-white/90 px-2 py-3 text-center shadow-lg backdrop-blur-sm sm:inset-x-6 sm:bottom-6 sm:px-3 sm:py-4">
                 <div className="px-1">
                   <BriefcaseBusiness
                     className="mx-auto mb-1.5 text-[#17234f]"
@@ -670,32 +670,6 @@ export default function Astrolist({
                   </p>
                   <p className="text-[10px] leading-4 text-slate-600 sm:text-xs">
                     Years Experience
-                  </p>
-                </div>
-                <div className="px-1">
-                  <UsersRound
-                    className="mx-auto mb-1.5 text-[#17234f]"
-                    size={18}
-                    aria-hidden="true"
-                  />
-                  <p className="text-sm font-bold text-[#08715f]">
-                    {selectedAstrologer.consultations}+
-                  </p>
-                  <p className="text-[10px] leading-4 text-slate-600 sm:text-xs">
-                    Consultations
-                  </p>
-                </div>
-                <div className="px-1">
-                  <Star
-                    className="mx-auto mb-1.5 text-[#17234f]"
-                    size={18}
-                    aria-hidden="true"
-                  />
-                  <p className="text-sm font-bold text-[#08715f]">
-                    {selectedAstrologer.rating.toFixed(1)}
-                  </p>
-                  <p className="text-[10px] leading-4 text-slate-600 sm:text-xs">
-                    Rating
                   </p>
                 </div>
               </div>
