@@ -24,7 +24,7 @@ export default function Navbar({ currentPage, onNavigate, dark = false, onToggle
   }, [])
 
   // Identify pages with dark background hero sections where text needs to be white when transparent
-  const lightHeroPages = ["Book", "Blog", "Career", "Not Found"]
+  const lightHeroPages = ["Astrologers", "Book", "Blog", "Career", "Not Found"]
   const isBannerDark = dark || !lightHeroPages.includes(currentPage)
   const isHeroUnscrolled = !scrolled && (currentPage === "Home" || isBannerDark)
   const compact = scrolled
