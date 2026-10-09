@@ -690,7 +690,7 @@ export const astrologers: Astrologer[] = [
 
 {
   id: "astro-019",
-  name: "Anirudh",
+  name: "Anirudh ji",
   field: "Jyotishacharya",
   tags: [
     "Traditional Astrology",
