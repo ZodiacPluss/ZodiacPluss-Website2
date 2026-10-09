@@ -29,8 +29,8 @@ export default function DeletionInformation() {
   return (
     <section aria-label="About account deletion" className="mx-auto w-full max-w-[1320px] px-5 sm:px-8">
       <p className="border-t border-[#e6eef2] pt-6 text-[15px] leading-relaxed text-[#3b4a5c] lg:pt-5">
-        This page explains how to delete your account in the ZodiacPlus and ZodiacPlus Expert apps (operated by
-        ZodiacPlus Services Private Limited).
+        This page explains how to delete your account in the ZodiacPluss and ZodiacPluss Expert apps (operated by
+        ZodiacPluss Services Private Limited).
       </p>
 
       <div className="mt-6 grid gap-5 lg:grid-cols-2 lg:gap-6">

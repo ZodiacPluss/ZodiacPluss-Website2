@@ -1,7 +1,13 @@
+import { useEffect, useState } from 'react'
 import AccountDeletionHeader from '@/components/account-deletion/AccountDeletionHeader'
 import AccountDeletionFooter from '@/components/account-deletion/AccountDeletionFooter'
 import DeletionRequestForm from '@/components/account-deletion/DeletionRequestForm'
+import FlowHero from '@/components/account-deletion/FlowHero'
+import OtpVerification from '@/components/account-deletion/OtpVerification'
+import DeletionConfirmation from '@/components/account-deletion/DeletionConfirmation'
+import DeletionSuccess from '@/components/account-deletion/DeletionSuccess'
 import DeletionInformation from '@/components/account-deletion/DeletionInformation'
+import type { AccountType } from '@/utils/accountDeletionApi'
 import { SparkleIcon } from '@/components/account-deletion/icons'
 
 interface AccountDeletionPageProps {
@@ -34,7 +40,22 @@ function HeroBackdrop() {
   )
 }
 
+type Step = 'details' | 'otp' | 'confirm' | 'done'
+
+/**
+ * Flow state lives in memory only. A refresh restarts at 'details', and
+ * 'confirm' is reachable solely through a successful OTP check, so the
+ * confirmation screen can't be opened directly.
+ */
 export default function AccountDeletionPage({ onNavigate }: AccountDeletionPageProps) {
+  const [step, setStep] = useState<Step>('details')
+  const [accountType, setAccountType] = useState<AccountType>('user')
+  const [phone, setPhone] = useState('')
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [step])
+
   return (
     <div className="flex min-h-screen flex-col bg-[#f7fbfc] font-['Inter',sans-serif] text-[#10213a] antialiased">
       <AccountDeletionHeader onNavigate={onNavigate} />
@@ -42,32 +63,80 @@ export default function AccountDeletionPage({ onNavigate }: AccountDeletionPageP
       <main className="flex-1">
         <section className="relative">
           <HeroBackdrop />
-          <div className="relative mx-auto w-full max-w-[1320px] px-5 pb-10 pt-12 sm:px-8 sm:pb-12 sm:pt-14 lg:pt-12">
-            <div className="mx-auto max-w-[860px] text-left lg:text-center">
-              <p className="text-[13px] font-medium uppercase tracking-[0.3em] text-[#4d5b6b]">Account &amp; Privacy</p>
-              <h1 className="mt-4 font-['Playfair_Display',serif] text-[44px] font-bold leading-[1.12] tracking-[-0.01em] sm:text-[56px] lg:mt-3 lg:text-[58px] lg:leading-[1.1]">
-                Request <br className="lg:hidden" />
-                <span
-                  className="bg-clip-text text-transparent"
-                  style={{ backgroundImage: 'linear-gradient(90deg, #1a73d9 0%, #2fb8a8 55%, #5fcf7a 100%)' }}
-                >
-                  Account Deletion
-                </span>
-              </h1>
-              <p className="mt-5 max-w-[34rem] text-[17px] leading-[1.6] text-[#3b4a5c] sm:text-[18px] lg:mx-auto lg:max-w-none lg:text-[17px]">
-                Tell us who you are and enter your registered phone number to begin the account deletion process.
-              </p>
-            </div>
+          <div className="relative mx-auto w-full max-w-[1320px] px-5 pb-12 pt-12 sm:px-8 sm:pb-16 sm:pt-14 lg:pt-12">
+            {step === 'details' && (
+              <>
+                <FlowHero
+                  align="center"
+                  title="Request"
+                  accent="Account Deletion"
+                  description="Tell us who you are and enter your registered phone number to begin the account deletion process."
+                />
+                <div className="mt-8 lg:mt-7">
+                  <DeletionRequestForm
+                    initialType={accountType}
+                    initialPhone={phone}
+                    onOtpSent={(type, number) => {
+                      setAccountType(type)
+                      setPhone(number)
+                      setStep('otp')
+                    }}
+                  />
+                </div>
+              </>
+            )}
 
-            <div className="mt-8 lg:mt-7">
-              <DeletionRequestForm />
-            </div>
+            {step === 'otp' && (
+              <>
+                <FlowHero
+                  title="Verify Your"
+                  accent="Identity"
+                  description="We have sent a 6-digit OTP to your registered phone number. Please enter the code below to continue with your account deletion request."
+                />
+                <div className="mt-8 lg:mt-10">
+                  <OtpVerification accountType={accountType} phone={phone} onVerified={() => setStep('confirm')} />
+                </div>
+              </>
+            )}
+
+            {step === 'confirm' && (
+              <>
+                <FlowHero
+                  title="Confirm Account"
+                  accent="Deletion"
+                  description="Please review the information below before submitting your request."
+                />
+                <div className="mt-8">
+                  <DeletionConfirmation
+                    accountType={accountType}
+                    phone={phone}
+                    onBack={() => setStep('otp')}
+                    onSubmitted={() => setStep('done')}
+                  />
+                </div>
+              </>
+            )}
+
+            {step === 'done' && (
+              <>
+                <FlowHero
+                  title="Request"
+                  accent="Submitted"
+                  description="We have received your account deletion request."
+                />
+                <div className="mt-8">
+                  <DeletionSuccess accountType={accountType} onHome={() => onNavigate?.('Home')} />
+                </div>
+              </>
+            )}
           </div>
         </section>
 
-        <div className="pb-10 pt-4 lg:pb-8">
-          <DeletionInformation />
-        </div>
+        {step === 'details' && (
+          <div className="pb-10 pt-4 lg:pb-8">
+            <DeletionInformation />
+          </div>
+        )}
       </main>
 
       <AccountDeletionFooter onNavigate={onNavigate} />

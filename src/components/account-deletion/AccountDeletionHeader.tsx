@@ -41,7 +41,7 @@ export default function AccountDeletionHeader({ onNavigate }: AccountDeletionHea
       <div className="mx-auto flex h-[72px] w-full max-w-[1320px] items-center justify-between gap-4 px-5 sm:h-[84px] sm:px-8">
         <a href="/" onClick={go('Home')} className="flex items-center gap-2.5 no-underline" aria-label="ZodiacPluss home">
           <img src={LOGO_URL} alt="" width={44} height={44} className="h-10 w-10 object-contain sm:h-11 sm:w-11" />
-          <span className="text-[22px] font-bold tracking-tight text-[#10213a] sm:text-[24px]">ZodiacPlus</span>
+          <span className="text-[22px] font-bold tracking-tight text-[#10213a] sm:text-[24px]">ZodiacPluss</span>
         </a>
 
         <nav aria-label="Main" className="hidden items-center gap-9 lg:flex">

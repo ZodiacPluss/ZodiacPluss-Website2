@@ -134,3 +134,15 @@ export const SparkleIcon = (p: IconProps) => (
     <path d="M24 2c1.6 12.4 9.6 20.4 22 22-12.4 1.6-20.4 9.6-22 22C22.4 33.6 14.4 25.6 2 24 14.4 22.4 22.4 14.4 24 2z" fill="currentColor" />
   </svg>
 )
+
+export const TrashIcon = (p: IconProps) => (
+  <svg {...base} {...p}>
+    <path d="M4 7h16M9.5 7V4.8c0-.4.4-.8.8-.8h3.4c.4 0 .8.4.8.8V7M6.5 7l.8 12.2c.1.5.5.8 1 .8h7.4c.5 0 .9-.3 1-.8L17.5 7M10 11v5.5M14 11v5.5" />
+  </svg>
+)
+
+export const ArrowLeftIcon = (p: IconProps) => (
+  <svg {...base} strokeWidth={1.9} {...p}>
+    <path d="M19.5 12h-15M10.5 6l-6 6 6 6" />
+  </svg>
+)

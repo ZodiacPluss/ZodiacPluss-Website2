@@ -31,9 +31,9 @@ export default function AccountDeletionFooter({ onNavigate }: AccountDeletionFoo
     <footer className="relative z-10 border-t border-[#e6eef2] bg-white/80">
       <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-6 px-5 py-6 sm:px-8 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-          <span className="text-[22px] font-bold tracking-tight text-[#10213a]">ZodiacPlus</span>
+          <span className="text-[22px] font-bold tracking-tight text-[#10213a]">ZodiacPluss</span>
           <div className="text-[13px] leading-snug text-[#5b6877]">
-            <p className="font-semibold text-[#10213a]">ZodiacPlus Services Private Limited</p>
+            <p className="font-semibold text-[#10213a]">ZodiacPluss Services Private Limited</p>
             <p>Guidance&nbsp; • &nbsp;Clarity&nbsp; • &nbsp;A Better You</p>
           </div>
         </div>
