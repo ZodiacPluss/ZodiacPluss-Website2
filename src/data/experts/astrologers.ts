@@ -19,7 +19,7 @@ export interface Astrologer {
 export const astrologers: Astrologer[] = [
 {
   id: "astro-041",
-  name: "Siya Trivedi",
+  name: "Roshni",
   field: "Vedic Astrologer",
   tags: [
     "Vedic Astrology",
@@ -44,7 +44,7 @@ export const astrologers: Astrologer[] = [
 },
 {
   id: "astro-014",
-  name: "Anaya Joshi",
+  name: "Sparsh Chaurasiya",
   field: "Astrologer",
   tags: [
     "KP Astrology",
@@ -115,7 +115,7 @@ export const astrologers: Astrologer[] = [
 
 {
   id: "astro-012",
-  name: "Prinidhi",
+  name: "Priya ji",
   field: "Astrologer",
   tags: [
     "Vedic Astrology",
@@ -249,7 +249,7 @@ export const astrologers: Astrologer[] = [
 },
 {
   id: "astro-005",
-  name: "Nikitha Vandana",
+  name: "Niharika ji",
   field: "Astrologer",
   tags: [
     "Vedic Astrology",
@@ -293,7 +293,7 @@ export const astrologers: Astrologer[] = [
 },
 {
   id: "astro-021",
-  name: "Maithreyi Sharma",
+  name: "Maithreyi ji",
   field: "Vedic Astrologer",
   tags: [
     "Vedic Astrology",
@@ -557,7 +557,7 @@ export const astrologers: Astrologer[] = [
 },
 {
   id: "astro-035",
-  name: "Vani Joshi",
+  name: "Shriji",
   field: "Astrologer",
   tags: [
     "Astrology",
@@ -667,7 +667,7 @@ export const astrologers: Astrologer[] = [
 
 {
   id: "astro-002",
-  name: "Manoj Dwivedi",
+  name: "Manish ji",
   field: "Vedic Astrologer",
   tags: [
     "Vedic Astrology",
@@ -690,7 +690,7 @@ export const astrologers: Astrologer[] = [
 
 {
   id: "astro-019",
-  name: "Ajay Kumar Mishra",
+  name: "Anirudh",
   field: "Jyotishacharya",
   tags: [
     "Traditional Astrology",
@@ -705,7 +705,7 @@ export const astrologers: Astrologer[] = [
   consultations: 730,
   price: 30,
   description:
-    "I’m Ajay Kumar Mishra, a Pandit and Jyotishacharya with a traditional approach to astrology and Jyotish consultation. I believe in studying a person’s chart carefully and understanding the relevant astrological principles before offering guidance.\n\nDuring my consultations, I try to keep the conversation personal and easy to understand. My aim is to listen to your concerns, study the chart thoughtfully, and share my observations in a clear and meaningful way.",
+    "I’m Anirudh, a Pandit and Jyotishacharya with a traditional approach to astrology and Jyotish consultation. I believe in studying a person’s chart carefully and understanding the relevant astrological principles before offering guidance.\n\nDuring my consultations, I try to keep the conversation personal and easy to understand. My aim is to listen to your concerns, study the chart thoughtfully, and share my observations in a clear and meaningful way.",
   image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791401868/Namaste_Portrait_in_Yellow_Kurta.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",

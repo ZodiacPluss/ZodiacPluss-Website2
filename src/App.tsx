@@ -28,6 +28,7 @@ import { useSEO } from '@/hooks/useSEO'
 import { Analytics } from '@vercel/analytics/react'
 import { setSplashActive, refreshMotion } from '@/components/motion'
 import { featuredBlog, getBlogByPath } from '@/data/blogs'
+import Astrolist from './pages/astrolist'
 
 const pageMap: Record<string, PageKey> = {
   'About': 'About Us',
@@ -123,7 +124,7 @@ export default function App() {
       case 'Home': return <HomePage onNavigate={handleNavigate} dark={dark} />
       case 'About Us': return <AboutUsPage onNavigate={handleNavigate} dark={dark} />
       case 'Services': return <ServicesPage onNavigate={handleNavigate} dark={dark} />
-      case 'Astrologers': return <ComingSoonPage onNavigate={handleNavigate} dark={dark} />
+      case 'Astrologers': return <Astrolist onNavigate={handleNavigate} dark={dark} />
       case 'Experts': return <ExpertsPage onNavigate={handleNavigate} dark={dark} />
       case 'Book': return <BookSessionPage onNavigate={handleNavigate} dark={dark} />
       case 'Career': return <CareerPage onNavigate={handleNavigate} dark={dark} />
