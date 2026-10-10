@@ -37,7 +37,7 @@ export const astrologers: Astrologer[] = [
   consultations: 640,
   price: 20,
   description:
-    "Vedic Astrology ke kshetra mein mera 4 years ka anubhav hai. Main Kundli aur grahon ki sthiti ke madhyam se love, marriage, career, finance aur life se jude sawalon par guidance deti hoon.\n\nMera vishwas hai ki Kundli sirf bhavishya batane ka madhyam nahi, balki apni life ko behtar samajhne ka ek raasta hai. Aapki Kundli mein chhupe sanketon ko samajhkar, aapko simple aur practical guidance dena hi meri koshish hai.",
+    "Vedic Astrology ke kshetra mein mera 8 years ka anubhav hai. Main Kundli aur grahon ki sthiti ke madhyam se love, marriage, career, finance aur life se jude sawalon par guidance deti hoon.\n\nMera vishwas hai ki Kundli sirf bhavishya batane ka madhyam nahi, balki apni life ko behtar samajhne ka ek raasta hai. Aapki Kundli mein chhupe sanketon ko samajhkar, aapko simple aur practical guidance dena hi meri koshish hai.",
   image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791318024/a-4.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
@@ -84,7 +84,7 @@ export const astrologers: Astrologer[] = [
   consultations: 750,
   price: 26,
   description:
-    "Hello, I’m Ishani Joshi, a professional astrologer with 5 years of experience helping people find clarity during different phases of life. I specialize in Vedic Astrology and KP (Krishnamurti Paddhati) Astrology, with a focus on understanding the individual questions and concerns that bring people to a consultation.\n\nMy approach combines traditional astrological knowledge with practical guidance, helping clients explore areas such as career, relationships, and personal growth. I aim to keep my consultations simple, thoughtful, and easy to understand.",
+    "Hello, I’m Ishani Joshi, a professional astrologer with 8 years of experience helping people find clarity during different phases of life. I specialize in Vedic Astrology and KP (Krishnamurti Paddhati) Astrology, with a focus on understanding the individual questions and concerns that bring people to a consultation.\n\nMy approach combines traditional astrological knowledge with practical guidance, helping clients explore areas such as career, relationships, and personal growth. I aim to keep my consultations simple, thoughtful, and easy to understand.",
   image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791318027/a-3.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
@@ -172,7 +172,7 @@ export const astrologers: Astrologer[] = [
   consultations: 920,
   price: 25,
   description:
-    "I’m Divya Acharya, and I have 7+ years of experience in Astrology. I offer insightful guidance on love, marriage, career, finance, and other important life-related concerns. I have learned Astrology under the guidance of Acharya Prashant, with a focus on understanding planetary influences and the deeper reasons behind different life situations.\n\nMy approach goes beyond predictions. I aim to help you find clarity, practical guidance, and meaningful solutions to your concerns. I believe your questions deserve clarity and your journey deserves direction.",
+    "I’m Divya Acharya, and I have 11 years of experience in Astrology. I offer insightful guidance on love, marriage, career, finance, and other important life-related concerns. I have learned Astrology under the guidance of Acharya Prashant, with a focus on understanding planetary influences and the deeper reasons behind different life situations.\n\nMy approach goes beyond predictions. I aim to help you find clarity, practical guidance, and meaningful solutions to your concerns. I believe your questions deserve clarity and your journey deserves direction.",
   image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791399843/Thoughtful_Astrologer_at_Her_Desk.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
@@ -211,7 +211,7 @@ export const astrologers: Astrologer[] = [
     "Personal Guidance",
   ],
   experience: 25,
-  languages: ["Hindi", "English"],
+  languages: ["Hindi", "English", "Bengali"],
   rating: 4.8,
   consultations: 520,
   price: 25,
@@ -241,7 +241,7 @@ export const astrologers: Astrologer[] = [
   consultations: 460,
   price: 20,
   description:
-    "I’m Sanskriti Acharya, a trained Tarot Reader, Vedic Astrologer, Numerologist, and Palmist with 2 years of experience. I have studied Vedic Astrology, Palmistry, and Tarot at the Academy of Vedic Vidya, and Numerology from Skill Astro.\n\nI provide guidance on love, relationships, career, and important life decisions through Vedic Astrology, Tarot, Numerology, and Palmistry. My aim is to help you gain greater clarity and confidence through thoughtful and meaningful spiritual guidance.",
+    "I’m Sanskriti Acharya, a trained Tarot Reader, Vedic Astrologer, Numerologist, and Palmist with 9 years of experience. I have studied Vedic Astrology, Palmistry, and Tarot at the Academy of Vedic Vidya, and Numerology from Skill Astro.\n\nI provide guidance on love, relationships, career, and important life decisions through Vedic Astrology, Tarot, Numerology, and Palmistry. My aim is to help you gain greater clarity and confidence through thoughtful and meaningful spiritual guidance.",
   image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791399842/Elegant_Indian_Portrait_on_Blue.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
@@ -378,7 +378,7 @@ export const astrologers: Astrologer[] = [
   consultations: 680,
   price: 25,
   description:
-    "My name is Aarohi Shastri, and I have 5 years of experience in astrology. I have good knowledge of Vedic Astrology, KP Astrology, Numerology, Bhrigu Nandi Nadi, Palmistry, and Vastu Shastra. I have completed my courses through the Indian Council of Astrological Sciences, which has helped me build a strong foundation across different areas of astrology.\n\nI take a thoughtful approach to every consultation, taking time to understand the questions and concerns that matter to you. My aim is to provide clear, practical, and easy-to-understand guidance based on the methods I have studied.",
+    "My name is Aarohi Shastri, and I have 7 years of experience in astrology. I have good knowledge of Vedic Astrology, KP Astrology, Numerology, Bhrigu Nandi Nadi, Palmistry, and Vastu Shastra. I have completed my courses through the Indian Council of Astrological Sciences, which has helped me build a strong foundation across different areas of astrology.\n\nI take a thoughtful approach to every consultation, taking time to understand the questions and concerns that matter to you. My aim is to provide clear, practical, and easy-to-understand guidance based on the methods I have studied.",
   image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791400125/Polished_Portrait_of_an_Indian_Woman_1.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
@@ -407,7 +407,7 @@ export const astrologers: Astrologer[] = [
   consultations: 760,
   price: 20,
   description:
-    "I’m Aarya Shastri, a professional Vedic Astrologer with 7 years of experience in astrology and Kundli analysis. I studied astrology at Gorakhnath College and have developed strong practical knowledge through continuous study and client consultations.\n\nMy areas of expertise include Kundli analysis, planetary positions, houses, Yogas and Rajyogas, Vimshottari Dasha, marriage and relationships, career and job, business, finance, property, and education. I believe every Kundli is unique, so I provide personalized guidance based on the individual’s birth chart. My approach is to explain astrological insights in simple and clear language so that clients can easily understand their situation and receive meaningful guidance.",
+    "I’m Aarya Shastri, a professional Vedic Astrologer with 9 years of experience in astrology and Kundli analysis. I studied astrology at Gorakhnath College and have developed strong practical knowledge through continuous study and client consultations.\n\nMy areas of expertise include Kundli analysis, planetary positions, houses, Yogas and Rajyogas, Vimshottari Dasha, marriage and relationships, career and job, business, finance, property, and education. I believe every Kundli is unique, so I provide personalized guidance based on the individual’s birth chart. My approach is to explain astrological insights in simple and clear language so that clients can easily understand their situation and receive meaningful guidance.",
   image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791399153/Studio_Portrait_with_Blue_Jhumka_Earrings.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
@@ -476,7 +476,7 @@ export const astrologers: Astrologer[] = [
   consultations: 470,
   price: 20,
   description:
-    "I’m Vedika Acharya, a Tarot Reader, Numerologist, and Palmistry Expert with 2 years of experience. I provide spiritual guidance and intuitive insights to help you understand different aspects of your life, including career, business, love and relationships, marriage, family matters, and personal growth.\n\nI am a devoted worshipper of Lord Shiva and follow spiritual practices that help me connect with divine guidance and intuitive wisdom. My approach combines Tarot wisdom, Numerology, Palmistry, and spiritual guidance to help you gain clarity, confidence, and the right direction in your life journey.",
+    "I’m Vedika Acharya, a Tarot Reader, Numerologist, and Palmistry Expert with 7 years of experience. I provide spiritual guidance and intuitive insights to help you understand different aspects of your life, including career, business, love and relationships, marriage, family matters, and personal growth.\n\nI am a devoted worshipper of Lord Shiva and follow spiritual practices that help me connect with divine guidance and intuitive wisdom. My approach combines Tarot wisdom, Numerology, Palmistry, and spiritual guidance to help you gain clarity, confidence, and the right direction in your life journey.",
   image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791399361/Elegant_Indian_Sari_Portrait.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
@@ -541,7 +541,7 @@ export const astrologers: Astrologer[] = [
   consultations: 580,
   price: 30,
   description:
-    "I’m Rashi Acharya, and I enjoy helping people through Numerology and my intuition. I feel a deep spiritual connection with Lord Shiva, and my faith has been an important part of my journey. I have 4 years of experience in Numerology, including 1 year of online consultations. I have also studied numerous books on Numerology and learned valuable lessons from my Gurus, whose guidance and blessings continue to inspire my practice.\n\nI aim to help people understand their situations through numerological insights and offer simple, practical remedies that are easy to follow. My approach is personal and thoughtful, with a focus on helping you find greater clarity and direction.",
+    "I’m Rashi Acharya, and I enjoy helping people through Numerology and my intuition. I feel a deep spiritual connection with Lord Shiva, and my faith has been an important part of my journey. I have 9 years of experience in Numerology, including 1 year of online consultations. I have also studied numerous books on Numerology and learned valuable lessons from my Gurus, whose guidance and blessings continue to inspire my practice.\n\nI aim to help people understand their situations through numerological insights and offer simple, practical remedies that are easy to follow. My approach is personal and thoughtful, with a focus on helping you find greater clarity and direction.",
   image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791545214/Elegant_Floral_Portrait_on_Blue.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
@@ -569,7 +569,7 @@ export const astrologers: Astrologer[] = [
   consultations: 980,
   price: 25,
   description:
-    "I’m Yashika Joshi, a professional Vedic Astrologer with 9 years of experience in astrology and Kundli analysis. I have studied astrology at Gorakhnath College and have gained strong practical knowledge through continuous learning and client consultations.\n\nI specialize in Kundli analysis, planetary positions, Yogas and Rajyogas, Vimshottari Dasha, marriage and relationships, career, business, finance, property, and education. I provide personalized and easy-to-understand guidance based on each client’s birth chart.",
+    "I’m Yashika Joshi, a professional Vedic Astrologer with 11 years of experience in astrology and Kundli analysis. I have studied astrology at Gorakhnath College and have gained strong practical knowledge through continuous learning and client consultations.\n\nI specialize in Kundli analysis, planetary positions, Yogas and Rajyogas, Vimshottari Dasha, marriage and relationships, career, business, finance, property, and education. I provide personalized and easy-to-understand guidance based on each client’s birth chart.",
   image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791399361/Studio_Portrait_in_Magenta_and_Gold.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
@@ -598,7 +598,7 @@ export const astrologers: Astrologer[] = [
   consultations: 950,
   price: 27,
   description:
-    "I have been practising astrology for over 10 years, helping people explore their concerns through Vedic Astrology, Vastu Shastra, Palmistry, Numerology, KP Astrology, Prashna Kundli, and birth chart analysis.\n\nI offer astrological guidance on relationships, career, business, jobs, family matters, and other important areas of life. My approach is to understand your concerns and share insights in a simple and practical way, helping you look at your situation with greater clarity. Connect with me to discuss your questions and explore the guidance astrology can offer. Radhe Radhe!",
+    "I have been practising astrology for 15 years, helping people explore their concerns through Vedic Astrology, Vastu Shastra, Palmistry, Numerology, KP Astrology, Prashna Kundli, and birth chart analysis.\n\nI offer astrological guidance on relationships, career, business, jobs, family matters, and other important areas of life. My approach is to understand your concerns and share insights in a simple and practical way, helping you look at your situation with greater clarity. Connect with me to discuss your questions and explore the guidance astrology can offer. Radhe Radhe!",
   image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791540898/Traditional_Indian_Portrait_on_Blue_Background_1.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
@@ -645,7 +645,7 @@ export const astrologers: Astrologer[] = [
   consultations: 720,
   price: 30,
   description:
-    "I’m Kavya Joshi, and I have been associated with astrology and the spiritual field for the past 7 years. Over the years, I have studied under experienced teachers and institutions and completed various courses in astrology, spiritual practices, and healing.\n\nMy areas of study and practice include Vedic Astrology, KP Astrology, Tarot, Numerology, Palmistry, and Reiki Healing. I believe in continuously learning and improving my knowledge. My aim is to use my experience and understanding to provide simple, practical, and meaningful guidance to people.",
+    "I’m Kavya Joshi, and I have been associated with astrology and the spiritual field for the past 12 years. Over the years, I have studied under experienced teachers and institutions and completed various courses in astrology, spiritual practices, and healing.\n\nMy areas of study and practice include Vedic Astrology, KP Astrology, Tarot, Numerology, Palmistry, and Reiki Healing. I believe in continuously learning and improving my knowledge. My aim is to use my experience and understanding to provide simple, practical, and meaningful guidance to people.",
   image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791542869/Traditional_Indian_Saree_Portrait.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
@@ -714,7 +714,7 @@ export const astrologers: Astrologer[] = [
   price: 25,
   description:
     "I’m Dhru Sharma, a Jyotish Ratnam and astrologer with formal training in Vedic Astrology. I completed an Astrology Course through Nakshatra Sewa Samiti and was awarded the title of Jyotish Ratnam with Grade A for my performance in the course.\n\nI approach astrology with respect for traditional knowledge and careful study of the birth chart. During consultations, I aim to understand the concerns you bring and explain my observations in a clear, simple, and practical manner, so you can better understand the astrological perspective relevant to your situation.",
-  image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791399361/Studio_Portrait_of_Indian_Man.png",
+  image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791641939/Calm_Studio_Portrait_on_Sky_Blue.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
 },
@@ -736,7 +736,7 @@ export const astrologers: Astrologer[] = [
     rating: 4.9,
     consultations: 0,
     description:
-    "Raghav Shastri is a Vedic Astrologer with over 7 years of study and experience in Jaimini and Parashari Jyotish, along with Palmistry. He has been guiding clients on questions related to career, relationships, personal growth, and other important areas of life.\n\nHis approach is detailed yet easy to understand. Alongside his practical experience, he continues to study and research predictive astrology, using traditional methods and individual birth charts to provide thoughtful and practical guidance.",
+    "Raghav Shastri is a Vedic Astrologer with 7 years of study and experience in Jaimini and Parashari Jyotish, along with Palmistry. He has been guiding clients on questions related to career, relationships, personal growth, and other important areas of life.\n\nHis approach is detailed yet easy to understand. Alongside his practical experience, he continues to study and research predictive astrology, using traditional methods and individual birth charts to provide thoughtful and practical guidance.",
     image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791308713/a-1.png",
     isAvailable: true,
     appLink: "YOUR_APP_LINK",
@@ -809,7 +809,7 @@ export const astrologers: Astrologer[] = [
   consultations: 980,
   price: 22,
   description:
-    "I’m Anant Sharma, an astrologer with over 10 years of experience in Vedic Astrology and related fields. I completed my studies at Sampurnanand Sanskrit University, Varanasi. My areas of expertise include Vedic Astrology, Prashna Kundli, Lagna Kundli, birth chart analysis, Muhurat, and marriage compatibility, including love marriage and relationship-related questions.\n\nI also offer guidance related to financial matters, health and well-being, wealth, and Vastu Shastra, along with Palmistry, Face Reading, and Life Coaching. I aim to understand your concerns and share clear, practical astrological insights to help you gain a better perspective on different aspects of life.",
+    "I’m Anant Sharma, an astrologer with 11 years of experience in Vedic Astrology and related fields. I completed my studies at Sampurnanand Sanskrit University, Varanasi. My areas of expertise include Vedic Astrology, Prashna Kundli, Lagna Kundli, birth chart analysis, Muhurat, and marriage compatibility, including love marriage and relationship-related questions.\n\nI also offer guidance related to financial matters, health and well-being, wealth, and Vastu Shastra, along with Palmistry, Face Reading, and Life Coaching. I aim to understand your concerns and share clear, practical astrological insights to help you gain a better perspective on different aspects of life.",
   image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791541613/Traditional_Kurta_Portrait_on_Blue_Background.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
@@ -880,7 +880,7 @@ export const astrologers: Astrologer[] = [
   consultations: 820,
   price: 28,
   description:
-    "I’m Adarsh Acharya, a Vedic Astrologer with over 7 years of experience in understanding planetary influences and their connection with life events. My approach combines traditional Vedic principles with practical analysis to provide meaningful and easy-to-understand guidance.\n\nI focus on areas such as career, relationships, finances, important life decisions, and the timing of events. My aim is not simply to predict the future, but to help you understand your life patterns and make more informed choices with greater clarity and confidence.",
+    "I’m Adarsh Acharya, a Vedic Astrologer with 23 years of experience in understanding planetary influences and their connection with life events. My approach combines traditional Vedic principles with practical analysis to provide meaningful and easy-to-understand guidance.\n\nI focus on areas such as career, relationships, finances, important life decisions, and the timing of events. My aim is not simply to predict the future, but to help you understand your life patterns and make more informed choices with greater clarity and confidence.",
   image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791399152/Dignified_Portrait_on_Blue_Background.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
@@ -924,7 +924,7 @@ export const astrologers: Astrologer[] = [
   consultations: 590,
   price: 25,
   description:
-    "I’m Keshav Acharya, a Vedic Astrologer with 4 years of experience. I believe astrology can offer a meaningful perspective when you are looking for clarity or trying to understand different situations in life.\n\nMy approach is thoughtful and personal. I take time to understand your concerns and examine the relevant astrological details before sharing guidance in a clear, simple, and practical manner. My aim is to help you gain a better understanding of your situation and make informed decisions with greater clarity.",
+    "I’m Keshav Acharya, a Vedic Astrologer with 10 years of experience. I believe astrology can offer a meaningful perspective when you are looking for clarity or trying to understand different situations in life.\n\nMy approach is thoughtful and personal. I take time to understand your concerns and examine the relevant astrological details before sharing guidance in a clear, simple, and practical manner. My aim is to help you gain a better understanding of your situation and make informed decisions with greater clarity.",
   image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791541613/Studio_Portrait_of_a_Man_in_Yellow_Polo_1.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
@@ -1027,6 +1027,8 @@ export const astrologers: Astrologer[] = [
   name: "Deepraj Shastri",
   field: "Vedic Astrologer",
   tags: [
+    "Prashan Kundali",
+    "Palmistry",
     "Vedic Astrology",
     "Traditional Astrology",
     "Sanskrit Studies",
