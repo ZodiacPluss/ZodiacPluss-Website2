@@ -87,7 +87,7 @@ const solutionPillars = [
 const otherOfferings = [
   {
     abbr: 'CAP',
-    title: 'Child Assistance Program',
+    title: 'Campus Assistance Program',
     desc: 'A complementary, short-term solution-focused support track for personal and workplace challenges — ideal as a lighter-touch wellness benefit or a bridge into full EAP care.',
     color: '#5eb8e8',
     icon: (
