@@ -1,4 +1,4 @@
-import { Reveal } from '@/components/motion'
+import { Reveal } from "@/components/motion"
 
 interface HeroSectionProps {
   onNavigate: (page: string) => void
@@ -6,10 +6,9 @@ interface HeroSectionProps {
 
 export default function HeroSection({ onNavigate }: HeroSectionProps) {
   return (
-    <div className="px-3 sm:px-6 pt-3 pb-4">
-      {/* Hero card container — rounded, contained */}
-      <div
-        className="relative overflow-hidden w-full flex flex-col justify-between"
+    <div className="px-3 pt-3 pb-4 sm:px-6">
+      <section
+        className="relative flex w-full flex-col justify-between overflow-hidden"
         style={{
           height: "calc(100dvh - 72px)",
           minHeight: "520px",
@@ -17,64 +16,48 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
           boxShadow: "0 20px 50px rgba(0, 0, 0, 0.08)",
         }}
       >
-        {/* Background video (PRESERVED) */}
         <video
           className="absolute inset-0 h-full w-full object-cover"
           src="https://res.cloudinary.com/o6laufzn/video/upload/v1790936025/back-hero.mp4"
+          aria-hidden="true"
           autoPlay
           muted
           loop
           playsInline
           preload="auto"
         />
-  
-        {/* Soft gradient washes for readability matching lotus video theme */}
+
         <div
+          aria-hidden="true"
           className="absolute inset-0"
           style={{
-            background: `linear-gradient(
-              110deg,
-              rgba(61, 59, 62, 0.85) 12%,
-              rgba(30, 30, 28, 0.72) 55%,
-              rgba(54, 51, 55, 0.45) 10%,
-              transparent 50%
-            )`,
+            clipPath: "polygon(0 0, 63% 0, 47% 100%, 0 100%)",
+
+            background:
+              "linear-gradient(110deg, rgba(43,43,47,0.97), rgba(43,43,47,0.91))",
           }}
         />
         <div
+          aria-hidden="true"
           className="absolute inset-0"
           style={{
-          
+            background:
+              "linear-gradient(90deg, transparent 42%, rgba(10,10,16,0.08) 100%)",
           }}
         />
 
-        {/* Hero Content — original Figma style */}
         <div
           className="relative z-10 flex flex-col justify-center flex-1 max-w-3xl"
           style={{
             paddingLeft: "clamp(20px, 6vw, 90px)",
+
             paddingRight: "clamp(20px, 4vw, 40px)",
+
             paddingTop: "clamp(80px, 10vw, 120px)",
+
             paddingBottom: "clamp(20px, 3vw, 40px)",
           }}
         >
-          {/* Giant "ZODIAC PLUSS" masked with live video.
-
-              Two renderings of the same wordmark — identical viewBox, font,
-              size and glyph positions, so the layout is the same either way:
-
-                • .zodiac-wordmark-video — SVG <foreignObject> video clipped
-                  by an SVG <clipPath>. Chromium and Firefox.
-                • .zodiac-wordmark-still + .zodiac-wordmark-live — WebKit.
-                  WebKit ignores clip-path on <foreignObject> (bug 23113), so
-                  the video painted as a bare rectangle in Safari and every
-                  iOS browser. Here a plain HTML <video> sits on top of the
-                  wordmark and is clipped with CSS `clip-path: url(#…)`, which
-                  WebKit does honour. The <text> underneath is filled with a
-                  still frame of the same video, so the letters are already
-                  correct before playback starts (or if autoplay is refused).
-
-              index.css picks the pair per engine. */}
           <Reveal
             className="relative mb-4 sm:mb-6 select-none max-w-[620px] w-full"
             y={26}
@@ -82,12 +65,12 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
             duration={1.1}
             delay={0.1}
           >
-            <h1 className="sr-only">ZODIAC PLUSS</h1>
+            <h1 className="sr-only">ZodiacPluss</h1>
 
             <svg
               viewBox="0 0 620 230"
               className="zodiac-wordmark-video w-full h-auto block"
-              style={{ overflow: 'visible' }}
+              style={{ overflow: "visible" }}
               aria-hidden="true"
             >
               <defs>
@@ -114,110 +97,106 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
                   </text>
                 </clipPath>
               </defs>
-              <foreignObject x="0" y="0" width="620" height="230" clipPath="url(#zodiacVideoClip)">
+              <foreignObject
+                x="0"
+                y="0"
+                width="620"
+                height="230"
+                clipPath="url(#zodiacVideoClip)"
+              >
                 <video
-                  src="https://res.cloudinary.com/o6laufzn/video/upload/v1790802539/129938-745943774.mp4"
+                  src="https://res.cloudinary.com/o6laufzn/video/upload/v1790938090/Zodiac.textoverlay.mp4"
                   autoPlay
                   muted
                   loop
                   playsInline
                   preload="auto"
                   style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    objectPosition: 'center',
-                    display: 'block',
+                    width: "100%",
+
+                    height: "100%",
+
+                    objectFit: "cover",
+
+                    objectPosition: "center",
+
+                    display: "block",
                   }}
                 />
               </foreignObject>
             </svg>
 
-            {/* WebKit: SVG wordmark, three layers deep so it can never come
-                out blank —
-                  1. <text> with a gradient fill (always renders);
-                  2. an animated-WebP <image> of the video, clipped to the
-                     glyphs with an SVG-native clipPath (WebKit honours that;
-                     only <foreignObject> clipping is broken);
-                  3. the real <video> in the HTML overlay below, on top.
-                Whichever of 2/3 the engine renders, the letters move. */}
             <svg
               viewBox="0 0 620 230"
               className="zodiac-wordmark-still w-full h-auto"
-              style={{ overflow: 'visible' }}
+              style={{ overflow: "visible" }}
               aria-hidden="true"
             >
               <defs>
-                {/* Native SVG clip, viewBox units, for the <image> layer. */}
-                <clipPath id="zodiacWordmarkTextClip">
-                  <text x="0" y="100" fontFamily="'Inter', sans-serif" fontWeight="900" fontSize="116" letterSpacing="-0.03em">
-                    ZODIAC
-                  </text>
-                  <text x="0" y="210" fontFamily="'Inter', sans-serif" fontWeight="900" fontSize="116" letterSpacing="-0.03em">
-                    PLUSS
-                  </text>
-                </clipPath>
-                {/* Clip for the HTML <video> below. objectBoundingBox units map
-                    0–1 onto the video's own box; the scale() brings the 620×230
-                    glyph coordinates into that range. The video box keeps the
-                    same 620:230 ratio as this SVG, so the mapping is uniform. */}
-                <clipPath id="zodiacWordmarkClipBox" clipPathUnits="objectBoundingBox">
+                <clipPath
+                  id="zodiacWordmarkClipBox"
+                  clipPathUnits="objectBoundingBox"
+                >
                   <g transform={`scale(${1 / 620}, ${1 / 230})`}>
-                    <text x="0" y="100" fontFamily="'Inter', sans-serif" fontWeight="900" fontSize="116" letterSpacing="-0.03em">
+                    <text
+                      x="0"
+                      y="100"
+                      fontFamily="'Inter', sans-serif"
+                      fontWeight="900"
+                      fontSize="116"
+                      letterSpacing="-0.03em"
+                    >
                       ZODIAC
                     </text>
-                    <text x="0" y="210" fontFamily="'Inter', sans-serif" fontWeight="900" fontSize="116" letterSpacing="-0.03em">
+                    <text
+                      x="0"
+                      y="210"
+                      fontFamily="'Inter', sans-serif"
+                      fontWeight="900"
+                      fontSize="116"
+                      letterSpacing="-0.03em"
+                    >
                       PLUSS
                     </text>
                   </g>
                 </clipPath>
-                <linearGradient id="zodiacWordmarkGradient" x1="0" y1="0" x2="1" y2="1">
+                <linearGradient
+                  id="zodiacWordmarkGradient"
+                  x1="0"
+                  y1="0"
+                  x2="1"
+                  y2="1"
+                >
                   <stop offset="0%" stopColor="#8a6a1f" />
                   <stop offset="45%" stopColor="#e6c877" />
                   <stop offset="100%" stopColor="#6f5518" />
                 </linearGradient>
               </defs>
-              {(
-                [
-                  { text: 'ZODIAC', y: 100 },
-                  { text: 'PLUSS', y: 210 },
-                ] as const
-              ).map(({ text, y }) => (
-                <text
-                  key={text}
-                  x="0"
-                  y={y}
-                  fill="url(#zodiacWordmarkGradient)"
-                  fontFamily="'Inter', sans-serif"
-                  fontWeight="900"
-                  fontSize="116"
-                  letterSpacing="-0.03em"
-                >
-                  {text}
-                </text>
-              ))}
-              {/* 5 s / 12 fps animated WebP rendered by Cloudinary from the
-                  same clip (~350 KB, vs 8.8 MB for the MP4). */}
-              <image
-                href="https://res.cloudinary.com/o6laufzn/video/upload/v1790938090/Zodiac.textoverlay.mp4"
-                x="0"
-                y="0"
-                width="620"
-                height="230"
-                preserveAspectRatio="xMidYMid slice"
-                clipPath="url(#zodiacWordmarkTextClip)"
-              />
+              {([
+                { text: "ZODIAC", y: 100 },
+
+                { text: "PLUSS", y: 210 },
+              ] as const)
+
+                .map(({ text, y }) => (
+                  <text
+                    key={text}
+                    x="0"
+                    y={y}
+                    fill="url(#zodiacWordmarkGradient)"
+                    fontFamily="'Inter', sans-serif"
+                    fontWeight="900"
+                    fontSize="116"
+                    letterSpacing="-0.03em"
+                  >
+                    {text}
+                  </text>
+                ))}
             </svg>
 
-            {/* WebKit: live video, clipped to the letterforms by the clipPath
-                above. The clip is applied to the WRAPPER, not the <video>:
-                WebKit paints video in its own accelerated layer and drops an
-                SVG-referenced clip-path set directly on it (the video simply
-                disappears). Clipping the parent works. */}
             <div className="zodiac-wordmark-live" aria-hidden="true">
               <video
-                src="https://res.cloudinary.com/o6laufzn/video/upload/v1790802539/129938-745943774.mp4"
-                poster="https://res.cloudinary.com/pp0lpskp/video/upload/so_2,w_620,h_230,c_fill/v1787393142/141454-777657300_medium_tgotgs.jpg"
+                src="https://res.cloudinary.com/o6laufzn/video/upload/v1790938090/Zodiac.textoverlay.mp4"
                 autoPlay
                 muted
                 loop
@@ -227,59 +206,97 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
             </div>
           </Reveal>
 
-          {/* Tagline */}
-          <Reveal className="flex items-center gap-2 mb-3" y={16} delay={0.45} duration={0.6}>
-            <span className="text-base" style={{ color: "#5eb8e8" }}></span>
+          <Reveal
+            className="mb-3 flex items-center gap-2"
+            y={16}
+            delay={0.45}
+            duration={0.6}
+          >
             <span
-              className="text-sm sm:text-base font-bold tracking-wide"
-              style={{ color: "#2a7d6e", fontFamily: "'Inter', sans-serif" }}
-            >We Care Your Life!
+              className="text-sm font-bold tracking-wide sm:text-base"
+              style={{ color: "#2a9b89", fontFamily: "'Inter', sans-serif" }}
+            >
+              We Care Your Life!
             </span>
           </Reveal>
 
-          {/* Subtitle */}
           <Reveal y={20} delay={0.6}>
-          <p
-            className="text-xl sm:text-2xl font-semibold leading-snug mb-8 max-w-md"
-            style={{ color: "#c7c7d6ff", fontFamily: "'Inter', sans-serif" }}
-          >
-            Take Guidance under<br />Professional assistance
-          </p>
+            <p
+              className="mb-8 max-w-md text-xl font-semibold leading-snug sm:text-2xl"
+              style={{
+                color: "#c7c7d6",
+
+                fontFamily: "'Inter', sans-serif",
+              }}
+            >
+              Take Guidance under
+              <br />
+              Professional assistance
+            </p>
           </Reveal>
 
           {/* CTA Buttons */}
-          <Reveal className="flex flex-wrap items-center gap-4" y={18} delay={0.78} stagger={0.12}>
+          <Reveal
+            className="flex flex-wrap items-center gap-4"
+            y={18}
+            delay={0.78}
+            stagger={0.12}
+          >
             <a
               href="/services"
-              onClick={(e) => { e.preventDefault(); onNavigate("Services") }}
-              className="zp-btn zp-sheen zp-arrow flex items-center gap-2 px-6 sm:px-7 py-3.5 rounded-full text-white font-semibold text-xs sm:text-sm shadow-md hover:shadow-lg cursor-pointer border-0 no-underline"
-              style={{ background: "linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)" }}
+              onClick={(e) => {
+                e.preventDefault()
+                onNavigate("Services")
+              }}
+              className="zp-btn zp-sheen zp-arrow flex items-center gap-2 rounded-full px-6 py-3.5 text-xs font-semibold text-white no-underline shadow-md hover:shadow-lg sm:px-7 sm:text-sm"
+              style={{
+                background: "linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)",
+              }}
             >
               Explore Services
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+              >
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </a>
             <a
               href="/about-us"
-              onClick={(e) => { e.preventDefault(); onNavigate("About Us") }}
-              className="zp-btn zp-arrow flex items-center gap-2 px-6 sm:px-7 py-3.5 rounded-full font-semibold text-xs sm:text-sm cursor-pointer bg-transparent no-underline"
+              onClick={(e) => {
+                e.preventDefault()
+                onNavigate("About Us")
+              }}
+              className="zp-btn zp-arrow flex items-center gap-2 rounded-full bg-transparent px-6 py-3.5 text-xs font-semibold no-underline sm:px-7 sm:text-sm"
               style={{
-                border: "2px solid #428cab",
-                color: "#428cabff",
+                border: "2px solid #5eb8e8",
+
+                color: "#428cab",
+
                 fontFamily: "'Inter', sans-serif",
               }}
             >
               About Us
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+              >
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </a>
           </Reveal>
         </div>
-
-
-      </div>
+      </section>
     </div>
   )
 }

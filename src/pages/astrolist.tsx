@@ -26,6 +26,7 @@ interface AstrolistProps {
   onNavigate: (page: string) => void
 
   dark?: boolean
+  embedded?: boolean
 }
 
 const FEATURED_ASTROLOGER_ORDER = [
@@ -44,8 +45,7 @@ const featuredOrder = new Map(
   FEATURED_ASTROLOGER_ORDER.map((id, index) => [id, index]),
 )
 
-const selectClass =
-  "h-12 min-w-0 appearance-none rounded-full border px-4 pr-11 text-sm outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20"
+const selectClass ="h-12 min-w-0 appearance-none rounded-full border px-4 pr-11 text-sm outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20"
 
 const categories: { label: string; icon: LucideIcon }[] = [
   { label: "Vedic Astrology", icon: Flower2 },
@@ -79,6 +79,7 @@ function astrologerMatchesCategory(
 export default function Astrolist({
   onNavigate,
   dark = false,
+  embedded = false,
 }: AstrolistProps) {
   const [search, setSearch] = useState("")
 
@@ -207,16 +208,17 @@ export default function Astrolist({
         color: text,
       }}
     >
-      <section
-        className="relative isolate overflow-hidden px-5 pb-10 pt-24 sm:px-8 sm:pb-12 sm:pt-28 md:min-h-[580px] md:pb-14 md:pt-32"
-        style={{
-          backgroundImage: dark
-            ? "linear-gradient(90deg, rgba(9,12,18,0.9) 0%, rgba(9,12,18,0.74) 45%, rgba(9,12,18,0.12) 100%), url('/astrologer-hero-bg.png')"
-            : "linear-gradient(90deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.12) 45%, rgba(255,255,255,0) 72%), url('/astrologer-hero-bg.png')",
-          backgroundPosition: "center, center",
-          backgroundSize: "cover",
-        }}
-      >
+      {!embedded && (
+        <section
+          className="relative isolate overflow-hidden px-5 pb-10 pt-24 sm:px-8 sm:pb-12 sm:pt-28 md:min-h-[580px] md:pb-14 md:pt-32"
+          style={{
+            backgroundImage: dark
+              ? "linear-gradient(90deg, rgba(9,12,18,0.9) 0%, rgba(9,12,18,0.74) 45%, rgba(9,12,18,0.12) 100%), url('/astrologer-hero-bg.png')"
+              : "linear-gradient(90deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.12) 45%, rgba(255,255,255,0) 72%), url('/astrologer-hero-bg.png')",
+            backgroundPosition: "center, center",
+            backgroundSize: "cover",
+          }}
+        >
         <div className="relative z-10 mx-auto flex min-h-[420px] max-w-[1680px] items-center md:min-h-[430px]">
           <div className="max-w-4xl py-6">
             <p
@@ -312,7 +314,8 @@ export default function Astrolist({
           </div>
 
         </div>
-      </section>
+        </section>
+      )}
 
       <div
         id="astrologer-directory"
@@ -549,7 +552,7 @@ export default function Astrolist({
                     alt={astrologer.name}
                     loading="lazy"
                     decoding="async"
-                    className="absolute inset-0 h-full w-full scale-110 object-contain"
+                    className="absolute inset-0 h-full w-full origin-top scale-110 object-contain"
                     onError={(event) => {
                       event.currentTarget.style.display = "none"
                     }}

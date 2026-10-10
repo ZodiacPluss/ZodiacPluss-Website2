@@ -19,6 +19,7 @@ export type PageKey =
   | 'About Us'
   | 'Services'
   | 'Astrologers'
+  | 'Therapists'
   | 'Career'
   | 'Blog'
   | 'Book'
@@ -85,6 +86,15 @@ export const SEO_PAGE_CONFIG: readonly SeoPageConfig[] = [
     breadcrumb: 'Astrologers',
   },
   {
+    key: 'Therapists',
+    path: '/therapists',
+    title: 'Therapists & Counsellors | ZodiacPluss',
+    description:
+      'Explore counsellors and therapists offering support for emotional well-being, relationships, stress and personal growth.',
+    indexable: false,
+    breadcrumb: 'Therapists',
+  },
+  {
     key: 'Book',
     path: '/book',
     title: 'Book a Session | Contact ZodiacPluss',
@@ -123,11 +133,11 @@ export const SEO_PAGE_CONFIG: readonly SeoPageConfig[] = [
   {
     key: 'Experts',
     path: '/experts',
-    title: 'ZodiacPluss Experts | Astrologers, Therapists & Counsellors',
+    title: 'Find an Astrologer, Therapist or Counsellor | ZodiacPluss',
     description:
-      'The ZodiacPluss expert directory of astrologers, therapists and wellness counsellors.',
-    // The experts listing is currently disabled in the app and renders no
-    // content, so the URL must stay out of the index until it is restored.
+      'Explore astrologers, therapists and counsellors on ZodiacPluss. Search expert profiles by specialization, experience and language.',
+    // Wellness profiles include sample content and should not be indexed until
+    // all public listings have been verified.
     indexable: false,
     breadcrumb: 'Experts',
   },

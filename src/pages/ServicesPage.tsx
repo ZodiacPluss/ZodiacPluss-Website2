@@ -1,4 +1,5 @@
 import { Reveal, TextReveal } from '@/components/motion'
+import { ArrowRight, Sparkles } from 'lucide-react'
 
 interface ServicesPageProps {
   onNavigate: (page: string) => void
@@ -14,7 +15,7 @@ const services = [
     color: '#5b2d8e',
   },
     {
-    title: 'Live Sessions with wellness experts',
+    title: 'Live Sessions with Wellness Experts',
     desc: 'Book a one-on-one video or chat session with our certified therapists. Real-time guidance for life\'s most pressing questions.',
     bg: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790960459/ChatGPT_Image_Oct_2_2026_10_21_31_PM.png',
     tag: 'Premium feature',
@@ -139,67 +140,86 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
       </div>
 
       {/* ─── Section 1: Individual Services Grid ─── */}
-      <div className="max-w-6xl mx-auto px-6 py-16">
-        <div className="flex items-center justify-between mb-10">
-          <Reveal stagger={0.1} y={22}>
-            <div className="w-10 h-1 bg-[#d81b86] rounded mb-2" />
-            <h2 className="text-2xl md:text-3xl font-bold" style={{ color: titleColor, fontFamily: "'Playfair Display', serif" }}>
+      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:py-20">
+        <div className="mb-10 text-center sm:mb-12">
+          <Reveal stagger={0.1} y={22} className="mx-auto max-w-3xl">
+            <div className="mx-auto mb-4 h-1 w-12 rounded-full bg-[#d81b86]" />
+            <h2 className="text-2xl font-bold md:text-3xl" style={{ color: titleColor, fontFamily: "'Playfair Display', serif" }}>
               Personal &amp; Spiritual Wellness Services
             </h2>
-            <p className="text-xs md:text-sm mt-1" style={{ color: textColor }}>
+            <p className="mt-2 text-sm md:text-base" style={{ color: textColor }}>
               Individual sessions, AI reports, and daily cosmic guidance tailored to your unique journey.
             </p>
           </Reveal>
         </div>
 
-        <Reveal stagger={0.09} y={34} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <Reveal stagger={0.09} y={34} className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {services.map((svc) => {
             const isAstrologerService = svc.title === 'Live Sessions with Astrologers'
+            const isTherapistService =
+              svc.title === 'Live Sessions with Wellness Experts' ||
+              svc.title === 'Therapy That Helps'
+            const directoryPage = isAstrologerService
+              ? 'Astrologers'
+              : isTherapistService
+                ? 'Therapists'
+                : 'Coming Soon'
+            const directoryPath = isAstrologerService
+              ? '/astrologers'
+              : isTherapistService
+                ? '/therapists'
+                : '/coming-soon'
 
             return (
             <div
-              key={svc.id}
-              className="zp-card group rounded-2xl overflow-hidden shadow-sm"
+              key={svc.title}
+              className="zp-card group flex h-full flex-col overflow-hidden rounded-3xl shadow-sm"
               style={{
                 background: cardBg,
                 border: `1px solid ${cardBorder}`,
               }}
             >
               {/* Image */}
-              <div className="relative h-44 overflow-hidden">
+              <div className="zp-media relative aspect-[16/9] overflow-hidden">
                 <img
                   src={svc.bg}
                   alt={svc.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <div className="absolute top-3 left-3">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/10" />
+                <div className="absolute left-4 top-4">
                   <span
-                    className="text-xs font-semibold px-3 py-1 rounded-full text-white"
-                    style={{ background: svc.color }}
+                    className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold text-white shadow-lg backdrop-blur-sm"
+                    style={{ background: `${svc.color}e8` }}
                   >
+                    <Sparkles size={13} aria-hidden="true" />
                     {svc.tag}
                   </span>
                 </div>
-                <div className="absolute bottom-3 right-3 text-white/40 text-xs font-mono font-bold">{svc.id}</div>
               </div>
 
               {/* Content */}
-              <div className="p-5">
-                <h3 className="font-bold text-base mb-2" style={{ color: titleColor }}>{svc.title}</h3>
-                <p className="text-xs leading-relaxed mb-4" style={{ color: textColor }}>{svc.desc}</p>
-                <div className="flex items-center justify-between">
-                  <span className="font-bold text-sm" style={{ color: titleColor }}>{ }</span>
+              <div className="flex flex-1 flex-col p-5 sm:p-6">
+                <h3 className="mb-2 text-lg font-bold leading-snug" style={{ color: titleColor, fontFamily: "'Playfair Display', serif" }}>{svc.title}</h3>
+                <p className="mb-6 flex-1 text-sm leading-relaxed" style={{ color: textColor }}>{svc.desc}</p>
+                <div className="flex justify-end border-t pt-4" style={{ borderColor: cardBorder }}>
                   <a
-                    href={isAstrologerService ? '/astrologers' : '/coming-soon'}
+                    href={directoryPath}
                     onClick={(e) => {
                       e.preventDefault()
-                      onNavigate(isAstrologerService ? 'Astrologers' : 'Coming Soon')
+                      onNavigate(directoryPage)
                     }}
-                    className="zp-btn text-xs font-semibold px-4 py-1.5 rounded-full text-white hover:opacity-90 shadow-sm cursor-pointer no-underline"
+                    className="zp-btn inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-xs font-semibold text-white shadow-sm no-underline transition hover:opacity-90"
                     style={{ background: svc.color }}
                   >
-                    {isAstrologerService ? 'Talk to an Astrologer' : 'coming soon'}
+                    {isAstrologerService
+                      ? 'Talk to an Astrologer'
+                      : isTherapistService
+                        ? 'Talk to a Therapist'
+                        : 'Coming Soon'}
+                    <ArrowRight size={15} aria-hidden="true" />
                   </a>
                 </div>
               </div>

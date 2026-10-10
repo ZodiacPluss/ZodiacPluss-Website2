@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { PAGE_TO_PATH } from "@/utils/routes"
 
-const navLinks = ["Home", "About Us", "Services", "Career", "Blog"]
+const navLinks = ["Home", "About Us", "Experts", "Services", "Career", "Blog"]
 
 interface NavbarProps {
   currentPage: string
@@ -24,7 +24,7 @@ export default function Navbar({ currentPage, onNavigate, dark = false, onToggle
   }, [])
 
   // Identify pages with dark background hero sections where text needs to be white when transparent
-  const lightHeroPages = ["Astrologers", "Book", "Blog", "Career", "Not Found"]
+  const lightHeroPages = ["Astrologers", "Therapists", "Experts", "Book", "Blog", "Career", "Not Found"]
   const isBannerDark = dark || !lightHeroPages.includes(currentPage)
   const isHeroUnscrolled = !scrolled && (currentPage === "Home" || isBannerDark)
   const compact = scrolled

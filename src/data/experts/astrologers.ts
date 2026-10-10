@@ -714,7 +714,7 @@ export const astrologers: Astrologer[] = [
   price: 25,
   description:
     "I’m Dhru Sharma, a Jyotish Ratnam and astrologer with formal training in Vedic Astrology. I completed an Astrology Course through Nakshatra Sewa Samiti and was awarded the title of Jyotish Ratnam with Grade A for my performance in the course.\n\nI approach astrology with respect for traditional knowledge and careful study of the birth chart. During consultations, I aim to understand the concerns you bring and explain my observations in a clear, simple, and practical manner, so you can better understand the astrological perspective relevant to your situation.",
-  image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791641939/Calm_Studio_Portrait_on_Sky_Blue.png",
+  image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791655695/Vibrant_Yellow_Kurta_Portrait_1.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
 },
