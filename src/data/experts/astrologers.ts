@@ -497,7 +497,7 @@ export const astrologers: Astrologer[] = [
   consultations: 290,
   price: 18,
   description:
-    "I’m Vedika Acharya, an astrologer associated with ZodiacPluss. I believe astrology can offer a different perspective when you are looking for clarity, guidance, or a better understanding of the situations in your life.\n\nMy aim during a consultation is to listen to your concerns and keep the conversation simple and comfortable. I value an open approach where you can share what is on your mind and explore the guidance astrology has to offer in a clear and easy-to-understand way.",
+    "I’m Gauri Acharya, an astrologer associated with ZodiacPluss. I believe astrology can offer a different perspective when you are looking for clarity, guidance, or a better understanding of the situations in your life.\n\nMy aim during a consultation is to listen to your concerns and keep the conversation simple and comfortable. I value an open approach where you can share what is on your mind and explore the guidance astrology has to offer in a clear and easy-to-understand way.",
   image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791401005/Elegant_Indian_Saree_Portrait.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
@@ -1154,7 +1154,7 @@ export const astrologers: Astrologer[] = [
   consultations: 780,
   price: 26,
   description:
-    "I’m Atharv Sharma, a Vedic Astrologer and Spiritual Guide with 10 years of experience in Vedic Jyotish, Sadhana, Prashna Kundli, and spiritual practices. I’m a dedicated Sadhak of Devi and consider the grace and blessings of Lord Hanuman Ji an important part of my spiritual journey.\n\nI also offer guidance through Divya Gyan and intuitive spiritual insight, even when a birth chart is not available. My areas of focus include career, jobs, business, marriage and relationships, childbirth, family matters, and other important aspects of life. My approach combines traditional Vedic wisdom, spiritual practices, and intuitive guidance to help you gain clarity, direction, and a deeper understanding of your life journey.",
+    "I’m Anurag Sharma, a Vedic Astrologer and Spiritual Guide with 12 years of experience in Vedic Jyotish, Sadhana, Prashna Kundli, and spiritual practices. I’m a dedicated Sadhak of Devi and consider the grace and blessings of Lord Hanuman Ji an important part of my spiritual journey.\n\nI also offer guidance through Divya Gyan and intuitive spiritual insight, even when a birth chart is not available. My areas of focus include career, jobs, business, marriage and relationships, childbirth, family matters, and other important aspects of life. My approach combines traditional Vedic wisdom, spiritual practices, and intuitive guidance to help you gain clarity, direction, and a deeper understanding of your life journey.",
   image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791563325/Studio_Portrait_with_Blue_Background.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
@@ -1182,7 +1182,7 @@ export const astrologers: Astrologer[] = [
   appLink: "YOUR_APP_LINK",
 },
 {
-  id: "astro-053",
+  id: "astro-054",
   name: "Atharv Sharma",
   field: "Vedic Astrologer",
   tags: [
