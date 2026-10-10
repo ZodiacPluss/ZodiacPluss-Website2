@@ -1027,7 +1027,7 @@ export const astrologers: Astrologer[] = [
   name: "Deepraj Shastri",
   field: "Vedic Astrologer",
   tags: [
-    "Prashan Kundali",
+    "Prashna Kundli",
     "Palmistry",
     "Vedic Astrology",
     "Traditional Astrology",
