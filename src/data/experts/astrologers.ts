@@ -128,7 +128,7 @@ export const astrologers: Astrologer[] = [
   consultations: 520,
   price: 16,
   description:
-    "I’m Prinidhi, an astrologer who believes that astrology can offer a different perspective when life feels uncertain or you’re looking for clarity. I aim to make every consultation comfortable and easy to understand, giving you the space to share what’s on your mind and explore the guidance your chart has to offer.\n\nMy approach is calm and personal, with a focus on understanding the situation behind each question. I hope to help you look at things from a fresh perspective and find greater clarity in the path ahead.",
+    "I’m Priya ji, an astrologer who believes that astrology can offer a different perspective when life feels uncertain or you’re looking for clarity. I aim to make every consultation comfortable and easy to understand, giving you the space to share what’s on your mind and explore the guidance your chart has to offer.\n\nMy approach is calm and personal, with a focus on understanding the situation behind each question. I hope to help you look at things from a fresh perspective and find greater clarity in the path ahead.",
   image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791318250/a-2.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
@@ -216,7 +216,7 @@ export const astrologers: Astrologer[] = [
   consultations: 520,
   price: 25,
   description:
-    "I’m Rashmi Jalan, an astrologer and numerologist with a focus on KP Astrology, Numerology, and Mobile Numerology. I have completed training in KP Astrology, including both theoretical and practical study, along with an Advanced Numerology course and professional training in Mobile Numerology.\n\nI enjoy using these traditional and number-based systems to understand the questions people bring to a consultation. My approach is to listen carefully, study the relevant details, and explain my observations in a clear and simple way, so the guidance feels practical and easy to understand.",
+    "I’m Rashmika Guruma, an astrologer and numerologist with a focus on KP Astrology, Numerology, and Mobile Numerology. I have completed training in KP Astrology, including both theoretical and practical study, along with an Advanced Numerology course and professional training in Mobile Numerology.\n\nI enjoy using these traditional and number-based systems to understand the questions people bring to a consultation. My approach is to listen carefully, study the relevant details, and explain my observations in a clear and simple way, so the guidance feels practical and easy to understand.",
   image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791399361/Warm_Portrait_in_Pink_and_Gold.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
@@ -286,7 +286,7 @@ export const astrologers: Astrologer[] = [
   consultations: 860,
   price: 30,
   description:
-    "Hello, I’m Maithreyi Sharma, a dedicated Vedic Astrologer with more than 6 years of experience. I also practise face reading under the guidance of my family and training from a renowned Guru, and I provide Tarot Card Readings to offer guidance and clarity in different areas of life.\n\nMy journey in astrology has been spiritual and purposeful. I believe astrology is the science of destiny that can provide clarity and direction during times of confusion. I aim to offer thoughtful guidance through astrology, face reading, and Tarot, helping you understand your situation and find a clearer direction in life.",
+    "Hello, I’m Maithreyi ji, a dedicated Vedic Astrologer with more than 6 years of experience. I also practise face reading under the guidance of my family and training from a renowned Guru, and I provide Tarot Card Readings to offer guidance and clarity in different areas of life.\n\nMy journey in astrology has been spiritual and purposeful. I believe astrology is the science of destiny that can provide clarity and direction during times of confusion. I aim to offer thoughtful guidance through astrology, face reading, and Tarot, helping you understand your situation and find a clearer direction in life.",
   image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791400124/Elegant_Saree_Studio_Portrait_1.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
@@ -832,7 +832,7 @@ export const astrologers: Astrologer[] = [
   consultations: 780,
   price: 30,
   description:
-    "I’m Manoj Dwivedi, an astrologer with a strong academic foundation in traditional Indian studies. I have completed Shastri and Acharya examinations from Awadhesh Pratap Singh University, Rewa (M.P.), which have helped me build a deeper understanding of the traditional knowledge associated with my practice.\n\nI approach astrology with patience and careful study, and I believe every consultation should be personal to the individual. My aim is to understand your concerns, look at your chart thoughtfully, and explain the insights in a simple and meaningful way.",
+    "I’m Manish ji, an astrologer with a strong academic foundation in traditional Indian studies. I have completed Shastri and Acharya examinations from Awadhesh Pratap Singh University, Rewa (M.P.), which have helped me build a deeper understanding of the traditional knowledge associated with my practice.\n\nI approach astrology with patience and careful study, and I believe every consultation should be personal to the individual. My aim is to understand your concerns, look at your chart thoughtfully, and explain the insights in a simple and meaningful way.",
   image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791308716/Portrait_of_a_Smiling_Man_in_Traditional_Attire.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
@@ -855,7 +855,7 @@ export const astrologers: Astrologer[] = [
   consultations: 730,
   price: 30,
   description:
-    "I’m Anirudh, a Pandit and Jyotishacharya with a traditional approach to astrology and Jyotish consultation. I believe in studying a person’s chart carefully and understanding the relevant astrological principles before offering guidance.\n\nDuring my consultations, I try to keep the conversation personal and easy to understand. My aim is to listen to your concerns, study the chart thoughtfully, and share my observations in a clear and meaningful way.",
+    "I’m Anirudh ji, a Pandit and Jyotishacharya with a traditional approach to astrology and Jyotish consultation. I believe in studying a person’s chart carefully and understanding the relevant astrological principles before offering guidance.\n\nDuring my consultations, I try to keep the conversation personal and easy to understand. My aim is to listen to your concerns, study the chart thoughtfully, and share my observations in a clear and meaningful way.",
   image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791401868/Namaste_Portrait_in_Yellow_Kurta.png",
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
