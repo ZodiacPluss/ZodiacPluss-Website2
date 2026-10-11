@@ -16,7 +16,7 @@ interface ComingSoonSectionProps {
 
 export default function ComingSoonSection({ onNavigate }: ComingSoonSectionProps) {
   // Target launch date: 12th of October 2026 at 12:00 PM (+05:30)
-  const LAUNCH_DATE = new Date('2026-10-12T12:00:00+05:30').getTime()
+  const LAUNCH_DATE = new Date('2026-10-13T12:00:00+05:30').getTime()
 
   const calculateTimeLeft = () => {
     const now = new Date().getTime()
