@@ -112,27 +112,6 @@ export const astrologers: Astrologer[] = [
   isAvailable: true,
   appLink: "YOUR_APP_LINK",
 },
-{
-  id: "astro-012",
-  name: "Priya ji",
-  field: "Astrologer",
-  tags: [
-    "Vedic Astrology",
-    "Birth Chart Analysis",
-    "Personal Guidance",
-    "Life Guidance",
-  ],
-  experience: 7,
-  languages: ["Hindi", "English"],
-  rating: 4.7,
-  consultations: 520,
-  price: 16,
-  description:
-    "I’m Priya ji, an astrologer who believes that astrology can offer a different perspective when life feels uncertain or you’re looking for clarity. I aim to make every consultation comfortable and easy to understand, giving you the space to share what’s on your mind and explore the guidance your chart has to offer.\n\nMy approach is calm and personal, with a focus on understanding the situation behind each question. I hope to help you look at things from a fresh perspective and find greater clarity in the path ahead.",
-  image: "https://res.cloudinary.com/o6laufzn/image/upload/v1791318250/a-2.png",
-  isAvailable: true,
-  appLink: "YOUR_APP_LINK",
-},
   {
   id: "astro-004",
   name: "Charvi Shastri",
