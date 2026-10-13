@@ -534,7 +534,7 @@ export const therapists: Expert[] = [
       "Employee Wellness Workshops",
     ],
     languages: ["English", "Hindi", "French"],
-    image: "https://res.cloudinary.com/h4x5ehyi/image/upload/v1791902689/NUPURcMADAAN.png",
+    image: "https://res.cloudinary.com/h4x5ehyi/image/upload/v1791902689/Priya_Aggarwal.png",
     description:
       "I am a counselling psychologist with three years of experience providing psychological support across clinical and corporate settings. My work includes individual counselling, psychotherapy, crisis intervention, psychological assessment and workplace mental health initiatives. I have conducted over 1,000 individual psychotherapy sessions and facilitated wellness workshops addressing stress, emotional well-being, workplace adjustment, relationships and healthy coping strategies. I also collaborate with HR teams and multidisciplinary professionals while maintaining confidential clinical documentation and ethical standards.",
   },
