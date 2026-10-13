@@ -47,7 +47,7 @@ export const therapists: Expert[] = [
     ],
     languages: ["English", "Hindi", "Marathi"],
     image:
-      "",
+      "https://res.cloudinary.com/h4x5ehyi/image/upload/v1791902688/Grace_2.png",
     description:
       "I am a qualified social worker and certified counsellor with over three years of clinical experience supporting adolescents, students and young adults across university, school and online settings. My work includes individual counselling, psychosocial assessments, crisis intervention and personalized support for concerns such as academic stress, anxiety, depression, relationship challenges, trauma and personal development. I am committed to supporting student mental health and making psychological support accessible and non-stigmatizing.",
     isAvailable: true,
@@ -134,7 +134,7 @@ export const therapists: Expert[] = [
   ],
   languages: ["Hindi", "English"],
   image:
-    "",
+    "https://res.cloudinary.com/h4x5ehyi/image/upload/v1791902688/Tarun_Kumar.png",
   description:
     "I am an RCI-licensed rehabilitation psychologist working across counselling, psychotherapy, training, research and mental health programme design. My experience includes supporting adolescents and young adults through trauma-informed counselling, CBT-based techniques and expressive arts approaches. I have delivered individual counselling sessions, facilitated psychosocial workshops, conducted art-based therapeutic activities and contributed to mental health initiatives in schools and community settings. My work also includes training frontline workers, developing mental health resources and supporting evidence-informed interventions that promote emotional well-being and resilience.",
 },
@@ -161,7 +161,7 @@ export const therapists: Expert[] = [
     "Rational Emotive Behaviour Therapy (REBT)",
   ],
   languages: ["English", "Bengali", "Hindi"],
-  image: "",
+  image: "https://res.cloudinary.com/h4x5ehyi/image/upload/v1791902689/SHRIDARSHANA_PYNE.png",
   description:
     "I am a school counsellor and counselling psychologist with four years of experience in student counselling, life skills education and mental health promotion. My work includes conducting individual counselling sessions, parent sessions, emotional wellness classes and teacher training programmes. I have experience designing life skills curricula, developing counselling modules and organizing mental health awareness activities for students and educators. My approach focuses on empathetic, non-judgmental and evidence-based counselling to support students' emotional well-being and personal development.",
 },
@@ -219,7 +219,7 @@ export const therapists: Expert[] = [
     "Emotional Well-being",
   ],
   languages: ["English", "Hindi"],
-  image: "",
+  image: "https://res.cloudinary.com/h4x5ehyi/image/upload/v1791902689/Vedika_Gupta.png",
   description:
     "I am a counselling psychologist with a Master's degree in Clinical Psychology and over 200 hours of supervised clinical experience across hospital, rehabilitation and counselling camp settings. My experience includes supporting outpatient clients, children, young people and elderly individuals through counselling, psychosocial support, case history taking and treatment planning. I use approaches including Rational Emotive Behaviour Therapy (REBT) and client-centred counselling, with an emphasis on attentive listening, therapeutic rapport and individualized support.",
 },
@@ -251,7 +251,7 @@ export const therapists: Expert[] = [
     "Parent and Caregiver Support",
   ],
   languages: ["English", "Hindi", "Punjabi"],
-  image: "",
+  image: "https://res.cloudinary.com/h4x5ehyi/image/upload/v1791902688/Harshita_Bhardwaj.png",
   description:
     "I am a rehabilitation psychologist and mental health professional with over three years of experience in online and offline counselling, psychotherapy, psychological assessment, crisis intervention and rehabilitation services. My work includes supporting adolescents and adults with anxiety, depression, relationship concerns, emotional difficulties and adjustment-related challenges. I also have experience in couples and family counselling, perinatal mental health, infertility-related emotional support, and neurodevelopmental assessment and intervention planning. My approach incorporates evidence-informed therapeutic methods, individualized treatment planning and collaborative care, with an emphasis on ethical, confidential and inclusive support.",
 },
@@ -276,7 +276,7 @@ export const therapists: Expert[] = [
     "Group Activities",
   ],
   languages: ["English", "Hindi", "Bengali"],
-  image: "",
+  image: "https://res.cloudinary.com/h4x5ehyi/image/upload/v1791902689/Shreyasi_Das.png",
   description:
     "I have a Master's degree in Applied Psychology and experience in supervised counselling training, psychological assessment and mental health settings. My training has included providing counselling to assigned clients under clinical supervision, conducting case history interviews and mental status examinations, assisting with psychological assessments, and supporting group activities in hospital and rehabilitation settings. I am interested in counselling psychology, psychoeducation and research, with an emphasis on active listening, ethical practice and understanding individual client needs.",
 },
@@ -335,7 +335,7 @@ export const therapists: Expert[] = [
       "Staff Training and Development",
     ],
     languages: ["English", "Hindi"],
-    image: "",
+    image: "https://res.cloudinary.com/h4x5ehyi/image/upload/v1791902688/Navistri_Wago.png",
     description:
       "I am a mental health professional with experience in counselling, employee well-being and mental health awareness initiatives. My work has included conducting psychological evaluations, providing counselling to employees, facilitating wellness workshops and delivering psychoeducation to individuals and groups. I have also worked in clinical intake and member care support, contributed to crisis intervention protocols, developed training content and participated in quality improvement initiatives for counsellors. I aim to foster a safe, supportive environment that encourages well-being and personal growth.",
   },
@@ -392,7 +392,7 @@ export const therapists: Expert[] = [
       "Behavioural Assessment",
     ],
     languages: ["English", "Hindi", "Punjabi"],
-    image: "",
+    image: "https://res.cloudinary.com/h4x5ehyi/image/upload/v1791902688/Tanmay.png",
     description:
       "I am a mental health professional with experience in counselling, psychological assessment and rehabilitation-related settings. My training has included observing and assisting therapists during sessions, supporting patient assessments, contributing to treatment planning and participating in clinical case discussions under professional supervision. I have also developed an understanding of diagnostic criteria, case formulation and therapeutic approaches for a range of mental health concerns. My interests include mental health counselling, career guidance, relationship counselling and supporting individuals through personalized psychological care.",
   },
@@ -476,7 +476,7 @@ export const therapists: Expert[] = [
       "Neurodevelopmental Assessment Support",
     ],
     languages: ["English", "Hindi"],
-    image: "",
+    image: "https://res.cloudinary.com/h4x5ehyi/image/upload/v1791902689/Sanskriti_Ahuja.png",
     description:
       "I have clinical training experience across hospital, rehabilitation and digital mental health settings. My work has included supervised counselling sessions, client intake, case conceptualisation, psychometric assessment and psychoeducational support. I have also supported individuals experiencing emotional distress and crisis situations, assisted with treatment planning for children with neurodevelopmental needs, and contributed to mental health content and research. My approach emphasizes empathetic communication, trauma-informed support, ethical documentation and appropriate escalation of high-risk concerns.",
   },
@@ -503,7 +503,7 @@ export const therapists: Expert[] = [
       "Workplace Well-being",
     ],
     languages: ["English", "Hindi", "Punjabi", "Spanish"],
-    image: "",
+    image: "https://res.cloudinary.com/h4x5ehyi/image/upload/v1791902689/NUPURcMADAAN.png",
     description:
       "I have a Master's degree in Psychology with a specialization in counselling and experience in counselling, mental health education and workplace well-being initiatives. My work has included individual and group counselling, facilitating workshops, administering and scoring psychometric assessments, and supporting special education and behavioural modification activities. I have also contributed to employee well-being projects, mental health resources and psychological first responder training. My interests include counselling psychology, family psychology, group counselling and creating social impact.",
   },
@@ -534,7 +534,7 @@ export const therapists: Expert[] = [
       "Employee Wellness Workshops",
     ],
     languages: ["English", "Hindi", "French"],
-    image: "",
+    image: "https://res.cloudinary.com/h4x5ehyi/image/upload/v1791902689/NUPURcMADAAN.png",
     description:
       "I am a counselling psychologist with three years of experience providing psychological support across clinical and corporate settings. My work includes individual counselling, psychotherapy, crisis intervention, psychological assessment and workplace mental health initiatives. I have conducted over 1,000 individual psychotherapy sessions and facilitated wellness workshops addressing stress, emotional well-being, workplace adjustment, relationships and healthy coping strategies. I also collaborate with HR teams and multidisciplinary professionals while maintaining confidential clinical documentation and ethical standards.",
   },
