@@ -36,8 +36,8 @@ const pageMap: Record<string, PageKey> = {
   'Contact': 'Book',
   'For corporates': 'Services',
   'Corporates': 'Services',
-  'coming soon': 'Coming Soon',
-  'ComingSoon': 'Coming Soon',
+  'coming soon': 'Download Now',
+  'ComingSoon': 'Download Now',
 }
 
 // Full-bleed pages rendered without the site navbar, footer or splash.
@@ -138,7 +138,7 @@ export default function App() {
           : <BlogPage onNavigate={handleNavigate} dark={dark} />
       }
       case 'Portfolio': return <PortfolioPage onNavigate={handleNavigate} dark={dark} />
-      case 'Coming Soon': return <ComingSoonPage onNavigate={handleNavigate} dark={dark} />
+      case 'Download Now': return <ComingSoonPage />
       default: return <NotFoundPage onNavigate={handleNavigate} dark={dark} />
     }
   }

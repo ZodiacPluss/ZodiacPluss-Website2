@@ -105,11 +105,6 @@ const teamMembers = [
     img: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790779425/Shivani.jpg',
   },
   {
-    name: 'Mr. Hari',
-    role: 'SOCIAL MEDIA HEAD CONSULTANT',
-    img: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790779474/Hari.jpg',
-  },
-  {
     name: 'Mr. Aditya',
     role: 'SDE & PROJECT MANAGER',
     img: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790788780/d0d9e8af-8965-4ec6-ad91-ab221bbbbf7d.png',

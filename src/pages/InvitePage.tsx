@@ -271,7 +271,7 @@ export default function InvitePage({ onNavigate }: InvitePageProps) {
         </h1>
 
         <p className="zp-rise zp-d2 mt-4 text-center text-[19px] font-semibold tracking-[-0.01em] text-[#0f3d2e] sm:text-[21px]">
-          Zodiac Pluss is coming soon
+          Download Now
         </p>
         <p className="zp-rise zp-d2 mt-2.5 max-w-[440px] text-center text-[15px] leading-[1.6] text-[#5f6b66] sm:text-base">
           A space for astrology, mental wellness and guidance — all in one place.
@@ -368,10 +368,10 @@ export default function InvitePage({ onNavigate }: InvitePageProps) {
         {/* Primary CTA */}
         <button
           type="button"
-          onClick={() => onNavigate?.('Coming Soon')}
+          onClick={() => onNavigate?.('Download Now')}
           className="zp-rise zp-d4 group mt-8 inline-flex w-full max-w-[420px] items-center justify-center gap-3 rounded-full bg-[#0f3d2e] px-8 py-[18px] text-[17px] font-semibold text-white shadow-[0_14px_30px_-12px_rgba(15,61,46,0.55)] transition-all duration-200 hover:bg-[#145240] hover:shadow-[0_18px_36px_-12px_rgba(15,61,46,0.6)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5c9e7c] focus-visible:ring-offset-2 sm:text-lg"
         >
-          Explore Zodiac Pluss App
+          Download Now
           <ArrowRightIcon className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
         </button>
 

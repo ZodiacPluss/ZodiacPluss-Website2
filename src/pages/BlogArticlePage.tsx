@@ -77,6 +77,8 @@ export default function BlogArticlePage({ article, onNavigate, dark = false }: B
             background: dark ? '#101012' : '#f4f7f6',
             border: dark ? '1px solid rgba(255,255,255,0.12)' : '1px solid #e7eeeb',
           }}
+          role={article.image ? undefined : 'img'}
+          aria-label={article.image ? undefined : 'Article image placeholder'}
         >
           {article.image && <img src={article.image} alt={article.title} className="w-full h-full object-contain" />}
         </Reveal>
@@ -99,14 +101,28 @@ export default function BlogArticlePage({ article, onNavigate, dark = false }: B
                 {section.list.map((item, itemIndex) => <li key={item} style={{ paddingLeft: 5 }}><span style={{ color: GREEN, fontWeight: 700 }}>{itemIndex + 1}. </span>{item}</li>)}
               </ol>
             )}
-            {section.image && (
-              <img
-                src={section.image}
-                alt={section.imageAlt ?? ''}
-                loading="lazy"
-                className="mx-auto mt-7 w-full object-fit"
-                style={{ width: 'min(100%, 480px)', aspectRatio: '1 / 1', borderRadius: 14 }}
-              />
+            {section.image !== undefined && (
+              section.image ? (
+                <img
+                  src={section.image}
+                  alt={section.imageAlt ?? ''}
+                  loading="lazy"
+                  className="mx-auto mt-7 w-full object-fit"
+                  style={{ width: 'min(100%, 480px)', aspectRatio: '1 / 1', borderRadius: 14 }}
+                />
+              ) : (
+                <div
+                  className="mx-auto mt-7 w-full rounded-[14px] border border-dashed"
+                  style={{
+                    width: 'min(100%, 480px)',
+                    aspectRatio: '1 / 1',
+                    background: dark ? '#101012' : '#f4f7f6',
+                    borderColor: dark ? 'rgba(255,255,255,0.2)' : '#d8e2de',
+                  }}
+                  role="img"
+                  aria-label={section.imageAlt ?? 'Article image placeholder'}
+                />
+              )
             )}
           </Reveal>
         ))}

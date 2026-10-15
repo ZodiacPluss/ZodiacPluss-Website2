@@ -25,7 +25,7 @@ export type PageKey =
   | 'Book'
   | 'Experts'
   | 'Portfolio'
-  | 'Coming Soon'
+  | 'Download Now'
   | 'Invite'
   | 'Delete Account'
   | 'Privacy Policy'
@@ -142,15 +142,15 @@ export const SEO_PAGE_CONFIG: readonly SeoPageConfig[] = [
     breadcrumb: 'Experts',
   },
   {
-    key: 'Coming Soon',
+    key: 'Download Now',
     path: '/coming-soon',
-    title: 'ZodiacPluss App | Coming Soon',
+    title: 'ZodiacPluss App | Download Now',
     description:
-      'The ZodiacPluss mobile app is on the way. Sign up to be notified when daily horoscopes, wellness tools and expert sessions arrive on your phone.',
+      'Download the ZodiacPluss app on Google Play to connect with trusted astrologers and licensed therapists for guidance, clarity and holistic wellness.',
     // Renders the same section that already appears on the homepage — keeping
     // it indexable would create a duplicate of `/`.
     indexable: false,
-    breadcrumb: 'Coming Soon',
+    breadcrumb: 'Download the App',
   },
   {
     key: 'Invite',

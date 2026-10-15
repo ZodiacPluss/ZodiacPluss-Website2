@@ -163,7 +163,7 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
               ? 'Astrologers'
               : isTherapistService
                 ? 'Therapists'
-                : 'Coming Soon'
+                : 'Download Now'
             const directoryPath = isAstrologerService
               ? '/astrologers'
               : isTherapistService
@@ -218,7 +218,7 @@ export default function ServicesPage({ onNavigate, dark }: ServicesPageProps) {
                       ? 'Talk to an Astrologer'
                       : isTherapistService
                         ? 'Talk to a Therapist'
-                        : 'Coming Soon'}
+                        : 'Download Now'}
                     <ArrowRight size={15} aria-hidden="true" />
                   </a>
                 </div>

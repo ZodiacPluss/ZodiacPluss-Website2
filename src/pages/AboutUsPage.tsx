@@ -49,12 +49,6 @@ const team = [
     img: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790779425/Shivani.jpg',
   },
   {
-    name: 'Mr. Hari',
-    role: 'SOCIAL MEDIA HEAD CONSULTANT',
-    exp: '2+ years experience',
-    img: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790779474/Hari.jpg',
-  },
-  {
     name: 'Mr. Aditya',
     role: 'SDE & PROJECT MANAGER',
     exp: '2+ years experience',

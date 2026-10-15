@@ -9,6 +9,7 @@ import { Reveal, TextReveal } from '@/components/motion'
 const TEAL = '#14b8a6'
 const TEAL_DARK = '#065350'
 const NAVY = '#1a1060'
+const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.zodiacpluss.client'
 
 /* ── Feature items ──────────────────────────────────────────────── */
 const features = [
@@ -574,7 +575,10 @@ export default function AppShowcaseSection() {
 
             {/* CTA button */}
             <Reveal y={20} delay={0.1}>
-            <button
+            <a
+              href={GOOGLE_PLAY_URL}
+              target="_blank"
+              rel="noreferrer"
               className="zp-btn zp-sheen zp-arrow"
               style={{
                 background: 'linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)',
@@ -587,21 +591,14 @@ export default function AppShowcaseSection() {
                 boxShadow: '0 8px 24px rgba(94, 184, 232, 0.35)',
                 transition: 'transform 0.15s, box-shadow 0.15s',
                 display: 'inline-flex', alignItems: 'center', gap: 8,
-              }}
-              onMouseEnter={e => {
-                (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-2px)'
-                  ; (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 12px 30px rgba(94, 184, 232, 0.45)'
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget as HTMLButtonElement).style.transform = 'none'
-                  ; (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 8px 24px rgba(94, 184, 232, 0.35)'
+                textDecoration: 'none',
               }}
             >
-              App Coming Soon!
+              Download on Google Play
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
-            </button>
+            </a>
             </Reveal>
 
             {/* Trust line */}
