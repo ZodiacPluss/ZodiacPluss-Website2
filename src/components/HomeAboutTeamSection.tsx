@@ -92,7 +92,7 @@ const teamMembers = [
   {
     name: 'Mr. Gatik',
     role: 'Consultant',
-    img: 'https://res.cloudinary.com/o6laufzn/image/upload/v1791097768/Sir-2.jpg',
+    img: 'https://res.cloudinary.com/h4x5ehyi/image/upload/v1792753137/Professional_Indian_Passport_Portrait_1.png',
   },
   {
     name: 'Shri Parambanandnath Maharaj  ',
