@@ -31,7 +31,7 @@ export interface BlogArticle {
 }
 
 const image = (id: string, width = 1100) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${width}&q=80`
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${width}&h=${width}&q=80`
 
 export const blogArticles: BlogArticle[] = [
   {
@@ -899,6 +899,220 @@ export const blogArticles: BlogArticle[] = [
       },
     ],
   },
+  {
+    id: 'personal-astrology-session-next-step',
+    slug: 'personal-astrology-session-next-step',
+    category: 'Astrology',
+    title: 'Feeling Unsure About Your Next Step? How a Personal Astrology Session Can Help You Reflect on Your Choices',
+    excerpt: 'Feeling unsure about your next step? Discover how a personal astrology session can help you reflect on choices, gain clarity, and explore your path ahead.',
+    seoTitle: 'Personal Astrology Session: Find Clarity on Your Next Step',
+    seoDescription: 'Feeling unsure about your next step? Discover how a personal astrology session can help you reflect on choices, gain clarity, and explore your path ahead.',
+    focusKeyword: 'Personal Astrology Session',
+    readTime: '9 min read',
+    date: 'Oct 23, 2026',
+    image:'https://res.cloudinary.com/h4x5ehyi/image/upload/v1792747506/Astrology_for_Your_Next_Step_1.png',
+    sections: [
+      {
+        paragraphs: [
+          'Some decisions seem simple until you have to make them. You may be thinking about changing jobs, moving somewhere new, rebuilding a relationship, or choosing a different direction in life. Friends offer opinions, your family has expectations, and your own thoughts keep changing. Choosing what to do next can be hard.',
+          'A Personal Astrology Session may offer a quiet space to explore those feelings through traditional astrological interpretations. It cannot predict a certain outcome or make decisions for you. What it can do, when approached thoughtfully, is introduce questions that encourage reflection. Your values and circumstances should guide your choices.',
+        ],
+      },
+      {
+        heading: 'Why It’s Normal to Feel Stuck in Life',
+        paragraphs: [
+          'Feeling unsure often happens when you have two important needs. For example, you may want to grow in your career but also want a stable life. You may wish to try something new while worrying about the people who depend on you. Neither side is necessarily wrong.',
+          'Sometimes the difficulty comes from wanting a perfect answer before taking any action. But most meaningful decisions involve some risk, and waiting for complete certainty can leave you standing still.',
+          'Before asking others for advice, write down what you know, what you think might be true, and what you still need to find out. This can reveal whether you need research, conversation, or time.',
+        ],
+         image: 'https://res.cloudinary.com/h4x5ehyi/image/upload/v1792747507/What_Happens_in_a_Personal_Astrology_Session.png',
+        imageAlt: 'A quiet night sky with stars, suggesting space for reflection',
+      },
+      {
+        heading: 'What Happens in a Personal Astrology Session?',
+        paragraphs: [
+          'During a Personal Astrology Session, a reader may discuss a birth chart created using your date, time, and place of birth. In traditional astrology, different placements are associated with themes such as communication, motivation, relationships, and personal priorities.',
+          'The interpretation can vary depending on the approach used. It is important to understand that astrology has not been scientifically established as a reliable way to predict events or measure personality. A reading is best treated as a conversation starter, not evidence that a particular future is guaranteed.',
+          'You can ask questions, disagree with an interpretation, and decide which ideas are useful. You should remain free to think independently.',
+        ],
+      },
+      {
+        heading: 'Start With the Question Behind Your Question',
+        paragraphs: [
+          'People sometimes arrive at a reading asking, “Should I leave my job?” Yet the deeper concern might be, “Why am I unhappy with my current routine?” Those are different questions and may lead to different next steps.',
+          'A personal astrology session can be more helpful when you explain your situation instead of asking a simple yes-or-no question. Describe the options you are considering and the worries that keep returning.',
+          'For example, you could ask what themes might prompt you to examine your confidence, priorities, or response to change. Then, think about how these ideas match your real-life experiences. The goal is to understand what matters most to you.',
+        ],
+      },
+      {
+        heading: 'Notice Patterns Without Turning Them Into Labels',
+        paragraphs: [
+          'When the same problem appears repeatedly, it is natural to search for an explanation. Perhaps you delay decisions until opportunities disappear. Maybe you agree to things because disappointing others feels uncomfortable. Or you change direction whenever progress becomes slow.',
+          'Birth chart guidance may introduce ideas about habits and tendencies that you can reflect on. However, an astrological description should never become a fixed label. You are not required to behave a certain way because of your zodiac sign.',
+          'Look for real examples. “When did you handle a similar situation well before?” What did you do differently? Which responses would you like to change? Clear examples are better than general statements.',
+        ],
+      },
+      {
+        heading: 'Explore Your Options Instead of Predicting Outcomes',
+        paragraphs: [
+          'Imagine you are considering a new role. One option offers more responsibility but less flexibility. Another provides familiar routines with fewer opportunities to grow. Neither choice is automatically better.',
+          'During a Personal Astrology Session, you might reflect on themes of security, ambition, independence, or belonging. Afterward, bring those ideas back to practical questions. What are the working hours? What financial commitments do you have? Which option supports your longer-term goals?',
+          'A horoscope cannot check an employer’s promises, review a contract, or guarantee success. Research, relevant professional advice, and conversations with people affected by your decision are still essential.',
+        ],
+      },
+      {
+        heading: 'Make Room for Your Own Values',
+        paragraphs: [
+          'Advice can sound convincing even when it does not fit your life. A friend may encourage you to take a risk because they enjoy uncertainty. A relative may recommend stability because security matters most to them.',
+          'Using astrology guidance online as a reflective activity may help you notice the difference between other people’s expectations and your own priorities. Ask yourself what you would choose if you were not trying to impress anyone or avoid disappointing them.',
+          'That does not mean ignoring responsibilities. It means understanding your values before weighing them against practical realities. It’s easier to make a decision when you understand why it’s important.',
+        ],
+      },
+      {
+        heading: 'Prepare for a Thoughtful Online Conversation',
+        paragraphs: [
+          'If you are considering an astrology session online, prepare a few focused questions before you begin. You might write down the decision you are facing, the choices available, and the part you find most confusing.',
+          'Ask how the interpretation relates to the question you raised. If something sounds unclear, request an explanation. If a statement does not reflect your experience, you can say so. You do not have to accept every suggestion to make the conversation worthwhile.',
+          'Check how any personal birth information will be used and protected. Avoid anyone who creates fear, demands urgent action, or claims that a prediction is certain.',
+        ],
+      },
+      {
+        heading: 'Know When You Need Other Help',
+        paragraphs: [
+          'A Personal Astrology Session is not a substitute for qualified advice about health, mental health, finances, legal matters, or personal safety. Those situations call for appropriate professionals and reliable information.',
+          'If a relationship involves threats or controlling behaviour, focus on safety rather than astrological compatibility. If you feel emotionally upset for a long time, talking to a mental health professional may help more than reading.',
+          'It is possible to enjoy astrology while recognizing its limits. Good reflection should expand your ability to choose, not make you dependent on repeated predictions.',
+        ],
+        image: 'https://res.cloudinary.com/h4x5ehyi/image/upload/v1792747506/Take_One_Practical_Step_After_the_Session.png',
+        imageAlt: 'Take One Practical Step After the Session',
+        
+      },
+      {
+        heading: 'Take One Practical Step After the Session',
+        paragraphs: [
+          'A conversation may help you notice something, but insight becomes useful when you connect it to action. After your reading, write down one question that deserves further thought and one practical step you can take.',
+          'That step might be updating your resume, discussing a concern with your partner, comparing living costs, or giving yourself a clear deadline to decide. Keep the action realistic and connected to information you can verify.',
+          'You don’t have to figure everything out right away. Small, considered steps can create clarity that endless predictions cannot provide.',
+        ],
+      },
+      {
+        heading: 'Final Thoughts',
+        paragraphs: [
+          'Feeling uncertain about your next step is natural, especially when a decision could affect your career, relationships, or personal goals. A Personal Astrology Session may give you space to slow down, explore your concerns, and consider questions you have not asked yourself before.',
+          'During a Personal Astrology Session, traditional birth chart interpretations can introduce themes about priorities, communication, and change. These ideas are not reliable predictions, but they may encourage useful reflection when compared with your real experiences.',
+          'A Personal Astrology Session should never pressure you to choose a particular path. Instead, think about your responsibilities, available options, and the information you still need. Speak with people you trust and seek qualified advice for important financial, medical, or legal matters.',
+          'After a Personal Astrology Session, write down the insights that genuinely resonate. Ask yourself what you can verify, what needs further thought, and which small action would help you move forward.',
+          'Remember, a Personal Astrology Session cannot guarantee success or remove uncertainty. Your decisions should reflect your values, circumstances, and practical needs.',
+          'Ultimately, a Personal Astrology Session is most meaningful when it supports independent thinking, encourages self-awareness, and helps you approach your next chapter with greater clarity and confidence.',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'choosing-the-right-horoscope-guidance',
+    slug: 'choosing-the-right-horoscope-guidance',
+    category: 'Astrology',
+    title: 'Not Sure Which Horoscope Guidance Is Right for You? Understanding Different Horoscope Services',
+    excerpt: 'Not sure which horoscope guidance to choose? Explore different horoscope services and find the right guidance for your needs, goals, and life decisions.',
+    seoTitle: 'Choosing the Right Horoscope Guidance for Your Needs',
+    seoDescription: 'Not sure which horoscope guidance to choose? Explore different horoscope services and find the right guidance for your needs, goals, and life decisions.',
+    focusKeyword: 'Horoscope Guidance',
+    readTime: '9 min read',
+    date: 'Oct 23, 2026',
+    image: 'https://res.cloudinary.com/h4x5ehyi/image/upload/v1792747630/Choosing_Your_Horoscope_Guidance.png',
+    sections: [
+      {
+        paragraphs: [
+          'Reading a horoscope can be an enjoyable part of your morning. You might check your zodiac sign before work, look for a little encouragement, or wonder whether an interpretation relates to something happening in your life. But when you explore astrology more closely, you quickly discover that not every reading offers the same experience.',
+          'Some Horoscope Services provide short daily messages. Others explore a personal birth chart or invite you to discuss specific questions. Knowing these differences can help you choose an approach that matches your interests without expecting astrology to predict your future or make decisions for you.',
+        ],
+        image: 'https://res.cloudinary.com/h4x5ehyi/image/upload/v1792747631/Why_People_Look_Beyond_Daily_Horoscopes.png',
+      },
+      {
+        heading: 'Why People Look Beyond Daily Horoscopes',
+        paragraphs: [
+          'A daily horoscope usually addresses everyone born under one zodiac sign. Its message may mention patience, relationships, opportunities, or changing priorities. Because so many people read the same description, it cannot account for their different circumstances.',
+          'That does not make the experience meaningless. A general message might remind you to slow down or think about how you are communicating. Still, it can feel unsatisfying when you want to explore a particular concern rather than read broad advice.',
+          'This is where different Horoscope Services come into the picture. The important question is not which format can guarantee accurate predictions. It is which one encourages the kind of reflection you are actually seeking.',
+        ],
+      },
+      {
+        heading: 'Daily and Weekly Horoscope Readings',
+        paragraphs: [
+          'Daily and weekly readings are among the most familiar forms of astrology content. They are usually organized by sun sign and offer brief themes for a particular period.',
+          'An online horoscope can be convenient when you want a quick moment of reflection without arranging a longer conversation. You might use a message about communication as a reminder to listen carefully during a difficult discussion.',
+          'However, avoid treating a general prediction as an instruction. If a horoscope suggests taking a risk, that does not mean you should make a financial commitment or change jobs without checking the facts. General readings work best as optional prompts, not reliable forecasts.',
+        ],
+      },
+      {
+        heading: 'Understanding a Personalized Horoscope',
+        paragraphs: [
+          'A personalized horoscope usually draws on individual birth details rather than a sun sign alone. In traditional astrology, the date, time, and location of birth may be used to create a chart showing the positions of celestial bodies.',
+          'An interpretation may explore themes associated with communication, motivation, relationships, or personal priorities. This can feel more relevant than a general zodiac message because the discussion uses additional details.',
+          'More detail, however, does not establish scientific accuracy. Astrology has not been demonstrated to reliably predict life events or assess personality. You can appreciate an interpretation as a reflective exercise while keeping your experiences, evidence, and judgement at the centre.',
+        ],
+      },
+      {
+        heading: 'What Is a Birth Chart Reading?',
+        paragraphs: [
+          'A birth chart reading examines the arrangement of planets and other astrological points at a person’s birth, according to a particular astrological tradition. Readers may discuss the sun, moon, rising sign, houses, and relationships between placements.',
+          'If you are curious about the symbolism behind your chart, this format may offer more room for questions than a short daily message. You can ask what a particular placement traditionally represents and whether that theme connects with your own observations.',
+          'A chart should not become a label that limits you. Someone described as cautious can still learn to take thoughtful risks. Someone described as independent can still value close relationships. Real people are more complex than any symbolic interpretation.',
+        ],
+        
+      },
+      {
+        heading: 'When a Conversation May Be More Useful',
+        paragraphs: [
+          'Sometimes you are not looking for another written prediction. You want to talk through a question, hear an interpretation explained, and consider how it relates to your circumstances.',
+          'Some Horoscope Services include live discussions, while others provide written readings only. Before choosing, consider whether you prefer to read quietly, ask follow-up questions, or explore several themes in conversation.',
+          'Personalized astrology guidance can be approached as a structured opportunity to reflect. For example, rather than asking whether a relationship is destined to succeed, you might explore what you need from communication and where expectations differ.',
+          'No reading can reveal another person’s private intentions or replace honest discussion with them.',
+        ],
+      },
+      {
+        heading: 'Match the Format to Your Question',
+        paragraphs: [
+          'Your reason for exploring astrology should influence the format you choose. If you enjoy a short daily ritual, a general reading may be enough. If you want to understand traditional chart symbols, a detailed chart interpretation may suit you better.',
+          'If you are considering a major decision, write down what you hope to understand before exploring Horoscope Services. Are you uncertain about your priorities? Do you need to compare options? Are you hoping someone else will make the decision for you?',
+          'That final question matters. Astrology can suggest topics for reflection, but important choices still require reliable information, practical planning, and sometimes qualified professional advice.',
+        ],
+      },
+      {
+        heading: 'Questions to Ask Before Choosing a Service',
+        paragraphs: [
+          'Before sharing personal details or arranging a reading, take a moment to understand what is offered. Does the description explain whether you will receive a general horoscope, a chart interpretation, or an interactive discussion? Can you ask questions? Are the limitations clear?',
+          'If you choose a birth chart reading, check which birth details are requested and how your information will be handled. If you prefer an online horoscope, consider whether its language encourages thoughtful reflection or makes alarming claims about unavoidable events.',
+          'Be cautious of promises of guaranteed results, frightening predictions, or pressure to act immediately. Responsible guidance should respect your independence and leave room for uncertainty.',
+        ],
+        image:'https://res.cloudinary.com/h4x5ehyi/image/upload/v1792747630/Keep_Expectations_Realistic.png',
+        imageAlt: 'Keep Expectations Realistic',
+      },
+      {
+        heading: 'Keep Expectations Realistic',
+        paragraphs: [
+          'People sometimes turn to astrology when they feel anxious about an uncertain future. It can be tempting to keep searching until a reading says exactly what you hope to hear.',
+          'But repeated predictions may leave you more confused if you begin treating every interpretation as a requirement. A personalized horoscope is not a substitute for medical care, financial planning, legal guidance, or mental health support.',
+          'When a question involves health, safety, money, or legal responsibilities, seek the appropriate expertise. For everyday personal reflection, you can enjoy astrology while remaining comfortable saying, “This interpretation does not fit my experience.”',
+        ],
+      },
+      {
+        heading: 'Making the Most of Your Reading',
+        paragraphs: [
+          'Whether you choose a short message or personalized astrology guidance, begin with an open but questioning mindset. Note one or two themes that seem worth exploring, then compare them with real examples from your life.',
+          'You might write about a conversation you have avoided, a priority you have neglected, or an option you need to research. Focus on what you can observe and change rather than waiting for a prediction to come true.',
+          'The most helpful reflection often leads to a practical next step: asking a better question, having an honest conversation, or gathering information before deciding.',
+        ],
+      },
+      {
+        heading: 'Final Thoughts',
+        paragraphs: [
+          'Different Horoscope Services suit different interests. A daily reading offers a brief pause, while a personalized horoscope or birth chart reading can introduce more detailed traditional symbolism. A conversation may provide space to explore questions in greater depth.',
+          'None of these approaches can guarantee outcomes. Choose the format that feels useful, understand its limits, and keep responsibility for your decisions in your own hands. Astrology may provide a new perspective, but your lived experience and informed choices should guide what happens next.',
+        ],
+      },
+    ],
+  },
 ]
 
 export function slugifyCategory(category: BlogCategory): string {
@@ -926,4 +1140,13 @@ export function getBlogByPath(pathname: string): BlogArticle | undefined {
   )
 }
 
-export const featuredBlog = blogArticles[0]
+export const blogArticlesNewestFirst = blogArticles
+  .map((article, index) => ({ article, index }))
+  .sort(
+    (a, b) =>
+      Date.parse(b.article.date) - Date.parse(a.article.date) ||
+      b.index - a.index,
+  )
+  .map(({ article }) => article)
+
+export const featuredBlog = blogArticlesNewestFirst[0]

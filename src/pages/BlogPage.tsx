@@ -1,6 +1,6 @@
 ﻿import { useMemo, useState, type FormEvent } from 'react'
 import { Reveal, TextReveal } from '@/components/motion'
-import { blogArticles, featuredBlog, getBlogPath } from '@/data/blogs'
+import { blogArticlesNewestFirst, featuredBlog, getBlogPath } from '@/data/blogs'
 
 /* ΓöÇΓöÇ colour tokens ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
 const GRADIENT = 'linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)'
@@ -57,7 +57,7 @@ const IMG = (id: string, w = 900) =>
 
 const featured: Article = featuredBlog
 
-const articles: Article[] = blogArticles
+const articles: Article[] = blogArticlesNewestFirst
 
 const ClockIcon = ({ color }: { color: string }) => (
   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -195,13 +195,13 @@ function ArticleCard({ article, dark, onNavigate }: { article: Article; dark: bo
       }}
     >
       {/* image sits inset inside the card, with its own softer radius */}
-      <div className="zp-media relative" style={{ borderRadius: 20, aspectRatio: '4 / 3' }}>
+      <div className="zp-media relative overflow-hidden" style={{ borderRadius: 20, aspectRatio: '4 / 3' }}>
         {article.image && (
           <img
             src={article.image}
             alt={article.title}
             loading="lazy"
-            className="w-full h-full object-fit"
+            className="w-full h-full object-cover"
           />
         )}
         <div className="absolute" style={{ left: 12, bottom: 12 }}>
@@ -461,7 +461,7 @@ export default function BlogPage({ onNavigate, dark = false }: BlogPageProps) {
           <Reveal
             y={36}
             duration={0.9}
-            className="zp-card-soft grid grid-cols-1 lg:grid-cols-[minmax(0,440px)_1fr] gap-6 lg:gap-8 items-center rounded-3xl"
+            className="zp-card-soft grid grid-cols-1 lg:grid-cols-[minmax(0,360px)_1fr] gap-6 lg:gap-8 items-center rounded-3xl"
             style={{
               background: surface,
               border: surfaceBorder,
@@ -469,19 +469,11 @@ export default function BlogPage({ onNavigate, dark = false }: BlogPageProps) {
               padding: 18,
             }}
           >
-            <div className="zp-media relative rounded-2xl" style={{ aspectRatio: '430 / 262' }}>
-              <img src={featured.image} alt={featured.title} className="w-full h-full object-cover" />
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 55%)' }}
-              />
-              <p
-                className="absolute text-center leading-[1.15] select-none"
-                style={{ top: 22, left: 40, fontFamily: HAND, color: '#ffffff', fontSize: 28, transform: 'rotate(-10deg)', textShadow: '0 2px 10px rgba(0,0,0,0.25)' }}
-                aria-hidden="true"
-              >
-                A<br />Healthier<br />You
-              </p>
+            <div
+              className="zp-media relative mx-auto w-full max-w-[360px] overflow-hidden rounded-2xl"
+              style={{ aspectRatio: '1 / 1', background: dark ? '#17171b' : '#f4f7f6' }}
+            >
+              <img src={featured.image} alt={featured.title} className="w-full h-full object-contain" />
             </div>
 
             <Reveal stagger={0.09} delay={0.2} y={22} className="flex flex-col items-start gap-4 py-2 pr-2 lg:pr-6">

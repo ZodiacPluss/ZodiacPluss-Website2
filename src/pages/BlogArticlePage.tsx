@@ -107,8 +107,8 @@ export default function BlogArticlePage({ article, onNavigate, dark = false }: B
                   src={section.image}
                   alt={section.imageAlt ?? ''}
                   loading="lazy"
-                  className="mx-auto mt-7 w-full object-fit"
-                  style={{ width: 'min(100%, 480px)', aspectRatio: '1 / 1', borderRadius: 14 }}
+                  className="mx-auto mt-7 block w-full"
+                  style={{ width: 'min(100%, 480px)', height: 'auto', objectFit: 'contain', borderRadius: 14 }}
                 />
               ) : (
                 <div
