@@ -47,7 +47,7 @@ export const therapists: Expert[] = [
     ],
     languages: ["English", "Hindi", "Marathi"],
     image:
-      "https://res.cloudinary.com/h4x5ehyi/image/upload/v1791902688/Grace_2.png",
+      "",
     description:
       "I am a qualified social worker and certified counsellor with over three years of clinical experience supporting adolescents, students and young adults across university, school and online settings. My work includes individual counselling, psychosocial assessments, crisis intervention and personalized support for concerns such as academic stress, anxiety, depression, relationship challenges, trauma and personal development. I am committed to supporting student mental health and making psychological support accessible and non-stigmatizing.",
     isAvailable: true,

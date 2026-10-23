@@ -1,8 +1,8 @@
 ﻿import { useMemo, useState, type FormEvent } from 'react'
 import { Reveal, TextReveal } from '@/components/motion'
-import { blogArticlesNewestFirst, featuredBlog, getBlogPath } from '@/data/blogs'
+import { blogArticlesNewestFirst, getBlogPath, weeklyFeaturedBlogs } from '@/data/blogs'
 
-/* ΓöÇΓöÇ colour tokens ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
+/* colour tokens */
 const GRADIENT = 'linear-gradient(90deg, #5eb8e8 0%, #8fd06a 100%)'
 const TEXT_GRADIENT = 'linear-gradient(90deg, #2ba9a0 0%, #3fb9a8 60%, #6cc48f 100%)'
 const SCRIPT = '#2f9e94'
@@ -12,7 +12,7 @@ const SERIF = "'Playfair Display', serif"
 const SANS = "'Inter', sans-serif"
 const HAND = "'Playball', cursive"
 
-/* ΓöÇΓöÇ categories ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
+/*categories  */
 type Category =
   | 'Mental Wellness'
   | 'Astrology'
@@ -40,7 +40,7 @@ const chipTone: Record<Category, { bg: string; fg: string; darkBg: string; darkF
   'Self-Care': { bg: '#e0f0fb', fg: '#1d6fa5', darkBg: 'rgba(56,189,248,0.16)', darkFg: '#7dd3fc' },
 }
 
-/* ΓöÇΓöÇ article data ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
+/*  article data  */
 interface Article {
   id: string
   slug?: string
@@ -54,8 +54,6 @@ interface Article {
 
 const IMG = (id: string, w = 900) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`
-
-const featured: Article = featuredBlog
 
 const articles: Article[] = blogArticlesNewestFirst
 
@@ -127,7 +125,7 @@ const ZodiacWheel = () => (
   </svg>
 )
 
-/* ΓöÇΓöÇ small shared pieces ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
+/* small shared pieces  */
 function CategoryChip({ category, dark }: { category: Category; dark: boolean }) {
   const tone = chipTone[category]
   return (
@@ -201,7 +199,7 @@ function ArticleCard({ article, dark, onNavigate }: { article: Article; dark: bo
             src={article.image}
             alt={article.title}
             loading="lazy"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-fit"
           />
         )}
         <div className="absolute" style={{ left: 12, bottom: 12 }}>
@@ -309,7 +307,7 @@ export default function BlogPage({ onNavigate, dark = false }: BlogPageProps) {
 
   return (
     <div style={{ background: pageBg, fontFamily: SANS, transition: 'background 0.4s ease' }}>
-      {/* ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ HERO ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ */}
+      {/*  HERO  */}
       <section
         className="relative overflow-hidden pt-24 sm:pt-28 lg:pt-32 pb-8 sm:pb-10"
         style={{ background: heroBg }}
@@ -331,7 +329,7 @@ export default function BlogPage({ onNavigate, dark = false }: BlogPageProps) {
 
         <div className="relative mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_minmax(0,400px)] items-center gap-10 lg:gap-6">
-            {/* ΓöÇΓöÇ copy ΓöÇΓöÇ */}
+            {/*copy*/}
             <div className="max-w-[560px]">
               <Reveal y={14} delay={0.15} duration={0.6}>
               <p
@@ -378,7 +376,7 @@ export default function BlogPage({ onNavigate, dark = false }: BlogPageProps) {
               </Reveal>
             </div>
 
-            {/* ΓöÇΓöÇ handwritten note ΓöÇΓöÇ */}
+            {/* Γhandwritten note */}
             <Reveal
               className="hidden lg:block self-start mt-10 text-center leading-[1.15] select-none"
               y={18}
@@ -456,65 +454,141 @@ export default function BlogPage({ onNavigate, dark = false }: BlogPageProps) {
       </section>
 
       {/* ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ FEATURED ARTICLE ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ */}
-      <section className="pt-2 pb-8 sm:pb-10" style={{ background: pageBg }}>
+      <section className="pb-12 pt-2 sm:pb-16" style={{ background: pageBg }}>
         <div className="mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8">
-          <Reveal
-            y={36}
-            duration={0.9}
-            className="zp-card-soft grid grid-cols-1 lg:grid-cols-[minmax(0,360px)_1fr] gap-6 lg:gap-8 items-center rounded-3xl"
-            style={{
-              background: surface,
-              border: surfaceBorder,
-              boxShadow: dark ? '0 18px 50px rgba(0,0,0,0.55)' : '0 18px 50px rgba(16,24,40,0.08)',
-              padding: 18,
-            }}
-          >
-            <div
-              className="zp-media relative mx-auto w-full max-w-[360px] overflow-hidden rounded-2xl"
-              style={{ aspectRatio: '1 / 1', background: dark ? '#17171b' : '#f4f7f6' }}
+          <Reveal y={18} className="mb-7 sm:mb-9">
+            <p
+              className="mb-2 text-[11px] font-bold uppercase tracking-[0.16em]"
+              style={{ color: dark ? '#70c8b6' : '#168f78' }}
             >
-              <img src={featured.image} alt={featured.title} className="w-full h-full object-contain" />
-            </div>
-
-            <Reveal stagger={0.09} delay={0.2} y={22} className="flex flex-col items-start gap-4 py-2 pr-2 lg:pr-6">
-              <div className="flex flex-wrap items-center gap-2">
-                <CategoryChip category={featured.category} dark={dark} />
-                <span
-                  className="inline-flex items-center rounded-full"
-                  style={{
-                    background: dark ? 'rgba(255,255,255,0.08)' : '#f2f4f7',
-                    color: dark ? '#e4e4e7' : '#344054',
-                    fontSize: 11.5,
-                    fontWeight: 600,
-                    padding: '5px 11px',
-                  }}
-                >
-                  Featured Article
-                </span>
-              </div>
+              Featured blogs
+            </p>
+            <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end sm:gap-8">
               <h2
-                className="leading-[1.2]"
-                style={{ fontFamily: SERIF, fontWeight: 700, color: heading, fontSize: 'clamp(24px, 2.7vw, 32px)' }}
+                className="max-w-2xl"
+                style={{ color: heading, fontFamily: SERIF, fontSize: 'clamp(28px, 3.6vw, 40px)', fontWeight: 700, lineHeight: 1.12, letterSpacing: '-0.025em' }}
               >
-                {featured.title}
+                Fresh insights &amp; ideas
+                <br className="hidden sm:block" /> for the path ahead.
               </h2>
-              <p style={{ color: muted, fontSize: 15, lineHeight: 1.6, maxWidth: 520 }}>{featured.excerpt}</p>
-              <Meta readTime={featured.readTime} date={featured.date} dark={dark} />
-              <a
-                href={getBlogPath(featured)}
-                onClick={(e) => { e.preventDefault(); onNavigate(getBlogPath(featured)) }}
-                className="zp-btn zp-sheen zp-arrow inline-flex items-center gap-2 rounded-full text-white no-underline"
-                style={{ background: GRADIENT, fontSize: 13.5, fontWeight: 600, padding: '11px 22px', boxShadow: '0 8px 20px rgba(94,184,232,0.3)' }}
-              >
-                Read article
-                <ArrowIcon size={13} />
-              </a>
-            </Reveal>
+              <p className="max-w-md text-sm leading-relaxed sm:pb-1" style={{ color: muted }}>
+                Thoughtful reads on wellbeing, astrology and the choices that shape everyday life.
+              </p>
+            </div>
           </Reveal>
+
+          <div className="grid grid-cols-1 items-stretch gap-5 lg:grid-cols-[1.08fr_0.92fr] lg:gap-6">
+            {weeklyFeaturedBlogs[0] && (() => {
+              const article = weeklyFeaturedBlogs[0]
+              const path = getBlogPath(article)
+
+              return (
+                <Reveal y={22} className="h-full min-w-0">
+                  <article
+                    className="zp-card group flex h-full min-w-0 flex-col overflow-hidden rounded-[24px]"
+                    style={{
+                      background: surface,
+                      border: surfaceBorder,
+                      boxShadow: dark ? '0 12px 32px rgba(0,0,0,0.28)' : '0 8px 28px rgba(16,24,40,0.055)',
+                    }}
+                  >
+                    <a
+                      href={path}
+                      onClick={(event) => { event.preventDefault(); onNavigate(path) }}
+                      className="zp-media relative block w-full overflow-hidden"
+                      aria-label={`Read: ${article.title}`}
+                      style={{ aspectRatio: '3 / 2', background: dark ? '#19191d' : '#edf4f1' }}
+                    >
+                      <img
+                        src={article.featuredblogImage?.image ?? article.image}
+                        alt={article.title}
+                        loading="lazy"
+                        className="h-full w-full object-cover"
+                        style={{ objectFit: 'cover', objectPosition: 'center', transform: 'none', transition: 'none' }}
+                      />
+                      <span className="absolute bottom-4 left-4">
+                        <CategoryChip category={article.category} dark={dark} />
+                      </span>
+                    </a>
+                    <div className="flex flex-1 flex-col p-5 sm:p-6">
+                      <h3
+                        className="mb-3"
+                        style={{ color: heading, fontFamily: SERIF, fontSize: 'clamp(23px, 2.4vw, 31px)', fontWeight: 700, lineHeight: 1.16, letterSpacing: '-0.02em' }}
+                      >
+                        {article.title}
+                      </h3>
+                      <p
+                        className="mb-5"
+                        style={{ color: muted, fontSize: 14, lineHeight: 1.7, display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}
+                      >
+                        {article.excerpt}
+                      </p>
+                      <div className="mt-auto flex flex-wrap items-center justify-between gap-3 border-t pt-4" style={{ borderColor: dark ? 'rgba(255,255,255,0.09)' : '#edf0f2' }}>
+                        <Meta readTime={article.readTime} date={article.date} dark={dark} />
+                        <a
+                          href={path}
+                          onClick={(event) => { event.preventDefault(); onNavigate(path) }}
+                          className="inline-flex items-center gap-2 text-sm font-semibold no-underline transition-colors"
+                          style={{ color: dark ? '#70c8b6' : '#168f78' }}
+                        >
+                          Read article <ArrowIcon size={15} />
+                        </a>
+                      </div>
+                    </div>
+                  </article>
+                </Reveal>
+              )
+            })()}
+
+            <div className="grid min-w-0 grid-cols-1 gap-4 sm:gap-5">
+              {weeklyFeaturedBlogs.slice(1).map((article, index) => {
+                const path = getBlogPath(article)
+
+                return (
+                  <Reveal key={article.id} y={22} delay={(index + 1) * 0.08} className="h-full min-w-0">
+                    <article
+                      className="zp-card group flex h-full min-h-[220px] min-w-0 flex-col overflow-hidden rounded-[22px]"
+                      style={{
+                        background: surface,
+                        border: surfaceBorder,
+                        boxShadow: dark ? '0 12px 32px rgba(0,0,0,0.24)' : '0 8px 26px rgba(16,24,40,0.045)',
+                        padding: 'clamp(20px, 2.5vw, 30px)',
+                      }}
+                    >
+                      <div className="flex min-w-0 flex-1 flex-col items-start">
+                        <div className="mb-4">
+                          <CategoryChip category={article.category} dark={dark} />
+                        </div>
+                        <h3
+                          className="mb-3"
+                          style={{ color: heading, fontFamily: SERIF, fontSize: 'clamp(20px, 1.9vw, 25px)', fontWeight: 700, lineHeight: 1.22, letterSpacing: '-0.015em' }}
+                        >
+                          {article.title}
+                        </h3>
+                        <p
+                          className="mb-5"
+                          style={{ color: muted, fontSize: 14, lineHeight: 1.65, display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}
+                        >
+                          {article.excerpt}
+                        </p>
+                        <a
+                          href={path}
+                          onClick={(event) => { event.preventDefault(); onNavigate(path) }}
+                          className="mt-auto inline-flex items-center gap-2 text-sm font-semibold no-underline"
+                          style={{ color: dark ? '#70c8b6' : '#168f78' }}
+                        >
+                          Read article <ArrowIcon size={15} />
+                        </a>
+                      </div>
+                    </article>
+                  </Reveal>
+                )
+              })}
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ CATEGORY FILTER ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ */}
       <section className="pb-8" style={{ background: pageBg }}>
         <div className="mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8">
           <Reveal stagger={0.05} y={16} duration={0.5} className="flex flex-wrap justify-center gap-2.5 sm:gap-3">

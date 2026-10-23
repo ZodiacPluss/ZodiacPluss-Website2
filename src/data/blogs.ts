@@ -27,6 +27,9 @@ export interface BlogArticle {
   readTime: string
   date: string
   image: string
+  featuredblogImage?: {
+    image: string
+  }
   sections: BlogSection[]
 }
 
@@ -1019,6 +1022,9 @@ export const blogArticles: BlogArticle[] = [
     focusKeyword: 'Horoscope Guidance',
     readTime: '9 min read',
     date: 'Oct 23, 2026',
+    featuredblogImage: {
+      image: 'https://res.cloudinary.com/h4x5ehyi/image/upload/v1792765569/Golden_Forked_Paths_at_Sunset_1.png',
+    },
     image: 'https://res.cloudinary.com/h4x5ehyi/image/upload/v1792747630/Choosing_Your_Horoscope_Guidance.png',
     sections: [
       {
@@ -1148,5 +1154,20 @@ export const blogArticlesNewestFirst = blogArticles
       b.index - a.index,
   )
   .map(({ article }) => article)
+
+function getPublicationWeek(dateLabel: string): string {
+  const date = new Date(dateLabel)
+  const weekday = date.getUTCDay() || 7
+  date.setUTCDate(date.getUTCDate() - weekday + 1)
+  return date.toISOString().slice(0, 10)
+}
+
+export const weeklyFeaturedBlogs = blogArticlesNewestFirst
+  .filter((article, index, articles) =>
+    articles.findIndex(
+      (candidate) => getPublicationWeek(candidate.date) === getPublicationWeek(article.date),
+    ) === index,
+  )
+  .slice(0, 3)
 
 export const featuredBlog = blogArticlesNewestFirst[0]
