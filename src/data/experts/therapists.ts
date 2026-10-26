@@ -25,7 +25,7 @@ export interface Expert {
 export const therapists: Expert[] = [
   {
     id: "therapist-001",
-    name: "Grace Gaikwad",
+    name: "Miss Garima",
     slug: "grace-gaikwad",
     category: "counsellor",
     designation: "Certified Counsellor",
@@ -54,7 +54,7 @@ export const therapists: Expert[] = [
   },
 {
   id: "expert-002",
-  name: "Nancy Jain",
+  name: "Miss Aishwarya",
   slug: "nancy-jain",
   category: "counsellor",
   designation: "Licensed Rehabilitation Counsellor",
@@ -78,35 +78,9 @@ export const therapists: Expert[] = [
   ],
   languages: ["Hindi", "English"],
   image:
-    "",
+    "https://res.cloudinary.com/icas3zb2/image/upload/v1792999118/GRACE.png",
   description:
     "I am a rehabilitation counsellor with experience across rehabilitation, clinical and school settings. My work has included supporting children with developmental, behavioural, emotional and learning difficulties, conducting psychological and developmental assessments, and planning individualized interventions. I have also worked with individuals with disabilities and their families through counselling, behaviour therapy and emotional well-being support. My approach emphasizes person-centred care, inclusive support and therapeutic methods tailored to individual needs.",
-},
-{
-  id: "expert-003",
-  name: "Shweta Sharma",
-  slug: "shweta-sharma",
-  category: "counsellor",
-  designation: "Clinical Psychology Graduate",
-  experience: "2+ years",
-  experienceYears: 2,
-  price: 800,
-  currency: "INR",
-  specializations: [
-    "Mental Health Counselling",
-    "Psychological Assessment",
-    "Psychometric Testing",
-    "Individual Counselling",
-    "Cognitive Behavioural Therapy (CBT)",
-    "Motivational Interviewing",
-    "Emotional Well-being",
-    "Art Therapy",
-  ],
-  languages: ["English", "Hindi", "French", "Sanskrit"],
-  image:
-    "",
-  description:
-    "I am a clinical psychology graduate with experience in psychological assessment, counselling, and research. My experience includes providing counselling in person and online, conducting case history interviews and Mental Status Examinations, assisting with psychological assessments and therapy sessions, and maintaining client records. I have also worked in private counselling practice and have an interest in psychometrics, mental health counselling, and exploring how AI can support psychological assessment and therapy.",
 },
 {
   id: "expert-004",
@@ -196,33 +170,6 @@ export const therapists: Expert[] = [
   description:
     "I am an RCI-licensed clinical psychologist with experience across hospital, psychiatric rehabilitation, developmental and community settings. My work includes comprehensive psychological assessments, clinical reporting and individualized treatment planning for people with diverse psychological and neurodevelopmental needs. I use evidence-informed therapeutic approaches, including CBT, DBT, ACT, MBCT and REBT, and collaborate with psychiatrists and multidisciplinary teams to support integrated care. I also design and deliver psychoeducational sessions for children, parents, teachers and caregivers, with a focus on emotional well-being, coping skills and mental health awareness.",
 },
-
-{
-  id: "expert-007",
-  name: "Vedika Gupta",
-  slug: "vedika-gupta",
-  category: "counsellor",
-  designation: "Counselling Psychologist",
-  experience: "200+ hours of supervised clinical experience",
-  experienceYears: 0,
-  price: 800,
-  currency: "INR",
-  specializations: [
-    "REBT-Based Counselling",
-    "Client-Centred Counselling",
-    "Psychodynamic Approaches",
-    "Case Formulation",
-    "Treatment Planning",
-    "Tele-Counselling",
-    "Psychosocial Support",
-    "Youth Mental Health",
-    "Emotional Well-being",
-  ],
-  languages: ["English", "Hindi"],
-  image: "https://res.cloudinary.com/h4x5ehyi/image/upload/v1791902689/Vedika_Gupta.png",
-  description:
-    "I am a counselling psychologist with a Master's degree in Clinical Psychology and over 200 hours of supervised clinical experience across hospital, rehabilitation and counselling camp settings. My experience includes supporting outpatient clients, children, young people and elderly individuals through counselling, psychosocial support, case history taking and treatment planning. I use approaches including Rational Emotive Behaviour Therapy (REBT) and client-centred counselling, with an emphasis on attentive listening, therapeutic rapport and individualized support.",
-},
 {
   id: "expert-008",
   name: "Harshita Bhardwaj",
@@ -308,7 +255,7 @@ export const therapists: Expert[] = [
     "Cross-Cultural Mental Health Support",
   ],
   languages: ["English", "Hindi"],
-  image: "",
+  image: "https://res.cloudinary.com/icas3zb2/image/upload/v1792999118/Confident_Studio_Portrait_with_Glasses.png",
   description:
     "I am a psychologist and wellness consultant with experience supporting adults, adolescents and older adults through counselling, mental health programmes and psychoeducational activities. My work includes individual and group counselling, workplace and student well-being initiatives, stress and burnout management, trauma-informed care and suicide prevention programmes. I have collaborated with educational institutions, workplaces, community organisations and international wellness platforms, and have contributed to mental health awareness, employee well-being and psychological support initiatives reaching diverse populations. My approach focuses on accessible, structured and inclusive mental health care.",
 },
@@ -338,35 +285,6 @@ export const therapists: Expert[] = [
     image: "https://res.cloudinary.com/h4x5ehyi/image/upload/v1791902688/Navistri_Wago.png",
     description:
       "I am a mental health professional with experience in counselling, employee well-being and mental health awareness initiatives. My work has included conducting psychological evaluations, providing counselling to employees, facilitating wellness workshops and delivering psychoeducation to individuals and groups. I have also worked in clinical intake and member care support, contributed to crisis intervention protocols, developed training content and participated in quality improvement initiatives for counsellors. I aim to foster a safe, supportive environment that encourages well-being and personal growth.",
-  },
-  {
-    id: "expert-013",
-    name: "Riya Agrawal",
-    slug: "riya-agrawal",
-    category: "counsellor",
-    designation: "Counselling Psychologist",
-    experience: "3 years",
-    experienceYears: 3,
-    price: 800,
-    currency: "INR",
-    specializations: [
-      "Individual Counselling",
-      "Psychotherapy",
-      "Employee Assistance Programs (EAP)",
-      "Workplace Mental Health",
-      "Stress and Burnout Management",
-      "Anxiety Support",
-      "Relationship Concerns",
-      "Emotional Well-being",
-      "Crisis Intervention",
-      "Psychological Assessment",
-      "Psychoeducation",
-      "Employee Wellness Workshops",
-    ],
-    languages: ["English", "Hindi", "French"],
-    image: "",
-    description:
-      "I am a counselling psychologist with three years of experience providing psychological support across clinical and corporate settings. My work includes individual counselling, psychotherapy, crisis intervention, psychological assessment and workplace mental health initiatives. I have conducted over 1,000 individual psychotherapy sessions and facilitated wellness workshops addressing stress, emotional well-being, workplace adjustment, relationships and healthy coping strategies. I also have experience collaborating with HR teams and multidisciplinary professionals while maintaining confidential clinical documentation and ethical standards.",
   },
   {
     id: "expert-014",
@@ -422,35 +340,9 @@ export const therapists: Expert[] = [
       "Mental Health Awareness",
     ],
     languages: ["English", "Hindi"],
-    image: "",
+    image: "https://res.cloudinary.com/icas3zb2/image/upload/v1792999118/Professional_Portrait_in_Burgundy_Blazer.png",
     description:
       "I am a psychotherapist with experience across IB World Schools, clinical settings and educational environments. My work includes individual and group counselling, supporting students with diverse learning needs, designing mental health awareness programmes, and facilitating social and emotional learning activities. I have also gained clinical exposure through psychological assessments, child and adolescent assessments, vocational and projective assessments, and supervised clinical training. My approach incorporates counselling, expressive arts and experiential learning to support emotional well-being and personal development.",
-  },
-  {
-    id: "expert-016",
-    name: "Shweta Sharma",
-    slug: "shweta-sharma",
-    category: "counsellor",
-    designation: "Clinical Psychology Graduate",
-    experience: "2+ years",
-    experienceYears: 2,
-    price: 800,
-    currency: "INR",
-    specializations: [
-      "Individual Counselling",
-      "Group Counselling",
-      "Psychological Assessment",
-      "Psychometric Testing",
-      "Cognitive Behavioural Therapy (CBT)",
-      "Motivational Interviewing",
-      "Emotional Awareness",
-      "Art Therapy",
-      "Mental Health Support",
-    ],
-    languages: ["English", "Hindi", "French", "Sanskrit"],
-    image: "",
-    description:
-      "I am a clinical psychology graduate with experience in counselling, psychological assessment and research. My work has included providing counselling in person and online, conducting case history interviews and mental status examinations, assisting with psychological assessments and therapy sessions, and maintaining client records. I have also worked in private counselling practice and rehabilitation settings. My interests include psychometrics, mental health counselling and exploring how technology can support psychological assessment and therapeutic practice.",
   },
   {
     id: "expert-017",
