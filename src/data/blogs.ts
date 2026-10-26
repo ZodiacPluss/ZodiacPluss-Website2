@@ -24,6 +24,7 @@ export interface BlogArticle {
   seoTitle: string
   seoDescription: string
   focusKeyword: string
+  focusedKeywords: Record<string, string>
   readTime: string
   date: string
   image: string
@@ -45,6 +46,12 @@ export const blogArticles: BlogArticle[] = [
     seoTitle: 'Personal AI Companion: Someone to Talk to Anytime',
     seoDescription: 'Discover how a personal AI companion can offer conversation, support, and connection in everyday life when you simply need someone to talk to.',
     focusKeyword: 'Personal AI Companion',
+    focusedKeywords: {
+      'Personal AI Companion': 'https://zodiacpluss.com/',
+      'AI Companion' : 'https://zodiacpluss.com/',
+      'AI Friend' : 'https://zodiacpluss.com/',
+
+    },
     readTime: '8 min read',
     date: 'Sep 25, 2026',
     image: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790313469/When_You_Just_Need_Someone_to_Talk_To_How_a_Personal_AI_Companion_Fits_Into_Everyday_Life.png',
@@ -144,6 +151,9 @@ export const blogArticles: BlogArticle[] = [
     seoTitle: 'Employee Assistance Program: Why Employee Support Matters',
     seoDescription: 'Discover why an Employee Assistance Program matters and how proactive employee support can improve well-being, productivity, and workplace success.',
     focusKeyword: 'Employee Assistance Program',
+    focusedKeywords: {
+      'Employee Assistance Program': 'https://zodiacpluss.com/book',
+    },
     readTime: '8 min read',
     date: 'Sep 25, 2026',
     image: 'https://res.cloudinary.com/o6laufzn/image/upload/v1791175069/Why_an_Employee_Assistance_Program_Matters.png',
@@ -247,6 +257,9 @@ export const blogArticles: BlogArticle[] = [
     seoTitle: 'Astrology for Career Guidance: Find Your Next Move',
     seoDescription: 'Feeling stuck in your career? Discover how astrology can offer a fresh perspective on your strengths, opportunities, and possible next career moves.',
     focusKeyword: 'astrology for career guidance',
+    focusedKeywords: {
+      'astrology for career guidance': 'https://zodiacpluss.com/astrologers',
+    },
     readTime: '8 min read',
     date: 'Oct 1, 2026',
     image: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790841580/What_Does_Career_Guidance_Astrology_Explore.png',
@@ -360,6 +373,9 @@ export const blogArticles: BlogArticle[] = [
     seoTitle: 'Tarot Reading for Clarity: See Your Situation Differently',
     seoDescription: 'Can’t decide what to do next? Discover how a tarot reading for clarity can help you gain perspective, explore your options, and move forward confidently.',
     focusKeyword: 'tarot reading for clarity',
+    focusedKeywords: {
+      'tarot reading for clarity': 'https://zodiacpluss.com/services',
+    },
     readTime: '9 min read',
     date: 'Oct 1, 2026',
     image: 'https://res.cloudinary.com/o6laufzn/image/upload/v1790841588/A_Different_Perspective_Can_Sometimes_Help.png',
@@ -466,6 +482,9 @@ export const blogArticles: BlogArticle[] = [
   seoTitle: 'Why Relationship Problems Keep Coming Back | Astrology',
   seoDescription: 'Discover why the same relationship problems keep returning and how relationship astrology may help you notice patterns, triggers, and emotional dynamics.',
   focusKeyword: 'relationship astrology',
+  focusedKeywords: {
+    'relationship astrology': 'https://zodiacpluss.com/services',
+  },
   readTime: '7 min read',
   date: 'Oct 8, 2026',
   image: 'https://res.cloudinary.com/h4x5ehyi/image/upload/v1791446663/Why_Do_the_Same_Relationship_Problems_Keep_Coming_Back.png',
@@ -583,6 +602,9 @@ export const blogArticles: BlogArticle[] = [
   seoTitle: 'Workplace Stress: When Work Follows Employees Home',
   seoDescription: 'Learn how workplace stress can affect employees beyond work hours and what organizations should notice to support employee well-being and a healthier workplace.',
   focusKeyword: 'workplace stress',
+  focusedKeywords: {
+    'workplace stress': 'https://zodiacpluss.com/therapists',
+  },
   readTime: '8 min read',
   date: 'Oct 8, 2026',
   image: 'https://res.cloudinary.com/h4x5ehyi/image/upload/v1791446663/Workplace_Stress_Follows_Home.png',
@@ -698,6 +720,9 @@ export const blogArticles: BlogArticle[] = [
     seoTitle: "Personalized Horoscope vs Daily Horoscope: What's the Difference?",
     seoDescription: 'Discover why daily horoscopes feel so general and how a personalized horoscope offers deeper astrological insights tailored to your birth chart and life.',
     focusKeyword: 'Personalized Horoscope',
+    focusedKeywords: {
+      'Personalized Horoscope': 'https://zodiacpluss.com/services',
+    },
     readTime: '8 min read',
     date: 'Oct 15, 2026',
     image: 'https://res.cloudinary.com/h4x5ehyi/image/upload/v1792039399/Why_Daily_Horoscopes_Feel_General_1.png',
@@ -801,6 +826,9 @@ export const blogArticles: BlogArticle[] = [
     seoTitle: 'Online Astrology Consultation: Questions to Ask for Clarity',
     seoDescription: 'Facing a difficult life decision? Discover what to ask during an online astrology consultation to gain clarity on your career, relationships, and future.',
     focusKeyword: 'Online Astrology Consultation',
+    focusedKeywords: {
+      'Online Astrology Consultation': 'https://zodiacpluss.com/services',
+    },
     readTime: '8 min read',
     date: 'Oct 15, 2026',
     image: 'https://res.cloudinary.com/h4x5ehyi/image/upload/v1792040300/Astrology_Guidance_for_Life_Decisions.png',
@@ -911,6 +939,9 @@ export const blogArticles: BlogArticle[] = [
     seoTitle: 'Personal Astrology Session: Find Clarity on Your Next Step',
     seoDescription: 'Feeling unsure about your next step? Discover how a personal astrology session can help you reflect on choices, gain clarity, and explore your path ahead.',
     focusKeyword: 'Personal Astrology Session',
+    focusedKeywords: {
+      'Personal Astrology Session': 'https://zodiacpluss.com/services',
+    },
     readTime: '9 min read',
     date: 'Oct 23, 2026',
     image:'https://res.cloudinary.com/h4x5ehyi/image/upload/v1792747506/Astrology_for_Your_Next_Step_1.png',
@@ -1019,7 +1050,10 @@ export const blogArticles: BlogArticle[] = [
     excerpt: 'Not sure which horoscope guidance to choose? Explore different horoscope services and find the right guidance for your needs, goals, and life decisions.',
     seoTitle: 'Choosing the Right Horoscope Guidance for Your Needs',
     seoDescription: 'Not sure which horoscope guidance to choose? Explore different horoscope services and find the right guidance for your needs, goals, and life decisions.',
-    focusKeyword: 'Horoscope Guidance',
+    focusKeyword: 'Horoscope Services',
+    focusedKeywords: {
+      'Horoscope Services': 'https://zodiacpluss.com/services',
+    },
     readTime: '9 min read',
     date: 'Oct 23, 2026',
     featuredblogImage: {
@@ -1133,16 +1167,20 @@ export function getBlogPath(
 }
 
 export function getBlogByPath(pathname: string): BlogArticle | undefined {
-  const parts = pathname.replace(/\/+$/, '').split('/').filter(Boolean)
+  const candidate = pathname.trim()
+  const normalisedPath = candidate.includes('://')
+    ? new URL(candidate).pathname
+    : candidate.split(/[?#]/, 1)[0] || '/'
+  const parts = normalisedPath.replace(/\/+$/, '').split('/').filter(Boolean)
   if (parts[0]?.toLowerCase() !== 'blog') return undefined
 
   if (parts.length === 2) {
-    return blogArticles.find((article) => article.slug === parts[1])
+    return blogArticles.find((article) => article.slug?.toLowerCase() === parts[1].toLowerCase())
   }
   if (parts.length !== 3) return undefined
 
   return blogArticles.find(
-    (article) => slugifyCategory(article.category) === parts[1].toLowerCase() && article.id === parts[2],
+    (article) => slugifyCategory(article.category) === parts[1].toLowerCase() && article.id.toLowerCase() === parts[2].toLowerCase(),
   )
 }
 

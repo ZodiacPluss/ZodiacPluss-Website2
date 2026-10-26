@@ -299,6 +299,12 @@ export function getPrerenderablePages(): readonly SeoPageConfig[] {
 
 /** Normalises a raw pathname: lowercase, no trailing slash, alias-resolved. */
 export function resolvePath(rawPath: string): string {
-  const lowered = rawPath.toLowerCase().replace(/\/+$/, '') || '/'
+  const candidate = rawPath.trim()
+  const withoutOrigin = candidate.includes('://')
+    ? candidate.replace(/^https?:\/\/[^/]+/i, '')
+    : candidate
+  const pathOnly = withoutOrigin.split(/[?#]/, 1)[0] || '/'
+  const normalised = pathOnly.startsWith('/') ? pathOnly : `/${pathOnly}`
+  const lowered = normalised.toLowerCase().replace(/\/+$/, '') || '/'
   return ROUTE_ALIASES[lowered] ?? lowered
 }

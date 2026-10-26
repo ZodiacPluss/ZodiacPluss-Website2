@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import { Reveal } from '@/components/motion'
 import { getBlogPath, type BlogArticle } from '@/data/blogs'
 
@@ -5,6 +6,47 @@ const SERIF = "'Playfair Display', serif"
 const SANS = "'Inter', sans-serif"
 const GREEN = '#168f78'
 const NAVY = '#101828'
+
+function linkFocusedKeywords(text: string, article: BlogArticle): ReactNode {
+  const focusedKeywords = Object.entries(article.focusedKeywords)
+    .filter(([keyword, url]) => keyword.trim() && url.trim())
+    .sort(([keywordA], [keywordB]) => keywordB.length - keywordA.length)
+  if (focusedKeywords.length === 0) return text
+
+  const lowerText = text.toLowerCase()
+  const linkedText: ReactNode[] = []
+  let lastIndex = 0
+
+  for (let index = 0; index < text.length;) {
+    const match = focusedKeywords.find(([keyword]) =>
+      lowerText.startsWith(keyword.toLowerCase(), index),
+    )
+
+    if (!match) {
+      index += 1
+      continue
+    }
+
+    const [keyword, url] = match
+    linkedText.push(text.slice(lastIndex, index))
+    linkedText.push(
+      <a
+        key={index}
+        href={url}
+        className="underline underline-offset-2"
+        style={{ color: GREEN }}
+      >
+        {text.slice(index, index + keyword.length)}
+      </a>,
+    )
+    index += keyword.length
+    lastIndex = index
+  }
+
+  if (lastIndex === 0) return text
+  linkedText.push(text.slice(lastIndex))
+  return linkedText
+}
 
 function ClockIcon() {
   return (
@@ -36,6 +78,22 @@ export default function BlogArticlePage({ article, onNavigate, dark = false }: B
   const muted = dark ? '#a1a1aa' : '#667085'
   const surface = dark ? '#101012' : '#effaf5'
   const border = dark ? '1px solid rgba(255,255,255,0.1)' : '1px solid #e0eee8'
+  const articleText = [
+    article.title,
+    article.excerpt,
+    ...article.sections.flatMap((section) => [
+      section.heading,
+      ...(section.paragraphs ?? []),
+      section.quote,
+      ...(section.list ?? []),
+    ].filter((text): text is string => Boolean(text))),
+  ]
+  const unmentionedFocusedKeywords = Object.entries(article.focusedKeywords)
+    .filter(([keyword, url]) =>
+      keyword.trim() &&
+      url.trim() &&
+      !articleText.some((text) => text.toLowerCase().includes(keyword.toLowerCase())),
+    )
 
   return (
     <article style={{ background, fontFamily: SANS, color: text }}>
@@ -53,10 +111,10 @@ export default function BlogArticlePage({ article, onNavigate, dark = false }: B
             {article.category}
           </div>
           <h1 className="mt-4 max-w-[700px]" style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 'clamp(34px, 5vw, 58px)', lineHeight: 1.03, letterSpacing: '-0.025em' }}>
-            {article.title}
+            {linkFocusedKeywords(article.title, article)}
           </h1>
           <p className="mt-4 max-w-[650px]" style={{ color: muted, fontSize: 16, lineHeight: 1.55 }}>
-            {article.excerpt}
+            {linkFocusedKeywords(article.excerpt, article)}
           </p>
           <div className="mt-5 flex items-center gap-5" style={{ color: muted, fontSize: 12 }}>
             <span className="inline-flex items-center gap-1.5"><ClockIcon />{article.readTime}</span>
@@ -87,18 +145,20 @@ export default function BlogArticlePage({ article, onNavigate, dark = false }: B
       <div className="mx-auto max-w-[650px] px-5 sm:px-8 py-10 sm:py-14">
         {article.sections.map((section, index) => (
           <Reveal key={`${article.id}-${index}`} y={18} delay={index === 0 ? 0.1 : 0} className="mb-8 last:mb-0">
-            {section.heading && <h2 style={{ fontFamily: SERIF, fontSize: 'clamp(24px, 3vw, 31px)', lineHeight: 1.2, marginBottom: 12 }}>{section.heading}</h2>}
+            {section.heading && <h2 style={{ fontFamily: SERIF, fontSize: 'clamp(24px, 3vw, 31px)', lineHeight: 1.2, marginBottom: 12 }}>{linkFocusedKeywords(section.heading, article)}</h2>}
             {section.paragraphs?.map((paragraph) => (
-              <p key={paragraph} className="mb-4 last:mb-0" style={{ color: muted, fontSize: 15, lineHeight: 1.65 }}>{paragraph}</p>
+              <p key={paragraph} className="mb-4 last:mb-0" style={{ color: muted, fontSize: 15, lineHeight: 1.65 }}>
+                {linkFocusedKeywords(paragraph, article)}
+              </p>
             ))}
             {section.quote && (
               <blockquote className="my-6" style={{ background: surface, border, borderRadius: 14, color: dark ? '#d1fae5' : '#176b57', padding: '20px 24px', fontSize: 15, lineHeight: 1.55, fontWeight: 600 }}>
-                “{section.quote}”
+                “{linkFocusedKeywords(section.quote, article)}”
               </blockquote>
             )}
             {section.list && (
               <ol className="space-y-3 my-5" style={{ color: muted, fontSize: 14.5, lineHeight: 1.5, paddingLeft: 28 }}>
-                {section.list.map((item, itemIndex) => <li key={item} style={{ paddingLeft: 5 }}><span style={{ color: GREEN, fontWeight: 700 }}>{itemIndex + 1}. </span>{item}</li>)}
+                {section.list.map((item, itemIndex) => <li key={item} style={{ paddingLeft: 5 }}><span style={{ color: GREEN, fontWeight: 700 }}>{itemIndex + 1}. </span>{linkFocusedKeywords(item, article)}</li>)}
               </ol>
             )}
             {section.image !== undefined && (
@@ -126,6 +186,21 @@ export default function BlogArticlePage({ article, onNavigate, dark = false }: B
             )}
           </Reveal>
         ))}
+
+        {unmentionedFocusedKeywords.length > 0 && (
+          <p className="mb-4" style={{ color: muted, fontSize: 15, lineHeight: 1.65 }}>
+            Explore more:{' '}
+            {unmentionedFocusedKeywords.map(([keyword, url], index) => (
+              <span key={keyword}>
+                {index > 0 && ', '}
+                <a href={url} className="underline underline-offset-2" style={{ color: GREEN }}>
+                  {keyword}
+                </a>
+              </span>
+            ))}
+            .
+          </p>
+        )}
 
         <div className="mt-12 pt-7 flex flex-wrap items-center justify-between gap-4" style={{ borderTop: dark ? '1px solid rgba(255,255,255,0.12)' : '1px solid #e7ecea' }}>
           <span style={{ color: muted, fontSize: 13 }}>Keep exploring ZodiacPluss insights.</span>
