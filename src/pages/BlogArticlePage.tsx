@@ -33,7 +33,6 @@ function linkFocusedKeywords(text: string, article: BlogArticle): ReactNode {
       <a
         key={index}
         href={url}
-        className="underline underline-offset-2"
         style={{ color: GREEN }}
       >
         {text.slice(index, index + keyword.length)}
@@ -87,6 +86,7 @@ export default function BlogArticlePage({ article, onNavigate, dark = false }: B
       section.quote,
       ...(section.list ?? []),
     ].filter((text): text is string => Boolean(text))),
+    ...(article.faqs ?? []).flatMap(({ question, answer }) => [question, answer]),
   ]
   const unmentionedFocusedKeywords = Object.entries(article.focusedKeywords)
     .filter(([keyword, url]) =>
@@ -186,6 +186,29 @@ export default function BlogArticlePage({ article, onNavigate, dark = false }: B
             )}
           </Reveal>
         ))}
+
+        {article.faqs && article.faqs.length > 0 && (
+          <section aria-labelledby="article-faq-heading" className="mt-12">
+            <h2
+              id="article-faq-heading"
+              style={{ fontFamily: SERIF, fontSize: 'clamp(24px, 3vw, 31px)', lineHeight: 1.2, marginBottom: 20 }}
+            >
+              Frequently Asked Questions
+            </h2>
+            <div className="space-y-6">
+              {article.faqs.map(({ question, answer }) => (
+                <div key={question}>
+                  <h3 style={{ fontFamily: SERIF, fontSize: 18, lineHeight: 1.35, marginBottom: 8 }}>
+                    {linkFocusedKeywords(question, article)}
+                  </h3>
+                  <p style={{ color: muted, fontSize: 15, lineHeight: 1.65 }}>
+                    {linkFocusedKeywords(answer, article)}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {unmentionedFocusedKeywords.length > 0 && (
           <p className="mb-4" style={{ color: muted, fontSize: 15, lineHeight: 1.65 }}>

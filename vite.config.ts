@@ -114,6 +114,23 @@ function faqJsonLd(page: SeoPageConfig): string {
   return `\n    <script type="application/ld+json">\n${JSON.stringify(payload, null, 2)}\n    </script>`
 }
 
+function articleFaqJsonLd(article?: BlogArticle): string {
+  if (!article?.faqs?.length) return ''
+  const payload = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: article.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  }
+  return `\n    <script type="application/ld+json">\n${JSON.stringify(payload, null, 2)}\n    </script>`
+}
+
 function serviceJsonLd(page: SeoPageConfig): string {
   if (page.path !== '/services') return ''
   const payload = {
@@ -210,7 +227,7 @@ function seoBlock(page: SeoPageConfig, article?: BlogArticle): string {
     <meta name="twitter:site" content="@zodiacpluss" />
     <meta name="twitter:title" content="${title}" />
     <meta name="twitter:description" content="${description}" />
-    <meta name="twitter:image" content="${image}" />${breadcrumbJsonLd(page)}${faqJsonLd(page)}${serviceJsonLd(page)}
+    <meta name="twitter:image" content="${image}" />${breadcrumbJsonLd(page)}${faqJsonLd(page)}${articleFaqJsonLd(article)}${serviceJsonLd(page)}
     <!-- SEO:END -->`
 }
 
